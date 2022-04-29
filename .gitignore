@@ -1,0 +1,9 @@
+vendor
+.github
+composer.json
+.htaccess
+AltoRouter.php
+composer.lock
+LICENSE.md
+phpcs.xml
+README.md
