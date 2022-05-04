@@ -1,5 +1,5 @@
 <?php 
-class Reserv {
+class Reserv extends Classes{
     private $_id_reserv;
     private $_id_user;
     private $_id_book;

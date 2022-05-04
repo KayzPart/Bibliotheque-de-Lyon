@@ -7,9 +7,6 @@
     <title>Document</title>
 </head>
 <body>
-    <button>
-        <a href="./connexion">Connexion</a>
-    </button>
-    
+    <h1>Espace Utilisateur</h1>
 </body>
 </html>

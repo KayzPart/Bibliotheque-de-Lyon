@@ -1,5 +1,5 @@
 <?php 
-class Gender {
+class Gender extends Classes{
     private $_id_gender;
     private $_name_gender;
 

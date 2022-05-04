@@ -1,5 +1,5 @@
 <?php 
-class Comment {
+class Comment extends Classes{
     private $_id_comment;
     private $_name_comment;
     private $_id_book;

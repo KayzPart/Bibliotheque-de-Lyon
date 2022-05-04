@@ -1,5 +1,5 @@
 <?php 
-class Book {
+class Book extends Classes{
     private $_id_book;
     private $_title;
     private $_author;

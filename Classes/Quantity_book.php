@@ -1,5 +1,5 @@
 <?php 
-class Quantity_book {
+class Quantity_book extends Classes{
     private $_id_quantity_book;
     private $_id_book; 
     private $_num_isbn; 

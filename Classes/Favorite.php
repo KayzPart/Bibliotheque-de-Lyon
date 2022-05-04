@@ -1,5 +1,5 @@
 <?php 
-class Favorite {
+class Favorite extends Classes{
     private $_id_favorite;
     private $_id_user;
     private $_id_book;

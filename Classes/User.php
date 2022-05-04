@@ -1,5 +1,5 @@
 <?php 
-class User {
+class User extends Classes{
     private $_id_user;
     private $_firstname;
     private $_lastname;
