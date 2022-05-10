@@ -120,7 +120,9 @@
         <input type="radio" name="condition" value="3">
         <label for="condition">Mauvais</label>
 
-        <input type="submit" name="submit"> envoyer
+        <button type="submit" name="submit">Envoyer</button>
+
+        <h2>je suis H2</h2>
 
     </form>
 </body>
