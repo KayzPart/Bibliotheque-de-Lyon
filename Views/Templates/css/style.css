@@ -48,6 +48,11 @@ table {
   border-spacing: 0;
 }
 
+body {
+  font-family: 'K2D';
+  background: #E0C097;
+}
+
 #headermain {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,6 +64,7 @@ table {
           align-items: center;
   background-color: #2D2424;
   height: 55px;
+  width: 100vw;
 }
 
 #headermain > .logo {
@@ -69,6 +75,53 @@ table {
   height: 40px;
   width: 40px;
   background-color: #E0C097;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#headermain > .menubg > .line, #headermain > .menubg > .linecenter {
+  height: 2px;
+  background-color: #2D2424;
+  border-radius: 2px;
+}
+
+#headermain > .menubg > .line {
+  width: 25px;
+}
+
+#headermain > .menubg > .linecenter {
+  width: 30px;
+}
+
+.menumobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #2D2424;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  -webkit-transform: translateX(100vw);
+          transform: translateX(100vw);
+  font-size: 36px;
+}
+
+.show {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .book > .img {

@@ -1,4 +1,4 @@
-{% extends "Templates/template.twig" %}
+{% extends "./Templates/template.twig" %}
 
 
 {% block title %}Page d'accueil{% endblock %}
@@ -11,4 +11,5 @@
             <img class="img" src="./public/ressources/{{book.getPhoto}}" alt="{{book.getTitle}}">
         </div>
     {% endfor %}
+    <script src="./Views/Templates/js/main.js"></script>
 {% endblock %}
