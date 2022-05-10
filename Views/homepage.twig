@@ -1,0 +1,14 @@
+{% extends "Templates/template.twig" %}
+
+
+{% block title %}Page d'accueil{% endblock %}
+
+{% block header %} {% include "./Templates/header/header.twig" %} {% endblock %}
+
+{% block content %}
+    {% for book in books %}
+        <div class="book">
+            <img class="img" src="./public/ressources/{{book.getPhoto}}" alt="{{book.getTitle}}">
+        </div>
+    {% endfor %}
+{% endblock %}
