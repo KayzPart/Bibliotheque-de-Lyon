@@ -10,6 +10,25 @@
     <button>
         <a href="./connexion">Connexion</a>
     </button>
-    
+    <?php
+        foreach($allBooks as $books){
+    ?>
+    <div class="books">
+        <h2><?= htmlspecialchars($books->getTitle())?></h2>
+        <p>date de parution:<?= htmlspecialchars($books->getYear_published())?></p>
+        <p>Emplacement :<?= htmlspecialchars($books->getEmplacement())?></p>
+        <p>Langue : <?= htmlspecialchars($books->getLang())?></p>
+        <a href="./book/<?= htmlspecialchars($books->getId_book())?>">Reserver</a>
+    </div>
+    <?php } ?>
+
+
+    <?php
+        foreach($bookSugg as $books){
+    ?>
+    <div class="suggestion">
+        <h3><?= htmlspecialchars($books->getTitle()) ?></h3>
+    </div>
+    <?php } ?>
 </body>
 </html>
