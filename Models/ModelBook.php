@@ -24,10 +24,9 @@ class ModelBook extends Model
         }
         return $arrayDatas;
     }
-
-    public function select($id)
-    {
-        $req = $this->getDb()->prepare("SELECT `id_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `condition` FROM `book` WHERE `id_book` = :id");
+    public function select($id){
+        $db = $this->getDb();
+        $req = $db->prepare("SELECT `id_book`, `id_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `condition` FROM `book` WHERE `id_book` = :id");
 
         $req->bindParam(':id', $id, PDO::PARAM_INT);
         $req->execute();
@@ -142,6 +141,16 @@ class ModelBook extends Model
             $arrayCate[] = new Book($row);
         }
         return $arrayCate;
+    }
+    public function suggestBook(){
+        $db = $this->getDb();
+        $req = $db->query('SELECT `id_book`, `id_category`,`title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `condition` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7');
+    
+        $arrayDatas = [];
+        while($books = $req->fetch(PDO::FETCH_ASSOC)){
+            $arrayDatas[] = new Book($books);
+        }
+        return $arrayDatas;
     }
 }
 //$reqGender = $db->prepare('INSERT INTO book_gender(`id_book`, `id_gender`) VALUES (:id_book, :id_gender)');     

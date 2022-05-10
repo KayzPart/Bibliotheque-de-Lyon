@@ -1,8 +1,3 @@
-<?php 
-    define('LOGIN', '15');
-    define('PASSWORD', 'book');
-    $errorMessage = '';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +9,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD:Views/connectAdmin.php
 <button>
         <a href="./connectAdmin">Administrateur</a>
     </button>
@@ -28,7 +24,7 @@
         <br><br>
 
         <label for="password">Entrer votre mot de passe</label>
-        <input type="password" name="password">
+        <input type="password" name="password" require>
 
         <input type="submit" name="submit" value="Se connecter">
     </form>
