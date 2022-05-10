@@ -7,7 +7,7 @@
       "squizlabs/php_codesniffer": "3.6.2"
    },
    "autoload": {
-      "classmap": ["AltoRouter.php", "Classes", "Controllers", "Models", "Views"]
+      "classmap": ["Classes", "Controllers", "Models", "Views"]
    },
    "scripts": {
      "test": "vendor/bin/phpunit"

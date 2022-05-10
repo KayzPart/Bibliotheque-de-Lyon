@@ -13,9 +13,11 @@ class ModelAdmin extends Model{
         $req = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `id_admin` = :id');
         $req->bindParam('id', $id, PDO::PARAM_STR);
         $req->execute();
+        $admin = [];
         while($adm = $req->fetch(PDO::FETCH_ASSOC)){
-            $admi = new Admin($adm);
+            $admin = new Admin($adm);
         }
+        return $admin;
         // return new Admin($req->fetch(PDO::FETCH_ASSOC));
     }
     public function activeSessionAdmin($login, $password){
