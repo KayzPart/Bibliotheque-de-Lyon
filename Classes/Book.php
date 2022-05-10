@@ -5,7 +5,7 @@ class Book extends Classes{
     private $_author;
     private $_year_published;
     private $_description;
-    private $_category;
+    private $_id_category;
     private $_num_isbn;
     private $_quantity;
     private $_photo;
@@ -13,6 +13,7 @@ class Book extends Classes{
     private $_lang;
     private $_condition;
     private $_date_limit;
+    private $_name_category;
 
     public function getId_book(){
         return $this->_id_book;
@@ -34,8 +35,8 @@ class Book extends Classes{
         return $this->_description;
     }
 
-    public function getCategory(){
-        return $this->_category;
+    public function getId_category(){
+        return $this->_id_category;
     }
 
     public function getNum_isbn(){
@@ -86,8 +87,8 @@ class Book extends Classes{
         $this->_description = $description;
     }
 
-    public function setCategory($category){
-        $this->_category = $category;
+    public function setId_category($id_category){
+        $this->_id_category = $id_category;
     }
 
     public function setNum_isbn($num_isbn){
@@ -117,4 +118,12 @@ class Book extends Classes{
     public function setDate_limit($description){
         $this->_date_limit = $description;
     }
+
+    public function getName_category(){
+        return $this->_name_category;
+    }
+    public function setName_category($name_category){
+        $this->_name_category = $name_category;
+    }
+
 }
