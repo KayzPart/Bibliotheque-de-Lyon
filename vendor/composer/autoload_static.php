@@ -9,9 +9,11 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
     public static $classMap = array (
         'Admin' => __DIR__ . '/../..' . '/Classes/Admin.php',
         'Book' => __DIR__ . '/../..' . '/Classes/Book.php',
+        'Category' => __DIR__ . '/../..' . '/Classes/Category.php',
         'Classes' => __DIR__ . '/../..' . '/Classes/Classes.php',
         'Comment' => __DIR__ . '/../..' . '/Classes/Comment.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'ConditionBook' => __DIR__ . '/../..' . '/Classes/ConditionBook.php',
         'ControllerAdmin' => __DIR__ . '/../..' . '/Controllers/ControllerAdmin.php',
         'ControllerBook' => __DIR__ . '/../..' . '/Controllers/ControllerBook.php',
         'ControllerBooked' => __DIR__ . '/../..' . '/Controllers/ControllerBooked.php',

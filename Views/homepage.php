@@ -9,7 +9,7 @@
 <body>
     
     <button>
-        <a href="./connexion">Connexion</a>
+        <a href="./connectUser">Mon compte</a>
     </button>
     <?php foreach($allBooks as $book){ ?>
         <div class="slide-nouveautees">

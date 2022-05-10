@@ -13,10 +13,13 @@ $router->setBasePath('/php/Bibliotheque-de-Lyon');
 $router->map('GET', '/', 'ControllerBook#listAllBook', 'homepage');
 
 // Connexion Admin/User
-$router->map('GET', '/connexion', 'ControllerConnexion#connect');
+// $router->map('GET', '/connexion', 'ControllerConnexion#connect');
 
-// Selection de la session
-$router->map('POST', '/[a:session]', 'ControllerConnexion#selectSession');
+// Direction formulaire Admin
+$router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
+
+// Direction formulaire User 
+$router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 
 // Espace admin
 $router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
@@ -29,11 +32,15 @@ $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'for
 
 $router->map('GET', '/book/[i:id_book]', '#readBook', 'ficheBook');
 
+// Afficher category
 $router->map('GET', '/book', 'ControllerBook#Show', 'afficher' );
 
+// Afficher condition
+$router->map('GET', '/book', 'ControllerBook#ShowCondi', 'afficherCondi' );
+
+// Formulaire ajout livre
 $router->map('POST', '/book/create', 'ControllerBook#newBook','create');
 
-// $router->map('POST', '/ajout/validate', 'ControllerBook#newBook');
 
 
 $match = $router->match();

@@ -21,6 +21,11 @@
             $sBook = $manager->ViewCate();
             require_once './Views/admin_book_ajout.php';
         }
+        public static function ShowCondi(){
+            $manager = new ModelBook();
+            $cBook = $manager->ViewCondi();
+            require_once './Views/admin_book_ajout.php';
+        }
         public static function newBook(){
             $datas = $_POST;
             $manager = new ModelBook();

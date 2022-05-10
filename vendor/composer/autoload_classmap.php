@@ -8,9 +8,11 @@ $baseDir = dirname($vendorDir);
 return array(
     'Admin' => $baseDir . '/Classes/Admin.php',
     'Book' => $baseDir . '/Classes/Book.php',
+    'Category' => $baseDir . '/Classes/Category.php',
     'Classes' => $baseDir . '/Classes/Classes.php',
     'Comment' => $baseDir . '/Classes/Comment.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'ConditionBook' => $baseDir . '/Classes/ConditionBook.php',
     'ControllerAdmin' => $baseDir . '/Controllers/ControllerAdmin.php',
     'ControllerBook' => $baseDir . '/Controllers/ControllerBook.php',
     'ControllerBooked' => $baseDir . '/Controllers/ControllerBooked.php',

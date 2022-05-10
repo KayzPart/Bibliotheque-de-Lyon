@@ -27,11 +27,13 @@
         public function sessionUser($id){
             $db = $this->getDb();
             $req = $db->prepare('SELECT `id_user`, `login`, `firstname`, `lastname`, `password_user`, `mail`, `num_member` FROM `user` WHERE `id_user` = :id');
-            $req->bindParam('id', $id, PDO::PARAM_STR);
+            $req->bindParam('id', $id, PDO::PARAM_INT);
             $req->execute();
+            $user = [];
             while($use = $req->fetch(PDO::FETCH_ASSOC)){
-                $user= new User($use);
+                $user = new User($use);
             }
+            return $user;
             // return new User($req->fetch(PDO::FETCH_ASSOC));
         }
     }
