@@ -7,8 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    
     <button>
-        <a href="./connexion">Connexion</a>
+        <a href="./connectUser">Mon compte</a>
     </button>
     <?php
         foreach($allBooks as $books){

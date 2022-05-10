@@ -8,19 +8,39 @@ $router = new AltoRouter();
 $router->setBasePath('/php/Bibliotheque-de-Lyon');
 
 // Routes
+
+// Homepage / Liste des livres
 $router->map('GET', '/', 'ControllerBook#listAllBook', 'homepage');
 
-$router->map('GET', '/connexion', 'ControllerConnexion#connect');
+// Connexion Admin/User
+// $router->map('GET', '/connexion', 'ControllerConnexion#connect');
 
-$router->map('POST', '/[a:session]', 'ControllerConnexion#selectSession');
+// Direction formulaire Admin
+$router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 
-$router->map('GET', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
+// Direction formulaire User 
+$router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 
-// $router->map('POST', '/session/[i:id_user]', 'ControllerConnexion#session', 'user');
+// Espace admin
+$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
 
+// Espace User
 $router->map('POST', '/spaceUser', 'ControllerUser#userArea');
 
-$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
+// Réservation livre 
+$router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
+
+$router->map('GET', '/book/[i:id_book]', '#readBook', 'ficheBook');
+
+// Afficher category
+$router->map('GET', '/book', 'ControllerBook#Show', 'afficher' );
+
+// Afficher condition
+$router->map('GET', '/book', 'ControllerBook#ShowCondi', 'afficherCondi' );
+
+// Formulaire ajout livre
+$router->map('POST', '/book/create', 'ControllerBook#newBook','create');
+
 
 
 $match = $router->match();
@@ -36,9 +56,16 @@ if($match){
             }
             var_dump($match['params']);
             break;
+        case 'connect':
+            foreach($_POST as $key => $value){
+                $match['params'][$key] = $value;
+            }
+            var_dump($match['params']);
+            break; 
+       
     }
     if(is_callable(array($obj, $action))){
-         call_user_func_array(array($obj, $action), $match['params']);
+         call_user_func_array(array($obj, $action), array($match['params']));
     }
 }
 

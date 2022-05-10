@@ -16,6 +16,4 @@
                 echo 'Erreur de connection' . '<br>' . $e->getMessage();
             }
         }
-
-        
     }
