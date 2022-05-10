@@ -1,14 +1,7 @@
 <?php
 // On prolonge la session
 session_start();
-$_SESSION['login'] = [];
-if(!isset($_SESSION['adminId'])){
-    header('Location: connexion.php');
-}
 $id_session = session_id();
-// if(!isset($_SESSION['adminId'])){
-//     header('Location: ./connexion.php');
-// }
 ?>
 <!DOCTYPE html>
 <html lang="en">

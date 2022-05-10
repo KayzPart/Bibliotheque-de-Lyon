@@ -1,12 +1,15 @@
 <?php
     class ControllerBook {
         public static function listAllBook(){
-
-            $datas = new ModelBook ();
-
-            $bookSugg = $datas->suggestBook();
+            $datas = new ModelBook();
             $allBooks = $datas->listAll();
             require_once './Views/homepage.php';
+        }
+
+
+        public static function listAllNewsBook(){
+            $datas = new ModelBook();
+            $allListNews = $datas->listNewsBook();
         }
         public static function readBook(int $id){
             $datas = new ModelBook ();

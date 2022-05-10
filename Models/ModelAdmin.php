@@ -1,34 +1,33 @@
 <?php
-class ModelAdmin extends Model
-{
-    public function sessionAdmin($id){
-        $db = $this->getDb();
-        $reqAdmin = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `id_admin` = :id');
-        $reqAdmin->bindParam('id', $id, PDO::PARAM_INT);
-        $reqAdmin->execute();
-        $admn = [];
-        while($admin = $reqAdmin->fetch(PDO::FETCH_ASSOC)){
-            $admn = new Admin($admin);
-        }
-        return $admn;
-    }
-    public function activeSessionAdmin($login, $password){
-        if (isset($_POST['login'])) {
+class ModelAdmin extends Model{
+    public function activeSessionAdmin($login){
+
+        if(!empty($_POST)){
             $login = $_POST['login'];
             $password = $_POST['password'];
+            if(!empty($_POST['login']) && !empty($_POST['password'])){
+                if($_POST['login'] !== $login){
+                    return 'Mauvais login/password';
+                }elseif($_POST['password'] !== $password){
+                    return 'Mauvais login/password';
+                }
+                else{
 
-            $db = $this->getDb();
-            $reqSessionAdmn = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginF');
-            $reqSessionAdmn->bindParam('loginF', $login, PDO::PARAM_STR);
-            $reqSessionAdmn->execute();
-            return new Admin($reqSessionAdmn->fetch(PDO::FETCH_ASSOC));
-
-            $log = $reqSessionAdmn->fetch(PDO::FETCH_ASSOC);
-            if($reqSessionAdmn->rowCount() > 0 && $log['password']  == $password){
-                $_SESSION['adminId'] = $log['id_admin'];
-                header('Location: ./Views/spaceAdmin.php');
+                    $db = $this->getDb();
+                    $reqSessionAdmn = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginF');
+                    $reqSessionAdmn->bindParam('loginF', $login, PDO::PARAM_STR);
+                    $reqSessionAdmn->execute();
+                    $admin = [];
+                    while($adm = $reqSessionAdmn->fetch(PDO::FETCH_ASSOC)){
+                        $admin[] = new Admin($adm);
+                    }
+                    return $admin;
+                    session_start();
+                    $_SESSION['login'] = $login;
+                    exit();
+                }
             }else{
-                return 'Erreur login/password';
+                return 'Veuillez entrez vos identifiants svp !';
             }
         }
     }

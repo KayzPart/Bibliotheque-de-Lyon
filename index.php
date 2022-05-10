@@ -12,9 +12,6 @@ $router->setBasePath('/php/Bibliotheque-de-Lyon');
 // Homepage / Liste des livres
 $router->map('GET', '/', 'ControllerBook#listAllBook', 'homepage');
 
-// Connexion Admin/User
-// $router->map('GET', '/connexion', 'ControllerConnexion#connect');
-
 // Direction formulaire Admin
 $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 
@@ -22,7 +19,7 @@ $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 
 // Espace admin
-$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
+$router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
 
 // Espace User
 $router->map('POST', '/spaceUser', 'ControllerUser#userArea');
