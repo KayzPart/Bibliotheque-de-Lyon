@@ -9,7 +9,6 @@
 </head>
 
 <body>
-<<<<<<< HEAD:Views/connectAdmin.php
 <button>
         <a href="./connectAdmin">Administrateur</a>
     </button>

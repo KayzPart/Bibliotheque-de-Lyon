@@ -152,6 +152,12 @@ class ModelBook extends Model
         }
         return $arrayDatas;
     }
+    public function editBook(){
+        $db = $this->getDb();
+        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement');
+        $req->bindParam(':id_condition_book', ':emplacement'); 
+        $req->execute();
+    }
 }
 //$reqGender = $db->prepare('INSERT INTO book_gender(`id_book`, `id_gender`) VALUES (:id_book, :id_gender)');     
 // $reqGender->bindParam('id_book', $idBook, PDO::PARAM_STR);
