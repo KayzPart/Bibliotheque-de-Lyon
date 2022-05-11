@@ -34,12 +34,12 @@
         </label>
         <br>
         <div class="category-ajout">
-            <select name="category-type" id="category-type">
-                <option value="1">Roman</option>
-                <option value="2">Manga</option>
-                <option value="3">BD</option>
-                <option value="4">Magazine</option>
-                <option value="5">Journal</option>
+            <select name="category-type">
+                <option name="category-type" value="1">Roman</option>
+                <option name="category-type" value="2">Manga</option>
+                <option name="category-type" value="3">BD</option>
+                <option name="category-type" value="4">Magazine</option>
+                <option name="category-type" value="5">Journal</option>
             </select>
         </div>
 
@@ -120,8 +120,7 @@
         <input type="radio" name="condition" value="3">
         <label for="condition">Mauvais</label>
 
-        <input type="submit" name="submit"> envoyer
-
+        <button type="submit" name="submit">Envoyer</button>
     </form>
 </body>
 

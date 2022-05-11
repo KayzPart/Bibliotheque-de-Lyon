@@ -14,7 +14,6 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'Comment' => __DIR__ . '/../..' . '/Classes/Comment.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'ConditionBook' => __DIR__ . '/../..' . '/Classes/ConditionBook.php',
-        'ControllerAdmin' => __DIR__ . '/../..' . '/Controllers/ControllerAdmin.php',
         'ControllerBook' => __DIR__ . '/../..' . '/Controllers/ControllerBook.php',
         'ControllerBooked' => __DIR__ . '/../..' . '/Controllers/ControllerBooked.php',
         'ControllerConnexion' => __DIR__ . '/../..' . '/Controllers/ControllerConnexion.php',

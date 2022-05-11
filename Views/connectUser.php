@@ -9,13 +9,13 @@
 </head>
 
 <body>
-<button>
+    <button>
         <a href="./connectAdmin">Administrateur</a>
     </button>
     <button>
         <a href="./connectUser">Utilisateur</a>
     </button>
-    <form action="session" method="POST">
+    <form action="/spaceUser" method="POST">
         <h1>Utilisateur</h1>
         <label for="mail">Veuillez rentrer votre mail :</label>
         <input type="text" name="mail">
@@ -27,6 +27,7 @@
 
         <input type="submit" name="submit" value="Se connecter">
     </form>
+    <h1>Coucou Alex</h1>
 </body>
 
 </html>

@@ -1,12 +1,15 @@
 <?php
     class ControllerBook {
         public static function listAllBook(){
-
-            $datas = new ModelBook ();
-
-            $bookSugg = $datas->suggestBook();
+            $datas = new ModelBook();
             $allBooks = $datas->listAll();
             require_once './Views/homepage.php';
+        }
+
+
+        public static function listAllNewsBook(){
+            $datas = new ModelBook();
+            $allListNews = $datas->listNewsBook();
         }
         public static function readBook(int $id){
             $datas = new ModelBook ();
@@ -23,10 +26,15 @@
             $cBook = $manager->ViewCondi();
             require_once './Views/admin_book_ajout.php';
         }
-        public static function newBook(){
+        public static function ShowGender(){
+            $manager = new ModelBook();
+            $gBook = $manager->ViewGender();
+            require_once './Views/admin_book_ajout.php';
+        }
+        public static function newBook($datas){
             $datas = $_POST;
             $manager = new ModelBook();
-            $NwBook = $manager->insertBook($datas);
+            $newBook = $manager->insertBook($datas);
             require_once './Views/admin_book_ajout.php';
         }
     }
