@@ -26,10 +26,15 @@
             $cBook = $manager->ViewCondi();
             require_once './Views/admin_book_ajout.php';
         }
-        public static function newBook(){
+        public static function ShowGender(){
+            $manager = new ModelBook();
+            $gBook = $manager->ViewGender();
+            require_once './Views/admin_book_ajout.php';
+        }
+        public static function newBook($datas){
             $datas = $_POST;
             $manager = new ModelBook();
-            $NwBook = $manager->insertBook($datas);
+            $newBook = $manager->insertBook($datas);
             require_once './Views/admin_book_ajout.php';
         }
     }
