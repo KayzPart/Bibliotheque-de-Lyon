@@ -157,4 +157,10 @@ class ModelBook extends Model
         }
         return $arrayGender;
     }
+    public function editBook(){
+        $db = $this->getDb();
+        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement');
+        $req->bindParam(':id_condition_book', ':emplacement'); 
+        $req->execute();
+    }
 }

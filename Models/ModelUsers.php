@@ -23,19 +23,8 @@
         //         $verify_pass = password_verify($password, $hashed_pass);
         //         var_dump($verify_pass);
         //     }
-        // }
-        public function sessionUser($id){
-            $db = $this->getDb();
-            $req = $db->prepare('SELECT `id_user`, `mail`, `firstname`, `lastname`, `password_user`, `mail`, `num_member` FROM `user` WHERE `id_user` = :id');
-            $req->bindParam('id', $id, PDO::PARAM_INT);
-            $req->execute();
-            $user = [];
-            while($use = $req->fetch(PDO::FETCH_ASSOC)){
-                $user = new User($use);
-            }
-            return $user;
-            // return new User($req->fetch(PDO::FETCH_ASSOC));
-        }
+        // 
+
         public function activeSessionUser($mail){
 
             if(!empty($_POST)){
@@ -66,5 +55,18 @@
                     return 'Veuillez entrez vos identifiants svp !';
                 }
             }
+
+        public function HashPassword(){
+            $password = `:password_user`;
+            $key_password = "la clé";
+            $key_password1 = "la deuxieme clé";
+
+            $encrypted_password = openssl_encrypt($password, "AES-128-ECB" ,$key_password);
+            var_dump($encrypted_password);
+
+            $decrypted_password = openssl_decrypt($encrypted_password, "AES-128-ECB" ,
+            $key_password);
+            var_dump($decrypted_password);
+
         }
     }
