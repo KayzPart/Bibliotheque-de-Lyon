@@ -6,7 +6,7 @@
         public function getId_category(){
             return $this->_id_category;
         }
-        public function setId_category(int $id_category){
+        public function setId_category( $id_category){
             $this->_id_category = $id_category;
         }
 

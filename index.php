@@ -12,28 +12,32 @@ $router->setBasePath('/projet/Bibliotheque-de-Lyon');
 // Homepage / Liste des livres
 $router->map('GET', '/', 'ControllerBook#listAllBook', 'homepage');
 
-// Connexion Admin/User
-$router->map('GET', '/connexion', 'ControllerConnexion#connect');
+// Direction formulaire Admin
+$router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 
-// Selection de la session
-$router->map('POST', '/[a:session]', 'ControllerConnexion#selectSession');
+// Direction formulaire User 
+$router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 
 // Espace admin
-$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
+$router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
 
 // Espace User
-$router->map('POST', '/spaceUser', 'ControllerUser#userArea');
+$router->map('POST', '/spaceUser', 'ControllerConnexion#connexionUser');
 
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
 
 $router->map('GET', '/book/[i:id_book]', '#readBook', 'ficheBook');
 
+// Afficher category
 $router->map('GET', '/book', 'ControllerBook#Show', 'afficher' );
 
-$router->map('POST', '/book/create', 'ControllerBook#newBook','create');
+// Afficher condition
+$router->map('GET', '/book', 'ControllerBook#ShowCondi', 'afficherCondi' );
 
-// $router->map('POST', '/ajout/validate', 'ControllerBook#newBook');
+// Formulaire ajout livre
+$router->map('POST', '/book', 'ControllerBook#newBook');
+
 
 
 $match = $router->match();

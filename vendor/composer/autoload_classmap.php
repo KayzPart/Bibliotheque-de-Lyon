@@ -13,7 +13,7 @@ return array(
     'Classes' => $baseDir . '/Classes/Classes.php',
     'Comment' => $baseDir . '/Classes/Comment.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'ControllerAdmin' => $baseDir . '/Controllers/ControllerAdmin.php',
+    'ConditionBook' => $baseDir . '/Classes/ConditionBook.php',
     'ControllerBook' => $baseDir . '/Controllers/ControllerBook.php',
     'ControllerBooked' => $baseDir . '/Controllers/ControllerBooked.php',
     'ControllerConnexion' => $baseDir . '/Controllers/ControllerConnexion.php',

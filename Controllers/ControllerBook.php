@@ -7,15 +7,16 @@
 
             $datas = new ModelBook();
             $allBooks = $datas->listAll();
-            
-            echo $twig->render('homepage.twig', ['books' => $allBooks]);
-        }
-
-
-        public static function listAllNewsBook(){
-            $datas = new ModelBook();
             $allListNews = $datas->listNewsBook();
+            echo $twig->render('homepage.twig', ['books' => $allBooks]);
+
         }
+
+
+        // public static function listAllNewsBook(){
+        //     $datas = new ModelBook();
+            
+        // }
         public static function readBook(int $id){
             $datas = new ModelBook ();
             $book = $datas->select($id);
@@ -26,10 +27,22 @@
             $sBook = $manager->ViewCate();
             require_once './Views/admin_book_ajout.php';
         }
-        public static function newBook(){
+        public static function ShowCondi(){
+            $manager = new ModelBook();
+            $cBook = $manager->ViewCondi();
+            require_once './Views/admin_book_ajout.php';
+        }
+        public static function ShowGender(){
+            $manager = new ModelBook();
+            $gBook = $manager->ViewGender();
+            require_once './Views/admin_book_ajout.php';
+        }
+        public static function newBook($datas){
             $datas = $_POST;
             $manager = new ModelBook();
-            $NwBook = $manager->insertBook($datas);
+            $newBook = $manager->insertBook($datas);
+
+            
             require_once './Views/admin_book_ajout.php';
         }
     }

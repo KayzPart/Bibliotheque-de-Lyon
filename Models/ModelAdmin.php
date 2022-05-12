@@ -1,35 +1,34 @@
 <?php
 class ModelAdmin extends Model{
-    public function registerAdmin($login, $password){
-        $pass_hash = password_hash($password, PASSWORD_DEFAULT);
-        $db = $this->getDb();
-        $login = $db->prepare('INSERT INTO `admin`(`login`, `password`) VALUES (?, ?)');
+    public function activeSessionAdmin($login){
 
-        $affectedLines = $login->execute(array($login, $pass_hash));
-        return $affectedLines;
-    }
-    public function sessionAdmin($id){
-        $db = $this->getDb();
-        $req = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `id_admin` = :id');
-        $req->bindParam('id', $id, PDO::PARAM_STR);
-        $req->execute();
-        $admin = [];
-        while($adm = $req->fetch(PDO::FETCH_ASSOC)){
-            $admin = new Admin($adm);
-        }
-        return $admin;
-        // return new Admin($req->fetch(PDO::FETCH_ASSOC));
-    }
-    public function activeSessionAdmin($login, $password){
-        $db = $this->getDb();
-        $req = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginF');
-        $req->bindParam('loginF', $login, PDO::PARAM_STR);
-        $req->execute();
-        return new Admin($req->fetch(PDO::FETCH_ASSOC));
+        if(!empty($_POST)){
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            if(!empty($_POST['login']) && !empty($_POST['password'])){
+                if($_POST['login'] !== $login){
+                    return 'Mauvais login/password';
+                }elseif($_POST['password'] !== $password){
+                    return 'Mauvais login/password';
+                }
+                else{
 
-        $log =$req->fetch(PDO::FETCH_ASSOC);
-        if($req->rowCount() > 0 && $log['password']  == $password){
-            $_SESSION['adminId'] = $log['id_admin'];
+                    $db = $this->getDb();
+                    $reqSessionAdmn = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginF');
+                    $reqSessionAdmn->bindParam('loginF', $login, PDO::PARAM_STR);
+                    $reqSessionAdmn->execute();
+                    $admin = [];
+                    while($adm = $reqSessionAdmn->fetch(PDO::FETCH_ASSOC)){
+                        $admin[] = new Admin($adm);
+                    }
+                    return $admin;
+                    session_start();
+                    $_SESSION['login'] = $login;
+                    exit();
+                }
+            }else{
+                return 'Veuillez entrez vos identifiants svp !';
+            }
         }
     }
 }
