@@ -4,7 +4,8 @@ class ModelBook extends Model
     public function listAll()
     {
         $db = $this->getDb();
-        $req = $db->query('SELECT category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
+        $req = $db->query('SELECT `book`.`id_book`, category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `condition` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
+
 
         $books = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {

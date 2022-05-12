@@ -1,0 +1,17 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Page d'accueil{% endblock %}
+
+{% block header %} {% include "./Templates/header/header.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
+
+{% block content %}
+    {% for book in books %}
+        <div class="book">
+            <a class="linkbook" href="./book/{{book.getId_book}}">
+                <img class="imgbook" src="./public/ressources/{{book.getPhoto}}" alt="{{book.getTitle}}">
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
