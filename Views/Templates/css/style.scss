@@ -21,6 +21,9 @@ body{
 .logoh{
     height: 55px;
 }
+.logohd{
+    height: 100px;
+}
 .menubg{
     height: 40px;
     width: 40px;
@@ -215,3 +218,9 @@ body{
     height: 200px;
 }
 
+// ------MEDIA QUERIE-------
+@media screen and (min-width: 900px) {
+    .menubg{
+        display: none;
+    }
+}

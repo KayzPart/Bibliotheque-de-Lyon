@@ -72,6 +72,10 @@ body {
   height: 55px;
 }
 
+.logohd {
+  height: 100px;
+}
+
 .menubg {
   height: 40px;
   width: 40px;
@@ -333,5 +337,11 @@ body {
 .imgbook {
   width: 130px;
   height: 200px;
+}
+
+@media screen and (min-width: 900px) {
+  .menubg {
+    display: none;
+  }
 }
 /*# sourceMappingURL=style.css.map */
