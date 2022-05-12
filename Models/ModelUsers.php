@@ -55,6 +55,7 @@
                     return 'Veuillez entrez vos identifiants svp !';
                 }
             }
+        }
 
         public function HashPassword(){
             $password = `:password_user`;
