@@ -164,4 +164,24 @@ class ModelBook extends Model
         $req->bindParam(':id_condition_book', ':emplacement'); 
         $req->execute();
     }
+    public function listAllDesc() {
+        $db = $this->getDb();
+        $req = $db->query('SELECT `id_book`,`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY id_book DESC');
+
+        $books = [];
+        while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
+            $books[] = new Book($book);
+        }
+        return $books;
+    }
+    public function suggestBook() {
+        $db = $this->getDb();
+        $req = $db->query('SELECT `id_book`,`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7 OR `id_book` = 8');
+
+        $books = [];
+        while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
+            $books[] = new Book($book);
+        }
+        return $books;
+    }
 }

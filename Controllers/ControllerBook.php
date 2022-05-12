@@ -5,8 +5,6 @@
             $allBooks = $datas->listAll();
             require_once './Views/homepage.php';
         }
-
-
         public static function listAllNewsBook(){
             $datas = new ModelBook();
             $allListNews = $datas->listNewsBook();
@@ -35,8 +33,7 @@
             $datas = $_POST;
             $manager = new ModelBook();
             $newBook = $manager->insertBook($datas);
-
-            
+            $editBook = $manager->editBook($datas);
             require_once './Views/admin_book_ajout.php';
         }
     }
