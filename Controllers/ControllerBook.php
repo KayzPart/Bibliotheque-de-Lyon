@@ -1,5 +1,6 @@
 <?php
     class ControllerBook {
+        // Affichage de tous les livres
         public static function listAllBook(){
             $loader = new Twig\Loader\FilesystemLoader('./Views');
             $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
@@ -11,12 +12,6 @@
             echo $twig->render('homepage.twig', ['books' => $allBooks]);
 
         }
-
-
-        // public static function listAllNewsBook(){
-        //     $datas = new ModelBook();
-            
-        // }
         public static function readBook(int $id){
             $datas = new ModelBook ();
             $book = $datas->select($id);
@@ -32,11 +27,11 @@
             $cBook = $manager->ViewCondi();
             require_once './Views/admin_book_ajout.php';
         }
-        public static function ShowGender(){
-            $manager = new ModelBook();
-            $gBook = $manager->ViewGender();
-            require_once './Views/admin_book_ajout.php';
-        }
+        // public static function ShowGender(){
+        //     $manager = new ModelBook();
+        //     $gBook = $manager->ViewGender();
+        //     require_once './Views/admin_book_ajout.php';
+        // }
         public static function newBook($datas){
             $datas = $_POST;
             $manager = new ModelBook();
