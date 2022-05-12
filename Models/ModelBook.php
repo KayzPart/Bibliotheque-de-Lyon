@@ -36,10 +36,11 @@ class ModelBook extends Model
     }
     public function insertBook($datas){
         if (isset($_POST['submit'])) {
-
+            
             if (isset($_FILES['photo']) and $_FILES['photo']['error'] == 0) {
+                
 
-                if ($_FILES['photo']['size'] <= 1000000) {
+                if (isset($_FILES['photo']['size']) <= 10000000) {
 
                     $infosfichier = pathinfo($_FILES['photo']['name']);
 
@@ -60,19 +61,23 @@ class ModelBook extends Model
                         $date = date('dmyhis');
 
                         $ref = $finalString . '_' . $date . '_couverture';
+                        
 
                         move_uploaded_file($_FILES['photo']['tmp_name'], './public/couverture/' . $ref . '.' . $extension_upload);
+
+                       
                     } else {
-                        echo 'Image trop grand';
+                        echo 'Extensions incorrect';
                     }
                 } else {
-                    echo 'Erreur du téléchargement !';
+                    echo 'Image trop grande !';
                 }
             } else {
-                echo 'Erreur, vous navez pas accès !';
+                echo 'Erreur, de téléchargement !';
             }
-
-
+            var_dump($_FILES);
+            // phpinfo();
+            
             $id_category = $_POST['category-type'];
             $id_condition_book = $_POST['condition'];
             $title = $_POST['title'];

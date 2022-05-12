@@ -15,4 +15,9 @@
             $logAct = $manager->activeSessionAdmin($login);
             require_once './Views/spaceAdmin.php';
         }
+        public function connexionUser($mail){
+            $manager = new ModelUser();
+            $logUse = $manager->activeSessionUser($mail);
+            require_once './Views/spaceUser.php';
+        }
     }

@@ -26,7 +26,7 @@
         // }
         public function sessionUser($id){
             $db = $this->getDb();
-            $req = $db->prepare('SELECT `id_user`, `login`, `firstname`, `lastname`, `password_user`, `mail`, `num_member` FROM `user` WHERE `id_user` = :id');
+            $req = $db->prepare('SELECT `id_user`, `mail`, `firstname`, `lastname`, `password_user`, `mail`, `num_member` FROM `user` WHERE `id_user` = :id');
             $req->bindParam('id', $id, PDO::PARAM_INT);
             $req->execute();
             $user = [];
@@ -35,5 +35,36 @@
             }
             return $user;
             // return new User($req->fetch(PDO::FETCH_ASSOC));
+        }
+        public function activeSessionUser($mail){
+
+            if(!empty($_POST)){
+                $mail = $_POST['mail'];
+                $password = $_POST['password'];
+                if(!empty($_POST['mail']) && !empty($_POST['password'])){
+                    if($_POST['mail'] !== $mail){
+                        return 'Mauvais mail/password';
+                    }elseif($_POST['password'] !== $password){
+                        return 'Mauvais mail/password';
+                    }
+                    else{
+    
+                        $db = $this->getDb();
+                        $reqSessionUse = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `mail`, `num_member` FROM `u$user` WHERE `mail`');
+                        $reqSessionUse->bindParam('mail', $mail, PDO::PARAM_STR);
+                        $reqSessionUse->execute();
+                        $user = [];
+                        while($use = $reqSessionUse->fetch(PDO::FETCH_ASSOC)){
+                            $user[] = new User($use);
+                        }
+                        return $use;
+                        session_start();
+                        $_SESSION['mail'] = $mail;
+                        exit();
+                    }
+                }else{
+                    return 'Veuillez entrez vos identifiants svp !';
+                }
+            }
         }
     }
