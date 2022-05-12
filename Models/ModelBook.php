@@ -1,10 +1,11 @@
 <?php
 class ModelBook extends Model
 {
+    // Affichage de tous les livres
     public function listAll()
     {
         $db = $this->getDb();
-        $req = $db->query('SELECT `book`.`id_book`, category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `condition` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
+        $req = $db->query('SELECT `book`.`id_book`, category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
 
 
         $books = [];
@@ -14,16 +15,29 @@ class ModelBook extends Model
         return $books;
     }
 
+    // Affichage des dix derniers livres
     public function listNewsBook()
     {
         $db = $this->getDb();
-        $req = $db->prepare('SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY `id_book` ASC LIMIT 10');
+        $req = $db->prepare('SELECT `id_book`,`photo` FROM `book` ORDER BY `id_book` DESC LIMIT 10');
 
         $arrayDatas = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
             $arrayDatas[] = new Book($book);
         }
         return $arrayDatas;
+    }
+
+    // Affichage des sugestions de livres (3) 
+    public function suggestBook() {
+        $db = $this->getDb();
+        $req = $db->query('SELECT `id_book`,`photo` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7');
+
+        $books = [];
+        while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
+            $books[] = new Book($book);
+        }
+        return $books;
     }
 
     public function select($id)
@@ -160,7 +174,7 @@ class ModelBook extends Model
     }
     public function editBook(){
         $db = $this->getDb();
-        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement');
+        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement WHERE id_book = :id_book');
         $req->bindParam(':id_condition_book', ':emplacement'); 
         $req->execute();
     }
@@ -174,14 +188,21 @@ class ModelBook extends Model
         }
         return $books;
     }
-    public function suggestBook() {
-        $db = $this->getDb();
-        $req = $db->query('SELECT `id_book`,`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7 OR `id_book` = 8');
+    public function searchBook() {
 
-        $books = [];
-        while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
-            $books[] = new Book($book);
+        if(isset($_GET['p'] )){
+            $recherche = $_GET['p'];
+            
+        } 
+        $db = $this->getDb();
+        $req = $db->query("SELECT `id_book`,`title`,`photo` FROM `book`  WHERE `title` LIKE '$recherche%'  ");
+        
+        
+        $datas = [];
+        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
+            $datas[] = new Book($data);
+    
         }
-        return $books;
     }
+    
 }

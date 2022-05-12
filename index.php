@@ -5,7 +5,7 @@ require_once  __DIR__ .'/vendor/altorouter/altorouter/AltoRouter.php';
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
 
-$router->setBasePath('/projet/Bibliotheque-de-Lyon');
+$router->setBasePath('/php/Bibliotheque-de-Lyon');
 
 // Routes
 
