@@ -54,7 +54,7 @@ body {
   background: #E0C097;
 }
 
-#headermain {
+.headerhome {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -68,15 +68,11 @@ body {
   width: 100vw;
 }
 
-#headermain > a {
+.logoh {
   height: 55px;
 }
 
-#headermain > a > .logo {
-  height: 55px;
-}
-
-#headermain > .menubg {
+.menubg {
   height: 40px;
   width: 40px;
   background-color: #E0C097;
@@ -94,17 +90,17 @@ body {
           align-items: center;
 }
 
-#headermain > .menubg > .line, #headermain > .menubg > .linecenter {
+.menubg > .line, .menubg > .linecenter {
   height: 2px;
   background-color: #2D2424;
   border-radius: 2px;
 }
 
-#headermain > .menubg > .line {
+.menubg > .line {
   width: 25px;
 }
 
-#headermain > .menubg > .linecenter {
+.menubg > .linecenter {
   width: 30px;
 }
 
@@ -263,36 +259,54 @@ body {
   color: #2D2424;
 }
 
-#footermain > .logocontact > .socialnkhor {
+#footermain .socialnkhor {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-top: 5px;
+  width: 100%;
 }
 
-#footermain > .logocontact > .socialnkhor > .social > .title {
+#footermain .socialnkhor > .social > .title {
   width: 120px;
   height: 20px;
+  text-align: center;
+  line-height: 20px;
+  padding: 3px;
   background: #E0C097;
   border: 2px solid #5C3D2E;
 }
 
-#footermain > .logocontact > .socialnkhor > .social > .logosocial {
+#footermain .socialnkhor > .social > .logosocial {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
+  padding: 3px 0;
 }
 
-#footermain > .logocontact > .socialnkhor > .social > .logosocial > .logoS {
+#footermain .socialnkhor > .social > .logosocial > a > .logoS {
   width: 30px;
 }
 
-#footermain > .logocontact > .socialnkhor > .horaire {
+#footermain .socialnkhor > .horaire {
   color: #E0C097;
+}
+
+#footermain .socialnkhor > .horaire > p {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#footermain .socialnkhor > .horaire > p > span {
+  text-decoration: underline;
+}
+
+#footermain .socialnkhor > .horaire > #hor {
+  margin-bottom: 10px;
 }
 
 .imglogo {
@@ -302,9 +316,18 @@ body {
 .contact {
   width: 120px;
   height: 20px;
+  text-align: center;
+  line-height: 20px;
   background: #5C3D2E;
   border: 2px solid #E0C097;
   color: #E0C097;
+  padding: 3px;
+}
+
+.mention {
+  color: white;
+  font-size: 12px;
+  margin: 5px 0px;
 }
 
 .imgbook {
