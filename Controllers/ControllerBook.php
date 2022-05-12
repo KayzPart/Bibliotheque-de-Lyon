@@ -3,14 +3,15 @@
         public static function listAllBook(){
             $datas = new ModelBook();
             $allBooks = $datas->listAll();
+            $allListNews = $datas->listNewsBook();
             require_once './Views/homepage.php';
         }
 
 
-        public static function listAllNewsBook(){
-            $datas = new ModelBook();
-            $allListNews = $datas->listNewsBook();
-        }
+        // public static function listAllNewsBook(){
+        //     $datas = new ModelBook();
+            
+        // }
         public static function readBook(int $id){
             $datas = new ModelBook ();
             $book = $datas->select($id);
