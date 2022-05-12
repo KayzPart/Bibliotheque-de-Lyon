@@ -7,7 +7,7 @@
 
             $datas = new ModelBook();
             $allBooks = $datas->listAll();
-
+            
             echo $twig->render('homepage.twig', ['books' => $allBooks]);
         }
 

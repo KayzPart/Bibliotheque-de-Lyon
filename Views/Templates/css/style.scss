@@ -5,6 +5,7 @@ body{
     background: #E0C097;
 }
 
+// -----HEADER------
 #headermain{
     display: flex;
     justify-content: space-around;
@@ -12,8 +13,11 @@ body{
     background-color: #2D2424;
     height: 55px;
     width: 100vw;
-    &>.logo{
+    &>a{
         height: 55px;
+        &>.logo{
+            height: 55px;
+        }
     }
     &>.menubg{
         height: 40px;
@@ -38,6 +42,7 @@ body{
 }
 .menumobile{
     position: fixed;
+    z-index: 1000;
     top: 0;
     right: 0;
     width: 100vw;
@@ -45,14 +50,140 @@ body{
     background-color: #2D2424;
     transition: transform 0.5s ease-in-out;
     transform: translateX(100vw);
-    font-size: 36px;
+    &> ul{
+        text-align: end;
+        &> li{
+            margin: 5px 10px;
+            &> a{
+                font-size: 25px;
+                text-decoration: none;
+                color: #E0C097;
+            }
+        }
+    }
 }
 .show{
     transform: translateX(0);
 }
-.book{
-    &>.img{
-        width: 130px;
-        height: 200px;
+.close{
+    font-size: 36px;
+    font-weight: bolder;
+    color: #E0C097;
+    margin: 10px;
+}
+
+//-----SEARCHBAR------
+#searchbar{
+    height: 170px;
+    background: url(../asset/pexels-tamás-mészáros-12064.jpeg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.bgblur{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px 0px;
+    background-color: #2d242423;
+    backdrop-filter: blur(1px);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
+    &> label{
+        font-size: 20px;
+        font-weight: 900;
+        color: #E0C097;
     }
+    &> .selectcat, &> .inpsearchbar, &> .btnsub{
+        margin: 4px auto;
+    }
+    &> .selectcat{
+        width: 150px;
+        background: #E0C097;
+        font-family: 'K2D';
+        font-size: 14px;
+        color: #2D2424;
+        text-align: center;
+        border: none;
+    }
+    &> .inpsearchbar{
+        width: 270px;
+        font-family: 'K2D';
+        font-size: 14px;
+        border: none;
+    }
+    &> .btnsub{
+        width: 125px;
+        height: 25px;
+        border-radius: 0px;
+        border: 1px solid #E0C097;
+        background: #2D2424;
+        color: #E0C097;
+    }
+}
+
+// ------FOOTER-------
+#footermain{
+    background: #2D2424;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    &>.logocontact{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &>.contacttitle{
+            width: 150px;
+            height: 40px;
+            border: 2px solid #5C3D2E;
+            line-height: 40px;
+            text-align: center;
+            background: #E0C097;
+            &> h3{
+                font-size: 16px;
+                font-weight: bolder;
+                color: #2D2424;
+            }
+    }
+    &>.socialnkhor{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 5px;
+        &>.social{
+            &>.title{
+                width: 120px;
+                height: 20px;
+                background: #E0C097;
+                border: 2px solid #5C3D2E;
+            }
+            &>.logosocial{
+                display: flex;
+                justify-content: space-around;
+                &>.logoS{
+                    width: 30px;
+                }   
+            }
+        }
+        &>.horaire{
+            color: #E0C097;
+        }
+    }
+}
+    
+}
+.imglogo{
+    width: 255px;
+}
+.contact{
+    width: 120px;
+    height: 20px;
+    background: #5C3D2E;
+    border: 2px solid #E0C097;
+    color: #E0C097;
+}
+.imgbook{
+    width: 130px;
+    height: 200px;
 }

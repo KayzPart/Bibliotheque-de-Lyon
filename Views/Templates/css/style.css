@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -67,7 +68,11 @@ body {
   width: 100vw;
 }
 
-#headermain > .logo {
+#headermain > a {
+  height: 55px;
+}
+
+#headermain > a > .logo {
   height: 55px;
 }
 
@@ -105,6 +110,7 @@ body {
 
 .menumobile {
   position: fixed;
+  z-index: 1000;
   top: 0;
   right: 0;
   width: 100vw;
@@ -116,7 +122,20 @@ body {
   transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
   -webkit-transform: translateX(100vw);
           transform: translateX(100vw);
-  font-size: 36px;
+}
+
+.menumobile > ul {
+  text-align: end;
+}
+
+.menumobile > ul > li {
+  margin: 5px 10px;
+}
+
+.menumobile > ul > li > a {
+  font-size: 25px;
+  text-decoration: none;
+  color: #E0C097;
 }
 
 .show {
@@ -124,7 +143,171 @@ body {
           transform: translateX(0);
 }
 
-.book > .img {
+.close {
+  font-size: 36px;
+  font-weight: bolder;
+  color: #E0C097;
+  margin: 10px;
+}
+
+#searchbar {
+  height: 170px;
+  background: url(../asset/pexels-tamás-mészáros-12064.jpeg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.bgblur {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-align: center;
+  padding: 5px 0px;
+  background-color: #2d242423;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bgblur > label {
+  font-size: 20px;
+  font-weight: 900;
+  color: #E0C097;
+}
+
+.bgblur > .selectcat, .bgblur > .inpsearchbar, .bgblur > .btnsub {
+  margin: 4px auto;
+}
+
+.bgblur > .selectcat {
+  width: 150px;
+  background: #E0C097;
+  font-family: 'K2D';
+  font-size: 14px;
+  color: #2D2424;
+  text-align: center;
+  border: none;
+}
+
+.bgblur > .inpsearchbar {
+  width: 270px;
+  font-family: 'K2D';
+  font-size: 14px;
+  border: none;
+}
+
+.bgblur > .btnsub {
+  width: 125px;
+  height: 25px;
+  border-radius: 0px;
+  border: 1px solid #E0C097;
+  background: #2D2424;
+  color: #E0C097;
+}
+
+#footermain {
+  background: #2D2424;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#footermain > .logocontact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#footermain > .logocontact > .contacttitle {
+  width: 150px;
+  height: 40px;
+  border: 2px solid #5C3D2E;
+  line-height: 40px;
+  text-align: center;
+  background: #E0C097;
+}
+
+#footermain > .logocontact > .contacttitle > h3 {
+  font-size: 16px;
+  font-weight: bolder;
+  color: #2D2424;
+}
+
+#footermain > .logocontact > .socialnkhor {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-top: 5px;
+}
+
+#footermain > .logocontact > .socialnkhor > .social > .title {
+  width: 120px;
+  height: 20px;
+  background: #E0C097;
+  border: 2px solid #5C3D2E;
+}
+
+#footermain > .logocontact > .socialnkhor > .social > .logosocial {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+#footermain > .logocontact > .socialnkhor > .social > .logosocial > .logoS {
+  width: 30px;
+}
+
+#footermain > .logocontact > .socialnkhor > .horaire {
+  color: #E0C097;
+}
+
+.imglogo {
+  width: 255px;
+}
+
+.contact {
+  width: 120px;
+  height: 20px;
+  background: #5C3D2E;
+  border: 2px solid #E0C097;
+  color: #E0C097;
+}
+
+.imgbook {
   width: 130px;
   height: 200px;
 }
