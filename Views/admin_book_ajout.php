@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <form action="./book/create" method="POST" enctype="multipart/form-data">
+    <form action="" method="POST" enctype="multipart/form-data">
         <label for="title">Titre :</label>
         <input type="text" name="title">
 

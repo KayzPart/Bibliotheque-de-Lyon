@@ -15,7 +15,7 @@
     <button>
         <a href="./connectUser">Utilisateur</a>
     </button>
-    <form action="/spaceUser" method="POST">
+    <form action="./spaceUser" method="POST">
         <h1>Utilisateur</h1>
         <label for="mail">Veuillez rentrer votre mail :</label>
         <input type="text" name="mail">

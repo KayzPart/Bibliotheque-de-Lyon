@@ -22,7 +22,7 @@ $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 $router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
 
 // Espace User
-$router->map('POST', '/spaceUser', 'ControllerUser#userArea');
+$router->map('POST', '/spaceUser', 'ControllerConnexion#connexionUser');
 
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
@@ -36,7 +36,7 @@ $router->map('GET', '/book', 'ControllerBook#Show', 'afficher' );
 $router->map('GET', '/book', 'ControllerBook#ShowCondi', 'afficherCondi' );
 
 // Formulaire ajout livre
-$router->map('POST', '/book/create', 'ControllerBook#newBook','create');
+$router->map('POST', '/book', 'ControllerBook#newBook');
 
 
 

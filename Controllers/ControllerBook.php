@@ -35,6 +35,8 @@
             $datas = $_POST;
             $manager = new ModelBook();
             $newBook = $manager->insertBook($datas);
+
+            
             require_once './Views/admin_book_ajout.php';
         }
     }
