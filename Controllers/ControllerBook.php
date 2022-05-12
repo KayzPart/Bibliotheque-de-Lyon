@@ -1,10 +1,17 @@
 <?php
     class ControllerBook {
         public static function listAllBook(){
+            $loader = new Twig\Loader\FilesystemLoader('./Views');
+            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            $twig->addExtension(new \Twig\Extension\DebugExtension());
+
             $datas = new ModelBook();
             $allBooks = $datas->listAll();
-            require_once './Views/homepage.php';
+            $allListNews = $datas->listNewsBook();
+            echo $twig->render('homepage.twig', ['books' => $allBooks]);
+
         }
+
         public static function listAllNewsBook(){
             $datas = new ModelBook();
             $allListNews = $datas->listNewsBook();

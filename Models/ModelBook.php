@@ -4,7 +4,8 @@ class ModelBook extends Model
     public function listAll()
     {
         $db = $this->getDb();
-        $req = $db->query('SELECT category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
+        $req = $db->query('SELECT `book`.`id_book`, category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `condition` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
+
 
         $books = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
@@ -16,7 +17,7 @@ class ModelBook extends Model
     public function listNewsBook()
     {
         $db = $this->getDb();
-        $req = $db->prepare('SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY `id_book` ASC LIMIT 2');
+        $req = $db->prepare('SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY `id_book` ASC LIMIT 10');
 
         $arrayDatas = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
@@ -76,7 +77,6 @@ class ModelBook extends Model
                 echo 'Erreur, de téléchargement !';
             }
             var_dump($_FILES);
-            // phpinfo();
             
             $id_category = $_POST['category-type'];
             $id_condition_book = $_POST['condition'];
