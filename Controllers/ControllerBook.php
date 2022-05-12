@@ -12,6 +12,11 @@
             echo $twig->render('homepage.twig', ['books' => $allBooks]);
 
         }
+
+        public static function listAllNewsBook(){
+            $datas = new ModelBook();
+            $allListNews = $datas->listNewsBook();
+        }
         public static function readBook(int $id){
             $datas = new ModelBook ();
             $book = $datas->select($id);
@@ -36,8 +41,7 @@
             $datas = $_POST;
             $manager = new ModelBook();
             $newBook = $manager->insertBook($datas);
-
-            
+            $editBook = $manager->editBook($datas);
             require_once './Views/admin_book_ajout.php';
         }
     }
