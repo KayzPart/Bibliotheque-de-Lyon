@@ -175,14 +175,17 @@ class ModelBook extends Model
     //     }
     //     // return $arrayGender;
     // }
-
-    public function editBook()
-    {
+    
+    // Modification du livre
+    public function editBook($id_condition_book, $emplacement, $quantity){
         $db = $this->getDb();
-        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement');
-        $req->bindParam(':id_condition_book', ':emplacement');
+        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacementn quantity = :quantity WHERE `id_book`');
+        $req->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR);
+        $req->bindParam(':emplacement', $emplacement, PDO::PARAM_STR);
+        $req->bindParam(':quantity', $quantity, PDO::PARAM_STR);
         $req->execute();
     }
+    // Affichage par liste descendante 
     public function listAllDesc() {
         $db = $this->getDb();
         $req = $db->query('SELECT `id_book`,`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY id_book DESC');
@@ -193,6 +196,8 @@ class ModelBook extends Model
         }
         return $books;
     }
+
+    // Affichage des suggestions 
     public function suggestBook() {
         $db = $this->getDb();
         $req = $db->query('SELECT `id_book`, `title`, `photo` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7');

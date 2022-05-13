@@ -32,11 +32,11 @@
         //     $gBook = $manager->ViewGender();
         //     require_once './Views/admin_book_ajout.php';
         // }
-        public static function newBook($datas){
+        public static function newBook($datas, $id_condition_book, $emplacement, $quantity){
             $datas = $_POST;
             $manager = new ModelBook();
             $newBook = $manager->insertBook($datas);
-            $editBook = $manager->editBook($datas);
+            $editBook = $manager->editBook($id_condition_book, $emplacement, $quantity);
             require_once './Views/admin_book_ajout.php';
         }
     }
