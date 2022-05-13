@@ -1,22 +1,28 @@
 <?php 
 class Book extends Classes{
     private $_id_book;
+    private $_id_category;
+    private $_id_condition_book;
     private $_title;
     private $_author;
     private $_year_published;
-    private $_description;
-    private $_id_category;
-    private $_num_isbn;
-    private $_quantity;
+    private $_descrip;
+    private $_isbn;
     private $_photo;
     private $_emplacement;
     private $_lang;
-    private $_condition;
-    private $_date_limit;
-    private $_name_category;
+    private $_quantity;
 
     public function getId_book(){
         return $this->_id_book;
+    }
+
+    public function getId_category(){
+        return $this->_id_category;
+    }
+
+    public function getId_condition_book(){
+        return $this->_id_condition_book;
     }
 
     public function getTitle(){
@@ -31,20 +37,12 @@ class Book extends Classes{
         return $this->_year_published;
     }
 
-    public function getDescription(){
-        return $this->_description;
+    public function getDescrip(){
+        return $this->_descrip;
     }
 
-    public function getId_category(){
-        return $this->_id_category;
-    }
-
-    public function getNum_isbn(){
-        return $this->_num_isbn;
-    }
-
-    public function getQuantity(){
-        return $this->_quantity;
+    public function getIsbn(){
+        return $this->_isbn;
     }
 
     public function getPhoto(){
@@ -59,16 +57,20 @@ class Book extends Classes{
         return $this->_lang;
     }
 
-    public function getCondition(){
-        return $this->_condition;
-    }
-
-    public function getDate_limit(){
-        return $this->_date_limit;
+    public function getQuantity(){
+        return $this->_quantity;
     }
     
     public function setId_book($id_book){
         $this->_id_book = $id_book;
+    }
+
+    public function setId_category($id_category){
+        $this->_id_category = $id_category;
+    }
+
+    public function setId_condition_book($id_condition_book){
+        $this->_id_condition_book = $id_condition_book;
     }
 
     public function setTitle($title){
@@ -83,20 +85,12 @@ class Book extends Classes{
         $this->_year_published = $year_published;
     }
 
-    public function setDescription($description){
-        $this->_description = $description;
+    public function setDescription($descrip){
+        $this->_descrip = $descrip;
     }
 
-    public function setId_category($id_category){
-        $this->_id_category = $id_category;
-    }
-
-    public function setNum_isbn($num_isbn){
-        $this->_num_isbn = $num_isbn;
-    }
-
-    public function setQuantity($quantity){
-        $this->_quantity = $quantity;
+    public function setIsbn($isbn){
+        $this->_isbn = $isbn;
     }
 
     public function setPhoto($photo){
@@ -111,19 +105,8 @@ class Book extends Classes{
         $this->_lang = $lang;
     }
 
-    public function setCondition($condition){
-        $this->_condition = $condition;
-    }
-
-    public function setDate_limit($description){
-        $this->_date_limit = $description;
-    }
-
-    public function getName_category(){
-        return $this->_name_category;
-    }
-    public function setName_category($name_category){
-        $this->_name_category = $name_category;
+    public function setQuantity($quantity){
+        $this->_quantity = $quantity;
     }
 
 }

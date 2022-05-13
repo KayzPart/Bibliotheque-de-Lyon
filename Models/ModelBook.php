@@ -17,13 +17,13 @@ class ModelBook extends Model
     public function listNewsBook()
     {
         $db = $this->getDb();
-        $req = $db->prepare('SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY `id_book` ASC LIMIT 10');
+        $news = $db->query('SELECT `id_book`, `photo`, `title` FROM `book` ORDER BY `id_book` DESC LIMIT 10');
 
-        $arrayDatas = [];
-        while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
-            $arrayDatas[] = new Book($book);
+        $newsBooks = [];
+        while ($book = $news->fetch(PDO::FETCH_ASSOC)) {
+            $newsBooks[] = new Book($book);
         }
-        return $arrayDatas;
+        return $newsBooks;
     }
 
     public function select($id)
@@ -195,7 +195,7 @@ class ModelBook extends Model
     }
     public function suggestBook() {
         $db = $this->getDb();
-        $req = $db->query('SELECT `id_book`,`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7 OR `id_book` = 8');
+        $req = $db->query('SELECT `id_book`, `title`, `photo` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7');
 
         $books = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {

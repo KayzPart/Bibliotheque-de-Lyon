@@ -7,9 +7,9 @@
             $twig->addExtension(new \Twig\Extension\DebugExtension());
 
             $datas = new ModelBook();
-            $allBooks = $datas->listAll();
+            $allBooks = $datas->suggestBook();
             $allListNews = $datas->listNewsBook();
-            echo $twig->render('homepage.twig', ['books' => $allBooks]);
+            echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks]);
 
         }
         public static function readBook(int $id){
