@@ -187,7 +187,7 @@ class ModelBook extends Model
             $books[] = new Book($book);
         }
         return $books;
-    }
+    }<
     public function searchBook() {
 
         if(isset($_GET['p'] )){
