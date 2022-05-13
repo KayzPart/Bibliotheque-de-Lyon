@@ -1,6 +1,7 @@
 <?php 
 class Book extends Classes{
-    private $_id_book; 
+
+    private $_id_book;
     private $_id_category;
     private $_id_condition_book;
     private $_title;
@@ -12,19 +13,17 @@ class Book extends Classes{
     private $_emplacement;
     private $_lang;
     private $_quantity;
-    
-  
 
     public function getId_book(){
         return $this->_id_book;
     }
 
     public function getId_category(){
-            return $this->_id_category;
+        return $this->_id_category;
     }
 
     public function getId_condition_book(){
-            return $this->_id_condition_book;
+        return $this->_id_condition_book;
     }
 
     public function getTitle(){

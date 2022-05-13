@@ -56,7 +56,6 @@
                 }
             }
         }
-
         public function HashPassword(){
             $password = `:password_user`;
             $key_password = "la clé";
