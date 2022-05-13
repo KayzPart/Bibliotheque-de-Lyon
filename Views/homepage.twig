@@ -8,10 +8,21 @@
     {% for book in books %}
         <div class="book">
             <a class="linkbook" href="./book/{{book.getId_book}}">
-                <img class="imgbook" src="./public/ressources/{{book.getPhoto}}" alt="{{book.getTitle}}">
+                <img class="imgbook" src="./public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+            </a>
+        </div>
+    {% endfor %}
+    {% for book in sBook %}
+        <div class="book">
+            <a class="linkbook" href="./book/{{book.getId_book}}">
+                <img class="imgbook" src="./public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
             </a>
         </div>
     {% endfor %}
 {% endblock %}
+
+
+
+
 
 {% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
