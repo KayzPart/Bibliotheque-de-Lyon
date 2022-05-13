@@ -12,11 +12,6 @@
             echo $twig->render('homepage.twig', ['books' => $allBooks]);
 
         }
-
-        public static function listAllNewsBook(){
-            $datas = new ModelBook();
-            $allListNews = $datas->listNewsBook();
-        }
         public static function readBook(int $id){
             $datas = new ModelBook ();
             $book = $datas->select($id);
