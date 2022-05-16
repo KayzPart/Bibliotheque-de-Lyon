@@ -221,6 +221,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   padding: 5px 0px;
   background-color: #2d242423;
@@ -272,6 +275,22 @@ body {
 .bgblur > .btnsub:hover {
   border-color: #5C3D2E;
   color: #acc4ce;
+}
+
+.bgblur > #categories {
+  width: 270px;
+  font-family: 'K2D';
+  font-size: 14px;
+  border: none;
+  display: none;
+}
+
+.showit {
+  display: block !important;
+}
+
+.hideit {
+  display: none !important;
 }
 
 .title {
@@ -333,10 +352,22 @@ body {
   left: 5%;
 }
 
+.news > .book.pass > .linkbook > .imgbooks.lhide {
+  -webkit-transform: scale(0.5) translateX(50%);
+          transform: scale(0.5) translateX(50%);
+  left: -50%;
+}
+
 .news > .book.pass > .linkbook > .imgbooks.right {
   -webkit-transform: scale(0.5) translateX(5%);
           transform: scale(0.5) translateX(5%);
   right: 5%;
+}
+
+.news > .book.pass > .linkbook > .imgbooks.rhide {
+  -webkit-transform: scale(0.5) translateX(-50%);
+          transform: scale(0.5) translateX(-50%);
+  right: -50%;
 }
 
 .arrow {
@@ -346,6 +377,8 @@ body {
           transform: translateY(-50%);
   font-size: 24px;
   color: #E0C097;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 .arrow.left {
@@ -621,6 +654,16 @@ body {
     width: 20%;
     height: 50px;
     font-size: 24px;
+  }
+  #searchbar > .bgblur > #categories {
+    width: 40%;
+    font-size: 24px;
+  }
+  .news {
+    height: 900px;
+  }
+  .imgbooks {
+    width: 450px !important;
   }
   #footermain {
     padding: 5px;
