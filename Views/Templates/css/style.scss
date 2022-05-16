@@ -93,7 +93,7 @@ body{
     &> ul{
         text-align: end;
         &> li{
-            margin: 5px 10px;
+            margin: 30px 10px;
             &> a{
                 font-size: 25px;
                 text-decoration: none;
@@ -169,6 +169,98 @@ body{
     }
 }
 
+// -----MAIN------
+.title{
+    border: 2px solid $bgb;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color;
+    background-color: $bgbtn;
+    font-weight: bold;
+    font-size: 16px;
+    margin: 20px auto;
+    margin-bottom: 10px;
+    &.new{
+        width: 200px;
+        height: 35px;
+    }
+    &.sugg{
+        width: 200px;
+        height: 60px;
+    }
+    &.biblio{
+        width: 200px;
+        height: 35px;
+    }
+}
+.news{
+    background-color: $bgbtn;
+    display: flex;
+    overflow: hidden;
+    height: 360px;
+    position: relative;
+    &>.book{
+        &.pass > .linkbook > .imgbooks{
+            position: absolute;
+            margin-top: 100px;
+            width: 130px;
+            transition: all .5s ease;
+            &.left{
+                transform: scale(0.5) translateX(-5%);
+                left: 5%;
+            }
+            &.right{
+                transform: scale(0.5) translateX(5%);
+                right: 5%;
+            }
+        }
+    }
+}
+.arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: $color;
+    &.left{
+        left: 5%;
+    }
+    &.right{
+        right: 5%;
+    }
+}
+.act{
+    margin-top: 5px !important;
+    transform: scale(1) translateX(-50%) !important;
+    left: 50% !important;
+}
+.sugg{
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    background-color: $bgbtn;
+    align-items: center;
+}
+.imgbook{
+    width: 90px;
+    height: 140px;
+}
+.biblio{
+    text-align: center;
+    background: $bgbtn;
+    &>.resume{
+        font-size: 16px;
+        color: $color;
+        padding-bottom: 20px;
+        margin: 5px;
+        margin-bottom: 10px;
+    }
+}
+.imgbiblio{
+    width: 100%;
+}
 // ------FOOTER-------
 #footermain{
     background: $bgb;
@@ -299,10 +391,6 @@ body{
     font-size: 12px;
     margin: 5px 0px;
 }
-.imgbook{
-    width: 130px;
-    height: 200px;
-}
 
 // ------MEDIA QUERIE-------
 @media screen and (min-width: 1000px) {
@@ -355,15 +443,16 @@ body{
             justify-content: space-around;
             width: 100%;
             &> .imglogo{
-                width: 550px;
+                width: 450px;
             }
             &> .contacttitle{
-                width: 360px;
-                height: 90px;
-                line-height: 90px;
+                margin-right: 80px;
+                width: 260px;
+                height: 80px;
+                line-height: 80px;
                 border-width: 3px;
                 &>h3{
-                    font-size: 36px;
+                    font-size: 26px;
                 }
             }
         }
@@ -371,25 +460,25 @@ body{
             margin-top: 10px;
             &>.social{
                 &>.title{
-                    width: 550px;
-                    height: 90px;
-                    line-height: 90px;
+                    width: 250px;
+                    height: 80px;
+                    line-height: 80px;
                     border-width: 3px;
-                    font-size: 36px;
+                    font-size: 26px;
                 }
                 &>.logosocial{
                     justify-content: space-between;
                     padding: 50px 0;
                     &>a{
                         &>.logoS{
-                            width: 160px;
+                            width: 80px;
                         }
                     }
                 }
             }
             &>.horaire{
                 &>p{
-                    font-size: 36px;
+                    font-size: 26px;
                 }
                 &>#hor{
                     margin-bottom: 100px;
@@ -398,11 +487,11 @@ body{
         }
     }
     .btncontact{
-        width: 550px;
-        height: 90px;
-        line-height: 90px;
+        width: 250px;
+        height: 80px;
+        line-height: 80px;
         border-width: 3px;
-        font-size: 36px;
+        font-size: 26px;
     }
     .mention{
         margin: 40px 0;

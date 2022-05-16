@@ -176,7 +176,7 @@ body {
 }
 
 .menumobile > ul > li {
-  margin: 5px 10px;
+  margin: 30px 10px;
 }
 
 .menumobile > ul > li > a {
@@ -272,6 +272,130 @@ body {
 .bgblur > .btnsub:hover {
   border-color: #5C3D2E;
   color: #acc4ce;
+}
+
+.title {
+  border: 2px solid #2D2424;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #E0C097;
+  background-color: #5C3D2E;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 20px auto;
+  margin-bottom: 10px;
+}
+
+.title.new {
+  width: 200px;
+  height: 35px;
+}
+
+.title.sugg {
+  width: 200px;
+  height: 60px;
+}
+
+.title.biblio {
+  width: 200px;
+  height: 35px;
+}
+
+.news {
+  background-color: #5C3D2E;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  height: 360px;
+  position: relative;
+}
+
+.news > .book.pass > .linkbook > .imgbooks {
+  position: absolute;
+  margin-top: 100px;
+  width: 130px;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+.news > .book.pass > .linkbook > .imgbooks.left {
+  -webkit-transform: scale(0.5) translateX(-5%);
+          transform: scale(0.5) translateX(-5%);
+  left: 5%;
+}
+
+.news > .book.pass > .linkbook > .imgbooks.right {
+  -webkit-transform: scale(0.5) translateX(5%);
+          transform: scale(0.5) translateX(5%);
+  right: 5%;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 24px;
+  color: #E0C097;
+}
+
+.arrow.left {
+  left: 5%;
+}
+
+.arrow.right {
+  right: 5%;
+}
+
+.act {
+  margin-top: 5px !important;
+  -webkit-transform: scale(1) translateX(-50%) !important;
+          transform: scale(1) translateX(-50%) !important;
+  left: 50% !important;
+}
+
+.sugg {
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: #5C3D2E;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.imgbook {
+  width: 90px;
+  height: 140px;
+}
+
+.biblio {
+  text-align: center;
+  background: #5C3D2E;
+}
+
+.biblio > .resume {
+  font-size: 16px;
+  color: #E0C097;
+  padding-bottom: 20px;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+.imgbiblio {
+  width: 100%;
 }
 
 #footermain {
@@ -450,11 +574,6 @@ body {
   margin: 5px 0px;
 }
 
-.imgbook {
-  width: 130px;
-  height: 200px;
-}
-
 @media screen and (min-width: 1000px) {
   .menubg, .logoh {
     display: none;
@@ -516,26 +635,27 @@ body {
     width: 100%;
   }
   #footermain > .logocontact > .imglogo {
-    width: 550px;
+    width: 450px;
   }
   #footermain > .logocontact > .contacttitle {
-    width: 360px;
-    height: 90px;
-    line-height: 90px;
+    margin-right: 80px;
+    width: 260px;
+    height: 80px;
+    line-height: 80px;
     border-width: 3px;
   }
   #footermain > .logocontact > .contacttitle > h3 {
-    font-size: 36px;
+    font-size: 26px;
   }
   #footermain > .socialnkhor {
     margin-top: 10px;
   }
   #footermain > .socialnkhor > .social > .title {
-    width: 550px;
-    height: 90px;
-    line-height: 90px;
+    width: 250px;
+    height: 80px;
+    line-height: 80px;
     border-width: 3px;
-    font-size: 36px;
+    font-size: 26px;
   }
   #footermain > .socialnkhor > .social > .logosocial {
     -webkit-box-pack: justify;
@@ -544,20 +664,20 @@ body {
     padding: 50px 0;
   }
   #footermain > .socialnkhor > .social > .logosocial > a > .logoS {
-    width: 160px;
+    width: 80px;
   }
   #footermain > .socialnkhor > .horaire > p {
-    font-size: 36px;
+    font-size: 26px;
   }
   #footermain > .socialnkhor > .horaire > #hor {
     margin-bottom: 100px;
   }
   .btncontact {
-    width: 550px;
-    height: 90px;
-    line-height: 90px;
+    width: 250px;
+    height: 80px;
+    line-height: 80px;
     border-width: 3px;
-    font-size: 36px;
+    font-size: 26px;
   }
   .mention {
     margin: 40px 0;
