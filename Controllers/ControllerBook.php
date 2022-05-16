@@ -1,6 +1,6 @@
 <?php
     class ControllerBook {
-        // Affichage de tous les livres
+        // Affichage des nouveautés et des suggestion (homepage)
         public static function listAllBook(){
             $loader = new Twig\Loader\FilesystemLoader('./Views');
             $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
@@ -10,9 +10,17 @@
             $allBooks = $datas->suggestBook();
             $allListNews = $datas->listNewsBook();
             echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks]);
-
         }
-        public static function readBook(int $id){
+        // public static function listBookAfterInsert(){
+        //     $datas = new ModelBook();
+        //     $afterInsert = $datas->listAll();
+        //     require_once './Views/book.php';
+        // }
+        public static function readBook($id){
+            $loader = new Twig\Loader\FilesystemLoader('./Views');
+            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            $twig->addExtension(new \Twig\Extension\DebugExtension());
+            
             $datas = new ModelBook ();
             $book = $datas->select($id);
             require_once './Views/book.php';

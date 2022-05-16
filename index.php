@@ -12,34 +12,43 @@ $router->setBasePath('/php/Bibliotheque-de-Lyon');
 // Homepage / Liste des livres
 $router->map('GET', '/', 'ControllerBook#listAllBook', 'homepage');
 
+// Formulaire de contact
+$router->map('POST', '/spaceUser', 'ControllerUser#contactForm', 'contactForm');
+
 // Direction formulaire Admin
 $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 
-// Direction formulaire User 
+// Direction formulaire User (par défaut)
 $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
-
-// Espace admin
-$router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
 
 // Espace User
 $router->map('POST', '/spaceUser', 'ControllerConnexion#connexionUser');
 
+// Espace admin
+$router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
+
+
+
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
 
-$router->map('GET', '/book/[i:id_book]', '#readBook', 'ficheBook');
+$router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');
+// $router->map('GET', '/book', 'ControllerBook#listBookAfterInsert', 'pageBook');
 
-// Afficher category
-$router->map('GET', '/book', 'ControllerBook#Show', 'afficher' );
 
-// Afficher condition
-$router->map('GET', '/book', 'ControllerBook#ShowCondi', 'afficherCondi' );
+// *** Formulaire ajout livre => Les routes
+$router->map('POST', '/bookF', 'ControllerBook#newBook');
+// *** Afficher category
+$router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
+// *** Afficher condition
+$router->map('GET', '/bookF', 'ControllerBook#ShowCondi', 'afficherCondi' );
+// *** Afficher genre
+$router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
-// Afficher genre
-$router->map('GET', '/book', 'ControllerBook#ShowGender', 'afficherGender' );
+// Après ajout livre - redirection vers la page de book
+// $router->map('POST', '/book', 'ControllerBook#listBookAfterInsert', 'pageBook');
 
-// Formulaire ajout livre
-$router->map('POST', '/book', 'ControllerBook#newBook');
+
 
 
 

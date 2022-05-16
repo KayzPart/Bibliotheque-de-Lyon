@@ -17,6 +17,7 @@ return array(
     'ControllerBook' => $baseDir . '/Controllers/ControllerBook.php',
     'ControllerBooked' => $baseDir . '/Controllers/ControllerBooked.php',
     'ControllerConnexion' => $baseDir . '/Controllers/ControllerConnexion.php',
+    'ControllerUser' => $baseDir . '/Controllers/ControllerUser.php',
     'Favorite' => $baseDir . '/Classes/Favorite.php',
     'Gender' => $baseDir . '/Classes/Gender.php',
     'Model' => $baseDir . '/Models/Model.php',
