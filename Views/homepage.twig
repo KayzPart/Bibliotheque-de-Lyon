@@ -2,16 +2,25 @@
 
 {% block title %}Page d'accueil{% endblock %}
 
+{% block stylesheet %}<link rel="stylesheet" href="./Views/Templates/css/style.css">{% endblock %}
+
 {% block header %} {% include "./Templates/header/header.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
 
 {% block content %}
+<div class="title new">NOUVEAUTÉS</div>
+<div class="news">
+    <div class="arrow aleft">˂</div>
     {% for book in books %}
-        <div class="book">
+        <div class="book pass">
             <a class="linkbook" href="./book/{{book.getId_book}}">
-                <img class="imgbook" src="./public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+                <img class="imgbooks" src="./public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
             </a>
         </div>
     {% endfor %}
+    <div class="arrow aright">˃</div>
+</div>
+<div class="title sugg">SUGGESTIONS DE NOTRE ÉQUIPE</div>
+<div class="sugg">
     {% for book in sBook %}
         <div class="book">
             <a class="linkbook" href="./book/{{book.getId_book}}">
@@ -19,10 +28,12 @@
             </a>
         </div>
     {% endfor %}
+</div>
+<div class="title biblio">LA BIBLIOTHÈQUE</div>
+<div class="biblio">
+    <img src="./Views/Templates/asset/pexels-tetyana-kovyrina-1045915.jpeg" alt="" class="imgbiblio">
+    <p class="resume">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sed suscipit nulla, ac laoreet elit. Suspendisse pulvinar elit vulputate, sodales sapien sit amet, hendrerit turpis. In cursus, lorem vel varius congue, metus ligula hendrerit metus, quis ultrices metus mauris nec lectus. Donec accumsan erat id condimentum vehicula. Proin blandit odio vel ipsum euismod congue. Aliquam quis sapien ut arcu suscipit luctus eu iaculis nunc. Nullam accumsan metus ligula. Duis laoreet posuere sapien, in mollis purus aliquet at. Aenean in ultrices est. Nulla facilisi. Sed eu hendrerit est. Vestibulum blandit facilisis dolor et vulputate.</p>
+</div>
 {% endblock %}
-
-
-
-
 
 {% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
