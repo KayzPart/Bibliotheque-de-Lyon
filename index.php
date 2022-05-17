@@ -32,21 +32,18 @@ $router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
 
-$router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');
-// $router->map('GET', '/book', 'ControllerBook#listBookAfterInsert', 'pageBook');
+$router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook');
 
 
 // *** Formulaire ajout livre => Les routes
 $router->map('POST', '/bookF', 'ControllerBook#newBook');
-// *** Afficher category
-$router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
-// *** Afficher condition
-$router->map('GET', '/bookF', 'ControllerBook#ShowCondi', 'afficherCondi' );
-// *** Afficher genre
-$router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
-// Après ajout livre - redirection vers la page de book
-// $router->map('POST', '/book', 'ControllerBook#listBookAfterInsert', 'pageBook');
+// *** Direction formulaire =>  Afficher category
+$router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
+// *** Direction formulaire => Afficher condition
+$router->map('GET', '/bookF', 'ControllerBook#ShowCondi', 'afficherCondi' );
+// *** Direction formulaire => Afficher genre
+$router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
 
 

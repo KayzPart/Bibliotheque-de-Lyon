@@ -9,7 +9,7 @@
         public function getName_category(){
             return $this->_name_category;
         }
-        public function setId_category( $id_category){
+        public function setId_category($id_category){
             $this->_id_category = $id_category;
         }
         public function setName_category($name_category){

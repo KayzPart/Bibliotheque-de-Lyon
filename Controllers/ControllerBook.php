@@ -17,10 +17,6 @@
         //     require_once './Views/book.php';
         // }
         public static function readBook($id){
-            $loader = new Twig\Loader\FilesystemLoader('./Views');
-            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
-            $twig->addExtension(new \Twig\Extension\DebugExtension());
-            
             $datas = new ModelBook ();
             $book = $datas->select($id);
             require_once './Views/book.php';
@@ -40,11 +36,11 @@
         //     $gBook = $manager->ViewGender();
         //     require_once './Views/admin_book_ajout.php';
         // }
-        public static function newBook($datas, $id_condition_book, $emplacement, $quantity){
+        public static function newBook($datas){
             $datas = $_POST;
             $manager = new ModelBook();
             $newBook = $manager->insertBook($datas);
-            $editBook = $manager->editBook($id_condition_book, $emplacement, $quantity);
+            // $editBook = $manager->editBook($id_condition_book, $emplacement, $quantity);
             require_once './Views/admin_book_ajout.php';
         }
     }

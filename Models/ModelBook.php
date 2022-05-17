@@ -44,15 +44,11 @@ class ModelBook extends Model
         $db  = $this->getdb();
         $req = $db->prepare("SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` = :id");
 
-        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();
+        var_dump($id);
 
-        $books = [];
-        while ($book = $req->fetch(PDO::FETCH_ASSOC)){
-            $books[] = new Book($book);
-        }
-        return $books;
-        var_dump($books);
+        return new Book($req->fetch(PDO::FETCH_ASSOC));
     }
     public function insertBook($datas)
     {
