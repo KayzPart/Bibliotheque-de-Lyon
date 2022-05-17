@@ -5,44 +5,53 @@ require_once  __DIR__ .'/vendor/altorouter/altorouter/AltoRouter.php';
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
 
-$router->setBasePath('/php/Bibliotheque-de-Lyon');
+$router->setBasePath('/projet/Bibliotheque-de-Lyon');
 
 // Routes
 
 // Homepage / Liste des livres
 $router->map('GET', '/', 'ControllerBook#listAllBook', 'homepage');
 
+// Formulaire de contact
+$router->map('POST', '/spaceUser', 'ControllerUser#contactForm', 'contactForm');
+
 // Direction formulaire Admin
 $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 
-// Direction formulaire User 
+// Direction formulaire User (par défaut)
 $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
-
-// Espace admin
-$router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
 
 // Espace User
 $router->map('POST', '/spaceUser', 'ControllerConnexion#connexionUser');
 
+// Espace admin
+$router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
+
+
+
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
 
-$router->map('GET', '/book/[i:id_book]', '#readBook', 'ficheBook');
+$router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook');
 
-// Afficher category
-$router->map('GET', '/book', 'ControllerBook#Show', 'afficher' );
+
+// *** Formulaire ajout livre => Les routes
+$router->map('POST', '/bookF', 'ControllerBook#newBook');
+
+
+// *** Direction formulaire =>  Afficher category
+$router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
+// *** Direction formulaire => Afficher condition
+$router->map('GET', '/bookF', 'ControllerBook#ShowCondi', 'afficherCondi' );
+// *** Direction formulaire => Afficher genre
+$router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
 // Afficher recherche 
 $router->map('GET', '/book', 'ControllerBook#searchBook', 'afficherSearch');
 
-// Afficher condition
-$router->map('GET', '/book', 'ControllerBook#ShowCondi', 'afficherCondi' );
 
-// Afficher genre
-$router->map('GET', '/book', 'ControllerBook#ShowGender', 'afficherGender' );
 
-// Formulaire ajout livre
-$router->map('POST', '/book', 'ControllerBook#newBook');
+
 
 
 

@@ -42,10 +42,12 @@ class ModelBook extends Model
     public function select($id)
     {
         $db  = $this->getdb();
-        $req = $db->prepare("SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` WHERE `id_book` = :id");
+        $req = $db->prepare("SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` = :id");
 
-        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();
+        var_dump($id);
+
         return new Book($req->fetch(PDO::FETCH_ASSOC));
     }
     public function insertBook($datas)
@@ -188,6 +190,9 @@ class ModelBook extends Model
     //     // return $arrayGender;
     // }
 
+    
+    // Modification du livre
+
     public function editBook($id_condition_book, $emplacement, $quantity) {
         $db = $this->getDb();
 
@@ -198,6 +203,7 @@ class ModelBook extends Model
         $req->bindParam(':quantity', $quantity, PDO::PARAM_STR);
         $req->execute();
     }
+    // Affichage par liste descendante 
     public function listAllDesc() {
         $db = $this->getDb();
         $req = $db->query('SELECT `id_book`,`title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY id_book DESC');
@@ -209,6 +215,7 @@ class ModelBook extends Model
         return $books;
 
     }
+
     public function searchBookTitle() {
 
         if(isset($_GET['p'] )){
@@ -226,6 +233,7 @@ class ModelBook extends Model
         }
     }
     public function searchBookAuthor() {
+
         if(isset($_GET['p'] )){
             $recherche = $_GET['p'];
             

@@ -15,7 +15,7 @@ $id_session = session_id();
 
 <body>
     <button>
-        <a href="./book">Formulaire ajout</a>
+        <a href="./bookF">Formulaire ajout</a>
     </button>
     <h1>Espace admin</h1>
     <?php
