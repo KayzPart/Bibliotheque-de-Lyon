@@ -38,12 +38,18 @@ $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook');
 // *** Formulaire ajout livre => Les routes
 $router->map('POST', '/bookF', 'ControllerBook#newBook');
 
+
 // *** Direction formulaire =>  Afficher category
 $router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
 // *** Direction formulaire => Afficher condition
 $router->map('GET', '/bookF', 'ControllerBook#ShowCondi', 'afficherCondi' );
 // *** Direction formulaire => Afficher genre
 $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
+
+// Afficher recherche 
+$router->map('GET', '/book', 'ControllerBook#searchBook', 'afficherSearch');
+
+
 
 
 
@@ -73,5 +79,4 @@ if($match){
     if(is_callable(array($obj, $action))){
          call_user_func_array(array($obj, $action), array($match['params']));
     }
-}
-
+} 

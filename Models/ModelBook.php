@@ -154,8 +154,7 @@ class ModelBook extends Model
         }
         return $arrayCondi;
     }
-    public function ViewCate()
-    {
+    public function ViewCate() {
         $db = self::getDb();
 
         $req = $db->query("SELECT `id_category`,`name_category` FROM `category`");
@@ -190,13 +189,17 @@ class ModelBook extends Model
     //     }
     //     // return $arrayGender;
     // }
+
     
     // Modification du livre
-    public function editBook($id_condition_book, $emplacement, $quantity){
+
+    public function editBook($id_condition_book, $emplacement, $quantity) {
         $db = $this->getDb();
-        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacementn quantity = :quantity WHERE `id_book`');
-        $req->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR);
-        $req->bindParam(':emplacement', $emplacement, PDO::PARAM_STR);
+
+        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id_book');
+
+        $req->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR); 
+        $req->bindParam(':emplacement', $emplacement, PDO::PARAM_STR); 
         $req->bindParam(':quantity', $quantity, PDO::PARAM_STR);
         $req->execute();
     }
@@ -213,15 +216,14 @@ class ModelBook extends Model
 
     }
 
-    
-    public function searchBook() {
+    public function searchBookTitle() {
 
         if(isset($_GET['p'] )){
             $recherche = $_GET['p'];
             
         } 
         $db = $this->getDb();
-        $req = $db->query("SELECT `id_book`,`title`,`photo` FROM `book`  WHERE `title` LIKE '$recherche%'  ");
+        $req = $db->query("SELECT `title`,`photo` FROM `book`  WHERE `title` LIKE '$recherche%'  ");
         
         
         $datas = [];
@@ -230,5 +232,50 @@ class ModelBook extends Model
     
         }
     }
+    public function searchBookAuthor() {
+
+        if(isset($_GET['p'] )){
+            $recherche = $_GET['p'];
+            
+        } 
+        $db = $this->getDb();
+        $req = $db->query("SELECT `author`,`photo` FROM `book`  WHERE `author` LIKE '$recherche%'  ");
+        
+        
+        $datas = [];
+        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
+            $datas[] = new Book($data);
     
+        }
+    }
+    public function searchBookDate() {
+        if(isset($_GET['p'] )){
+            $recherche = $_GET['p'];
+            
+        } 
+        $db = $this->getDb();
+        $req = $db->query("SELECT `date`,`photo` FROM `book`  WHERE `date` LIKE '$recherche%'  ");
+        
+        
+        $datas = [];
+        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
+            $datas[] = new Book($data);
+    
+        }
+    }
+    public function searchBookLang() {
+        if(isset($_GET['p'] )){
+            $recherche = $_GET['p'];
+            
+        } 
+        $db = $this->getDb();
+        $req = $db->query("SELECT `lang`,`photo` FROM `book`  WHERE `lang` LIKE '$recherche%'  ");
+        
+        
+        $datas = [];
+        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
+            $datas[] = new Book($data);
+    
+        }
+    }   
 }
