@@ -152,8 +152,7 @@ class ModelBook extends Model
         }
         return $arrayCondi;
     }
-    public function ViewCate()
-    {
+    public function ViewCate() {
         $db = self::getDb();
 
         $req = $db->query("SELECT `id_category`,`name_category` FROM `category`");
@@ -189,12 +188,14 @@ class ModelBook extends Model
     //     // return $arrayGender;
     // }
 
-    public function editBook()
-    {
+    public function editBook($id_condition_book, $emplacement, $quantity) {
         $db = $this->getDb();
 
-        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement WHERE id_book = :id_book');
-        $req->bindParam(':id_condition_book', ':emplacement'); 
+        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id_book');
+
+        $req->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR); 
+        $req->bindParam(':emplacement', $emplacement, PDO::PARAM_STR); 
+        $req->bindParam(':quantity', $quantity, PDO::PARAM_STR);
         $req->execute();
     }
     public function listAllDesc() {
@@ -208,18 +209,14 @@ class ModelBook extends Model
         return $books;
 
     }
-    public function suggestBook() {
-        $db = $this->getDb();
-        $req = $db->query('SELECT `id_book`, `title`, `photo` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7');
-    }
-    public function searchBook() {
+    public function searchBookTitle() {
 
         if(isset($_GET['p'] )){
             $recherche = $_GET['p'];
             
         } 
         $db = $this->getDb();
-        $req = $db->query("SELECT `id_book`,`title`,`photo` FROM `book`  WHERE `title` LIKE '$recherche%'  ");
+        $req = $db->query("SELECT `title`,`photo` FROM `book`  WHERE `title` LIKE '$recherche%'  ");
         
         
         $datas = [];
@@ -228,5 +225,49 @@ class ModelBook extends Model
     
         }
     }
+    public function searchBookAuthor() {
+        if(isset($_GET['p'] )){
+            $recherche = $_GET['p'];
+            
+        } 
+        $db = $this->getDb();
+        $req = $db->query("SELECT `author`,`photo` FROM `book`  WHERE `author` LIKE '$recherche%'  ");
+        
+        
+        $datas = [];
+        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
+            $datas[] = new Book($data);
     
+        }
+    }
+    public function searchBookDate() {
+        if(isset($_GET['p'] )){
+            $recherche = $_GET['p'];
+            
+        } 
+        $db = $this->getDb();
+        $req = $db->query("SELECT `date`,`photo` FROM `book`  WHERE `date` LIKE '$recherche%'  ");
+        
+        
+        $datas = [];
+        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
+            $datas[] = new Book($data);
+    
+        }
+    }
+    public function searchBookLang() {
+        if(isset($_GET['p'] )){
+            $recherche = $_GET['p'];
+            
+        } 
+        $db = $this->getDb();
+        $req = $db->query("SELECT `lang`,`photo` FROM `book`  WHERE `lang` LIKE '$recherche%'  ");
+        
+        
+        $datas = [];
+        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
+            $datas[] = new Book($data);
+    
+        }
+    }   
 }

@@ -32,6 +32,9 @@ $router->map('GET', '/book/[i:id_book]', '#readBook', 'ficheBook');
 // Afficher category
 $router->map('GET', '/book', 'ControllerBook#Show', 'afficher' );
 
+// Afficher recherche 
+$router->map('GET', '/book', 'ControllerBook#searchBook', 'afficherSearch');
+
 // Afficher condition
 $router->map('GET', '/book', 'ControllerBook#ShowCondi', 'afficherCondi' );
 
@@ -67,5 +70,4 @@ if($match){
     if(is_callable(array($obj, $action))){
          call_user_func_array(array($obj, $action), array($match['params']));
     }
-}
-
+} 
