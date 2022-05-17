@@ -247,12 +247,15 @@ body{
     color: $color;
     z-index: 1000;
     cursor: pointer;
-    &.left{
+    &.aleft{
         left: 5%;
     }
-    &.right{
+    &.aright{
         right: 5%;
     }
+}
+.pointerNone{
+    pointer-events: none;
 }
 .act{
     margin-top: 5px !important;
@@ -408,6 +411,7 @@ body{
     font-weight: bolder;
     color: $color;
     margin: 10px;
+    cursor: pointer;
 }
 .mention{
     color: white;

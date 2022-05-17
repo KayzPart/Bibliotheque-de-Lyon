@@ -381,12 +381,16 @@ body {
   cursor: pointer;
 }
 
-.arrow.left {
+.arrow.aleft {
   left: 5%;
 }
 
-.arrow.right {
+.arrow.aright {
   right: 5%;
+}
+
+.pointerNone {
+  pointer-events: none;
 }
 
 .act {
@@ -599,6 +603,7 @@ body {
   font-weight: bolder;
   color: #E0C097;
   margin: 10px;
+  cursor: pointer;
 }
 
 .mention {

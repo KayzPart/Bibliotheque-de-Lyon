@@ -2,12 +2,14 @@
 
 {% block title %}Page d'accueil{% endblock %}
 
+{% block stylesheet %}<link rel="stylesheet" href="./Views/Templates/css/style.css">{% endblock %}
+
 {% block header %} {% include "./Templates/header/header.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
 
 {% block content %}
 <div class="title new">NOUVEAUTÉS</div>
 <div class="news">
-    <div class="arrow left">˂</div>
+    <div class="arrow aleft">˂</div>
     {% for book in books %}
         <div class="book pass">
             <a class="linkbook" href="./book/{{book.getId_book}}">
@@ -15,7 +17,7 @@
             </a>
         </div>
     {% endfor %}
-    <div class="arrow right">˃</div>
+    <div class="arrow aright">˃</div>
 </div>
 <div class="title sugg">SUGGESTIONS DE NOTRE ÉQUIPE</div>
 <div class="sugg">
