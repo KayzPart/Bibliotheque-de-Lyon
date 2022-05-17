@@ -18,6 +18,7 @@
     <button>
         <a href="./connectUser">Utilisateur</a>
     </button>
+    <a href="./">Retour accueil</a>
     <form action="./spaceAdmin" method="POST">
         <h1>Administrateur</h1>
         <label for="login">Veuillez rentrer votre login :</label>

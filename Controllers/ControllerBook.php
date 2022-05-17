@@ -4,6 +4,7 @@
         public static function listAllBook(){
             $loader = new Twig\Loader\FilesystemLoader('./Views');
             $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            
             $twig->addExtension(new \Twig\Extension\DebugExtension());
 
             $datas = new ModelBook();
@@ -17,9 +18,12 @@
         //     require_once './Views/book.php';
         // }
         public static function readBook($id){
+            $loader = new Twig\Loader\FilesystemLoader('./Views');
+            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            $twig->addExtension(new \Twig\Extension\DebugExtension());
             $datas = new ModelBook ();
             $book = $datas->select($id);
-            require_once './Views/book.php';
+            echo $twig->render('book.twig', ['id_book' => $book]);
         }
         public static function Show(){
             $manager = new ModelBook();

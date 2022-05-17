@@ -1,33 +1,27 @@
 <?php
 class ModelAdmin extends Model{
-    public function activeSessionAdmin($login){
+    public function activeSessionAdmin(){
+        if(isset($_SESSION['login'])){
+            echo "Vous êtes déjà connecter";
+        }else{
+            if(isset($_POST['submit'])){
+                $login = $_POST['login'];
+                $password = $_POST['password'];
 
-        if(!empty($_POST)){
-            $login = $_POST['login'];
-            $password = $_POST['password'];
-            if(!empty($_POST['login']) && !empty($_POST['password'])){
-                if($_POST['login'] !== $login){
-                    return 'Mauvais login/password';
-                }elseif($_POST['password'] !== $password){
-                    return 'Mauvais login/password';
-                }
-                else{
+                $db = $this->getDb();
+                $req = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginF');
+                $req->bindParam('loginF', $login, PDO::PARAM_STR);
+                $req->execute();
 
-                    $db = $this->getDb();
-                    $reqSessionAdmn = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginF');
-                    $reqSessionAdmn->bindParam('loginF', $login, PDO::PARAM_STR);
-                    $reqSessionAdmn->execute();
-                    $admin = [];
-                    while($adm = $reqSessionAdmn->fetch(PDO::FETCH_ASSOC)){
-                        $admin[] = new Admin($adm);
-                    }
-                    return $admin;
-                    session_start();
-                    $_SESSION['login'] = $login;
-                    exit();
+                $log = $req->fetch(PDO::FETCH_ASSOC);
+
+                if($req->rowCount() > 0 && $log['password'] == $password){
+                    $_SESSION['adminId'] = $log['id_admin'];
+                    echo 'Vous etes connecté avec succès !'; 
+                }else{
+                    echo 'Erreur login/password';
                 }
-            }else{
-                return 'Veuillez entrez vos identifiants svp !';
+                
             }
         }
     }

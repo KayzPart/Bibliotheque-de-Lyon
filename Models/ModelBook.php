@@ -46,7 +46,6 @@ class ModelBook extends Model
 
         $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();
-        var_dump($id);
 
         return new Book($req->fetch(PDO::FETCH_ASSOC));
     }

@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +18,7 @@
     <button>
         <a href="./connectUser">Utilisateur</a>
     </button>
+    <a href="./">Retour accueil</a>
     <form action="./spaceUser" method="POST">
         <h1>Utilisateur</h1>
         <label for="mail">Veuillez rentrer votre mail :</label>

@@ -2,15 +2,16 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once  __DIR__ .'/vendor/altorouter/altorouter/AltoRouter.php';
 
+
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
 
-$router->setBasePath('/projet/Bibliotheque-de-Lyon');
+$router->setBasePath('/php/Bibliotheque-de-Lyon');
 
 // Routes
 
 // Homepage / Liste des livres
-$router->map('GET', '/', 'ControllerBook#listAllBook', 'homepage');
+$router->map('GET', '/', 'ControllerBook#listAllBook', '/');
 
 // Formulaire de contact
 $router->map('POST', '/spaceUser', 'ControllerUser#contactForm', 'contactForm');
@@ -22,10 +23,10 @@ $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 
 // Espace User
-$router->map('POST', '/spaceUser', 'ControllerConnexion#connexionUser');
+$router->map('POST', '/spaceUser', 'ControllerUser#connexionUser');
 
 // Espace admin
-$router->map('POST', '/spaceAdmin', 'ControllerConnexion#connexionAdmin');
+$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
 
 
 
@@ -36,7 +37,7 @@ $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook');
 
 
 // *** Formulaire ajout livre => Les routes
-$router->map('POST', '/bookF', 'ControllerBook#newBook');
+$router->map('POST', '/book', 'ControllerBook#newBook');
 
 // *** Direction formulaire =>  Afficher category
 $router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
