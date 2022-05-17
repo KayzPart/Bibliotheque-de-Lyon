@@ -434,7 +434,7 @@ body{
     .menuh{
         display: flex;
     }
-    // ---searchbar----
+    // ----searchbar----
     #searchbar{
         height: 650px;
         &>.bgblur{
@@ -472,6 +472,30 @@ body{
     }
     .imgbooks{
         width: 450px !important;
+    }
+    .title{
+        font-size: 40px;
+        &.new, &.biblio, &.sugg{
+            width: 650px;
+            height: 80px;
+        }
+    }
+    .sugg{
+        height: 800px;
+    } 
+    .imgbook{
+        width: 300px;
+        height: 540px;
+    }
+    .biblio{
+        &>.resume{
+            font-size: 36px;
+            padding: 10px 200px 300px 200px;
+        }
+    }
+    .imgbiblio{
+        width: 80%;
+        padding-top: 10px;
     }
     // ----footer----
     #footermain{
