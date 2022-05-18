@@ -1,5 +1,6 @@
 <?php 
 class Book extends Classes{
+
     private $_id_book;
     private $_id_category;
     private $_id_condition_book;
@@ -85,7 +86,7 @@ class Book extends Classes{
         $this->_year_published = $year_published;
     }
 
-    public function setDescription($descrip){
+    public function setDescrip($descrip){
         $this->_descrip = $descrip;
     }
 
@@ -108,5 +109,4 @@ class Book extends Classes{
     public function setQuantity($quantity){
         $this->_quantity = $quantity;
     }
-
 }

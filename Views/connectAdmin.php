@@ -1,6 +1,3 @@
-<?php 
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,7 +15,8 @@
     <button>
         <a href="./connectUser">Utilisateur</a>
     </button>
-    <form action="./spaceAdmin" method="POST">
+    <a href="./">Retour accueil</a>
+    <form action="./connectAdmin" method="POST">
         <h1>Administrateur</h1>
         <label for="login">Veuillez rentrer votre login :</label>
         <input type="text" name="login">

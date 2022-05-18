@@ -1,21 +1,29 @@
 <?php
     class ControllerBook {
-        // Affichage de tous les livres
+        // Affichage des nouveautés et des suggestion (homepage)
         public static function listAllBook(){
             $loader = new Twig\Loader\FilesystemLoader('./Views');
             $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            
             $twig->addExtension(new \Twig\Extension\DebugExtension());
 
             $datas = new ModelBook();
             $allBooks = $datas->suggestBook();
             $allListNews = $datas->listNewsBook();
             echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks]);
-
         }
-        public static function readBook(int $id){
+        // public static function listBookAfterInsert(){
+        //     $datas = new ModelBook();
+        //     $afterInsert = $datas->listAll();
+        //     require_once './Views/book.php';
+        // }
+        public static function readBook($id){
+            $loader = new Twig\Loader\FilesystemLoader('./Views');
+            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            $twig->addExtension(new \Twig\Extension\DebugExtension());
             $datas = new ModelBook ();
             $book = $datas->select($id);
-            require_once './Views/book.php';
+            echo $twig->render('book.twig', ['book' => $book]);
         }
         public static function Show(){
             $manager = new ModelBook();
@@ -32,12 +40,21 @@
         //     $gBook = $manager->ViewGender();
         //     require_once './Views/admin_book_ajout.php';
         // }
-        public static function newBook($datas){
+        public static function newBook($datas,$id_condition_book, $emplacement, $quantity ){
             $datas = $_POST;
             $manager = new ModelBook();
             $newBook = $manager->insertBook($datas);
-            $editBook = $manager->editBook($datas);
+
+            // $editBook = $manager->editBook($id_condition_book, $emplacement, $quantity);
+
             require_once './Views/admin_book_ajout.php';
+        }
+        public static function searchBook() {
+            $manager = new ModelBook();
+            $sBT= $manager->searchBookTitle();
+            $sBT= $manager->searchBookAuthor();
+            $sBT= $manager->searchBookDate();
+            $sBT= $manager->searchBookLang();
         }
     }
 

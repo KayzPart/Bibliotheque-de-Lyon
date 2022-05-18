@@ -3,7 +3,8 @@ class User extends Classes{
     private $_id_user;
     private $_firstname;
     private $_lastname;
-    private $_password_user;
+    private $_password;
+    private $_mail;
     private $_num_member;
 
     public function getId_user(){
@@ -18,8 +19,12 @@ class User extends Classes{
         return $this->_lastname;
     }
 
-    public function getPassword_user(){
-        return $this->_password_user;
+    public function getPassword(){
+        return $this->_password;
+    }
+
+    public function getMail(){
+        return $this->_mail;
     }
 
     public function getNum_member(){
@@ -38,8 +43,12 @@ class User extends Classes{
         $this->_lastname = $lastname;
     }
 
-    public function setPassword_user($password_user){
-        $this->_password_user = $password_user;
+    public function setPassword_user($password){
+        $this->_password = $password;
+    }
+
+    public function setMail($mail){
+        $this->_mail = $mail;
     }
 
     public function setNum_member($num_member){
