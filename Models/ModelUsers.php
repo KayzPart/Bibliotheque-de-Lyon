@@ -75,30 +75,30 @@ class ModelUser extends Model
     }
 
     // Envoie du formulaire de contact
-    public function sendForm()
-    {
-        if (isset($_POST['submit'])) {
-            $mail = $_POST['mail'];
-            $msg = $_POST['msg'];
+    // public function sendForm()
+    // {
+    //     if (isset($_POST['submit'])) {
+    //         $mail = $_POST['mail'];
+    //         $msg = $_POST['msg'];
             
-            $destinataire = 'particulier.flore@hotmail.com';
-            $expediteur = $mail;
-            $copie = $mail;
-            $copie_cachee = $mail;
-            $objet = "Formulaire de contact";
-            $headers = 'MIME-Version: 1.0' . "\n";
-            $headers .= 'Reply-To: ' . $expediteur . "\n";
-            $headers .= 'From: "Nom_de_expediteur"<' . $expediteur . '>' . "\n";
-            $headers .= 'Delivered-to: ' . $destinataire . "\n";
-            $headers .= 'Cc: ' . $copie . "\n";
-            $headers .= 'Bcc: ' . $copie_cachee . "\n\n";
-            $message = $msg;
+    //         $destinataire = 'particulier.flore@hotmail.com';
+    //         $expediteur = $mail;
+    //         $copie = $mail;
+    //         $copie_cachee = $mail;
+    //         $objet = "Formulaire de contact";
+    //         $headers = 'MIME-Version: 1.0' . "\n";
+    //         $headers .= 'Reply-To: ' . $expediteur . "\n";
+    //         $headers .= 'From: "Nom_de_expediteur"<' . $expediteur . '>' . "\n";
+    //         $headers .= 'Delivered-to: ' . $destinataire . "\n";
+    //         $headers .= 'Cc: ' . $copie . "\n";
+    //         $headers .= 'Bcc: ' . $copie_cachee . "\n\n";
+    //         $message = $msg;
 
-            if (mail($destinataire, $objet, $message, $headers)) {
-                echo 'Votre message à bien été envoyé';
-            } else {
-                echo 'Votre message n\'as paspu être envoyer';
-            }
-        }
-    }
+    //         if (mail($destinataire, $objet, $message, $headers)) {
+    //             echo 'Votre message à bien été envoyé';
+    //         } else {
+    //             echo 'Votre message n\'as paspu être envoyer';
+    //         }
+    //     }
+    // }
 }

@@ -6,7 +6,7 @@ require_once  __DIR__ .'/vendor/altorouter/altorouter/AltoRouter.php';
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
 
-$router->setBasePath('/projet/Bibliotheque-de-Lyon');
+$router->setBasePath('/php/Bibliotheque-de-Lyon');
 
 // Routes
 
@@ -26,7 +26,7 @@ $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 $router->map('POST', '/spaceUser', 'ControllerUser#connexionUser');
 
 // Espace admin
-$router->map('POST', '/connectAdmin', 'ControllerAdmin#connexionAdmin');
+$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
 
 
 
