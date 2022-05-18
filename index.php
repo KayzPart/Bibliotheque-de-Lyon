@@ -26,7 +26,7 @@ $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 $router->map('POST', '/spaceUser', 'ControllerUser#connexionUser');
 
 // Espace admin
-$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
+$router->map('POST', '/connectAdmin', 'ControllerAdmin#connexionAdmin');
 
 
 

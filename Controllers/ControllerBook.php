@@ -23,7 +23,7 @@
             $twig->addExtension(new \Twig\Extension\DebugExtension());
             $datas = new ModelBook ();
             $book = $datas->select($id);
-            echo $twig->render('book.twig', ['id_book' => $book]);
+            echo $twig->render('book.twig', ['book' => $book]);
         }
         public static function Show(){
             $manager = new ModelBook();

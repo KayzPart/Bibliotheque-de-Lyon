@@ -42,7 +42,7 @@ class ModelBook extends Model
     public function select($id)
     {
         $db  = $this->getdb();
-        $req = $db->prepare("SELECT `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` = :id");
+        $req = $db->prepare("SELECT `id_book`,`id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` = :id");
 
         $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();

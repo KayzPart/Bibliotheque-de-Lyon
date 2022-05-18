@@ -1,10 +1,8 @@
 <?php 
 
     class ControllerConnexion {
-        public static function connect(){
-            require_once './Views/connexion.php';
-        }
         public static function connectAdmin(){
+            session_start();
             require_once './Views/connectAdmin.php';
         }
         public static function connectUser(){
