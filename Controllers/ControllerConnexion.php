@@ -5,10 +5,13 @@
             session_start();
             $manager = new ModelConnexion();
             $logAdmin = $manager->connectAdminSession();
-            require_once './Views/connectAdmin.php';
+            $twig = ControllerTwig::twigControl();
+            echo $twig->render('connectAdmin.twig');
         }
         public static function connectUser(){
-            require_once './Views/connectUser.php';
+            session_start();
+            $twig = ControllerTwig::twigControl();
+            echo $twig->render('connectUser.twig');
         }
         
         public function connexionUser($mail){

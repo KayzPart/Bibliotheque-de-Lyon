@@ -2,11 +2,8 @@
     class ControllerBook {
         // Affichage des nouveautés et des suggestion (homepage)
         public static function listAllBook(){
-            $loader = new Twig\Loader\FilesystemLoader('./Views');
-            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            $twig = ControllerTwig::twigControl();
             
-            $twig->addExtension(new \Twig\Extension\DebugExtension());
-
             $datas = new ModelBook();
             $allBooks = $datas->suggestBook();
             $allListNews = $datas->listNewsBook();

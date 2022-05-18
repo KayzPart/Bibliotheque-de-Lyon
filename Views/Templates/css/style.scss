@@ -9,6 +9,7 @@ body{
     background: $color;
 }
 
+// ||-----HOMEPAGE-----||
 // -----HEADER------
 .headerhome{
     display: flex;
@@ -82,7 +83,7 @@ body{
 }
 .menumobile{
     position: fixed;
-    z-index: 1000;
+    z-index: 5000;
     top: 0;
     right: 0;
     width: 100vw;
@@ -157,12 +158,6 @@ body{
     &> .btnsub{
         width: 125px;
         height: 25px;
-        border-radius: 0px;
-        border: 1px solid $color;
-        background: $bgb;
-        color: $color;
-        border-width: 3px;
-        transition: all 0.3s ease;
     }
     &> .btnsub:hover{
         border-color: $bgbtn;
@@ -175,6 +170,14 @@ body{
         border: none;
         display: none;
     }
+}
+.btnsub{
+    border-radius: 0px;
+    border: 1px solid $color;
+    background: $bgb;
+    color: $color;
+    border-width: 3px;
+    transition: all 0.3s ease;
 }
 .showit{
     display: block !important;
@@ -419,8 +422,76 @@ body{
     margin: 5px 0px;
 }
 
+// ||------CONNEXION-------||
+.connectp{
+    background: $bgbtn;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
+    &>.btnconnect{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        &>.btnlinkco{
+            display: block;
+            border: 2px solid $bgb;
+            width: 110px;
+            height: 50px;
+            font-size: 16px;
+            color: $bgb;
+            background: #E0C097;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.5s ease;
+            &:hover, &.active{
+                color: #acc4ce;
+                background-color: $bgb;
+            }
+        }
+    }
+    &>.titleco{
+        text-align: center;
+        margin: 30px auto;
+        font-size: 16px;
+        color: $color;
+    }
+    &>.formconnect{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        &>.inpconn{
+            width: 80%;
+            margin: 20px 0;
+        }
+        &>.btnsub{
+            width: 160px;
+            height: 35px;
+            font-size: 16px;
+        }
+    }
+}
+.btnbacks{
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
+.btnback{
+    color: $bgb;
+}
+// -----FOOTERCO------
+.co{
+    display: none;
+}
+
 // ------MEDIA QUERIE-------
 @media screen and (min-width: 1000px) {
+    // ||----homepage----||
     // ----hender----
     .menubg, .logoh{
         display: none;
@@ -559,5 +630,3 @@ body{
         margin: 40px 0;
     }
 }
-
-

@@ -1,0 +1,31 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="./Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/header-co.twig" %} {% endblock %}
+
+{% block content %}
+<div class="connectp">
+    <div class="btnconnect">    
+        <a class="btnlinkco active" href="./connectAdmin">Administrateur</a>
+        <a class="btnlinkco" href="./connectUser">Utilisateur</a>
+    </div>
+
+        <h1 class="titleco">Se connecter</h1>
+
+    <form action="./spaceAdmin" method="POST" class="formconnect">
+
+        <input class="inpconn" type="text" name="mail" placeholder="Email">
+
+        <input class="inpconn" type="password" name="password" placeholder="Mot de passe">
+
+        <input class="btnsub" type="submit" name="submit" value="Connexion">
+    </form>   
+</div>
+
+<p class="btnbacks"><a class="btnback" href="./">Retour</a></p>
+{% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer-co.twig" %} {% endblock %}
