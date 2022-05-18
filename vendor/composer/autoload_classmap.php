@@ -25,6 +25,7 @@ return array(
     'Model' => $baseDir . '/Models/Model.php',
     'ModelAdmin' => $baseDir . '/Models/ModelAdmin.php',
     'ModelBook' => $baseDir . '/Models/ModelBook.php',
+    'ModelConnexion' => $baseDir . '/Models/ModelConnexion.php',
     'ModelResaBook' => $baseDir . '/Models/ModelResaBook.php',
     'ModelUser' => $baseDir . '/Models/ModelUsers.php',
     'PHPUnit\\Exception' => $vendorDir . '/phpunit/phpunit/src/Exception.php',
