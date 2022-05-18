@@ -26,36 +26,29 @@ class ModelUser extends Model
     //     }
     // 
 
-    public function activeSessionUser($mail)
-    {
-
-        if (!empty($_POST)) {
-            $mail = $_POST['mail'];
-            $password = $_POST['password'];
-            if (!empty($_POST['mail']) && !empty($_POST['password'])) {
-                if ($_POST['mail'] !== $mail) {
-                    return 'Mauvais mail/password';
-                } elseif ($_POST['password'] !== $password) {
-                    return 'Mauvais mail/password';
-                } else {
-
-                    $db = $this->getDb();
-                    $reqSessionUse = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `mail`, `num_member` FROM `u$user` WHERE `mail`');
-                    $reqSessionUse->bindParam('mail', $mail, PDO::PARAM_STR);
-                    $reqSessionUse->execute();
-                    $user = [];
-                    while ($use = $reqSessionUse->fetch(PDO::FETCH_ASSOC)) {
-                        $user[] = new User($use);
-                    }
-                    return $use;
-                    session_start();
-                    $_SESSION['mail'] = $mail;
-                    exit();
-                }
-            } else {
-                return 'Veuillez entrez vos identifiants svp !';
-            }
+    public function sessionUser(){
+        $mail = $_POST['mail'];
+        $password = $_POST['password'];
+        $db = $this->getDb();
+        $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `mail`, `num_member` FROM `user` WHERE `mail`');
+        $req->bindParam('mail', $mail, PDO::PARAM_STR);
+        $req->execute();
+        $log = $req->fetch(PDO::FETCH_ASSOC);
+        if($req->rowCount() > 0 && $log['password'] == $password){
+            $_SESSION['userId'] = $log['id_user'];
+            echo "Vous êtes connecter avec succèes $mail ! ";
+            header('Location: ./Views/spaceUser.php');
+        }else{
+            echo "Mail ou Mot de passe incorrect";
         }
+        if(!isset($_SESSION['userId'])){
+            header('Refresh: 5; url = ./Views/connectUser.twig');
+            echo "Vous devez vous connecter pour accéder à l'espace utilisateur.
+            <br><br>
+            < La redirection vers la pade de connexion est en cours ... </i>";
+            exit(0);
+        }
+
     }
     public function HashPassword()
     {

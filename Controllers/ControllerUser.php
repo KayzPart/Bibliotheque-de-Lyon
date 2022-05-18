@@ -8,7 +8,13 @@
             $twig->addExtension(new \Twig\Extension\DebugExtension());
 
             $manager = new ModelUser();
-            $datas = $manager->sendForm(); 
+            // $datas = $manager->sendForm(); 
             echo $twig->render('homepage.twig');
+        }
+        public static function connexionUser(){
+            session_start(); 
+            $manager = new ModelUser();
+            $logUse = $manager->sessionUser();
+            require_once './Views/spaceUser.php';
         }
     }

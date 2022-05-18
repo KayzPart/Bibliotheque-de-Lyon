@@ -5,7 +5,7 @@ class ModelAdmin extends Model
     {
         $login = $_POST['login'];
         $password = $_POST['password'];
-        $db =$this->getDb();
+        $db = $this->getDb();
         $req = $db->prepare('SELECT `id_admin`, `login`, `password` FROM `admin` WHERE `login` = :loginF');
         $req->bindParam('loginF', $login, PDO::PARAM_STR);
         $req->execute();
@@ -24,7 +24,6 @@ class ModelAdmin extends Model
             <i>La redirection vers la page de connection est en cours ... </i>";
             // On arrête l'éxécution de la page si le menbre n'est pas connecter
             exit(0);
-            var_dump($_SESSION);
         }
         
 

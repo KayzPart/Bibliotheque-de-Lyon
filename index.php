@@ -49,13 +49,6 @@ $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
 // Afficher recherche 
 $router->map('GET', '/book', 'ControllerBook#searchBook', 'afficherSearch');
-
-
-
-
-
-
-
 $match = $router->match();
 
 
