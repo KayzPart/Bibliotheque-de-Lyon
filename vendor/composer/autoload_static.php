@@ -7,13 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
 {
     public static $files = array (
-        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
-        'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -31,12 +28,8 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         ),
         'S' => 
         array (
-            'Symfony\\Polyfill\\Php80\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
-            'Symfony\\Component\\VarDumper\\' => 28,
-            'Symfony\\Component\\Finder\\' => 25,
-            'Symfony\\Component\\Asset\\' => 24,
         ),
         'P' => 
         array (
@@ -65,10 +58,6 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
-        'Symfony\\Polyfill\\Php80\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
-        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -76,18 +65,6 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
-        ),
-        'Symfony\\Component\\VarDumper\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/var-dumper',
-        ),
-        'Symfony\\Component\\Finder\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/finder',
-        ),
-        'Symfony\\Component\\Asset\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/symfony/asset',
         ),
         'Prophecy\\' => 
         array (
@@ -110,7 +87,6 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
     public static $classMap = array (
         'Admin' => __DIR__ . '/../..' . '/Classes/Admin.php',
         'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
-        'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Book' => __DIR__ . '/../..' . '/Classes/Book.php',
         'Category' => __DIR__ . '/../..' . '/Classes/Category.php',
         'Classes' => __DIR__ . '/../..' . '/Classes/Classes.php',
@@ -121,6 +97,7 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'ControllerBook' => __DIR__ . '/../..' . '/Controllers/ControllerBook.php',
         'ControllerBooked' => __DIR__ . '/../..' . '/Controllers/ControllerBooked.php',
         'ControllerConnexion' => __DIR__ . '/../..' . '/Controllers/ControllerConnexion.php',
+        'ControllerTwig' => __DIR__ . '/../..' . '/Controllers/ControllerTwig.php',
         'ControllerUser' => __DIR__ . '/../..' . '/Controllers/ControllerUser.php',
         'Favorite' => __DIR__ . '/../..' . '/Classes/Favorite.php',
         'Gender' => __DIR__ . '/../..' . '/Classes/Gender.php',
@@ -545,7 +522,6 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'PharIo\\Version\\VersionConstraintParser' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintParser.php',
         'PharIo\\Version\\VersionConstraintValue' => __DIR__ . '/..' . '/phar-io/version/src/VersionConstraintValue.php',
         'PharIo\\Version\\VersionNumber' => __DIR__ . '/..' . '/phar-io/version/src/VersionNumber.php',
-        'PhpToken' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Quantity_book' => __DIR__ . '/../..' . '/Classes/Quantity_book.php',
         'Reserv' => __DIR__ . '/../..' . '/Classes/Reserv.php',
         'SebastianBergmann\\CliParser\\AmbiguousOptionException' => __DIR__ . '/..' . '/sebastian/cli-parser/src/exceptions/AmbiguousOptionException.php',
@@ -746,7 +722,6 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/type/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/type/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
-        'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',
@@ -755,9 +730,7 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'TheSeer\\Tokenizer\\TokenCollectionException' => __DIR__ . '/..' . '/theseer/tokenizer/src/TokenCollectionException.php',
         'TheSeer\\Tokenizer\\Tokenizer' => __DIR__ . '/..' . '/theseer/tokenizer/src/Tokenizer.php',
         'TheSeer\\Tokenizer\\XMLSerializer' => __DIR__ . '/..' . '/theseer/tokenizer/src/XMLSerializer.php',
-        'UnhandledMatchError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
         'User' => __DIR__ . '/../..' . '/Classes/User.php',
-        'ValueError' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
