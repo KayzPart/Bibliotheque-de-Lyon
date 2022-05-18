@@ -3,6 +3,8 @@
     class ControllerConnexion {
         public static function connectAdmin(){
             session_start();
+            $manager = new ModelConnexion();
+            $logAdmin = $manager->connectAdminSession();
             require_once './Views/connectAdmin.php';
         }
         public static function connectUser(){
