@@ -12,12 +12,13 @@ class ModelAdmin extends Model
         if($req->rowCount() > 0 && $log['password']  == $password){
             $_SESSION['adminId'] = $log['id_admin'];
             echo "Vous êtes connecter avec succès $login !";
-            header('Location: ./Views/spaceAdmin.php');
+            header('Location: ./spaceAdmin');
         }else{
             echo "Pseudo ou Mot de passe incorrect";
+            header('Refresh: 2; url = ./connectAdmin');
         }
         if (!isset($_SESSION['amdinId'])) {
-            header('Refresh: 5; url = ./Views/connectAdmin.twig');
+            header('Refresh: 2; url = ./connectAdmin');
             echo " Vous devez vous connecter pour accéder à l'espace administrateur.
             <br><br>
             <i>La redirection vers la page de connection est en cours ... </i>";

@@ -30,20 +30,21 @@ class ModelUser extends Model
         $email = $_POST['email'];
         $password = $_POST['password'];
         $db = $this->getDb();
-        $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user` WHERE `email`');
-        $req->bindParam('email', $email, PDO::PARAM_STR);
+        $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user` WHERE `email` = :mail');
+        $req->bindParam('mail', $email, PDO::PARAM_STR);
         $req->execute();
         $log = $req->fetch(PDO::FETCH_ASSOC);
         if($req->rowCount() > 0 && $log['password'] == $password){
             $_SESSION['userId'] = $log['id_user'];
-            echo "Vous êtes connecter avec succèes $email ! ";
-            header('Location: ./Views/spaceUser.php');
+            echo "Vous êtes connecter avec succèes $email !";
+            header('Location: ./spaceUser');
         }else{
             echo "Email ou Mot de passe incorrect";
+            header('Refresh: 2; url = ./connectUser');
         }
         if (!isset($_SESSION['userId'])){
-            header('Refresh: 5; url = ./Views/connectUser.twig');
-            echo "Vous devez vous connecter pour accéder à l'espace utilisateur.
+            header('Refresh: 2; url = ./connectUser');
+            echo " Vous devez vous connecter pour accéder à l'espace utilisateur.
             <br><br>
             < La redirection vers la page de connexion est en cours ... </i>";
             exit(0);
