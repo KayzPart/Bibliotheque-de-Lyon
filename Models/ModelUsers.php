@@ -27,32 +27,32 @@ class ModelUser extends Model
     // 
 
     public function sessionUser(){
-        $mail = $_POST['mail'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
         $db = $this->getDb();
-        $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `mail`, `num_member` FROM `user` WHERE `mail`');
-        $req->bindParam('mail', $mail, PDO::PARAM_STR);
+        $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user` WHERE `email`');
+        $req->bindParam('email', $email, PDO::PARAM_STR);
         $req->execute();
         $log = $req->fetch(PDO::FETCH_ASSOC);
         if($req->rowCount() > 0 && $log['password'] == $password){
             $_SESSION['userId'] = $log['id_user'];
-            echo "Vous êtes connecter avec succèes $mail ! ";
+            echo "Vous êtes connecter avec succèes $email ! ";
             header('Location: ./Views/spaceUser.php');
         }else{
-            echo "Mail ou Mot de passe incorrect";
+            echo "Email ou Mot de passe incorrect";
         }
-        if(!isset($_SESSION['userId'])){
+        if (!isset($_SESSION['userId'])){
             header('Refresh: 5; url = ./Views/connectUser.twig');
             echo "Vous devez vous connecter pour accéder à l'espace utilisateur.
             <br><br>
-            < La redirection vers la pade de connexion est en cours ... </i>";
+            < La redirection vers la page de connexion est en cours ... </i>";
             exit(0);
         }
 
     }
     public function HashPassword()
     {
-        $password = `:password_user`;
+        $password = `:password`;
         $key_password = "la clé";
         $key_password1 = "la deuxieme clé";
 

@@ -1,8 +1,7 @@
 <?php
 class ModelAdmin extends Model
 {
-    public function sessionAdmin()
-    {
+    public function sessionAdmin(){
         $login = $_POST['login'];
         $password = $_POST['password'];
         $db = $this->getDb();

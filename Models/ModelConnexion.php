@@ -2,8 +2,7 @@
 
 class ModelConnexion extends Model
 {
-    public function connectAdminSession()
-    {
+    public function connectAdminSession(){
         if(isset($_POST['login'])){
             $login = $_POST['login'];
             $db = $this->getDb();
@@ -12,7 +11,17 @@ class ModelConnexion extends Model
             $req->execute();
     
             $req->fetch(PDO::FETCH_ASSOC);
+        } 
+    }
+    public function connectUserSession(){
+        if(isset($_POST['email'])){
+            $email = $_POST['email'];
+            $db = $this->getDb();
+            $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user` WHERE `email`');
+            $req->bindParam('email', $email, PDO::PARAM_STR);
+            $req->execute();
+
+            $req->fetch(PDO::FETCH_ASSOC);
         }
-        
     }
 }
