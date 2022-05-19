@@ -14,7 +14,6 @@
         <a href="./bookF">Formulaire ajout</a>
     </button>
     <h1>Espace admin</h1>
-   
 </body>
 
 </html>

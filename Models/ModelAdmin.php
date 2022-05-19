@@ -12,16 +12,6 @@ class ModelAdmin extends Model
         }else{
             return "Pseudo ou Mot de passe incorrect";
         }
-        if (!isset($_SESSION['amdinId'])) {
-            header('Refresh: 2; url = ./connectAdmin');
-            echo " Vous devez vous connecter pour accéder à l'espace administrateur.
-            <br><br>
-            <i>La redirection vers la page de connection est en cours ... </i>";
-            // On arrête l'éxécution de la page si le menbre n'est pas connecter
-            exit(0);
-        }
-        
-
         
     }
 }

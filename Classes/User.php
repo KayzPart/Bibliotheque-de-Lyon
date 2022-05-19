@@ -43,7 +43,7 @@ class User extends Classes{
         $this->_lastname = $lastname;
     }
 
-    public function setPassword_user($password){
+    public function setPassword($password){
         $this->_password = $password;
     }
 
