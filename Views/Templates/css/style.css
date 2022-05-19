@@ -157,7 +157,7 @@ body {
 
 .menumobile {
   position: fixed;
-  z-index: 1000;
+  z-index: 5000;
   top: 0;
   right: 0;
   width: 100vw;
@@ -263,13 +263,6 @@ body {
 .bgblur > .btnsub {
   width: 125px;
   height: 25px;
-  border-radius: 0px;
-  border: 1px solid #E0C097;
-  background: #2D2424;
-  color: #E0C097;
-  border-width: 3px;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
 }
 
 .bgblur > .btnsub:hover {
@@ -283,6 +276,16 @@ body {
   font-size: 14px;
   border: none;
   display: none;
+}
+
+.btnsub {
+  border-radius: 0px;
+  border: 1px solid #E0C097;
+  background: #2D2424;
+  color: #E0C097;
+  border-width: 3px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .showit {
@@ -612,6 +615,101 @@ body {
   margin: 5px 0px;
 }
 
+.connectp {
+  background: #5C3D2E;
+  margin: 10px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.connectp > .btnconnect {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.connectp > .btnconnect > .btnlinkco {
+  display: block;
+  border: 2px solid #2D2424;
+  width: 110px;
+  height: 50px;
+  font-size: 16px;
+  color: #2D2424;
+  background: #E0C097;
+  text-align: center;
+  line-height: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.connectp > .btnconnect > .btnlinkco:hover, .connectp > .btnconnect > .btnlinkco.active {
+  color: #acc4ce;
+  background-color: #2D2424;
+}
+
+.connectp > .titleco {
+  text-align: center;
+  margin: 30px auto;
+  font-size: 16px;
+  color: #E0C097;
+}
+
+.connectp > .formconnect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.connectp > .formconnect > .inpconn {
+  width: 80%;
+  margin: 20px 0;
+}
+
+.connectp > .formconnect > .btnsub {
+  width: 160px;
+  height: 35px;
+  font-size: 16px;
+}
+
+.btnbacks {
+  width: 100%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.btnback {
+  color: #2D2424;
+}
+
+.co {
+  display: none;
+}
+
 @media screen and (min-width: 1000px) {
   .menubg, .logoh {
     display: none;
@@ -669,6 +767,28 @@ body {
   }
   .imgbooks {
     width: 450px !important;
+  }
+  .title {
+    font-size: 40px;
+  }
+  .title.new, .title.biblio, .title.sugg {
+    width: 650px;
+    height: 80px;
+  }
+  .sugg {
+    height: 800px;
+  }
+  .imgbook {
+    width: 300px;
+    height: 540px;
+  }
+  .biblio > .resume {
+    font-size: 36px;
+    padding: 10px 200px 300px 200px;
+  }
+  .imgbiblio {
+    width: 80%;
+    padding-top: 10px;
   }
   #footermain {
     padding: 5px;

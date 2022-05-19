@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '442603bb92947f7e73d2c0a514fe19acc243f16a',
+        'reference' => '2909043f1d9702fbb31b97cdb6587f9f6e8268b5',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '442603bb92947f7e73d2c0a514fe19acc243f16a',
+            'reference' => '2909043f1d9702fbb31b97cdb6587f9f6e8268b5',
             'dev_requirement' => false,
         ),
         'altorouter/altorouter' => array(
@@ -344,12 +344,12 @@
             'dev_requirement' => true,
         ),
         'twig/twig' => array(
-            'pretty_version' => 'v3.0.0',
-            'version' => '3.0.0.0',
+            'pretty_version' => 'v3.3.10',
+            'version' => '3.3.10.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../twig/twig',
             'aliases' => array(),
-            'reference' => '9b58bb8ac7a41d72fbb5a7dc643e07923e5ccc26',
+            'reference' => '8442df056c51b706793adf80a9fd363406dd3674',
             'dev_requirement' => false,
         ),
         'webmozart/assert' => array(

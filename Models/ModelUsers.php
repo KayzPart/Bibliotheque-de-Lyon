@@ -26,40 +26,33 @@ class ModelUser extends Model
     //     }
     // 
 
-    public function activeSessionUser($mail)
-    {
-
-        if (!empty($_POST)) {
-            $mail = $_POST['mail'];
-            $password = $_POST['password'];
-            if (!empty($_POST['mail']) && !empty($_POST['password'])) {
-                if ($_POST['mail'] !== $mail) {
-                    return 'Mauvais mail/password';
-                } elseif ($_POST['password'] !== $password) {
-                    return 'Mauvais mail/password';
-                } else {
-
-                    $db = $this->getDb();
-                    $reqSessionUse = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `mail`, `num_member` FROM `u$user` WHERE `mail`');
-                    $reqSessionUse->bindParam('mail', $mail, PDO::PARAM_STR);
-                    $reqSessionUse->execute();
-                    $user = [];
-                    while ($use = $reqSessionUse->fetch(PDO::FETCH_ASSOC)) {
-                        $user[] = new User($use);
-                    }
-                    return $use;
-                    session_start();
-                    $_SESSION['mail'] = $mail;
-                    exit();
-                }
-            } else {
-                return 'Veuillez entrez vos identifiants svp !';
-            }
+    public function sessionUser(){
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $db = $this->getDb();
+        $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user` WHERE `email`');
+        $req->bindParam('email', $email, PDO::PARAM_STR);
+        $req->execute();
+        $log = $req->fetch(PDO::FETCH_ASSOC);
+        if($req->rowCount() > 0 && $log['password'] == $password){
+            $_SESSION['userId'] = $log['id_user'];
+            echo "Vous êtes connecter avec succèes $email ! ";
+            header('Location: ./Views/spaceUser.php');
+        }else{
+            echo "Email ou Mot de passe incorrect";
         }
+        if (!isset($_SESSION['userId'])){
+            header('Refresh: 5; url = ./Views/connectUser.twig');
+            echo "Vous devez vous connecter pour accéder à l'espace utilisateur.
+            <br><br>
+            < La redirection vers la page de connexion est en cours ... </i>";
+            exit(0);
+        }
+
     }
     public function HashPassword()
     {
-        $password = `:password_user`;
+        $password = `:password`;
         $key_password = "la clé";
         $key_password1 = "la deuxieme clé";
 
@@ -75,30 +68,30 @@ class ModelUser extends Model
     }
 
     // Envoie du formulaire de contact
-    public function sendForm()
-    {
-        if (isset($_POST['submit'])) {
-            $mail = $_POST['mail'];
-            $msg = $_POST['msg'];
+    // public function sendForm()
+    // {
+    //     if (isset($_POST['submit'])) {
+    //         $mail = $_POST['mail'];
+    //         $msg = $_POST['msg'];
             
-            $destinataire = 'particulier.flore@hotmail.com';
-            $expediteur = $mail;
-            $copie = $mail;
-            $copie_cachee = $mail;
-            $objet = "Formulaire de contact";
-            $headers = 'MIME-Version: 1.0' . "\n";
-            $headers .= 'Reply-To: ' . $expediteur . "\n";
-            $headers .= 'From: "Nom_de_expediteur"<' . $expediteur . '>' . "\n";
-            $headers .= 'Delivered-to: ' . $destinataire . "\n";
-            $headers .= 'Cc: ' . $copie . "\n";
-            $headers .= 'Bcc: ' . $copie_cachee . "\n\n";
-            $message = $msg;
+    //         $destinataire = 'particulier.flore@hotmail.com';
+    //         $expediteur = $mail;
+    //         $copie = $mail;
+    //         $copie_cachee = $mail;
+    //         $objet = "Formulaire de contact";
+    //         $headers = 'MIME-Version: 1.0' . "\n";
+    //         $headers .= 'Reply-To: ' . $expediteur . "\n";
+    //         $headers .= 'From: "Nom_de_expediteur"<' . $expediteur . '>' . "\n";
+    //         $headers .= 'Delivered-to: ' . $destinataire . "\n";
+    //         $headers .= 'Cc: ' . $copie . "\n";
+    //         $headers .= 'Bcc: ' . $copie_cachee . "\n\n";
+    //         $message = $msg;
 
-            if (mail($destinataire, $objet, $message, $headers)) {
-                echo 'Votre message à bien été envoyé';
-            } else {
-                echo 'Votre message n\'as paspu être envoyer';
-            }
-        }
-    }
+    //         if (mail($destinataire, $objet, $message, $headers)) {
+    //             echo 'Votre message à bien été envoyé';
+    //         } else {
+    //             echo 'Votre message n\'as paspu être envoyer';
+    //         }
+    //     }
+    // }
 }

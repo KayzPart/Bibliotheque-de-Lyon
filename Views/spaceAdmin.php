@@ -1,8 +1,4 @@
-<?php
-// On prolonge la session
-session_start();
-$id_session = session_id();
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,17 +14,7 @@ $id_session = session_id();
         <a href="./bookF">Formulaire ajout</a>
     </button>
     <h1>Espace admin</h1>
-    <?php
-    if ($id_session) {
-        echo '\'id de session récupérer via session_id() => <br>' . $id_session . '<br>';
-    }
-    echo '<br><br>';
-    if (isset($_COOKIE['PHPSESSID'])) {
-        echo 'ID de session (récupéré via $_COOKIE) : <br>'
-            . $_COOKIE['PHPSESSID'];
-    }
-
-    ?>
+   
 </body>
 
 </html>

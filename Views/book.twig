@@ -1,0 +1,42 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Livre sélectionner {% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/header.twig" %} {% endblock %}
+
+{% block content %}
+    <div class="book-select">
+
+        <figure>
+            <img src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}" style= "width: 250px">
+        </figure>
+        <h1>{{ book.getTitle }}</h1>
+        <section>
+            <p>
+                <strong>Auteur :</strong> 
+                {{ book.getAuthor }}
+            </p>
+            <p>
+                <strong>ISBN :</strong>
+                {{ book.getIsbn }}
+            </p>
+            <p>
+                <strong>Genre :</strong>
+               <!--  //$book->getName_gender() -->
+            </p>
+            <p>
+                <strong>Catégorie :</strong>
+                {{ book.getCategory }}
+            </p>
+            <p>
+                <strong>Date de sortie :</strong>
+                {{book.getYear_published|date('d/m/y', strtotime)}}
+            </p>
+        </section>
+    </div>
+{% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
+ 

@@ -1,23 +1,18 @@
 <?php 
 
     class ControllerConnexion {
-        public static function connect(){
-            require_once './Views/connexion.php';
-        }
         public static function connectAdmin(){
-            require_once './Views/connectAdmin.php';
+            session_start();
+            $manager = new ModelConnexion();
+            $logAdmin = $manager->connectAdminSession();
+            $twig = ControllerTwig::twigControl();
+            echo $twig->render('connectAdmin.twig');
         }
         public static function connectUser(){
-            require_once './Views/connectUser.php';
-        }
-        public static function connexionAdmin($login){
-            $manager = new ModelAdmin();
-            $logAct = $manager->activeSessionAdmin($login);
-            require_once './Views/spaceAdmin.php';
-        }
-        public function connexionUser($mail){
-            $manager = new ModelUser();
-            $logUse = $manager->activeSessionUser($mail);
-            require_once './Views/spaceUser.php';
+            session_start();
+            $manager = new ModelConnexion();
+            $logUser = $manager->connectUserSession();
+            $twig = ControllerTwig::twigControl();
+            echo $twig->render('connectUser.twig');
         }
     }
