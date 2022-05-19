@@ -7,7 +7,9 @@ define('ROOT', '/projet/Bibliotheque-de-Lyon');
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
 
+
 $router->setBasePath(ROOT);
+
 
 // Routes
 
@@ -15,7 +17,7 @@ $router->setBasePath(ROOT);
 $router->map('GET', '/', 'ControllerBook#listAllBook', '/');
 
 // Formulaire de contact
-$router->map('POST', '/spaceUser', 'ControllerUser#contactForm', 'contactForm');
+// $router->map('POST', '/spaceUser', 'ControllerUser#contactForm', 'contactForm');
 
 // Direction formulaire Admin
 $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
@@ -27,7 +29,7 @@ $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 $router->map('POST', '/spaceUser', 'ControllerUser#connexionUser');
 
 // Espace admin
-$router->map('POST', '/connectAdmin', 'ControllerAdmin#connexionAdmin');
+$router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
 
 
 
@@ -50,13 +52,6 @@ $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
 // Afficher recherche 
 $router->map('GET', '/book', 'ControllerBook#searchBook', 'afficherSearch');
-
-
-
-
-
-
-
 $match = $router->match();
 
 if($match){

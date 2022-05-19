@@ -22,6 +22,13 @@
 
             echo $twig->render('book.twig', ['book' => $book, 'root' => ROOT]);
         }
+
+        public static function newBook($datas){
+            $datas = $_POST;
+            $manager = new ModelBook();
+            $newBook = $manager->insertBook($datas);
+            require_once './Views/admin_book_ajout.php';
+        }
         public static function Show(){
             $manager = new ModelBook();
             $sBook = $manager->ViewCate();
@@ -37,15 +44,7 @@
         //     $gBook = $manager->ViewGender();
         //     require_once './Views/admin_book_ajout.php';
         // }
-        public static function newBook($datas,$id_condition_book, $emplacement, $quantity ){
-            $datas = $_POST;
-            $manager = new ModelBook();
-            $newBook = $manager->insertBook($datas);
-
-            // $editBook = $manager->editBook($id_condition_book, $emplacement, $quantity);
-
-            require_once './Views/admin_book_ajout.php';
-        }
+        
         public static function searchBook() {
             $manager = new ModelBook();
             $sBT= $manager->searchBookTitle();
