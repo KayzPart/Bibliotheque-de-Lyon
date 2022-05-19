@@ -104,6 +104,7 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'Model' => __DIR__ . '/../..' . '/Models/Model.php',
         'ModelAdmin' => __DIR__ . '/../..' . '/Models/ModelAdmin.php',
         'ModelBook' => __DIR__ . '/../..' . '/Models/ModelBook.php',
+        'ModelConnexion' => __DIR__ . '/../..' . '/Models/ModelConnexion.php',
         'ModelResaBook' => __DIR__ . '/../..' . '/Models/ModelResaBook.php',
         'ModelUser' => __DIR__ . '/../..' . '/Models/ModelUsers.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',

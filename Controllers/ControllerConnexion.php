@@ -3,6 +3,8 @@
     class ControllerConnexion {
         public static function connectAdmin(){
             session_start();
+            $manager = new ModelConnexion();
+            $logAdmin = $manager->connectAdminSession();
             $twig = ControllerTwig::twigControl();
             echo $twig->render('connectAdmin.twig');
         }
