@@ -58,21 +58,6 @@ if($match){
     list($controller, $action) = explode('#', $match['target']);
     $obj = new $controller; 
    
-    switch($action){
-        case 'selectSession':
-            foreach($_POST as $key => $value){
-                $match['params'][$key] = $value;
-            }
-            var_dump($match['params']);
-            break;
-        case 'connect':
-            foreach($_POST as $key => $value){
-                $match['params'][$key] = $value;
-            }
-            var_dump($match['params']);
-            break; 
-       
-    }
     if(is_callable(array($obj, $action))){
          call_user_func_array(array($obj, $action), array($match['params']));
     }
