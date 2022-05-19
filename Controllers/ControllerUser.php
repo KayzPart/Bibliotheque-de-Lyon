@@ -15,6 +15,9 @@
             session_start(); 
             $manager = new ModelUser();
             $logUse = $manager->sessionUser();
+        }
+        public static function space(){
+            session_start();
             require_once './Views/spaceUser.php';
         }
     }
