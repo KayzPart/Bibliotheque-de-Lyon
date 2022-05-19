@@ -42,12 +42,17 @@ class ModelBook extends Model
     public function select($id)
     {
         $db  = $this->getdb();
-        $req = $db->prepare("SELECT `id_book`,`id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` = :id");
+        $req = $db->prepare("SELECT `id_book`,`category`.`name_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` INNER JOIN `category` ON `category`.`id_category` = `book`.`id_category` WHERE `id_book` = :id");
 
         $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();
+        
+        $data = $req->fetch(PDO::FETCH_ASSOC);
 
-        return new Book($req->fetch(PDO::FETCH_ASSOC));
+        $book = new Book($data);
+        $category = new Category($data);
+
+        return [$book, $category];
     }
     public function insertBook($datas)
     {

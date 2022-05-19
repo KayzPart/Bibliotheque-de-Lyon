@@ -7,35 +7,45 @@
 {% block header %} {% include "./Templates/header/header.twig" %} {% endblock %}
 
 {% block content %}
-    <div class="book-select">
+    <h1 class="title tbook">{{ book.getTitle }}</h1>
 
-        <figure>
-            <img src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}" style= "width: 250px">
+    <div class="book-select">
+        
+        <figure class="figurefirstpage">
+            <img class="imgbookse" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
         </figure>
-        <h1>{{ book.getTitle }}</h1>
-        <section>
+        
+        <section class="infobook">
             <p>
-                <strong>Auteur :</strong> 
+                Auteur : 
                 {{ book.getAuthor }}
             </p>
             <p>
-                <strong>ISBN :</strong>
+                ISBN : 
                 {{ book.getIsbn }}
             </p>
             <p>
-                <strong>Genre :</strong>
+                Genre :
                <!--  //$book->getName_gender() -->
             </p>
             <p>
-                <strong>Catégorie :</strong>
-                {{ book.getCategory }}
+                Catégorie : 
+                {{ category.getName_category }}
             </p>
             <p>
-                <strong>Date de sortie :</strong>
+                Date de publication :
                 {{book.getYear_published|date('d/m/y', strtotime)}}
             </p>
         </section>
+        <section class="descbook"><p>Description : </p> 
+            <p>{{book.getDescrip}}</p></section>
     </div>
+
+    <div class="bgbookmark">
+        <div class="square"></div>
+        <div class="triangle"></div>
+    </div>
+
 {% endblock %}
 
 {% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}

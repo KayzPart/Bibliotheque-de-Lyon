@@ -17,7 +17,7 @@ body{
     align-items: center;
     background-color: $bgb;
     height: 55px;
-    width: 100vw;
+    width: 100%;
 }
 .logoh{
     height: 55px;
@@ -430,6 +430,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid $bgb;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
     &>.btnconnect{
         width: 100%;
@@ -456,7 +457,7 @@ body{
     }
     &>.titleco{
         text-align: center;
-        margin: 30px auto;
+        margin: 30px;
         font-size: 16px;
         color: $color;
     }
@@ -489,6 +490,67 @@ body{
     display: none;
 }
 
+// ||-----BOOK------||
+.tbook{
+    width: 200px;
+    height: 45px;
+    font-size: 20px;
+}
+.figurefirstpage{
+    display: flex;
+    justify-content: center;
+}
+.imgbookse{
+    width: 250px;
+}
+.infobook{
+    display: flex;
+    flex-direction: column;
+    background: $bgbtn;
+    width: 80%;
+    margin: 20px 0;
+    text-align: center;
+    color: $color;
+    padding: 10px 0;
+    font-weight: bold;
+    &>p{
+        margin: 2px;
+    }
+}
+.descbook{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px 0;
+    margin-left: 20%;
+    background-color: $bgbtn;
+    color: $color;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    &>p{
+        margin: 10px;
+    }
+}
+.bgbookmark{
+    display: flex;
+    margin: 20px 0;
+    &>.square{
+        width: 240px;
+        height: 40px;
+        background: $bgbtn;
+        box-shadow: -5px 4px 4px rgba(0, 0, 0, 0.50);
+    }
+    &>.triangle{
+        display: inline-block;
+        width: 0px;
+        z-index: -1;
+        height: 0px;
+        border-top: 40px solid $bgbtn;
+        border-right: 40px solid transparent;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+    }
+}
 // ------MEDIA QUERIE-------
 @media screen and (min-width: 1000px) {
     // ||----homepage----||
@@ -628,5 +690,38 @@ body{
     }
     .mention{
         margin: 40px 0;
+    }
+    // ||-----connexion------||
+    .connectp{
+        margin: 100px auto;
+        margin-bottom: 10px;
+        padding: 20px 5px;
+        width: 40%;
+        &>.btnconnect{
+            &>.btnlinkco{
+                width: 200px;
+                height: 80px;
+                font-size: 30px;
+                line-height: 80px;
+            }
+        }
+        &>.titleco{
+            font-size: 30px;
+        }
+        &>.formconnect{
+            &>.inpconn{
+                height: 30px;
+                font-size: 24px;
+            }
+            &>.btnsub{
+                width: 300px;
+                height: 50px;
+                font-size: 30px;
+                margin-top: 60px;
+            }
+        }
+    }
+    .btnbacks{
+        margin-bottom: 90px;
     }
 }

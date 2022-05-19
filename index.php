@@ -2,7 +2,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once  __DIR__ .'/vendor/altorouter/altorouter/AltoRouter.php';
 
-define('ROOT', '/php/Bibliotheque-de-Lyon');
+define('ROOT', '/projet/Bibliotheque-de-Lyon');
 
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
@@ -55,7 +55,6 @@ $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 $router->map('GET', '/book', 'ControllerBook#searchBook', 'afficherSearch');
 $match = $router->match();
 
-var_dump($match['params']);
 if($match){
     list($controller, $action) = explode('#', $match['target']);
     $obj = new $controller; 
