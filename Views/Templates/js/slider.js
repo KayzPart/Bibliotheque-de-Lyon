@@ -1,25 +1,7 @@
-const btnmenu = document.querySelector('.menubg');
-const closemenu = document.querySelector('.close');
-const menubg = document.querySelector('.menumobile');
-const btncontact = document.querySelector('.btncontact');
-const contact = document.querySelector('.contact');
-const closecontact = document.querySelector('.closec');
 const bookpass = document.getElementsByClassName('imgbooks');
 const arrowright = document.querySelector('.aleft');
 const arrowleft = document.querySelector('.aright');
-const searchcat = document.getElementById('searchcat');
-const cate = document.getElementById('categories');
-const searchbar = document.querySelector('.inpsearchbar');
 
-setInterval(() => {
-    if(searchcat.value == 'category'){
-        cate.classList.add('showit');
-        searchbar.classList.add('hideit')
-    }else{
-        cate.classList.remove('showit');
-        searchbar.classList.remove('hideit');
-    }
-}, 1000);
 let nbr = 2;
 let nbrr = 3;
 let nbrl = 1;
@@ -103,17 +85,4 @@ arrowright.addEventListener('click', ()=>{
     }
 })
 
-btnmenu.addEventListener('click', ()=>{
-    menubg.classList.toggle('show');
-})
-closemenu.addEventListener('click', ()=>{
-    menubg.classList.toggle('show');
-})
-
-btncontact.addEventListener('click', ()=>{
-    contact.classList.toggle('show');
-})
-closecontact.addEventListener('click', ()=>{
-    contact.classList.toggle('show');
-})
 

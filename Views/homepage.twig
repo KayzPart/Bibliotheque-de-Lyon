@@ -7,6 +7,7 @@
 {% block header %} {% include "./Templates/header/header.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
 
 {% block content %}
+
 <div class="title new">NOUVEAUTÉS</div>
 <div class="news">
     <div class="arrow aleft">˂</div>
@@ -36,4 +37,7 @@
 </div>
 {% endblock %}
 
-{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
+{% block footer %} {% include "./Templates/footer/footer.twig" %} 
+<script src="{{root}}/Views/Templates/js/searchbar.js"></script>
+<script src="{{root}}/Views/Templates/js/slider.js"></script>
+{% endblock %}
