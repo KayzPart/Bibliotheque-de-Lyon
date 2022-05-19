@@ -2,11 +2,14 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once  __DIR__ .'/vendor/altorouter/altorouter/AltoRouter.php';
 
+define('ROOT', '/projet/Bibliotheque-de-Lyon');
 
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
 
-$router->setBasePath('/php/Bibliotheque-de-Lyon');
+
+$router->setBasePath(ROOT);
+
 
 // Routes
 
@@ -33,7 +36,7 @@ $router->map('POST', '/spaceAdmin', 'ControllerAdmin#connexionAdmin');
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
 
-$router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook');
+$router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');
 
 
 // *** Formulaire ajout livre => Les routes
@@ -50,7 +53,6 @@ $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 // Afficher recherche 
 $router->map('GET', '/book', 'ControllerBook#searchBook', 'afficherSearch');
 $match = $router->match();
-
 
 if($match){
     list($controller, $action) = explode('#', $match['target']);

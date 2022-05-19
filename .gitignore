@@ -7,3 +7,4 @@ composer.lock
 LICENSE.md
 phpcs.xml
 README.md
+.DS_Store

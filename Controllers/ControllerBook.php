@@ -1,5 +1,5 @@
 <?php
-    class ControllerBook {
+    class ControllerBook extends ControllerTwig{
         // Affichage des nouveautés et des suggestion (homepage)
         public static function listAllBook(){
             $twig = ControllerTwig::twigControl();
@@ -7,7 +7,7 @@
             $datas = new ModelBook();
             $allBooks = $datas->suggestBook();
             $allListNews = $datas->listNewsBook();
-            echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks]);
+            echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks, 'root' => ROOT]);
         }
         // public static function listBookAfterInsert(){
         //     $datas = new ModelBook();
@@ -15,12 +15,12 @@
         //     require_once './Views/book.php';
         // }
         public static function readBook($id){
-            $loader = new Twig\Loader\FilesystemLoader('./Views');
-            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
-            $twig->addExtension(new \Twig\Extension\DebugExtension());
+            $twig = ControllerTwig::twigControl();
+
             $datas = new ModelBook ();
             $book = $datas->select($id);
-            echo $twig->render('book.twig', ['book' => $book]);
+
+            echo $twig->render('book.twig', ['book' => $book, 'root' => ROOT]);
         }
 
         public static function newBook($datas){
