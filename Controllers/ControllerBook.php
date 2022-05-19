@@ -20,7 +20,7 @@
             $datas = new ModelBook ();
             $book = $datas->select($id);
 
-            echo $twig->render('book.twig', ['book' => $book, 'root' => ROOT]);
+            echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'root' => ROOT]);
         }
 
         public static function newBook($datas){
