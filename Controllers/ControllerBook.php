@@ -45,17 +45,18 @@
         //     require_once './Views/admin_book_ajout.php';
         // }
         
-        public static function searchBook() {
-            $manager = new ModelBook();
-            $sBT= $manager->searchBookTitle();
-            $sBT= $manager->searchBookAuthor();
-            $sBT= $manager->searchBookDate();
-            $sBT= $manager->searchBookLang();
-        }
         public static function spaceSearch(){
+            $searchcat = $_GET['searchcat'];
+            if($searchcat == 'id_category'){
+                $search = $_GET['categories'];
+            }else{
+                $search = $_GET['s'];
+            }
+            var_dump($searchcat);
             $twig = Controllertwig::twigcontrol();
-            echo $twig->render('search.twig', ['root' => ROOT]);
-            require_once './Views/search.php';
+            $manager = new ModelBook();
+            $result = $manager->spaceSearch($searchcat, $search);
+            echo $twig->render('search.twig', ['root' => ROOT, 'books' => $result]);
         }
     }
 
