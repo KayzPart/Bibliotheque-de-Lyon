@@ -52,6 +52,9 @@
             $sBT= $manager->searchBookDate();
             $sBT= $manager->searchBookLang();
         }
+        public static function spaceSearch(){
+            require_once './Views/search.php';
+        }
     }
 
     // function lister_image($repertoire){
