@@ -1,0 +1,14 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Espace Admin{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/headerAdmin.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
+
+{% block content %}
+    <button><a href="{{root}}/bookF">ajouter un livre</a></button>
+    <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati eius iusto sequi consectetur ducimus aliquid odio et, iste voluptates velit, porro, rem quisquam quaerat distinctio aperiam dolore quos! Cupiditate, optio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nulla repellat ratione esse debitis reprehenderit dolorem tempore expedita omnis, dignissimos at labore dolores voluptatibus atque, laudantium aperiam? Corporis, soluta quia.</h1>
+{% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer-co.twig" %} {% endblock %}

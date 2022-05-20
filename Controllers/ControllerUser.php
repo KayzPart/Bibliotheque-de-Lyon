@@ -17,6 +17,7 @@
             $password = $_POST['password'];
             $manager = new ModelUser();
             $user = $manager->sessionUser($email);
+            
 
             if($user != "Email ou Mot de passe incorrect"){
                 $passwordVerif = password_verify($password, $user->getPassword());
@@ -26,9 +27,9 @@
                     echo "Vous êtes connecter avec succès $email";
                     header('Location: ./spaceUser');
                 }else{
-                    var_dump($user->getPassword());
+
                     echo "Email ou  Mot de passe incorrect";
-                    header('Refresh: 5; url = ./connectUser');
+                    header('Refresh: 2; url = ./connectUser');
                 }
             }else{
                 echo "Mail ou  Mot de passe incorrect";
@@ -43,7 +44,11 @@
             }
         }
         public static function space(){
+
+            $twig = Controllertwig::twigcontrol();
+            
             session_start();
-            require_once './Views/spaceUser.php';
+
+            echo $twig->render('spaceUser.twig', ['root' => ROOT]);
         }
     }

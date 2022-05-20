@@ -36,7 +36,8 @@ class ControllerAdmin extends ControllerTwig
     }
     public static function space()
     {
+        $twig = ControllerTwig::twigcontrol();
         session_start();
-        require_once './Views/spaceAdmin.php';
+        echo $twig->render('spaceAdmin.twig', ['root' => ROOT]);
     }
 }
