@@ -7,6 +7,7 @@ const closecontact = document.querySelector('.closec');
 
 btnmenu.addEventListener('click', ()=>{
     menubg.classList.toggle('show');
+    
 })
 closemenu.addEventListener('click', ()=>{
     menubg.classList.toggle('show');

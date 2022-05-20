@@ -7,36 +7,41 @@
 {% block header %} {% include "./Templates/header/header.twig" %} {% endblock %}
 
 {% block content %}
-    <h1 class="title tbook">{{ book.getTitle }}</h1>
+    
 
     <div class="book-select">
+        <div class="headbook">
+            <h1 class="title tbook">{{ book.getTitle }}</h1>
+
+            <figure class="figurefirstpage">
+                <img class="imgbookse" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+            </figure>
         
-        <figure class="figurefirstpage">
-            <img class="imgbookse" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
-        </figure>
-        
-        <section class="infobook">
-            <p>
-                Auteur : 
-                {{ book.getAuthor }}
-            </p>
-            <p>
-                ISBN : 
-                {{ book.getIsbn }}
-            </p>
-            <p>
-                Genre :
-               <!--  //$book->getName_gender() -->
-            </p>
-            <p>
-                Catégorie : 
-                {{ category.getName_category }}
-            </p>
-            <p>
-                Date de publication :
-                {{book.getYear_published|date('d/m/y', strtotime)}}
-            </p>
-        </section>
+            <section class="infobook">
+                <p>
+                    Auteur : 
+                    {{ book.getAuthor }}
+                </p>
+                <p>
+                    ISBN : 
+                    {{ book.getIsbn }}
+                </p>
+                <p>
+                    Genre :
+                <!--  //$book->getName_gender() -->
+                </p>
+                <p>
+                    Catégorie : 
+                    {{ category.getName_category }}
+                </p>
+                <p>
+                    Date de publication :
+                    {{book.getYear_published|date('d/m/y', strtotime)}}
+                </p> 
+            </section>
+        </div>
+
+ 
         <section class="descbook"><p>Description : </p> 
             <p>{{book.getDescrip}}</p></section>
     </div>

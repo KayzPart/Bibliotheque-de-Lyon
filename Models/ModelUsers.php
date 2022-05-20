@@ -40,22 +40,6 @@ class ModelUser extends Model
         
 
     }
-    public function HashPassword()
-    {
-        $password = `:password`;
-        $key_password = "la clé";
-        $key_password1 = "la deuxieme clé";
-
-        $encrypted_password = openssl_encrypt($password, "AES-128-ECB", $key_password);
-        var_dump($encrypted_password);
-
-        $decrypted_password = openssl_decrypt(
-            $encrypted_password,
-            "AES-128-ECB",
-            $key_password
-        );
-        var_dump($decrypted_password);
-    }
 
     // Envoie du formulaire de contact
     // public function sendForm()
