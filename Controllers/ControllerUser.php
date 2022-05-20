@@ -1,6 +1,6 @@
 <?php 
 
-    class ControllerUser{
+    class ControllerUser extends ControllerTwig{
         // Formulaire de contact
         // public static function contactForm(){
         //     $loader = new Twig\Loader\FilesystemLoader('./Views');
@@ -27,7 +27,8 @@
                     echo "Vous êtes connecter avec succès $email";
                     header('Location: ./spaceUser');
                 }else{
-                    echo "Mail ou  Mot de passe incorrect";
+
+                    echo "Email ou  Mot de passe incorrect";
                     header('Refresh: 2; url = ./connectUser');
                 }
             }else{

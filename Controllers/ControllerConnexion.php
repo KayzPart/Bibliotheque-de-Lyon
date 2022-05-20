@@ -1,6 +1,6 @@
 <?php 
 
-    class ControllerConnexion {
+    class ControllerConnexion extends ControllerTwig{
         public static function connectAdmin(){
             session_start();
             $twig = ControllerTwig::twigControl();

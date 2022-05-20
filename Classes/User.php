@@ -4,7 +4,7 @@ class User extends Classes{
     private $_firstname;
     private $_lastname;
     private $_password;
-    private $_mail;
+    private $_email;
     private $_num_member;
 
     public function getId_user(){
@@ -23,8 +23,8 @@ class User extends Classes{
         return $this->_password;
     }
 
-    public function getMail(){
-        return $this->_mail;
+    public function getEmail(){
+        return $this->_email;
     }
 
     public function getNum_member(){
@@ -47,8 +47,8 @@ class User extends Classes{
         $this->_password = $password;
     }
 
-    public function setMail($mail){
-        $this->_mail = $mail;
+    public function setEmail($email){
+        $this->_email = $email;
     }
 
     public function setNum_member($num_member){

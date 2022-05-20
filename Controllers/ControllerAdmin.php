@@ -1,6 +1,6 @@
 <?php
 
-class ControllerAdmin
+class ControllerAdmin extends ControllerTwig
 {
     public static function connexionAdmin()
     {

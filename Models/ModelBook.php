@@ -220,21 +220,11 @@ class ModelBook extends Model
 
     }
 
+    // Recherche (searchBar)
     public function searchBookTitle() {
+        $search = $_GET['s'];
+        
 
-        if(isset($_GET['p'] )){
-            $recherche = $_GET['p'];
-            
-        } 
-        $db = $this->getDb();
-        $req = $db->query("SELECT `title`,`photo` FROM `book`  WHERE `title` LIKE '$recherche%'  ");
-        
-        
-        $datas = [];
-        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
-            $datas[] = new Book($data);
-    
-        }
     }
     public function searchBookAuthor() {
 
@@ -243,7 +233,7 @@ class ModelBook extends Model
             
         } 
         $db = $this->getDb();
-        $req = $db->query("SELECT `author`,`photo` FROM `book`  WHERE `author` LIKE '$recherche%'  ");
+        $req = $db->query("SELECT `author`,`photo` FROM `book`  WHERE `author` LIKE '%$recherche%'  ");
         
         
         $datas = [];
@@ -258,7 +248,7 @@ class ModelBook extends Model
             
         } 
         $db = $this->getDb();
-        $req = $db->query("SELECT `date`,`photo` FROM `book`  WHERE `date` LIKE '$recherche%'  ");
+        $req = $db->query("SELECT `date`,`photo` FROM `book`  WHERE `date` LIKE '%$recherche%'  ");
         
         
         $datas = [];
