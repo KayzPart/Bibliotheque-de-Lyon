@@ -35,7 +35,7 @@ $router->map('GET', '/spaceAdmin', 'ControllerAdmin#space');
 
 
 // Recherche 
-$router->map('GET', '/search','ControllerBook#searchBook');
+// $router->map('GET', '/search','ControllerBook#searchBook');
 $router->map('GET', '/search', 'ControllerBook#spaceSearch');
 
 // Réservation livre 

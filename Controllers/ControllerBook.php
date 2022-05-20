@@ -53,6 +53,8 @@
             $sBT= $manager->searchBookLang();
         }
         public static function spaceSearch(){
+            $twig = Controllertwig::twigcontrol();
+            echo $twig->render('search.twig', ['root' => ROOT]);
             require_once './Views/search.php';
         }
     }

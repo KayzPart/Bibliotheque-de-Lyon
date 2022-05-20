@@ -1,0 +1,12 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %} Recherche {% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/header.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
+
+{% block content %} COUCOU {% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer.twig" %}
+<script src="{{root}}/Views/Templates/js/searchbar.js"></script> {% endblock %}
