@@ -31,20 +31,13 @@
             require_once './Views/admin_book_ajout.php';
         }
         public static function Show(){
-            $manager = new ModelBook();
-            $sBook = $manager->ViewCate();
-            require_once './Views/admin_book_ajout.php';
+            session_start();
+            if(!isset($_SESSION['adminId'])){
+                header("Refresh: 0.01; url = ./connectAdmin");
+            }
+            $twig = ControllerTwig::twigcontrol();
+            echo $twig->render('admin_book_ajout.twig', ['root' => ROOT]);
         }
-        public static function ShowCondi(){
-            $manager = new ModelBook();
-            $cBook = $manager->ViewCondi();
-            require_once './Views/admin_book_ajout.php';
-        }
-        // public static function ShowGender(){
-        //     $manager = new ModelBook();
-        //     $gBook = $manager->ViewGender();
-        //     require_once './Views/admin_book_ajout.php';
-        // }
         
         public static function spaceSearch(){
             $searchcat = $_GET['searchcat'];
@@ -54,7 +47,6 @@
             }else{
                 $search = $_GET['s'];
             }
-            var_dump($searchcat);
             $twig = Controllertwig::twigcontrol();
             $manager = new ModelBook();
             $result = $manager->spaceSearch($searchcat, $search, $p);

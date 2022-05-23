@@ -11,7 +11,7 @@
     <div class="contentsearchpage">
         <div class="contentsearch">
             {% for book in books %}
-                <a href="">
+                <a href="{{root}}/book/{{book.getId_book}}">
                     <div class="booksear">
                         <img class="imgbookss" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
                         <div class="bookdescse">
