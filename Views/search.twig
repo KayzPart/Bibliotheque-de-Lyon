@@ -14,10 +14,11 @@
         <p>{{book.getIsbn}}</p>
     {% endfor %}
     {% for i in range (1, nbrpages) %}
-        <a href=".&p={{i}}">{{i}}</a>
+        <a class="nbrpage" href="">{{i}}</a>
         
     {% endfor %}
 {% endblock %}
 
 {% block footer %} {% include "./Templates/footer/footer.twig" %}
-<script src="{{root}}/Views/Templates/js/searchbar.js"></script> {% endblock %}
+<script src="{{root}}/Views/Templates/js/searchbar.js"></script>
+<script src="{{root}}/Views/Templates/js/pagination.js"></script> {% endblock %}
