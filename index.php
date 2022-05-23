@@ -34,9 +34,6 @@ $router->map('GET', '/spaceUser', 'ControllerUser#space');
 $router->map('POST', '/verifAdmin', 'ControllerAdmin#connexionAdmin');
 $router->map('GET', '/spaceAdmin', 'ControllerAdmin#space');
 
-// Space Admin - Liste Livre 
-$router->map('GET', '/spaceAdmin', 'ControllerBook#listBookSpaceAdmn', '/listBookAdmin');
-
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
 $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');

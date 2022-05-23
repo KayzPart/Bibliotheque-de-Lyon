@@ -10,12 +10,6 @@
             echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks, 'root' => ROOT]);
         }
 
-        public static function listBookSpaceAdmn(){
-            $twig = ControllerTwig::twigControl();
-            $datas = new ModelBook();
-            $allBooksAdmn = $datas->listAll();
-            echo $twig->render('spaceAdmin.twig', ['books' => $allBooksAdmn,'root' => ROOT]);
-        }
         // public static function listBookAfterInsert(){
         //     $datas = new ModelBook();
         //     $afterInsert = $datas->listAll();

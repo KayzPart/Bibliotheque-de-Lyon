@@ -35,9 +35,10 @@ class ControllerAdmin extends ControllerTwig
         }
     }
     public static function space()
-    {
+    {   session_start();
         $twig = ControllerTwig::twigcontrol();
-        session_start();
-        echo $twig->render('spaceAdmin.twig', ['root' => ROOT]);
+        $datas = new ModelBook();
+        $allBooksAdmn = $datas->listAll();
+        echo $twig->render('spaceAdmin.twig', ['root' => ROOT, 'books' => $allBooksAdmn]);
     }
 }
