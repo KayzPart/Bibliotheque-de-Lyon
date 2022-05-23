@@ -9,6 +9,7 @@
             $allListNews = $datas->listNewsBook();
             echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks, 'root' => ROOT]);
         }
+
         // public static function listBookAfterInsert(){
         //     $datas = new ModelBook();
         //     $afterInsert = $datas->listAll();
@@ -58,6 +59,16 @@
             $manager = new ModelBook();
             $result = $manager->spaceSearch($searchcat, $search, $p);
             echo $twig->render('search.twig', ['root' => ROOT, 'books' => $result[0], 'nbrpages' => $result[1]]);
+        }
+
+        public static function editBookForm($id, $id_condition_book, $emplacement, $quantity){
+            $id = $_GET['id_book'];
+            $manager = new ModelBook(); 
+            $update = $manager->editBook($id, $id_condition_book, $emplacement, $quantity);
+            require_once './Views/admin_book_ajout.php';
+        }
+        public static function redirectionUpdate(){
+            require_once 'book.twig';
         }
     }
 

@@ -8,7 +8,40 @@
 
 {% block content %}
     <button><a href="{{root}}/bookF">ajouter un livre</a></button>
-    <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati eius iusto sequi consectetur ducimus aliquid odio et, iste voluptates velit, porro, rem quisquam quaerat distinctio aperiam dolore quos! Cupiditate, optio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nulla repellat ratione esse debitis reprehenderit dolorem tempore expedita omnis, dignissimos at labore dolores voluptatibus atque, laudantium aperiam? Corporis, soluta quia.</h1>
+    <p>
+        État du livre : 
+        <div class="cercle-bad">kiki</div>
+        <div class="cercle-medium">kiki</div>
+        <div class="cercle-good">kiki</div>    
+    </p>
+    {% for book in books %}
+        <div class="book pass">
+            <figure>
+                <img class="imgbooks" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}" style="width: 250">
+            </figure>
+            <h1>{{book.getTitle}}</h1>
+            <p>
+                {{book.getAuthor}}
+            </p>
+            <p>
+                {{book.getIsbn}}    
+            </p>
+            <p>
+                {{book.getYear_published}}    
+            </p>
+            <div class="cercle"></div>
+            <button id="update">
+                <a href="{{root}}/book/{{book.getId_book}}">Modifier</a>
+            </button>
+            <button id="delete">
+                <a href="{{root}}/admin_book_ajout/{{book.getId_book}}">Supprimer</a>
+            </button>
+        </div>
+    {% endfor %}
+    {% for i in range (1, nbrpages) %}
+        <a class="nbrpage" href="">{{i}}</a>
+        
+    {% endfor %}
 {% endblock %}
 
 {% block footer %} {% include "./Templates/footer/footer-co.twig" %} {% endblock %}

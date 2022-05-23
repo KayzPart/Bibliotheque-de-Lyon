@@ -35,12 +35,16 @@ class ControllerAdmin extends ControllerTwig
         }
     }
     public static function space()
+
     {
         session_start();
         if(!isset($_SESSION['adminId'])){
             header("Refresh: 0.01; url = ./connectAdmin");
         }
         $twig = ControllerTwig::twigcontrol();
-        echo $twig->render('spaceAdmin.twig', ['root' => ROOT]);
+        $datas = new ModelBook();
+        $allBooksAdmn = $datas->listAll();
+        echo $twig->render('spaceAdmin.twig', ['root' => ROOT, 'books' => $allBooksAdmn]);
+
     }
 }
