@@ -5,13 +5,14 @@ class ModelBook extends Model
     public function listAll()
     {
         $db = $this->getDb();
-        $req = $db->query('SELECT `book`.`id_book`, category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
+        $req = $db->query('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book`');
 
         $books = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
             $books[] = new Book($book);
         }
         return $books;
+        var_dump($req);
     }
 
     // Affichage des dix derniers livres
@@ -197,12 +198,13 @@ class ModelBook extends Model
 
     // Modification du livre
 
-    public function editBook($id_condition_book, $emplacement, $quantity)
+    public function editBook($id, $id_condition_book, $emplacement, $quantity)
     {
         $db = $this->getDb();
 
-        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id_book');
+        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id');
 
+        $req->bindParam(':id_book', $id, PDO::PARAM_INT);
         $req->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR);
         $req->bindParam(':emplacement', $emplacement, PDO::PARAM_STR);
         $req->bindParam(':quantity', $quantity, PDO::PARAM_STR);
