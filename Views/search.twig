@@ -8,7 +8,7 @@
 
 {% block content %} 
     {% for book in books %}
-        <img src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+        <img src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}" width="200px">
         <h1>{{book.getTitle}}</h1>
         <p>{{book.getAuthor}}</p>
         <p>{{book.getIsbn}}</p>
