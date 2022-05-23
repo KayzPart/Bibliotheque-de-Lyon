@@ -13,6 +13,10 @@
         <p>{{book.getAuthor}}</p>
         <p>{{book.getIsbn}}</p>
     {% endfor %}
+    {% for i in range (1, nbrpages) %}
+        <a href=".&p={{i}}">{{i}}</a>
+        
+    {% endfor %}
 {% endblock %}
 
 {% block footer %} {% include "./Templates/footer/footer.twig" %}

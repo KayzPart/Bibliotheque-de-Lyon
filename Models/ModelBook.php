@@ -94,7 +94,7 @@ class ModelBook extends Model
             } else {
                 echo 'Erreur, de téléchargement !';
             }
-            var_dump($_FILES);
+            // var_dump($_FILES);
 
             $id_category = $_POST['category-type'];
             $id_condition_book = $_POST['condition'];
@@ -222,7 +222,7 @@ class ModelBook extends Model
     }
 
     // Recherche (searchBar)
-    public function spaceSearch($searchcat, $search)
+    public function spaceSearch($searchcat, $search, $p)
     {
         if ($searchcat == 'id_category') {
             $searchimp = $searchcat . ' = ' . $search;
@@ -241,13 +241,25 @@ class ModelBook extends Model
         }
 
         $db = $this->getdb();
-        $req = $db->prepare("SELECT`id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE " . $searchimp);
-        $req->execute();
+        
+        $reqPages = $db->prepare("SELECT COUNT(`id_book`) FROM `book` WHERE $searchimp");
+        $reqPages->execute();
+
+        $count = $reqPages->fetchColumn();
+        $nbPages =  ceil($count / 10);
+        var_dump( $count ,$nbPages);
+
+        $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
+        $limit = $p * 10;
+
+        $datas = $db->prepare("SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE $searchimp ORDER BY `id_book` ASC LIMIT :p, 10");
+        $datas->bindParam('p', $limit, PDO::PARAM_INT);
+        $datas->execute();
 
         $searchResult = [];
-        while($resultS = $req->fetch(PDO::FETCH_ASSOC)){
+        while($resultS = $datas->fetch(PDO::FETCH_ASSOC)){
             $searchResult[] = new Book($resultS);
         }
-        return $searchResult;
+        return [$searchResult, $nbPages];
     }
 }
