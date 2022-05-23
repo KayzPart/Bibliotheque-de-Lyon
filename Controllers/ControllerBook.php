@@ -47,6 +47,7 @@
         
         public static function spaceSearch(){
             $searchcat = $_GET['searchcat'];
+            $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
             if($searchcat == 'id_category'){
                 $search = $_GET['categories'];
             }else{
@@ -55,8 +56,8 @@
             var_dump($searchcat);
             $twig = Controllertwig::twigcontrol();
             $manager = new ModelBook();
-            $result = $manager->spaceSearch($searchcat, $search);
-            echo $twig->render('search.twig', ['root' => ROOT, 'books' => $result]);
+            $result = $manager->spaceSearch($searchcat, $search, $p);
+            echo $twig->render('search.twig', ['root' => ROOT, 'books' => $result[0], 'nbrpages' => $result[1]]);
         }
     }
 
