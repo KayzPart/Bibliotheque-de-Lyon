@@ -249,7 +249,6 @@ class ModelBook extends Model
 
         $count = $reqPages->fetchColumn();
         $nbPages =  ceil($count / 10);
-        var_dump( $count ,$nbPages);
 
         $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
         $limit = $p * 10;
