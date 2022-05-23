@@ -44,10 +44,12 @@
             }
         }
         public static function space(){
+            session_start();
+            if(!isset($_SESSION['userId'])){
+                header("Refresh: 0.01; url = ./connectUser");
+            }
 
             $twig = Controllertwig::twigcontrol();
-            
-            session_start();
 
             echo $twig->render('spaceUser.twig', ['root' => ROOT]);
         }

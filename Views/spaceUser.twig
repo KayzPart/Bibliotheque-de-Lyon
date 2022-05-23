@@ -1,13 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Espace Utilisateur</h1>
-    <h1>dfdf</h1>
-</body>
-</html>
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Espace Utilisateur{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/headerUser.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
+
+{% block content %}
+    <h1>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati eius iusto sequi consectetur ducimus aliquid odio et, iste voluptates velit, porro, rem quisquam quaerat distinctio aperiam dolore quos! Cupiditate, optio? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt nulla repellat ratione esse debitis reprehenderit dolorem tempore expedita omnis, dignissimos at labore dolores voluptatibus atque, laudantium aperiam? Corporis, soluta quia.</h1>
+{% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}

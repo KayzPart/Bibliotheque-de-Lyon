@@ -495,7 +495,40 @@ body{
 
 
 
-
+// ||-------SEARCH-------||
+.searcht{
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+}
+.contentsearchpage{
+    background: $bgbtn;
+    margin: 20px 0;
+    &>.contentpage{
+        display: flex;
+        justify-content: center;
+        &>.nbrpage{
+            margin: 10px;
+            color: $color;
+            font-weight: bolder;
+        }
+    }
+}
+.contentsearch{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    background: $bgbtn;
+}
+.imgbookss{
+    width: 90px;
+    height: 140px;
+    margin: 10px 0;
+}
+.bookdescse{
+    display: none;
+}
 // ||-----BOOK------||
 .tbook{
     width: 200px;
@@ -775,6 +808,37 @@ body{
         font-size: 30px;
         height: 800px;
         justify-content: center;
-
+    }
+    // ||----search----||
+    .searcht{
+        width: 680px;
+        height: 100px;
+        font-size: 36px;
+    }
+    .contentsearch{
+        &>a{
+            text-decoration: none;
+        }
+    }
+    .bookdescse{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: $color;
+        margin: 10px;
+        font-size: 30px;
+        width: 435px;
+        text-align: center;
+    }
+    .booksear{    
+        display: flex;
+        background: $bgb;
+        margin: 10px 0;
+    }
+    .imgbookss{
+        width: 340px;
+        height: 540px;
+        margin: 0;
     }
 }

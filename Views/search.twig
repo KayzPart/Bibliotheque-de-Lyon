@@ -7,16 +7,30 @@
 {% block header %} {% include "./Templates/header/header.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
 
 {% block content %} 
-    {% for book in books %}
-        <img src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}" width="200px">
-        <h1>{{book.getTitle}}</h1>
-        <p>{{book.getAuthor}}</p>
-        <p>{{book.getIsbn}}</p>
-    {% endfor %}
-    {% for i in range (1, nbrpages) %}
-        <a class="nbrpage" href="">{{i}}</a>
-        
-    {% endfor %}
+    <h1 class="title searcht"> Résultat de votre recherche</h1>
+    <div class="contentsearchpage">
+        <div class="contentsearch">
+            {% for book in books %}
+                <a href="">
+                    <div class="booksear">
+                        <img class="imgbookss" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+                        <div class="bookdescse">
+                            <h2>{{book.getTitle}}</h2>
+                            <p>{{book.getAuthor}}</p>
+                            <p>{{book.getIsbn}}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="contentpage">
+            {% for i in range (1, nbrpages) %}
+                <a class="nbrpage" href="">{{i}}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+
 {% endblock %}
 
 {% block footer %} {% include "./Templates/footer/footer.twig" %}
