@@ -50,6 +50,8 @@ $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 // Update Book
 $router->map('GET', '/update/[i:id_book]', 'ControllerBook#editBookForm', 'updateForm');
 
+
+
 // Recherche 
 $router->map('GET', '/search', 'ControllerBook#spaceSearch');
 // Afficher recherche 

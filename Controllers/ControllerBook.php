@@ -11,12 +11,7 @@ class ControllerBook extends ControllerTwig
         $allListNews = $datas->listNewsBook();
         echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks, 'root' => ROOT]);
     }
-
-    // public static function listBookAfterInsert(){
-    //     $datas = new ModelBook();
-    //     $afterInsert = $datas->listAll();
-    //     require_once './Views/book.php';
-    // }
+    
     public static function readBook($id)
     {
         $twig = ControllerTwig::twigControl();
@@ -70,37 +65,19 @@ class ControllerBook extends ControllerTwig
 
 
     // Modification Book
-    public static function editBookForm($datas)
+    public static function editBookForm($id)
     {
         $twig = ControllerTwig::twigControl();
         $datas = $_GET;
         $datas = new ModelBook();
-        $update = $datas->editBook($datas);
-        echo $twig->render('update_book.twig', ['root' => ROOT, 'book' => $update]);
+        $book = $datas->select($id);
+        $update = $datas->editBook($id);
+        echo $twig->render('update_book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2],'root' => ROOT]);
+    }
+    public static function redirectionAfterEdit(){
+        $twig = ControllerTwig::twigControl();
+        $datas = new ModelBook();
+        echo $twig->render('spaceAdmin.twig',['root' => ROOT]);
     }
 }
 
-    // function lister_image($repertoire){
-    //     // var_dump($repertoire);
-    //     // Vérifier que le dossier est bien un répertoire
-    //     if(is_dir($repertoire)){
-    //         // Verifier que le dossier est accessible et l'ouvrir
-    //         if($iteration = opendir($repertoire)){
-    //             // Parcourir le contenu du dossier
-    //             while(($fichier = readdir($iteration)) !== false){
-    //                 // Exclure les arguments . et ... pour eviter que le script ne change de dossier
-    //                 if($fichier != "." && $fichier != ".."){
-    //                     // Verifier que les fichiers osnt des images
-    //                     $fichier_info = finfo_open(FILEINFO_MIME);
-    //                     $mime_type = finfo_file($fichier_info, $repertoire.$fichier);
-    //                     if(strpos($mime_type, 'image/') === 0){
-    //                         echo '<img src="'.$repertoire.$fichier.'" alt="">';
-    //                     }
-    //                 }
-    //                 var_dump($fichier);
-    //             }
-    //             closedir($iteration);
-    //         }
-    //     }
-    // }
-    // lister_image('./public/ressources/');

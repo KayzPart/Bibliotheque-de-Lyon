@@ -117,6 +117,8 @@ class ModelBook extends Model
             $emplacement = $_POST['emplacement'];
             $lang = $_POST['lang'];
 
+            
+
             $db = $this->getDb();
             $req = $db->prepare("INSERT INTO `book`(`id_category`, `id_condition_book`,`title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`) VALUES (:id_category, :id_condition_book, :title, :author, :year_published, :descrip, :isbn, :photo, :emplacement, :lang)");
 
@@ -207,43 +209,28 @@ class ModelBook extends Model
 
     // Modification du livre
 
-    public function editBook($datas)
-    {
-        $db = $this->getDb();
-
-        $updateSelect = $db->query('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book`'); 
-
-        $updateBook = [];
-        while($book = $updateSelect->fetch(PDO::FETCH_ASSOC)){
-            $updateBook[] = new Book($book);
-        }
-        return $updateBook;
-
+    public function editBook($id){   
         if (isset($_GET['submit'])) {
             $id = $_GET['id_book'];
-            $id_condition_book = $_GET['id_condition_book'];
+            $id_condition_book = $_GET['condition'];
             $emplacement = $_GET['emplacement'];
-            $quantity = $_GET['quantity'];
 
             $db = $this->getDb();
 
-            $reqUpdate = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id');
+            $reqUpdate = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement WHERE id_book = :id');
 
             $reqUpdate->bindParam(':id', $id, PDO::PARAM_INT);
-            $reqUpdate->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR);
+            $reqUpdate->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_INT);
             $reqUpdate->bindParam(':emplacement', $emplacement, PDO::PARAM_STR);
-            $reqUpdate->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+
             $reqUpdate->execute();
+            echo 'Données mises à jour';
 
             $modiB = [];
-            $modiC = [];
-            $modiQ = [];
             while ($dts = $reqUpdate->fetch(PDO::FETCH_ASSOC)) {
                 $modiB = new Book($dts);
-                $modiC = new ConditionBook($dts);
-                $modiQ = new Quantity_book($dts);
             }
-            return [$modiB, $modiC, $modiQ];
+            return $modiB;
         }
     }
     // Affichage par liste descendante 
