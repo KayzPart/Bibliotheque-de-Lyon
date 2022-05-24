@@ -1,10 +1,15 @@
 {% extends "./Templates/template.twig" %}
 
-{% block title %}Espace Admin{% endblock %}
+{% block title %}Espace Admin
+{% endblock %}
 
-{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
 
-{% block header %} {% include "./Templates/header/headerAdmin.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
+{% block header %}
+	{% include "./Templates/header/headerAdmin.twig" %}
+	{% include "./Templates/header/searchbar.twig" %}
+{% endblock %}
 
 {% block content %}
     <button><a href="{{root}}/bookF">ajouter un livre</a></button>
@@ -44,4 +49,8 @@
     {% endfor %}
 {% endblock %}
 
-{% block footer %} {% include "./Templates/footer/footer-co.twig" %} {% endblock %}
+{% block footer %}
+	{% include "./Templates/footer/footer-co.twig" %}
+    <script src="{{root}}/Views/Templates/js/searchbar.js"></script>
+    <script src="{{root}}/Views/Templates/js/all-pagination.js"></script>
+{% endblock %}
