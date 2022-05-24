@@ -1,0 +1,111 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Ajout d'un livre{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/headerAdmin.twig" %} {% endblock %}
+
+{% block content %}
+
+    <div class="title newbookt">Ajout d'un livre</div>
+
+    <form action="./newBook" method="POST" enctype="multipart/form-data" class="formaddbook">
+        <div class="tay">
+            <label for="title">Titre</label>
+            <input type="text" name="title">
+
+            <label for="author">Auteur</label>
+            <input type="text" name="author">
+
+            <label for="year_published">Année de publication</label>
+            <input type="date" name="year_published">
+        </div>
+
+        <div class="dcgi">
+            <div class="descadd">
+                    <label>Description</label>
+                <textarea name="descrip" placeholder="Veuillez entrer une description du livre"></textarea>
+            </div>
+
+            <div class="cgi">
+                <label for="category-type">Catégorie</label>
+
+                <select name="category-type">
+                    <option value="1">Roman</option>
+                    <option value="2">Manga</option>
+                    <option value="3">BD</option>
+                    <option value="4">Magazine</option>
+                    <option value="5">Journal</option>
+                </select>
+
+                <div class="gender-add">
+                    <label for="gender">Genre</label>
+                    <div class="checkboxcontent">
+                        <label><input type="checkbox" name="gender[]" value="1">Fantaisie</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="2">Action</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="3">Aventure</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="4">Comédie</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="5">Romance</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="6">Histoire</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="7">Policier</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="8">Guerre</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="9">Drame</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="10">Horreur</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="11">Science-Fiction</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="12">Biographie</label>
+                    </div>
+                    
+                </div>
+
+                <label for="isbn">ISBN</label>
+                <input type="text" name="isbn">
+            </div>
+
+        </div>
+
+        <div class="pleetat">
+            <div class="ple">
+                <label for="photo">Image</label>
+                <div class="upload">
+                    <button class="btn-upload">Choisir un fichier</button>
+                    <input type="file" name="photo" accept="image/png, image/jpeg, image/jpg">
+                </div>
+
+
+                <label for="lang">Langue</label>
+                <input type="text" name="lang">
+
+                <label for="emplacement">Emplacement</label>
+                <input type="text" name="emplacement">
+            </div>
+            <div class="etat">
+                <label>État</label>
+                
+                <label class="condition" for="condition1"><input type="radio" name="condition" id="condition1" value="1">Très bon</label>
+                
+                <label class="condition" for="condition2"><input type="radio" name="condition" id="condition2" value="2">Bon</label>
+
+                <label class="condition" for="condition3"><input type="radio" name="condition" id="condition3" value="3">Mauvais</label>
+            </div>
+
+        </div>
+
+
+        <input class="btnsub addbook" type="submit" name="submit" value="Envoyer">
+    </form>
+    <p class="btnbacks"><a class="btnback" href="{{root}}/spaceAdmin">Retour</a></p>
+{% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer-co.twig" %} {% endblock %}

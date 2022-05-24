@@ -312,6 +312,8 @@ body {
   color: #E0C097;
   background-color: #5C3D2E;
   font-weight: bold;
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
   font-size: 16px;
   margin: 20px auto;
   margin-bottom: 10px;
@@ -712,6 +714,281 @@ body {
   display: none;
 }
 
+.newbookt {
+  width: 150px;
+  height: 45px;
+}
+
+.formaddbook {
+  background: #5C3D2E;
+  margin: 10px 0;
+  color: #E0C097;
+  padding: 20px;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tay, .dcgi, .cgi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.tay > label, .dcgi > label, .cgi > label {
+  margin-bottom: 5px;
+}
+
+.tay > input, .dcgi > input, .cgi > input {
+  width: 80%;
+  margin-bottom: 10px;
+  font-family: 'K2D';
+  text-align: center;
+}
+
+.dcgi > .descadd {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.dcgi > .descadd > textarea {
+  width: 80%;
+  height: 150px;
+  font-family: 'K2D';
+  margin-bottom: 10px;
+}
+
+.cgi {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cgi > select {
+  margin-bottom: 10px;
+  width: 80%;
+  font-family: 'K2D';
+  text-align: center;
+}
+
+.gender-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.gender-add > .checkboxcontent > label {
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.gender-add > .checkboxcontent > label > input[type="checkbox"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: white;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gender-add > .checkboxcontent > label > input[type="checkbox"]::before {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background: #E0C097;
+  border-radius: 50%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.gender-add > .checkboxcontent > label > input[type="checkbox"]:checked::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.ple {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.ple > label {
+  margin-bottom: 10px;
+}
+
+.ple > input {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.ple > .upload {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ple > .upload input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  font-size: 90px;
+}
+
+.ple > .upload .btn-upload {
+  background: #fff;
+  border: none;
+  color: #5C3D2E;
+  font-family: 'K2D';
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 10px;
+}
+
+.etat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.etat > .condition {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.etat > label {
+  margin-bottom: 10px;
+}
+
+.etat > label > input[type="radio"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: white;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.etat > label > input[type="radio"]::before {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background: #E0C097;
+  border-radius: 50%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.etat > label > input[type="radio"]:checked::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.addbook {
+  width: 160px;
+  height: 35px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .searcht {
   width: 200px;
   height: 60px;
@@ -1021,6 +1298,100 @@ body {
   .menuadmin > li > a {
     font-size: 16px;
     line-height: normal;
+  }
+  .newbookt {
+    width: 350px;
+    height: 65px;
+  }
+  .formaddbook {
+    margin: 10px;
+    font-size: 24px;
+  }
+  .tay, .dcgi {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .tay > .descadd, .dcgi > .descadd {
+    text-align: start;
+    margin: 30px 0;
+  }
+  .tay > .descadd > textarea, .dcgi > .descadd > textarea {
+    margin-top: 10px;
+    font-size: 20px;
+    width: 700px;
+    height: 400px;
+  }
+  .tay > input, .dcgi > input {
+    height: 28px;
+    width: 40%;
+    margin-left: 10px;
+    margin-right: 20px;
+    font-size: 20px;
+  }
+  .cgi > input {
+    height: 28px;
+    width: 40%;
+    font-size: 20px;
+  }
+  .cgi > select {
+    height: 28px;
+    font-size: 20px;
+    width: 40%;
+  }
+  .gender-add {
+    margin: 10px;
+  }
+  .gender-add > .checkboxcontent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .gender-add > .checkboxcontent > label {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .pleetat {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .ple {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 60%;
+  }
+  .ple > input {
+    width: 30%;
+    height: 28px;
+    font-size: 20px;
+  }
+  .ple > .upload {
+    height: 28px;
+    margin-bottom: 10px;
+    width: 40%;
+  }
+  .ple > .upload .btn-upload {
+    width: 60%;
+    height: 28px;
+    font-size: 20px;
+  }
+  .etat {
+    width: 40%;
+  }
+  .etat > .condition {
+    width: 40%;
   }
   .tbook {
     width: 470px;
