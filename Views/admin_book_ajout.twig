@@ -23,9 +23,10 @@
         </div>
 
         <div class="dcgi">
-            <label>Description</label>
-            <textarea name="descrip" placeholder="Veuillez entrer une description du livre"></textarea>
-
+            <div class="descadd">
+                    <label>Description</label>
+                <textarea name="descrip" placeholder="Veuillez entrer une description du livre"></textarea>
+            </div>
 
             <div class="cgi">
                 <label for="category-type">Catégorie</label>
@@ -40,30 +41,32 @@
 
                 <div class="gender-add">
                     <label for="gender">Genre</label>
-
-                    <label><input type="checkbox" name="gender[]" value="1">Fantaisie</label>
+                    <div class="checkboxcontent">
+                        <label><input type="checkbox" name="gender[]" value="1">Fantaisie</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="2">Action</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="3">Aventure</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="4">Comédie</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="5">Romance</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="6">Histoire</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="7">Policier</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="8">Guerre</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="9">Drame</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="10">Horreur</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="11">Science-Fiction</label>
+                        
+                        <label><input type="checkbox" name="gender[]" value="12">Biographie</label>
+                    </div>
                     
-                    <label><input type="checkbox" name="gender[]" value="2">Action</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="3">Aventure</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="4">Comédie</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="5">Romance</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="6">Histoire</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="7">Policier</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="8">Guerre</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="9">Drame</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="10">Horreur</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="11">Science-Fiction</label>
-                    
-                    <label><input type="checkbox" name="gender[]" value="12">Biographie</label>
                 </div>
 
                 <label for="isbn">ISBN</label>
@@ -72,35 +75,37 @@
 
         </div>
 
+        <div class="pleetat">
+            <div class="ple">
+                <label for="photo">Image</label>
+                <div class="upload">
+                    <button class="btn-upload">Choisir un fichier</button>
+                    <input type="file" name="photo" accept="image/png, image/jpeg, image/jpg">
+                </div>
 
-        <label for="photo">Ajoutez une image de couverture :</label>
-        <input type="file" name="photo" accept="image/png, image/jpeg, image/jpg">
 
-        <br><br>
+                <label for="lang">Langue</label>
+                <input type="text" name="lang">
 
-        <label for="lang">Langue :</label>
-        <input type="text" name="lang">
+                <label for="emplacement">Emplacement</label>
+                <input type="text" name="emplacement">
+            </div>
+            <div class="etat">
+                <label>État</label>
+                
+                <label class="condition" for="condition1"><input type="radio" name="condition" id="condition1" value="1">Très bon</label>
+                
+                <label class="condition" for="condition2"><input type="radio" name="condition" id="condition2" value="2">Bon</label>
 
-        <br><br>
+                <label class="condition" for="condition3"><input type="radio" name="condition" id="condition3" value="3">Mauvais</label>
+            </div>
 
-        <label for="emplacement">Emplacement :</label>
-        <input type="text" name="emplacement">
+        </div>
 
-        <br><br>
 
-        <label for="condition">État</label>
-
-        <input type="radio" name="condition" value="1">
-        <label for="condition">Très bon</label>
-
-        <input type="radio" name="condition" value="2">
-        <label for="condition">Bon</label>
-
-        <input type="radio" name="condition" value="3">
-        <label for="condition">Mauvais</label>
-
-        <button type="submit" name="submit">Envoyer</button>
+        <input class="btnsub addbook" type="submit" name="submit" value="Envoyer">
     </form>
+    <p class="btnbacks"><a class="btnback" href="{{root}}/spaceAdmin">Retour</a></p>
 {% endblock %}
 
 {% block footer %} {% include "./Templates/footer/footer-co.twig" %} {% endblock %}
