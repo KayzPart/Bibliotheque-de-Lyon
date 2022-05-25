@@ -504,6 +504,7 @@ body {
   background: #E0C097;
   border: 2px solid #5C3D2E;
   color: #2D2424;
+  font-size: 14px;
 }
 
 #footermain .socialnkhor > .social > .logosocial {
@@ -652,7 +653,7 @@ body {
   border: 2px solid #2D2424;
   width: 110px;
   height: 50px;
-  font-size: 16px;
+  font-size: 14px;
   color: #2D2424;
   background: #E0C097;
   text-align: center;
@@ -1289,7 +1290,7 @@ body {
     width: 40%;
   }
   .connectp > .btnconnect > .btnlinkco {
-    width: 200px;
+    width: 220px;
     height: 80px;
     font-size: 30px;
     line-height: 80px;
