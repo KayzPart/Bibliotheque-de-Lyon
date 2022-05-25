@@ -11,20 +11,19 @@ class ControllerBook extends ControllerTwig
         $allListNews = $datas->listNewsBook();
         echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks, 'root' => ROOT]);
     }
-    public static function readBook($id)
-    {
+    public static function readBook($id){
         $twig = ControllerTwig::twigControl();
-
         $datas = new ModelBook();
         $book = $datas->select($id);
-
         echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'root' => ROOT]);
     }
+
     public static function newBook($datas){
+        $twig = ControllerTwig::twigControl();
         $datas = $_POST;
         $manager = new ModelBook();
-        $newBook = $manager->insertBook($datas);
-        require_once './Views/admin_book_ajout.php';
+        $manager->insertBook($datas);
+        header('Refresh: 2; url = ./spaceAdmin');
     }
     public static function Show(){
         session_start();
@@ -48,15 +47,22 @@ class ControllerBook extends ControllerTwig
         $result = $manager->spaceSearch($searchcat, $search, $p);
         echo $twig->render('search.twig', ['root' => ROOT, 'books' => $result[0], 'nbrpages' => $result[1]]);
     }
+        
 
 
     // Modification Book
-    public static function editBookForm($datas)
+    public static function editBookForm($id)
     {
         $twig = ControllerTwig::twigControl();
         $datas = $_GET;
         $datas = new ModelBook();
-        $update = $datas->editBook($datas);
-        echo $twig->render('update_book.twig', ['root' => ROOT, 'book' => $update]);
+        $book = $datas->select($id);
+        $update = $datas->editBook($id);
+        echo $twig->render('update_book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2],'root' => ROOT]);
+    }
+    public static function redirectionAfterEdit(){
+        $twig = ControllerTwig::twigControl();
+        $datas = new ModelBook();
+        echo $twig->render('spaceAdmin.twig',['root' => ROOT]);
     }
 }
