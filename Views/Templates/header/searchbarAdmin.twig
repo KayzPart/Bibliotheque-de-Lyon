@@ -1,0 +1,25 @@
+<div>
+    <form action="{{root}}/searchAdmin" method="GET" id="searchbar">
+        <div class="bgblur">
+            <label for="search">Que cherchez-vous ?</label>
+        </div>
+        <div class="bgblur">
+            <select class="selectcat" name="searchcat" id="searchcat">
+                <option class="searchcate" value="id_category">Catégorie</option>
+                <option class="searchcate" value="author">Auteur</option>
+                <option class="searchcate" value="title">Titre</option>
+                <option class="searchcate" value="year_published">Date de Publication</option>
+                <option class="searchcate" value="lang">Langue</option>
+            </select>
+            <select name="categories" id="categories">
+                <option value="1">Roman</option>
+                <option value="2">Manga</option>
+                <option value="3">BD</option>
+                <option value="4">Magazine</option>
+                <option value="5">Journal</option>
+            </select>
+            <input class="inpsearchbar" type="search" name="s" id="search" placeholder="Votre recherche ...">
+            <button class="btnsub" type="submit">RECHERCHER</button>
+        </div>
+    </form>
+</div>

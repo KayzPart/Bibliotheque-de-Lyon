@@ -9,7 +9,6 @@ class ModelBook extends Model
         $reqCount = $db->query('SELECT COUNT(`id_book`) FROM `book`');
         $count = $reqCount->fetchColumn();
         $nbPages =  ceil($count / 10);
-
         $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
         $limit = $p * 10;
 

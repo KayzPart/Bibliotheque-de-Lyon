@@ -715,6 +715,130 @@ body {
   display: none;
 }
 
+.contentAdmin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 30px 0;
+}
+
+.btnsubb {
+  padding: 10px;
+  background-color: #5C3D2E;
+  border: 2px solid #2D2424;
+}
+
+.btnsubb > a {
+  color: #E0C097;
+  text-decoration: none;
+}
+
+.diffetat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px 0;
+}
+
+.diffetat > .circles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.circle.red {
+  background: red;
+}
+
+.circle.yellow {
+  background: yellow;
+}
+
+.circle.green {
+  background: green;
+}
+
+.contentbook {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #5C3D2E;
+  margin-bottom: 5px;
+}
+
+.resumbook {
+  width: 50%;
+}
+
+.bookadmin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+  position: relative;
+  margin: 5px 0;
+  color: #E0C097;
+}
+
+.bookadmin > .line {
+  position: absolute;
+  left: 10%;
+  bottom: -5px;
+  width: 80%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #E0C097;
+}
+
+.btna {
+  width: 40px;
+  height: 40px;
+  background: #E0C097;
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.ico-mo {
+  width: 40px;
+}
+
+.ico-trash {
+  width: 40px;
+}
+
 .newbookt {
   width: 150px;
   height: 45px;
@@ -941,6 +1065,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .etat > .condition {
@@ -995,6 +1120,27 @@ body {
 .etat > label > input[type="radio"]:checked::before {
   -webkit-transform: scale(1);
           transform: scale(1);
+}
+
+.quantity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.quantity > label {
+  margin-bottom: 10px;
+}
+
+.quantity > input {
+  margin-bottom: 20px;
 }
 
 .addbook {
@@ -1419,6 +1565,20 @@ body {
   }
   .etat > .condition {
     width: 40%;
+  }
+  .quantity {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .quantity > label {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+  .quantity > input {
+    height: 28px;
+    margin-bottom: 0;
   }
   .addbook {
     width: 280px;

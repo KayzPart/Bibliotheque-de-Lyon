@@ -495,8 +495,87 @@ body{
 
 // ||-----SPACE ADMIN------||
 
-
-
+.contentAdmin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+.btnsubb{
+    padding: 10px;
+    background-color: $bgbtn;
+    border: 2px solid $bgb;
+    &>a{
+        color: $color;
+        text-decoration: none;
+    }
+}
+.diffetat{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    margin: 10px 0;
+    &>.circles{
+        display: flex;
+        align-items: center;
+    }
+}
+.circle{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    &.red{
+        background: red;
+    }
+    &.yellow{
+        background: yellow;
+    }
+    &.green{
+        background: green;
+    }
+}
+.contentbook{
+    display: flex;
+    flex-direction: column;
+    background-color: $bgbtn;
+    margin-bottom: 5px;
+}
+.resumbook{
+    width: 50%;
+}
+.bookadmin{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    position: relative;
+    margin: 5px 0;
+    color: $color;
+    &>.line{
+        position: absolute;
+        left: 10%;
+        bottom: -5px;
+        width: 80%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $color;
+        
+    }
+}
+.btna{
+    width: 40px;
+    height: 40px;
+    background: $color;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.50);
+}
+.ico-mo{
+    width: 40px;
+}
+.ico-trash{
+    width: 40px;
+}
 
 // ||----ADD BOOK----||
 .newbookt{
@@ -643,6 +722,7 @@ body{
     flex-direction: column;
     align-items: center;
     width: 100%;
+    margin-bottom: 20px;
     &>.condition{
         display: flex;
         width: 80%;
@@ -675,6 +755,17 @@ body{
                 transform: scale(1);
             }
         }
+    }
+}
+.quantity{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &>label{
+        margin-bottom: 10px;
+    }
+    &>input{
+        margin-bottom: 20px;
     }
 }
 .addbook{
@@ -1048,6 +1139,17 @@ body{
         width: 40%;
         &>.condition{
             width: 40%;
+        }
+    }
+    .quantity{
+        flex-direction: row;
+        &>label{
+            margin-bottom: 0;
+            margin-right: 5px;
+        }
+        &>input{
+            height: 28px;
+            margin-bottom: 0;
         }
     }
     .addbook{
