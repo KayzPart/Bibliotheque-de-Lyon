@@ -2,17 +2,26 @@
 class ModelBook extends Model
 {
     // Affichage de tous les livres
-    public function listAll()
+    public function listAll($p)
     {
         $db = $this->getDb();
-        $req = $db->query('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book`');
+
+        $reqCount = $db->query('SELECT COUNT(`id_book`) FROM `book`');
+        $count = $reqCount->fetchColumn();
+        $nbPages =  ceil($count / 10);
+
+        $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
+        $limit = $p * 10;
+
+        $req = $db->prepare('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` ORDER BY `id_book` ASC LIMIT :p, 10');
+        $req->bindParam('p', $limit, PDO::PARAM_INT);
+        $req->execute();
 
         $books = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
             $books[] = new Book($book);
         }
-        return $books;
-        var_dump($req);
+        return [$books, $nbPages];
     }
 
     // Affichage des dix derniers livres
@@ -198,17 +207,44 @@ class ModelBook extends Model
 
     // Modification du livre
 
-    public function editBook($id, $id_condition_book, $emplacement, $quantity)
+    public function editBook($datas)
     {
         $db = $this->getDb();
 
-        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id');
+        $updateSelect = $db->query('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book`'); 
 
-        $req->bindParam(':id_book', $id, PDO::PARAM_INT);
-        $req->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR);
-        $req->bindParam(':emplacement', $emplacement, PDO::PARAM_STR);
-        $req->bindParam(':quantity', $quantity, PDO::PARAM_STR);
-        $req->execute();
+        $updateBook = [];
+        while($book = $updateSelect->fetch(PDO::FETCH_ASSOC)){
+            $updateBook[] = new Book($book);
+        }
+        return $updateBook;
+
+        if (isset($_GET['submit'])) {
+            $id = $_GET['id_book'];
+            $id_condition_book = $_GET['id_condition_book'];
+            $emplacement = $_GET['emplacement'];
+            $quantity = $_GET['quantity'];
+
+            $db = $this->getDb();
+
+            $reqUpdate = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id');
+
+            $reqUpdate->bindParam(':id', $id, PDO::PARAM_INT);
+            $reqUpdate->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR);
+            $reqUpdate->bindParam(':emplacement', $emplacement, PDO::PARAM_STR);
+            $reqUpdate->bindParam(':quantity', $quantity, PDO::PARAM_INT);
+            $reqUpdate->execute();
+
+            $modiB = [];
+            $modiC = [];
+            $modiQ = [];
+            while ($dts = $reqUpdate->fetch(PDO::FETCH_ASSOC)) {
+                $modiB = new Book($dts);
+                $modiC = new ConditionBook($dts);
+                $modiQ = new Quantity_book($dts);
+            }
+            return [$modiB, $modiC, $modiQ];
+        }
     }
     // Affichage par liste descendante 
     public function listAllDesc()
@@ -243,7 +279,7 @@ class ModelBook extends Model
         }
 
         $db = $this->getdb();
-        
+
         $reqPages = $db->prepare("SELECT COUNT(`id_book`) FROM `book` WHERE $searchimp");
         $reqPages->execute();
 
@@ -258,7 +294,7 @@ class ModelBook extends Model
         $datas->execute();
 
         $searchResult = [];
-        while($resultS = $datas->fetch(PDO::FETCH_ASSOC)){
+        while ($resultS = $datas->fetch(PDO::FETCH_ASSOC)) {
             $searchResult[] = new Book($resultS);
         }
         return [$searchResult, $nbPages];

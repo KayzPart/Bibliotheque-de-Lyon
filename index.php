@@ -48,8 +48,7 @@ $router->map('GET', '/bookF', 'ControllerBook#ShowCondi', 'afficherCondi' );
 $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
 // Update Book
-$router->map('POST', '/book', 'ControllerBook#editBookForm', 'updateBook');
-$router->map('GET', 'ControllerBook#redirectionUpdate', 'redirectionAfterUpdateBook');
+$router->map('GET', '/update/[i:id_book]', 'ControllerBook#editBookForm', 'updateForm');
 
 // Recherche 
 $router->map('GET', '/search', 'ControllerBook#spaceSearch');
