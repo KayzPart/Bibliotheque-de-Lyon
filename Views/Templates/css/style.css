@@ -770,6 +770,9 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .dcgi > .descadd > textarea {
@@ -881,6 +884,18 @@ body {
 
 .ple > label {
   margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.ple > label > span {
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 .ple > input {
@@ -900,7 +915,7 @@ body {
   left: 0;
   top: 0;
   opacity: 0;
-  font-size: 90px;
+  font-size: 30px;
 }
 
 .ple > .upload .btn-upload {
@@ -1376,6 +1391,17 @@ body {
     width: 30%;
     height: 28px;
     font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .ple > label {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 28px;
+  }
+  .ple > label > span {
+    margin-right: 50px;
   }
   .ple > .upload {
     height: 28px;
@@ -1392,6 +1418,11 @@ body {
   }
   .etat > .condition {
     width: 40%;
+  }
+  .addbook {
+    width: 280px;
+    height: 55px;
+    font-size: 30px;
   }
   .tbook {
     width: 470px;

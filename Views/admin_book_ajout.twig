@@ -13,25 +13,25 @@
     <form action="./newBook" method="POST" enctype="multipart/form-data" class="formaddbook">
         <div class="tay">
             <label for="title">Titre</label>
-            <input type="text" name="title">
+            <input id="title" type="text" name="title">
 
             <label for="author">Auteur</label>
-            <input type="text" name="author">
+            <input id="author" type="text" name="author">
 
             <label for="year_published">Année de publication</label>
-            <input type="date" name="year_published">
+            <input id="year_published" type="date" name="year_published">
         </div>
 
         <div class="dcgi">
             <div class="descadd">
-                    <label>Description</label>
-                <textarea name="descrip" placeholder="Veuillez entrer une description du livre"></textarea>
+                    <label for="description">Description</label>
+                <textarea id="description" name="descrip" placeholder="Veuillez entrer une description du livre"></textarea>
             </div>
 
             <div class="cgi">
                 <label for="category-type">Catégorie</label>
 
-                <select name="category-type">
+                <select id="category-type" name="category-type">
                     <option value="1">Roman</option>
                     <option value="2">Manga</option>
                     <option value="3">BD</option>
@@ -70,7 +70,7 @@
                 </div>
 
                 <label for="isbn">ISBN</label>
-                <input type="text" name="isbn">
+                <input id="isbn" type="text" name="isbn">
             </div>
 
         </div>
@@ -80,15 +80,15 @@
                 <label for="photo">Image</label>
                 <div class="upload">
                     <button class="btn-upload">Choisir un fichier</button>
-                    <input type="file" name="photo" accept="image/png, image/jpeg, image/jpg">
+                    <input id="photo" type="file" name="photo" accept="image/png, image/jpeg, image/jpg">
                 </div>
 
 
                 <label for="lang">Langue</label>
-                <input type="text" name="lang">
+                <input type="text" name="lang" id="lang">
 
-                <label for="emplacement">Emplacement</label>
-                <input type="text" name="emplacement">
+                <label for="emplacement"><span>Emplacement </span><input type="text" name="emplacement" id="emplacement"></label>
+
             </div>
             <div class="etat">
                 <label>État</label>

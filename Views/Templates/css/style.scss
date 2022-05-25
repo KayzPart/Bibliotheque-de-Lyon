@@ -532,6 +532,7 @@ body{
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
         &>textarea{
             width: 80%;
             height: 150px;
@@ -602,6 +603,12 @@ body{
     margin-bottom: 10px;
     &>label{
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        &>span{
+            margin-bottom: 10px;
+            text-align: center;
+        }
     }
     &>input{
         width: 80%;
@@ -617,7 +624,7 @@ body{
             left: 0;
             top: 0;
             opacity: 0;
-            font-size: 90px;
+            font-size: 30px;
         }
         & .btn-upload{
             background: #fff;
@@ -1016,6 +1023,14 @@ body{
             width: 30%;
             height: 28px;
             font-size: 20px;
+            margin-bottom: 10px;
+        }
+        &>label{
+            flex-direction: row;
+            height: 28px;
+            &>span{
+                margin-right: 50px;
+            }
         }
         &>.upload {
             height: 28px;
@@ -1034,7 +1049,11 @@ body{
             width: 40%;
         }
     }
-
+    .addbook{
+        width: 280px;
+        height: 55px;
+        font-size: 30px;
+    }
 
     // ||----book----||
     .tbook{
