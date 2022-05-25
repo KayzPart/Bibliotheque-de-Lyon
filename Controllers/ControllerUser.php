@@ -53,4 +53,16 @@
 
             echo $twig->render('spaceUser.twig', ['root' => ROOT]);
         }
+
+        public static function inscriptionUser(){
+            $twig = ControllerTwig::twigControl();
+            $user = new ModelUser();
+            $datas = $user->userInscription();
+            echo $twig->render('spaceAdmin.twig', ['user' => $datas, 'root' => ROOT]);
+        }
+
+        public static function spaceInscripUse(){
+            $twig = ControllerTwig::twigControl();
+            echo $twig->render('registration_user.twig', [ 'root' => ROOT]);
+        }
     }

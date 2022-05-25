@@ -104,8 +104,6 @@ class ModelBook extends Model
             } else {
                 echo 'Erreur, de téléchargement !';
             }
-            // var_dump($_FILES);
-
             $id_category = $_POST['category-type'];
             $id_condition_book = $_POST['condition'];
             $title = $_POST['title'];
@@ -116,11 +114,12 @@ class ModelBook extends Model
             $photo = $ref . '.' . $extension_upload;
             $emplacement = $_POST['emplacement'];
             $lang = $_POST['lang'];
+            $quantity = $_POST['quantity'];
 
-            
+            var_dump($id_category, $id_condition_book, $title, $author, $year_published, $descrip, $isbn, $emplacement, $lang, $quantity);
 
             $db = $this->getDb();
-            $req = $db->prepare("INSERT INTO `book`(`id_category`, `id_condition_book`,`title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`) VALUES (:id_category, :id_condition_book, :title, :author, :year_published, :descrip, :isbn, :photo, :emplacement, :lang)");
+            $req = $db->prepare('INSERT INTO `book`(`id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity`) VALUES (:id_category, :id_condition_book, :title, :author, :year_published, :descrip, :isbn, :photo, :emplacement, :lang, :quantity)');
 
             $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
             $req->bindParam('id_condition_book', $id_condition_book, PDO::PARAM_INT);
@@ -132,31 +131,30 @@ class ModelBook extends Model
             $req->bindParam('photo', $photo, PDO::PARAM_STR);
             $req->bindParam('emplacement', $emplacement, PDO::PARAM_STR);
             $req->bindParam('lang', $lang, PDO::PARAM_STR);
-
+            $req->bindParam('quantity', $quantity, PDO::PARAM_INT);
 
             $req->execute();
 
             $idBook = $db->lastInsertId();
-            $arrayGender = [];
-            if (isset($_POST['gender'])) {
-                $db = $this->getDb();
-                $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, id_gender)');
+
+            if (!empty($_POST['gender'])) {
+
                 foreach ($_POST['gender'] as $value) {
+                    $db = $this->getDb();
+                    $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, :id_gender)');
+
                     $reqGenderBook->bindParam('id_book', $idBook, PDO::PARAM_STR);
                     $reqGenderBook->bindParam('id_gender', $value, PDO::PARAM_STR);
+                    $reqGenderBook->execute();
                 }
-                $reqGenderBook->execute($arrayGender);
-                var_dump($_POST['gender']);
-                var_dump($arrayGender);
             }
 
             $newBook = [];
 
             while ($b = $req->fetch(PDO::FETCH_ASSOC)) {
                 $newBook[] = new Book($b);
-                $arrayGender[] = new Book($b);
             }
-            return array($newBook, $arrayGender);
+            return $newBook;
         }
     }
     public function ViewCondi()
@@ -181,35 +179,10 @@ class ModelBook extends Model
         return $arrayCate;
     }
 
-    // public function ViewGender()
-    // {
-    //     $db = $this->getDb();
-
-    //     // $req = $db->query("SELECT `id_gender`, `name_gender` FROM `gender`");
-    //     // $arrayGender = [];
-    //     // while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
-    //     //     $arrayGender[] = new Book($row);
-    //     // }
-
-    //     var_dump($_POST);
-    //     if (!empty($_POST['gender'])) {
-    //         foreach ($_POST['gender'] as $value) {
-    //             $db = $this->getDb();
-    //             $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, id_gender)');
-    //             $reqGenderBook->bindParam('id_book', $idBook, PDO::PARAM_STR);
-    //             $reqGenderBook->bindParam('id_gender', $value, PDO::PARAM_STR);
-    //             $reqGenderBook->execute();
-    //             var_dump($_POST['gender']);
-
-    //         }
-    //     }
-    //     // return $arrayGender;
-    // }
-
-
     // Modification du livre
 
-    public function editBook($id){   
+    public function editBook($id)
+    {
         if (isset($_GET['submit'])) {
             $id = $_GET['id_book'];
             $id_condition_book = $_GET['condition'];

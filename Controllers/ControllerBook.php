@@ -13,17 +13,17 @@ class ControllerBook extends ControllerTwig
     }
     public static function readBook($id){
         $twig = ControllerTwig::twigControl();
-
         $datas = new ModelBook();
         $book = $datas->select($id);
         echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'root' => ROOT]);
     }
 
     public static function newBook($datas){
+        $twig = ControllerTwig::twigControl();
         $datas = $_POST;
         $manager = new ModelBook();
-        $newBook = $manager->insertBook($datas);
-        require_once './Views/admin_book_ajout.php';
+        $manager->insertBook($datas);
+        header('Refresh: 2; url = ./spaceAdmin');
     }
     public static function Show(){
         session_start();
