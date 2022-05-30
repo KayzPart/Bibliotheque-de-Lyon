@@ -32,9 +32,9 @@
 					{{ book.getIsbn }}
 				</p>
 				{# <p>
-				                    Genre :
-				                {{gender.getName_gender}}
-				                </p> #}
+												                    Genre :
+												                {{gender.getName_gender}}
+												                </p> #}
 				<p>
 					Catégorie :
 					{{ category.getName_category }}
@@ -44,7 +44,8 @@
 					{{book.getYear_published|date('d/m/y', strtotime)}}
 				</p>
 				<p>
-				État : {{condition.getStatus_condition}}
+					État :
+					{{condition.getStatus_condition}}
 				</p>
 			</section>
 		</div>
@@ -66,23 +67,38 @@
 				<strong>{{book.getEmplacement}}</strong>
 			</p>
 		</p>
-			<div class="btnbooking">Réserver</div>
+		<button>
+		<div class="btnbooking">Réserver</div>
+		</button>
+		
+
+		<form action="./validate" method="GET">
 			<div class="usereserv">
 				<div class="confirm-booking">
-					<h5>Vous souhaitez réserver le livre {{book.getTitle}} ?</h5>
+					<h5>Vous souhaitez réserver le livre
+						{{book.getTitle}}
+						?</h5>
 					<br><br>
 					<p>
-						Si vous souhaitez continuer, et réserver {{book.getTitle}}, votre réservation prendra effet à ce jour, soit le : {{ "now"|date("m/d/Y") }}.
+						Si vous souhaitez continuer, et réserver
+						{{book.getTitle}}, votre réservation prendra effet à ce jour, soit le :
+						{{ "now"|date("m/d/Y") }}.
 						<br><br>
-						Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au {{ reserv.book|date_modify("+21 day")|date("m/d/Y") }} pour en profiter. 
+						Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au
+						{{ reserv.book|date_modify("+21 day")|date("m/d/Y") }}
+						pour en profiter.
 						<br><br>
 						La Bibliothèque de Lyon vous remercie pour votre confiance.
 					</p>
-					
+
 					<button class="closebooking">Annuler</button>
-					<button class="reserv">Réserver</button>
+					<input type="submit" value="Reserver" name="submit">
 				</div>
 			</div>
+
+
+		</form>
+
 		<p>
 			<a href="#">Ajoutez à votre liste d'envies
 			</a>
@@ -99,16 +115,17 @@
 	<div class="triangle"></div>
 </div>
 
-<div class="comment">
-{# Afficher le numéro de l'user #}
+<div
+	class="comment">
+	{# Afficher le numéro de l'user #}
 	{% for user in u %}
-        <strong>{{user.getNum_member}}</strong>
-    {% endfor %}
-        
-    {% for comment in c %}    
-	<p>
-		{{comment.getTitle_comment}}
-	</p>
+		<strong>{{user.getNum_member}}</strong>
+	{% endfor %}
+
+	{% for comment in c %}
+		<p>
+			{{comment.getTitle_comment}}
+		</p>
 		<p>
 			{{comment.getContent_comment}}
 		</p>
@@ -117,19 +134,16 @@
 </div>
 
 <div>
-    <form action="" method="GET">
+	<form action="" method="GET">
 
-    <label for="firstname"><input type="text" name="firstname" id="firstname" placeholder="Votre prénom, pseudo, ou titre de votre commentaire"></label>
+		<label for="firstname"><input type="text" name="firstname" id="firstname" placeholder="Votre prénom, pseudo, ou titre de votre commentaire"></label>
 
-    <label for="comment"></label>
-    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
+		<label for="comment"></label>
+		<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
 
-    <button type="submit">Envoyer</button>
-    </form>
+		<button type="submit">Envoyer</button>
+	</form>
 </div>
-
-{% endblock %}
-{% block footer %}
+{% endblock %}{% block footer %}
 {% include "./Templates/footer/footer.twig" %}
-<script src="{{root}}/Views/Templates/js/headerfooter.js"></script>
-{% endblock %}
+<script src="{{root}}/Views/Templates/js/headerfooter.js"></script>{% endblock %}
