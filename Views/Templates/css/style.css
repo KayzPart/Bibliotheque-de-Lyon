@@ -1790,5 +1790,64 @@ body {
     height: 540px;
     margin: 0;
   }
+  .btnbooking {
+    width: 50px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    background: #5C3D2E;
+    border: 2px solid #E0C097;
+    color: #E0C097;
+    padding: 3px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btnbooking:hover {
+    border-color: #5C3D2E;
+    color: #acc4ce;
+  }
+  .usereserv {
+    position: fixed;
+    width: 30vw;
+    height: 30vh;
+    z-index: 1000;
+    top: 45%;
+    left: 45%;
+    background-color: #2D2424;
+    -webkit-transition: -webkit-transform 1s ease-in-out;
+    transition: -webkit-transform 1s ease-in-out;
+    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, -webkit-transform 1s ease-in-out;
+    -webkit-transform: translateX(-100vw);
+            transform: translateX(-100vw);
+  }
+  .usereserv > .confirm-booking {
+    color: #E0C097;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .usereserv > .confirm-booking > button {
+    margin-top: 10px;
+    width: 125px;
+    height: 25px;
+    border-radius: 0px;
+    border: 1px solid #E0C097;
+    background: #2D2424;
+    border-width: 3px;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .closebooking {
+    font-weight: bolder;
+    color: #E0C097;
+    margin: 10px;
+    cursor: pointer;
+  }
 }
 /*# sourceMappingURL=style.css.map */

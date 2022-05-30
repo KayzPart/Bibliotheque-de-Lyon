@@ -1,7 +1,8 @@
 <?php 
 class Comment extends Classes{
     private $_id_comment;
-    private $_name_comment;
+    private $_title_comment;
+    private $_content_comment;
     private $_id_book;
     private $_id_user;
 
@@ -9,8 +10,12 @@ class Comment extends Classes{
         return $this->_id_comment;
     }
 
-    public function getName_comment(){
-        return $this->_name_comment;
+    public function getTitle_comment(){
+        return $this->_title_comment;
+    }
+
+    public function getContent_comment(){
+        return $this->_content_comment;
     }
 
     public function getId_book(){
@@ -25,8 +30,12 @@ class Comment extends Classes{
         $this->_id_comment = $id_comment;
     }
 
-    public function setName_comment($name_comment){
-        $this->_name_comment = $name_comment;
+    public function setTitle_comment($title_comment){
+        $this->_title_comment = $title_comment;
+    }
+
+    public function setContent_comment($content_comment){
+        $this->_content_comment = $content_comment;
     }
 
     public function setId_book($id_book){

@@ -43,6 +43,7 @@ $router->map('POST', '/spaceAdmin', 'ControllerUser#inscriptionUser', 'formNewUs
 // Réservation livre 
 $router->map('GET', '/userReserv/[i:id_book]', 'ControllerBooked#resaBook', 'formulaire');
 $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');
+$router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBookGender');
 
 // *** Formulaire ajout livre => Les routes
 $router->map('POST', '/newBook', 'ControllerBook#newBook');
