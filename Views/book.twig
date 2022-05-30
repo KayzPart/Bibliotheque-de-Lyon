@@ -1,57 +1,135 @@
 {% extends "./Templates/template.twig" %}
 
-{% block title %}{{book.getTitle}}{% endblock %}
-
-{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
-
-{% block header %} {% include "./Templates/header/header.twig" %} {% endblock %}
-
-{% block content %}
-    
-
-    <div class="book-select">
-        <div class="headbook">
-            <h1 class="title tbook">{{ book.getTitle }}</h1>
-
-            <figure class="figurefirstpage">
-                <img class="imgbookse" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
-            </figure>
-        
-            <section class="infobook">
-                <p>
-                    Auteur : 
-                    {{ book.getAuthor }}
-                </p>
-                <p>
-                    ISBN : 
-                    {{ book.getIsbn }}
-                </p>
-                <p>
-                    Genre :
-                <!--  //$book->getName_gender() -->
-                </p>
-                <p>
-                    Catégorie : 
-                    {{ category.getName_category }}
-                </p>
-                <p>
-                    Date de publication :
-                    {{book.getYear_published|date('d/m/y', strtotime)}}
-                </p> 
-            </section>
-        </div>
-
- 
-        <section class="descbook"><p>Description : </p> 
-            <p>{{book.getDescrip}}</p></section>
-    </div>
-
-    <div class="bgbookmark">
-        <div class="square"></div>
-        <div class="triangle"></div>
-    </div>
-
+{% block title %}
+	{{book.getTitle}}
 {% endblock %}
 
-{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
- 
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
+
+{% block header %}
+	{% include "./Templates/header/header.twig" %}
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="book-select">
+		<div class="headbook">
+			<h1 class="title tbook">{{ book.getTitle }}</h1>
+
+			<figure class="figurefirstpage">
+				<img class="imgbookse" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+			</figure>
+
+			<section class="infobook">
+				<p>
+					Auteur :
+					{{ book.getAuthor }}
+				</p>
+				<p>
+					ISBN :
+					{{ book.getIsbn }}
+				</p>
+				{# <p>
+				                    Genre :
+				                {{gender.getName_gender}}
+				                </p> #}
+				<p>
+					Catégorie :
+					{{ category.getName_category }}
+				</p>
+				<p>
+					Date de publication :
+					{{book.getYear_published|date('d/m/y', strtotime)}}
+				</p>
+				<p>
+				État : {{condition.getStatus_condition}}
+				</p>
+			</section>
+		</div>
+
+
+		<section class="descbook">
+			<p>Description :
+			</p>
+			<p>{{book.getDescrip}}</p>
+		</section>
+
+		<section>
+			<p>
+				Emplacement du livre
+				<a href="#">?</a>
+				:<br>
+			</p>
+			<p>
+				<strong>{{book.getEmplacement}}</strong>
+			</p>
+		</p>
+			<div class="btnbooking">Réserver</div>
+			<div class="usereserv">
+				<div class="confirm-booking">
+					<h5>Vous souhaitez réserver le livre {{book.getTitle}} ?</h5>
+					<br><br>
+					<p>
+						Si vous souhaitez continuer, et réserver {{book.getTitle}}, votre réservation prendra effet à ce jour, soit le : {{ "now"|date("m/d/Y") }}.
+						<br><br>
+						Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au {{ reserv.book|date_modify("+21 day")|date("m/d/Y") }} pour en profiter. 
+						<br><br>
+						La Bibliothèque de Lyon vous remercie pour votre confiance.
+					</p>
+					
+					<button class="closebooking">Annuler</button>
+					<button class="reserv">Réserver</button>
+				</div>
+			</div>
+		<p>
+			<a href="#">Ajoutez à votre liste d'envies
+			</a>
+			{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
+		</p>
+		<div>
+			{# Afficher Prété ou disponible #}
+		</div>
+	</section>
+</div>
+
+<div class="bgbookmark">
+	<div class="square">COMMENTAIRE</div>
+	<div class="triangle"></div>
+</div>
+
+<div class="comment">
+{# Afficher le numéro de l'user #}
+	{% for user in u %}
+        <strong>{{user.getNum_member}}</strong>
+    {% endfor %}
+        
+    {% for comment in c %}    
+	<p>
+		{{comment.getTitle_comment}}
+	</p>
+		<p>
+			{{comment.getContent_comment}}
+		</p>
+
+	{% endfor %}
+</div>
+
+<div>
+    <form action="" method="GET">
+
+    <label for="firstname"><input type="text" name="firstname" id="firstname" placeholder="Votre prénom, pseudo, ou titre de votre commentaire"></label>
+
+    <label for="comment"></label>
+    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
+
+    <button type="submit">Envoyer</button>
+    </form>
+</div>
+
+{% endblock %}
+{% block footer %}
+{% include "./Templates/footer/footer.twig" %}
+<script src="{{root}}/Views/Templates/js/headerfooter.js"></script>
+{% endblock %}

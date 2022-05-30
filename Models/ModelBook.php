@@ -1,4 +1,7 @@
 <?php
+
+use Symfony\Component\VarDumper\VarDumper;
+
 class ModelBook extends Model
 {
     // Affichage de tous les livres
@@ -53,17 +56,21 @@ class ModelBook extends Model
     public function select($id)
     {
         $db  = $this->getdb();
-        $req = $db->prepare("SELECT `id_book`,`category`.`name_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` INNER JOIN `category` ON `category`.`id_category` = `book`.`id_category` WHERE `id_book` = :id");
+        $req = $db->prepare("SELECT `id_book`,`category`.`name_category`, `condition_book`.`status_condition`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` INNER JOIN `category` ON `category`.`id_category` = `book`.`id_category` INNER JOIN  `condition_book` ON `condition_book`.`id_condition_book` = `book`.`id_condition_book` WHERE `id_book` = :id");
+
+        // $req = $db->prepare("SELECT `book`.`id_book`,`category`.`name_category`, `condition_book`.`status_condition`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity`, `book_gender`.`id_book`, `gender`.`name_gender` FROM `book` INNER JOIN `category` ON `category`.`id_category` = `book`.`id_category` INNER JOIN  `condition_book` ON `condition_book`.`id_condition_book` = `book`.`id_condition_book` INNER JOIN `book_gender` ON `book_gender`.`id_book` = `book`.`id_book` INNER JOIN `gender` ON `gender`.`id_gender` = `book_gender`.`id_gender` WHERE `book`.`id_book` = :id");
 
         $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();
 
         $data = $req->fetch(PDO::FETCH_ASSOC);
-
         $book = new Book($data);
         $category = new Category($data);
+        $condition = new ConditionBook($data);
+        // var_dump($data);
+        
 
-        return [$book, $category];
+        return [$book, $category, $condition];
     }
     public function insertBook($datas)
     {

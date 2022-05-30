@@ -103,7 +103,13 @@ class ModelUser extends Model
             return "Email ou Mot de passe incorrect";
         }
     }
-
+    public function selectUser(){
+        $db = $this->getDb();
+        $req = $db->query('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user`');
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        $use = new User($data);
+        return $use;
+    }
     // Envoie du formulaire de contact
     // public function sendForm()
     // {

@@ -13,16 +13,23 @@ class ControllerBook extends ControllerTwig
     }
     public static function readBook($id){
         $twig = ControllerTwig::twigControl();
+        $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datas = new ModelBook();
+        $cmt = new ModelComment();
+        $use = new ModelUser();
+        $datasReserv = new ModelReserv();
         $book = $datas->select($id);
-        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'root' => ROOT]);
+        $comment = $cmt->commentUser($id);
+        $user = $use->selectUser();
+        $reserv = $datasReserv->bookReserv();
+        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment, 'u' => $user, 'r' => $reserv, 'root' => ROOT]);
     }
-
     public static function newBook($datas){
         $twig = ControllerTwig::twigControl();
         $datas = $_POST;
         $manager = new ModelBook();
         $manager->insertBook($datas);
+        
         header('Refresh: 2; url = ./spaceAdmin');
     }
     public static function Show(){
