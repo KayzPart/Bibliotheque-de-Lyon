@@ -12,11 +12,10 @@ class ModelBook extends Model
         $reqCount = $db->query('SELECT COUNT(`id_book`) FROM `book`');
         $count = $reqCount->fetchColumn();
         $nbPages =  ceil($count / 10);
-
         $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
         $limit = $p * 10;
 
-        $req = $db->prepare('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` ORDER BY `id_book` ASC LIMIT :p, 10');
+        $req = $db->prepare('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` ORDER BY `id_book` DESC LIMIT :p, 10');
         $req->bindParam('p', $limit, PDO::PARAM_INT);
         $req->execute();
 
