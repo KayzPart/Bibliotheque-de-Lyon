@@ -56,49 +56,42 @@
 			</p>
 			<p>{{book.getDescrip}}</p>
 		</section>
-
-		<section>
-			<p>
-				Emplacement du livre
-				<a href="#">?</a>
-				:<br>
-			</p>
-			<p>
-				<strong>{{book.getEmplacement}}</strong>
-			</p>
+<div class="usereserv">
+	<div class="confirm-booking">
+		<h5>Vous souhaitez réserver le livre {{book.getTitle}} ?</h5>
+		<br><br>
+		<p>
+			Si vous souhaitez continuer, et réserver {{book.getTitle}}, votre réservation prendra effet à ce jour, soit le : {{ "now"|date("m/d/Y") }}.
+			<br><br>
+			Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au {{ reserv.book|date_modify("+21 day")|date("m/d/Y") }} pour en profiter. 
+			<br><br>
+			La Bibliothèque de Lyon vous remercie pour votre confiance.
 		</p>
-		<button>
-		<div class="btnbooking">Réserver</div>
-		</button>
+
 		
-
-		<form action="./validate" method="GET">
-			<div class="usereserv">
-				<div class="confirm-booking">
-					<h5>Vous souhaitez réserver le livre
-						{{book.getTitle}}
-						?</h5>
-					<br><br>
-					<p>
-						Si vous souhaitez continuer, et réserver
-						{{book.getTitle}}, votre réservation prendra effet à ce jour, soit le :
-						{{ "now"|date("m/d/Y") }}.
-						<br><br>
-						Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au
-						{{ reserv.book|date_modify("+21 day")|date("m/d/Y") }}
-						pour en profiter.
-						<br><br>
-						La Bibliothèque de Lyon vous remercie pour votre confiance.
-					</p>
-
-					<button class="closebooking">Annuler</button>
-					<input type="submit" value="Reserver" name="submit">
-				</div>
+		<button class="closebooking">Annuler</button>
+		<button class="reserv">Réserver</button>
+	</div>
+</div>
+		<section>
+			<div class="bgbookmark">
+				<div class="square">Emplacement du livre
+				<a href="#">?</a> : {{book.getEmplacement}}</div>
+				<div class="triangle"></div>
 			</div>
+			<div class="bgres">
+				<div class="btn-wanted">
+					<div class="btnsub btnbooking">Réserver</div>
+					<div>
+						<a href="#">Ajoutez à votre liste d'envies</a>
+						{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
+					</div>
 
-
-		</form>
-
+				</div>
+				<div>
+					{# Afficher Prété ou disponible #}
+				</div>				
+			</div>
 		<p>
 			<a href="#">Ajoutez à votre liste d'envies
 			</a>
@@ -146,4 +139,7 @@
 </div>
 {% endblock %}{% block footer %}
 {% include "./Templates/footer/footer.twig" %}
-<script src="{{root}}/Views/Templates/js/headerfooter.js"></script>{% endblock %}
+
+<script src="{{root}}/Views/Templates/js/booking.js"></script>
+{% endblock %}
+

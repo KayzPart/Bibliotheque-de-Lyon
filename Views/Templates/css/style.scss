@@ -880,11 +880,17 @@ body{
     display: inline-flex;
     justify-content: start;
     margin: 20px 0;
+    color: $color;
+    
     &>.square{
         width: 240px;
         height: 40px;
         background: $bgbtn;
         box-shadow: -5px 4px 4px rgba(0, 0, 0, 0.50);
+        &>a{
+            text-decoration: none;
+            color: $bgb;
+        }
     }
     &>.triangle{
         width: 0px;
@@ -894,6 +900,36 @@ body{
         border-right: 40px solid transparent;
         filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.50));
     }
+}
+.bgres{
+    background-color: $bgbtn;
+    width: 100%;
+    display: flex;
+
+}
+.btn-wanted{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
+}
+.btnbooking{
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin: 10px 0;
+}
+.usereserv{
+    transform: translateX(-100vw);
+    transition: all 0.3s ease-in-out;
+    background-color: $bgb;
+    color: $color;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 // ------MEDIA QUERIE-------
 @media screen and (min-width: 1000px) {
