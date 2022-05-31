@@ -19,7 +19,7 @@ class ControllerBook extends ControllerTwig
         $use = new ModelUser();
         $book = $datas->select($id);
         $comment = $cmt->commentUser($id);
-        $user = $use->selectUser();
+        $user = $use->selectUser($id);
         // $reserv = $datasReserv->bookReserv();
         echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment, 'u' => $user,/* 'r' => $reserv,*/ 'root' => ROOT]);
 

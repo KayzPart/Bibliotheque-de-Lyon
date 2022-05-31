@@ -48,11 +48,46 @@
             if(!isset($_SESSION['userId'])){
                 header("Refresh: 0.01; url = ./connectUser");
             }
+            $twig = Controllertwig::twigcontrol();
+            echo $twig->render('spaceUser.twig', ['root' => ROOT, 'id_user' => $_SESSION['userId']]);
+        }
+        public static function userSpace($id){
+            session_start();
+            $nemail = $_POST['newemail']; 
+            $opassword = $_POST['oldpassword']; 
+            $npassword = $_POST['newpassword']; 
+            $id = $_SESSION['userId']; 
 
             $twig = Controllertwig::twigcontrol();
-
-            echo $twig->render('spaceUser.twig', ['root' => ROOT]);
+            $datas = new ModelUser(); 
+            $user = $datas->selectUser($id);
+            if(password_verify($opassword, $user->getPassword())){
+                $hashe = password_hash($npassword, PASSWORD_DEFAULT);
+                echo $hashe;
+                $update = $datas->userUpdate($id, $hashe, $nemail);
+                echo 'Nous avons modifer vos données avec succès ! Vous aller être redirigé vers votre espace personnel';
+                header('Refresh: 4s; url = ./spaceUser');
+            }else{
+                echo 'Les données que vous entrer ne corresponde pas avec vos données enregistreer dans notre base de données';
+            }
+            echo $twig->render('user_modif.twig', ['root' => ROOT, 'u' => $user]);
         }
+
+        // Modification compte user
+        // public static function updateUser(){
+        //     session_start();
+
+            
+        //     $twig = ControllerTwig::twigControl();
+        //     $newDatas = new ModelUSer();
+
+        //     $oldUser = $newDatas->selectUser($id);
+        //     var_dump($oldUser);
+            
+        //     // $user = $newDatas->userUpdate();
+            
+        //     echo $twig->render('user_modif.twig', ['root' => ROOT]);
+        // }
 
         public static function inscriptionUser(){
             $twig = ControllerTwig::twigControl();
@@ -65,4 +100,6 @@
             $twig = ControllerTwig::twigControl();
             echo $twig->render('registration_user.twig', [ 'root' => ROOT]);
         }
+
+        
     }

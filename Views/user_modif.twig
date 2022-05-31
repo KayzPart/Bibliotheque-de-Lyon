@@ -1,0 +1,29 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Espace Utilisateur{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/headerUser.twig" %} {% endblock %}
+
+{% block content %}
+<h1>Profil</h1>
+
+<form action="" method="POST">
+    <label for="newemail">Email</label>
+    <input type="email" name="newemail" id="newemail">
+
+    <label for="oldpassword">Ancien mot de passe</label>
+    <input type="password" name="oldpassword" id="oldpassword">
+
+    <label for="newpassword">Nouveau mot de passe</label>
+    <input type="password" name="newpassword" id="newpassword">
+
+    <input type="submit" name="submit" value="Modifier">
+</form>
+<a href="../spaceUser">Retour sur le compte</a>
+
+{% endblock %}
+
+
+{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}

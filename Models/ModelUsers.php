@@ -14,7 +14,7 @@ class ModelUser extends Model
         $resultGenerateNumber  = $_POST['numberAd'];
 
         echo $resultGenerateNumber;
-        if(preg_match('~(\w+)(\S)@(\w+)(\S)\.(\S)([a-zA-Z])~', $email )){
+        if (preg_match('~(\w+)(\S)@(\w+)(\S)\.(\S)([a-zA-Z])~', $email)) {
             echo 'email ok';
         } else {
             echo 'email pas ok';
@@ -32,7 +32,7 @@ class ModelUser extends Model
         $generateMdp = implode($pass);
 
 
-        
+
 
 
         if (isset($_POST['submit'])) {
@@ -52,7 +52,7 @@ class ModelUser extends Model
             $headers .= 'Delivered-to: ' . $destinataire . "\n"; // Destinataire
             $headers .= 'Cc: ' . $copie . "\n"; // Copie Cc
             $headers .= 'Bcc: ' . $copie_cachee . "\n\n"; // Copie cachée Bcc        
-            $message = '<div style="width: 100%; text-align: center; font-weight: bold">Bonjour ! Suite à votre demande d\'inscription, nous avons le plaisir de vous annoncer que cette dernière à été réaliser avec succès.Voici votre mot de passe générer aléatoirement, il reste modifiable dans votre espace personnel. <br><br>' . $generateMdp . 'Votre numéro d\'adhérent est le suivant' .$resultGenerateNumber.'</div>';
+            $message = '<div style="width: 100%; text-align: center; font-weight: bold">Bonjour ! Suite à votre demande d\'inscription, nous avons le plaisir de vous annoncer que cette dernière à été réaliser avec succès.Voici votre mot de passe générer aléatoirement, il reste modifiable dans votre espace personnel. <br><br>' . $generateMdp . 'Votre numéro d\'adhérent est le suivant' . $resultGenerateNumber . '</div>';
             if (mail($destinataire, $objet, $message, $headers)) // Envoi du message
             {
                 echo 'L\'envoie du mot de passe à bien été envoyer à l\'utilisateur ';
@@ -80,11 +80,11 @@ class ModelUser extends Model
             $reqUserInscr->bindParam('lastname', $lastname, PDO::PARAM_STR);
             $reqUserInscr->bindParam('password', $hashed_password, PDO::PARAM_STR);
             $reqUserInscr->bindParam('email', $email, PDO::PARAM_STR);
-            $reqUserInscr->bindParam('num_member',  $resultGenerateNumber , PDO::PARAM_STR);
+            $reqUserInscr->bindParam('num_member',  $resultGenerateNumber, PDO::PARAM_STR);
             $reqUserInscr->execute();
 
             $newUser = [];
-            while($usr = $reqUserInscr->fetch(PDO::FETCH_ASSOC)){
+            while ($usr = $reqUserInscr->fetch(PDO::FETCH_ASSOC)) {
                 $newUser[] = new User($usr);
             }
             return $newUser;
@@ -103,13 +103,42 @@ class ModelUser extends Model
             return "Email ou Mot de passe incorrect";
         }
     }
-    public function selectUser(){
+    public function selectUser($id)
+    {
         $db = $this->getDb();
-        $req = $db->query('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user`');
+        $req = $db->prepare('SELECT `id_user`, `firstname`, `lastname`, `password`, `email`, `num_member` FROM `user` WHERE `id_user` = :id');
+        $req->bindParam(':id', $id, PDO::PARAM_INT);
+        $req->execute();
         $data = $req->fetch(PDO::FETCH_ASSOC);
-        $use = new User($data);
-        return $use;
+        return new User($data);
+        
+        // $user = [];
+        // while ($data = $req->fetch(PDO::FETCH_ASSOC)) {
+        //     $user[] = new User($data);
+        // }
+        // return $user;
     }
+
+    // Modification compte user
+    public function userUpdate($id, $hashe, $nemail)
+    {
+        if (isset($_POST['submit'])) {
+            $db = $this->getDb();
+
+            $update = $db->prepare('UPDATE `user` SET `password`= :hashe,`email`= :nemail WHERE `id_user` = :id');
+            $update->bindParam('id', $id, PDO::PARAM_INT);
+            $update->bindParam('hashe', $hashe, PDO::PARAM_STR);
+            $update->bindParam('nemail', $nemail, PDO::PARAM_STR);
+            $update->execute();
+
+            $userUpdate = [];
+            while ($up = $update->fetch(PDO::FETCH_ASSOC)) {
+                $userUpdate[] = new User($up);
+            }
+            return $userUpdate;
+        }
+    }
+
     // Envoie du formulaire de contact
     // public function sendForm()
     // {
