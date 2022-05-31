@@ -16,12 +16,11 @@ class ControllerBook extends ControllerTwig
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datas = new ModelBook();
         $cmt = new ModelComment();
-        $use = new ModelUser();
         $book = $datas->select($id);
         $comment = $cmt->commentUser($id);
-        $user = $use->selectUser($id);
+        var_dump($comment);
         // $reserv = $datasReserv->bookReserv();
-        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment, 'u' => $user,/* 'r' => $reserv,*/ 'root' => ROOT]);
+        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'root' => ROOT]);
 
     }
     public static function newBook($datas){
