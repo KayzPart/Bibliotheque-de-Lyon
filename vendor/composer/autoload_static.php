@@ -97,6 +97,7 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'ControllerBook' => __DIR__ . '/../..' . '/Controllers/ControllerBook.php',
         'ControllerBooked' => __DIR__ . '/../..' . '/Controllers/ControllerBooked.php',
         'ControllerConnexion' => __DIR__ . '/../..' . '/Controllers/ControllerConnexion.php',
+        'ControllerReserv' => __DIR__ . '/../..' . '/Controllers/ControllerReserv.php',
         'ControllerTwig' => __DIR__ . '/../..' . '/Controllers/ControllerTwig.php',
         'ControllerUser' => __DIR__ . '/../..' . '/Controllers/ControllerUser.php',
         'Favorite' => __DIR__ . '/../..' . '/Classes/Favorite.php',

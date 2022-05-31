@@ -32,9 +32,9 @@
 					{{ book.getIsbn }}
 				</p>
 				{# <p>
-				                    Genre :
-				                {{gender.getName_gender}}
-				                </p> #}
+												                    Genre :
+												                {{gender.getName_gender}}
+												                </p> #}
 				<p>
 					Catégorie :
 					{{ category.getName_category }}
@@ -44,7 +44,8 @@
 					{{book.getYear_published|date('d/m/y', strtotime)}}
 				</p>
 				<p>
-				État : {{condition.getStatus_condition}}
+					État :
+					{{condition.getStatus_condition}}
 				</p>
 			</section>
 		</div>
@@ -66,6 +67,7 @@
 			<br><br>
 			La Bibliothèque de Lyon vous remercie pour votre confiance.
 		</p>
+
 		
 		<button class="closebooking">Annuler</button>
 		<button class="reserv">Réserver</button>
@@ -84,12 +86,20 @@
 						<a href="#">Ajoutez à votre liste d'envies</a>
 						{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
 					</div>
+
 				</div>
 				<div>
 					{# Afficher Prété ou disponible #}
 				</div>				
 			</div>
-
+		<p>
+			<a href="#">Ajoutez à votre liste d'envies
+			</a>
+			{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
+		</p>
+		<div>
+			{# Afficher Prété ou disponible #}
+		</div>
 	</section>
 </div>
 
@@ -98,16 +108,17 @@
 	<div class="triangle"></div>
 </div>
 
-<div class="comment">
-{# Afficher le numéro de l'user #}
+<div
+	class="comment">
+	{# Afficher le numéro de l'user #}
 	{% for user in u %}
-        <strong>{{user.getNum_member}}</strong>
-    {% endfor %}
-        
-    {% for comment in c %}    
-	<p>
-		{{comment.getTitle_comment}}
-	</p>
+		<strong>{{user.getNum_member}}</strong>
+	{% endfor %}
+
+	{% for comment in c %}
+		<p>
+			{{comment.getTitle_comment}}
+		</p>
 		<p>
 			{{comment.getContent_comment}}
 		</p>
@@ -116,19 +127,19 @@
 </div>
 
 <div>
-    <form action="" method="GET">
+	<form action="" method="GET">
 
-    <label for="firstname"><input type="text" name="firstname" id="firstname" placeholder="Votre prénom, pseudo, ou titre de votre commentaire"></label>
+		<label for="firstname"><input type="text" name="firstname" id="firstname" placeholder="Votre prénom, pseudo, ou titre de votre commentaire"></label>
 
-    <label for="comment"></label>
-    <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
+		<label for="comment"></label>
+		<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
 
-    <button type="submit">Envoyer</button>
-    </form>
+		<button type="submit">Envoyer</button>
+	</form>
 </div>
-
-{% endblock %}
-{% block footer %}
+{% endblock %}{% block footer %}
 {% include "./Templates/footer/footer.twig" %}
+
 <script src="{{root}}/Views/Templates/js/booking.js"></script>
 {% endblock %}
+

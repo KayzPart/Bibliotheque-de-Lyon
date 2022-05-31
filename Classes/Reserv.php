@@ -3,7 +3,7 @@ class Reserv extends Classes{
     private $_id_reserv;
     private $_id_book;
     private $_id_user;
-    private $_change_condition;
+    private $_id_condition_book;
     private $_date_reserv;
     private $_end_date_reserv;
 
@@ -16,8 +16,8 @@ class Reserv extends Classes{
     public function getId_user(){
         return $this->_id_user;
     }
-    public function getChange_condition(){
-        return $this->_change_condition;
+    public function getId_condition_book(){
+        return $this->_id_condition_book;
     }
     public function getDate_reserv(){
         return $this->_date_reserv;
@@ -38,8 +38,8 @@ class Reserv extends Classes{
         $this->_id_user = $id_user;
     }
     
-    public function setChange_condition($change_condition){
-        $this->_change_condition = $change_condition;
+    public function setId_condition_book($id_condition_book){
+        $this->_id_condition_book = $id_condition_book;
     }
 
     public function setDate_reserv($date_reserv){
