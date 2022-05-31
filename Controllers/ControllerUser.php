@@ -89,16 +89,20 @@
         //     echo $twig->render('user_modif.twig', ['root' => ROOT]);
         // }
 
+        // Direction formulaire inscription user
         public static function inscriptionUser(){
             $twig = ControllerTwig::twigControl();
-            $user = new ModelUser();
-            $datas = $user->userInscription();
-            echo $twig->render('spaceAdmin.twig', ['user' => $datas, 'root' => ROOT]);
+            echo $twig->render('spaceAdmin.twig', ['root' => ROOT]);
         }
 
-        public static function spaceInscripUse(){
+        // Formulaire inscription user
+        public static function spaceInscripUse($datas){
             $twig = ControllerTwig::twigControl();
-            echo $twig->render('registration_user.twig', [ 'root' => ROOT]);
+            $datas = $_POST;
+            $user = new ModelUser();
+            $datas = $user->userInscription($datas);
+            echo $twig->render('registration_user.twig', ['user' => $datas, 'root' => ROOT]);
+            var_dump($datas);
         }
 
         
