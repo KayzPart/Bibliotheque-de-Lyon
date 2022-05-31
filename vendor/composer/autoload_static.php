@@ -7,10 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
 {
     public static $files = array (
-        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -96,7 +96,6 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'ControllerAdmin' => __DIR__ . '/../..' . '/Controllers/ControllerAdmin.php',
         'ControllerBook' => __DIR__ . '/../..' . '/Controllers/ControllerBook.php',
         'ControllerBooked' => __DIR__ . '/../..' . '/Controllers/ControllerBooked.php',
-        'ControllerComment' => __DIR__ . '/../..' . '/Controllers/ControllerComment.php',
         'ControllerConnexion' => __DIR__ . '/../..' . '/Controllers/ControllerConnexion.php',
         'ControllerTwig' => __DIR__ . '/../..' . '/Controllers/ControllerTwig.php',
         'ControllerUser' => __DIR__ . '/../..' . '/Controllers/ControllerUser.php',
@@ -108,6 +107,7 @@ class ComposerStaticInit7cee82c92c0da650f8ec908d1f8bb756
         'ModelComment' => __DIR__ . '/../..' . '/Models/ModelComment.php',
         'ModelConnexion' => __DIR__ . '/../..' . '/Models/ModelConnexion.php',
         'ModelResaBook' => __DIR__ . '/../..' . '/Models/ModelResaBook.php',
+        'ModelReserv' => __DIR__ . '/../..' . '/Models/ModelReserv.php',
         'ModelUser' => __DIR__ . '/../..' . '/Models/ModelUsers.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\ActualValueIsNotAnObjectException' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Exception/ActualValueIsNotAnObjectException.php',
