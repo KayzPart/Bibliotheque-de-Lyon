@@ -53,22 +53,25 @@
         }
         public static function userSpace($id){
             session_start();
-            $nemail = $_POST['newemail']; 
-            $opassword = $_POST['oldpassword']; 
-            $npassword = $_POST['newpassword']; 
-            $id = $_SESSION['userId']; 
-
             $twig = Controllertwig::twigcontrol();
-            $datas = new ModelUser(); 
+            
+            $id = $_SESSION['userId']; 
+            
+            $datas = new ModelUser();
             $user = $datas->selectUser($id);
-            if(password_verify($opassword, $user->getPassword())){
-                $hashe = password_hash($npassword, PASSWORD_DEFAULT);
-                echo $hashe;
-                $update = $datas->userUpdate($id, $hashe, $nemail);
-                echo 'Nous avons modifer vos données avec succès ! Vous aller être redirigé vers votre espace personnel';
-                header('Refresh: 4s; url = ./spaceUser');
-            }else{
-                echo 'Les données que vous entrer ne corresponde pas avec vos données enregistreer dans notre base de données';
+            if(isset($_POST['submit'])){                
+                $nemail = $_POST['newemail']; 
+                $opassword = $_POST['oldpassword']; 
+                $npassword = $_POST['newpassword']; 
+            
+                if(password_verify($opassword, $user->getPassword())){
+                    $hashe = password_hash($npassword, PASSWORD_DEFAULT);
+                    $update = $datas->userUpdate($id, $hashe, $nemail);
+                    echo 'Nous avons modifer vos données avec succès ! Vous aller être redirigé vers votre espace personnel';
+                    header('Refresh: 4s; url = ./spaceUser');
+                }else{
+                    echo 'Les données que vous entrer ne corresponde pas avec vos données enregistreer dans notre base de données';
+                }
             }
             echo $twig->render('user_modif.twig', ['root' => ROOT, 'u' => $user]);
         }
