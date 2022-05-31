@@ -41,8 +41,10 @@ $router->map('POST', '/verifAdmin', 'ControllerAdmin#connexionAdmin');
 $router->map('GET', '/spaceAdmin', 'ControllerAdmin#space');
 
 // Inscription nouvel Adhérant
-$router->map('GET', '/registration_user', 'ControllerUser#spaceInscripUse');
-$router->map('POST', '/spaceAdmin', 'ControllerUser#inscriptionUser', 'formNewUse');
+// Direction formulaire
+$router->map('GET|POST', '/registrationUser', 'ControllerUser#spaceInscripUse', 'formNewUse');
+
+// $router->map('POST', '/spaceAdmin', 'ControllerUser#inscriptionUser');
 
 // Réservation livre 
 $router->map('GET', '/book/validate', 'ControllerReserv#bookings');
