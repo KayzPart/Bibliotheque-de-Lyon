@@ -28,9 +28,13 @@ $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 
 // Espace User
 $router->map('POST', '/verifUser', 'ControllerUser#connexionUser');
+
 $router->map('GET', '/spaceUser', 'ControllerUser#space');
 
+// Espace User => Modification info compte
+$router->map('GET|POST', '/userModif/[i:id_user]', 'ControllerUser#userSpace', 'usermodif');
 
+// $router->map('POST', '/spaceUser', 'ControllerUser#updateUser');
 
 // Espace admin
 $router->map('POST', '/verifAdmin', 'ControllerAdmin#connexionAdmin');
