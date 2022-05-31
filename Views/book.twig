@@ -111,11 +111,13 @@
 <div
 	class="comment">
 	{# Afficher le numéro de l'user #}
-	{% for user in u %}
-		<strong>{{user.getNum_member}}</strong>
-	{% endfor %}
-
+		
 	{% for comment in c %}
+		{% for user in u %}
+			{% if comment.getId_user == user.getId_user %}
+				{{user.getNum_member}}
+			{% endif %}
+		{% endfor %}
 		<p>
 			{{comment.getTitle_comment}}
 		</p>
