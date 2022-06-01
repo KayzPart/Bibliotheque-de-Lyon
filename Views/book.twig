@@ -117,14 +117,14 @@
 </div>
 
 <div>
-	<form action="" method="GET">
+	<form action="./addcom" method="GET">
 
-		<label for="firstname"><input type="text" name="firstname" id="firstname" placeholder="Votre prénom, pseudo, ou titre de votre commentaire"></label>
+		<label for="titleComment"><input type="text" name="titleComment" id="titleComment" placeholder="Votre titre"></label>
 
-		<label for="comment"></label>
-		<textarea name="comment" id="comment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
-
-		<button type="submit">Envoyer</button>
+		<label for="contentComment"></label>
+		<textarea name="contentComment" id="contentComment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
+	<input type="hidden" name="id_book" value="{{book.getId_book}}">
+		<input type="submit" name="submit" value="Envoyer">
 	</form>
 </div>
 {% endblock %}{% block footer %}

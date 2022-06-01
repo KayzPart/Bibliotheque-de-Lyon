@@ -18,7 +18,6 @@ class ControllerBook extends ControllerTwig
         $cmt = new ModelComment();
         $book = $datas->select($id);
         $comment = $cmt->commentUser($id);
-        var_dump($comment);
         // $reserv = $datasReserv->bookReserv();
         echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'root' => ROOT]);
 
@@ -60,11 +59,14 @@ class ControllerBook extends ControllerTwig
     public static function editBookForm($id)
     {
         $twig = ControllerTwig::twigControl();
+        $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datas = $_GET;
         $datas = new ModelBook();
-        $book = $datas->select($id);
+        $categorie = new ModelCategory();
+        $upB = $datas->select($id);
+        $upC = $categorie->readCategory($id);
         $update = $datas->editBook($id);
-        echo $twig->render('update_book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2],'root' => ROOT]);
+        echo $twig->render('admin_book_ajout.twig', ['book' => $upB[0], 'condition' => $upB[1], 'category' => $upB[2], '','root' => ROOT]);
     }
     public static function redirectionAfterEdit(){
         $twig = ControllerTwig::twigControl();

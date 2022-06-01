@@ -25,25 +25,19 @@
         }
 
         // Ajout commentaire 
-        public function addComments(){
+        public function addComments($datas){
             if(isset($_GET['submit'])){
-                $id = $_GET['id_book'];
-                $idUser = $_GET['id_user'];
-                $firstname = $_GET['firstname']; 
-                $name_comment = ['comment'];
+                $id = $_SESSION['userId'];
 
                 $db = $this->getDb();
+                var_dump($datas['id_book'],$datas['contentComment'],$datas['titleComment'], $id);
+                $addComment = $db->prepare('INSERT INTO `comment`(`title_comment`, `content_comment`, `id_book`, `id_user`) VALUES (:titleComment, :contentComment, :idBook, :id)');
+                $addComment->bindParam('titleComment', $datas['titleComment'], PDO::PARAM_STR);
+                $addComment->bindParam('contentComment', $datas['contentComment'], PDO::PARAM_STR); 
+                $addComment->bindParam('idBook', $datas['id_book'], PDO::PARAM_INT); 
+                $addComment->bindParam('id', $id, PDO::PARAM_INT); 
+                $addComment->execute();
 
-                $reqUser = $db->prepare('SELECT `id_user`, `firstname` FROM `user` WHERE `id_user` = :idUser');
-                $reqUser->bindParam(':id_user', $idUser);
-
-                $req = $db->prepare('INSERT INTO `comment` (`name_comment`, `id_book`, `id_user`) VALUES (:name_comment, :id_book; :id_user)');
-
-                $req->bindParam('name_comment', $name_comment, PDO::PARAM_STR);
-                $req->bindParam('id_book', $id, PDO::PARAM_INT);
-                $req->bindParam('id_user', $idUser, PDO::PARAM_INT);
-
-                $req->execute();
             }
         }
     }

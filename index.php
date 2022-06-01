@@ -51,7 +51,9 @@ $router->map('GET', '/book/validate', 'ControllerReserv#bookings');
 
 // Redirection vers le book selectionner
 $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');
-// $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBookGender');
+
+// Ajout commentaire 
+$router->map('GET', '/book/addcom', 'ControllerComment#comment');
 
 // *** Formulaire ajout livre => Les routes
 $router->map('POST', '/newBook', 'ControllerBook#newBook');

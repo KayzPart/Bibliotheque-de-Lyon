@@ -13,30 +13,34 @@
     <form action="./newBook" method="POST" enctype="multipart/form-data" class="formaddbook">
         <div class="tay">
             <label for="title">Titre</label>
-            <input id="title" type="text" name="title">
+            <input id="title" type="text" name="title" value="{{book.getTitle}}">
 
             <label for="author">Auteur</label>
-            <input id="author" type="text" name="author">
+            <input id="author" type="text" name="author" value="{{book.getAuthor}}">
 
             <label for="year_published">Année de publication</label>
-            <input id="year_published" type="date" name="year_published">
+            <input id="year_published" type="date" name="year_published" value="{{ book.getYear_published|date('d-m-Y') }}">
         </div>
 
         <div class="dcgi">
             <div class="descadd">
                     <label for="description">Description</label>
-                <textarea id="description" name="descrip" placeholder="Veuillez entrer une description du livre"></textarea>
+                <textarea id="description" name="descrip" value="{{book.getDescrip}}"></textarea>
             </div>
 
             <div class="cgi">
                 <label for="category-type">Catégorie</label>
 
                 <select id="category-type" name="category-type">
+                {% if book  %}
+                    <option value="{{book.getId_category}}">{{category.getName_category}}</option>
+                {% endif %}
                     <option value="1">Roman</option>
                     <option value="2">Manga</option>
                     <option value="3">BD</option>
                     <option value="4">Magazine</option>
                     <option value="5">Journal</option>
+                
                 </select>
 
                 <div class="gender-add">
@@ -70,7 +74,7 @@
                 </div>
 
                 <label for="isbn">ISBN</label>
-                <input id="isbn" type="text" name="isbn">
+                <input id="isbn" type="text" name="isbn" value="{{book.getIsbn}}">
             </div>
 
         </div>
@@ -80,14 +84,14 @@
                 <label for="photo">Image</label>
                 <div class="upload">
                     <button class="btn-upload">Choisir un fichier</button>
-                    <input id="photo" type="file" name="photo" accept="image/png, image/jpeg, image/jpg">
+                    <input id="photo" type="file" name="photo" accept="image/png, image/jpeg, image/jpg" value="{{book.getPhoto}}">
                 </div>
 
 
                 <label for="lang">Langue</label>
-                <input type="text" name="lang" id="lang">
+                <input type="text" name="lang" id="lang" value="{{book.getLang}}">
 
-                <label for="emplacement"><span>Emplacement </span><input type="text" name="emplacement" id="emplacement"></label>
+                <label for="emplacement"><span>Emplacement </span><input type="text" name="emplacement" id="emplacement" value="{{book.getEmplacement}}"></label>
 
             </div>
             <div class="etat">
@@ -101,7 +105,7 @@
             </div>
             <div class="quantity">
                 <label for="quantity">quantity</label>
-                <input type="number" name="quantity" id="quantity">
+                <input type="number" name="quantity" id="quantity" value="{{book.getQuantity}}">
             </div>
 
         </div>
