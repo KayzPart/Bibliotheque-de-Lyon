@@ -32,9 +32,9 @@
 					{{ book.getIsbn }}
 				</p>
 				{# <p>
-												                    Genre :
-												                {{gender.getName_gender}}
-												                </p> #}
+						Genre :
+						{{gender.getName_gender}}
+					</p> #}
 				<p>
 					Catégorie :
 					{{ category.getName_category }}
@@ -67,38 +67,28 @@
 			<br><br>
 			La Bibliothèque de Lyon vous remercie pour votre confiance.
 		</p>
-
-		
 		<button class="closebooking">Annuler</button>
 		<button class="reserv">Réserver</button>
 	</div>
 </div>
-		<section>
-			<div class="bgbookmark">
-				<div class="square">Emplacement du livre
-				<a href="#">?</a> : {{book.getEmplacement}}</div>
-				<div class="triangle"></div>
-			</div>
-			<div class="bgres">
-				<div class="btn-wanted">
-					<div class="btnsub btnbooking">Réserver</div>
-					<div>
-						<a href="#">Ajoutez à votre liste d'envies</a>
-						{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
-					</div>
-
-				</div>
+	<section>
+		<div class="bgbookmark">
+			<div class="square">Emplacement du livre
+			<a href="#">?</a> : {{book.getEmplacement}}</div>
+			<div class="triangle"></div>
+		</div>
+		<div class="bgres">
+			<div class="btn-wanted">
+				<div class="btnsub btnbooking">Réserver</div>
 				<div>
-					{# Afficher Prété ou disponible #}
-				</div>				
+					<a href="#">Ajoutez à votre liste d'envies</a>
+					{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
+				</div>
+
 			</div>
-		<p>
-			<a href="#">Ajoutez à votre liste d'envies
-			</a>
-			{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
-		</p>
-		<div>
-			{# Afficher Prété ou disponible #}
+			<div>
+				{# Afficher Prété ou disponible #}
+			</div>				
 		</div>
 	</section>
 </div>
@@ -110,8 +100,6 @@
 
 <div
 	class="comment">
-	{# Afficher le numéro de l'user #}
-		
 	{% for comment in c %}
 		{% for user in u %}
 			{% if comment.getId_user == user.getId_user %}
