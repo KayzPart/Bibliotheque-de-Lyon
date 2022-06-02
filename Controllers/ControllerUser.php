@@ -75,23 +75,7 @@
             }
             echo $twig->render('user_modif.twig', ['root' => ROOT, 'u' => $user]);
         }
-
-        // Modification compte user
-        // public static function updateUser(){
-        //     session_start();
-
-            
-        //     $twig = ControllerTwig::twigControl();
-        //     $newDatas = new ModelUSer();
-
-        //     $oldUser = $newDatas->selectUser($id);
-        //     var_dump($oldUser);
-            
-        //     // $user = $newDatas->userUpdate();
-            
-        //     echo $twig->render('user_modif.twig', ['root' => ROOT]);
-        // }
-
+        
         // Direction formulaire inscription user
         public static function inscriptionUser(){
             $twig = ControllerTwig::twigControl();
