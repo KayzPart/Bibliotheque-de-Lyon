@@ -31,17 +31,21 @@
 					ISBN :
 					{{ book.getIsbn }}
 				</p>
-				{# <p>
-						Genre :
+
+				<p>
+					Genre :
+					{% for gender in g %}
 						{{gender.getName_gender}}
-					</p> #}
+					{% endfor %}
+
+				</p>
 				<p>
 					Catégorie :
 					{{ category.getName_category }}
 				</p>
 				<p>
 					Date de publication :
-					{{book.getYear_published|date('d/m/y', strtotime)}}
+					{{book.getYear_published}}
 				</p>
 				<p>
 					État :
@@ -56,80 +60,101 @@
 			</p>
 			<p>{{book.getDescrip}}</p>
 		</section>
-<div class="usereserv">
-	<div class="confirm-booking">
-		<h5>Vous souhaitez réserver le livre {{book.getTitle}} ?</h5>
-		<br><br>
-		<p>
-			Si vous souhaitez continuer, et réserver {{book.getTitle}}, votre réservation prendra effet à ce jour, soit le : {{ "now"|date("m/d/Y") }}.
-			<br><br>
-			Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au {{ reserv.book|date_modify("+21 day")|date("m/d/Y") }} pour en profiter. 
-			<br><br>
-			La Bibliothèque de Lyon vous remercie pour votre confiance.
-		</p>
-		<button class="closebooking">Annuler</button>
-		<button class="reserv">Réserver</button>
-	</div>
-</div>
-	<section>
-		<div class="bgbookmark">
-			<div class="square">Emplacement du livre
-			<a href="#">?</a> : {{book.getEmplacement}}</div>
-			<div class="triangle"></div>
-		</div>
-		<div class="bgres">
-			<div class="btn-wanted">
-				<div class="btnsub btnbooking">Réserver</div>
-				<div>
-					<a href="#">Ajoutez à votre liste d'envies</a>
-					{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
-				</div>
 
+		<div class="usereserv">
+			<div class="confirm-booking">
+				<h5>Vous souhaitez réserver le livre
+					{{book.getTitle}}
+					?</h5>
+				<br><br>
+				<p>
+					Si vous souhaitez continuer, et réserver
+					{{book.getTitle}}, votre réservation prendra effet à ce jour, soit le :
+					{{ "now"|date("m/d/Y") }}.
+					<br><br>
+					Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au
+					{{ reserv.book|date_modify("+21 day")|date("m/d/Y") }}
+					pour en profiter.
+					<br><br>
+					La Bibliothèque de Lyon vous remercie pour votre confiance.
+				</p>
+
+
+				<button class="closebooking">Annuler</button>
+				<button class="reserv">Réserver</button>
 			</div>
+		</div>
+		<section>
+			<div class="bgbookmark">
+				<div class="square">Emplacement du livre
+					<a href="#">?</a>
+					:
+					{{book.getEmplacement}}</div>
+				<div class="triangle"></div>
+			</div>
+			<div class="bgres">
+				<div class="btn-wanted">
+					<div class="btnsub btnbooking">Réserver</div>
+					<div>
+						<a href="#">Ajoutez à votre liste d'envies</a>
+						{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
+					</div>
+
+				</div>
+				<div>
+					{# Afficher Prété ou disponible #}
+				</div>
+			</div>
+			<p>
+				<a href="#">Ajoutez à votre liste d'envies
+				</a>
+				{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
+			</p>
 			<div>
 				{# Afficher Prété ou disponible #}
-			</div>				
-		</div>
-	</section>
-</div>
+			</div>
+		</section>
+	</div>
 
-<div class="bgbookmark">
-	<div class="square">COMMENTAIRE</div>
-	<div class="triangle"></div>
-</div>
+	<div class="bgbookmark">
+		<div class="square">COMMENTAIRE</div>
+		<div class="triangle"></div>
+	</div>
 
-<div
-	class="comment">
-	{% for comment in c %}
-		{% for user in u %}
-			{% if comment.getId_user == user.getId_user %}
-				{{user.getNum_member}}
-			{% endif %}
+	<div
+		class="comment">
+		{# Afficher le numéro de l'user #}
+
+		{% for comment in c %}
+			{% for user in u %}
+				{% if comment.getId_user == user.getId_user %}
+					{{user.getNum_member}}
+				{% endif %}
+			{% endfor %}
+			<p>
+				{{comment.getTitle_comment}}
+			</p>
+			<p>
+				{{comment.getContent_comment}}
+			</p>
+
 		{% endfor %}
-		<p>
-			{{comment.getTitle_comment}}
-		</p>
-		<p>
-			{{comment.getContent_comment}}
-		</p>
+	</div>
 
-	{% endfor %}
-</div>
+	<div>
+		<form action="./addcom" method="GET">
 
-<div>
-	<form action="./addcom" method="GET">
+			<label for="titleComment"><input type="text" name="titleComment" id="titleComment" placeholder="Votre titre"></label>
 
-		<label for="titleComment"><input type="text" name="titleComment" id="titleComment" placeholder="Votre titre"></label>
-
-		<label for="contentComment"></label>
-		<textarea name="contentComment" id="contentComment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
-	<input type="hidden" name="id_book" value="{{book.getId_book}}">
-		<input type="submit" name="submit" value="Envoyer">
-	</form>
-</div>
-{% endblock %}{% block footer %}
-{% include "./Templates/footer/footer.twig" %}
-
-<script src="{{root}}/Views/Templates/js/booking.js"></script>
+			<label for="contentComment"></label>
+			<textarea name="contentComment" id="contentComment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
+			<input type="hidden" name="id_book" value="{{book.getId_book}}">
+			<input type="submit" name="submit" value="Envoyer">
+		</form>
+	</div>
 {% endblock %}
+{% block footer %}
+	{% include "./Templates/footer/footer.twig" %}
 
+	<script src="{{root}}/Views/Templates/js/booking.js"></script>
+{% endblock %}

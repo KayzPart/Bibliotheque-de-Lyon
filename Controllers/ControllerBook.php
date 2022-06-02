@@ -16,10 +16,12 @@ class ControllerBook extends ControllerTwig
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datas = new ModelBook();
         $cmt = new ModelComment();
+        $gend = new ModelGender();
         $book = $datas->select($id);
         $comment = $cmt->commentUser($id);
+        $gender = $gend->readGender($id);
         // $reserv = $datasReserv->bookReserv();
-        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'root' => ROOT]);
+        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'g' => $gender, 'root' => ROOT]);
 
     }
     public static function newBook($datas){
@@ -62,11 +64,11 @@ class ControllerBook extends ControllerTwig
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datas = $_GET;
         $datas = new ModelBook();
-        $categorie = new ModelCategory();
+        $gend = new ModelGender();
         $upB = $datas->select($id);
-        $upC = $categorie->readCategory($id);
-        $update = $datas->editBook($id);
-        echo $twig->render('admin_book_ajout.twig', ['book' => $upB[0], 'condition' => $upB[1], 'category' => $upB[2], '','root' => ROOT]);
+        $datas->editBook($id);
+        $gender = $gend->readGender($id);
+        echo $twig->render('admin_book_ajout.twig', ['book' => $upB[0], 'category' => $upB[1], 'condition' => $upB[2], 'g' => $gender,'root' => ROOT]);
     }
     public static function redirectionAfterEdit(){
         $twig = ControllerTwig::twigControl();
