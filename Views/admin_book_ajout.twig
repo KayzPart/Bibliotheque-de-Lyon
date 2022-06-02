@@ -36,9 +36,6 @@
 				<label for="category-type">Catégorie</label>
 
 				<select id="category-type" name="category-type">
-					{% if book  %}
-						<option value="{{book.getId_category}}">{{category.getName_category}}</option>
-					{% endif %}
 					<option value="1">Roman</option>
 					<option value="2">Manga</option>
 					<option value="3">BD</option>
@@ -50,37 +47,11 @@
 					
 					<div class="checkboxcontent">
 						{% for gender in g %}
-							{% if gender.getId_gender in value|keys %}
-							<label><input type="checkbox" name="gender[]" value="{{gender.getId_gender}}">{{gender.getName_gender}}</label>
-							{% else %}
-								<label><input type="checkbox" name="gender[]" value="{{gender.getId_gender}}" checked>{{gender.getName_gender}}</label>
-							{% endif %}
+							<label><input type="checkbox" name="gender[]" value="{{gender.getId_gender}}" checked>{{gender.getName_gender}}</label>
 						{% endfor %}
-
-						
-						{# <label><input type="checkbox" name="gender[]" value="1">Fantaisie</label>
-
-						<label><input type="checkbox" name="gender[]" value="2">Action</label>
-
-						<label><input type="checkbox" name="gender[]" value="3">Aventure</label>
-
-						<label><input type="checkbox" name="gender[]" value="4">Comédie</label>
-
-						<label><input type="checkbox" name="gender[]" value="5">Romance</label>
-
-						<label><input type="checkbox" name="gender[]" value="6">Histoire</label>
-
-						<label><input type="checkbox" name="gender[]" value="7">Policier</label>
-
-						<label><input type="checkbox" name="gender[]" value="8">Guerre</label>
-
-						<label><input type="checkbox" name="gender[]" value="9">Drame</label>
-
-						<label><input type="checkbox" name="gender[]" value="10">Horreur</label>
-
-						<label><input type="checkbox" name="gender[]" value="11">Science-Fiction</label>
-
-						<label><input type="checkbox" name="gender[]" value="12">Biographie</label> #}
+						{% for genderall in ga %}
+							<label><input type="checkbox" name="gender[]" value="{{genderall.getId_gender}}">{{genderall.getName_gender}}</label>		
+						{% endfor %}
 					</div>
 
 				</div>
@@ -110,11 +81,11 @@
 			</div>
 			<div class="etat">
 				<label>État</label>
-				<label class="condition" for="condition1"><input type="radio" name="condition" id="condition1" value="1" {% if book.getId_condition_book == condition.getId_condition_book %} checked {% endif %}>Très bon</label>
+				<label class="condition" for="condition1"><input type="radio" name="condition" id="condition1" value="1" {% if book.getId_condition_book == 1 %} checked {% endif %}>Très bon</label>
 
-				<label class="condition" for="condition2"><input type="radio" name="condition" id="condition2" value="2">Bon</label>
+				<label class="condition" for="condition2"><input type="radio" name="condition" id="condition2" value="2" {% if book.getId_condition_book == 2 %} checked {% endif %}>Bon</label>
 
-				<label class="condition" for="condition3"><input type="radio" name="condition" id="condition3" value="3">Mauvais</label>
+				<label class="condition" for="condition3"><input type="radio" name="condition" id="condition3" value="3" {% if book.getId_condition_book == 3 %} checked {% endif %}>Mauvais</label>
 			</div>
 			<div class="quantity">
 				<label for="quantity">quantity</label>
