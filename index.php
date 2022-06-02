@@ -3,7 +3,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 require_once  __DIR__ .'/vendor/altorouter/altorouter/AltoRouter.php';
 
 
-define('ROOT', '/php/Bibliotheque-de-Lyon');
+define('ROOT', '/projet/Bibliotheque-de-Lyon');
 
 // Création d'une instance de AltoRouter
 $router = new AltoRouter();
@@ -23,12 +23,16 @@ $router->map('GET', '/', 'ControllerBook#listAllBook', '/');
 // Direction formulaire Admin
 $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
 
+// Déconnection de l'admin
+$router->map('GET', '/deconnectAdmin', 'ControllerConnexion#deconnectAdmin');
+
+$router->map('GET', '/deconnectUser', 'ControllerConnexion#deconnectUser');
+
 // Direction formulaire User (par défaut)
 $router->map('GET', '/connectUser', 'ControllerConnexion#connectUser');
 
 // Espace User
 $router->map('POST', '/verifUser', 'ControllerUser#connexionUser');
-
 $router->map('GET', '/spaceUser', 'ControllerUser#space');
 
 // Espace User => Modification info compte

@@ -354,6 +354,15 @@ body{
             &>span{
                 text-decoration: underline;
             }
+            &>a{
+                text-decoration: none;
+                color: $color;
+                transition: all 0.3s;
+                &:hover{
+                    color: #acc4ce;
+                    text-decoration: underline;
+                }
+            }
         }
         &>#hor{
             margin-bottom: 10px;
@@ -426,7 +435,7 @@ body{
 }
 
 // ||------CONNEXION-------||
-.connectp{
+.connectp, .modif-form{
     background: $bgbtn;
     margin: 10px;
     padding: 10px;
@@ -800,6 +809,34 @@ body{
     height: 35px;
     align-self: center;
 }
+
+
+// ||--------SPACE USER-------||
+
+// ||------MODIF USER-------||
+.modif-pro{
+    width: 200px;
+    height: 35px;
+}
+.modif-form{
+    &>label{
+        margin: 5px 0;
+        color: $color;
+    }
+    &>input{
+        margin: 5px 0;
+        width: 80%;
+        text-align: center;
+        &[type='email']{
+            margin-bottom: 30px;
+        }
+        &.btnmodif{
+            width: 50%;
+            height: 35px;
+        }
+    }
+}
+
 // ||-------SEARCH-------||
 .searcht{
     width: 200px;
@@ -1072,7 +1109,7 @@ body{
         margin: 40px 0;
     }
     // ||-----connexion------||
-    .connectp{
+    .connectp, .modif-form{
         margin: 100px auto;
         margin-bottom: 10px;
         padding: 20px 5px;
@@ -1281,6 +1318,37 @@ body{
         width: 280px;
         height: 55px;
         font-size: 30px;
+    }
+
+    // ||-----register user-----||
+    .register{
+        width: 40vw !important;
+    }
+
+    // ||-----space user-----||
+
+    // ||-----modif user-----||
+    .modif-pro{
+        width: 20vw;
+        height: 60px;
+        line-height: 60px;
+        
+    }
+    .modif-form{
+        margin: 50px auto;
+        font-size: 24px;
+        width: 60%;
+        &>input{
+            height: 26px;
+            font-size: 24px;
+            width: 50%;
+            &.btnmodif{
+                font-size: 36px;
+                height: 50px;
+                width: 30%;
+
+            }
+        }
     }
 
     // ||----book----||

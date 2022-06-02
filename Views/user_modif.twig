@@ -7,11 +7,11 @@
 {% block header %} {% include "./Templates/header/headerUser.twig" %} {% endblock %}
 
 {% block content %}
-<h1>Profil</h1>
+<h1 class="title modif-pro">Profil</h1>
 
-<form action="" method="POST">
+<form class="modif-form" action="" method="POST">
     <label for="newemail">Email</label>
-    <input type="email" name="newemail" id="newemail">
+    <input type="email" name="newemail" id="newemail" value="{{u.getEmail}}">
 
     <label for="oldpassword">Ancien mot de passe</label>
     <input type="password" name="oldpassword" id="oldpassword">
@@ -19,9 +19,9 @@
     <label for="newpassword">Nouveau mot de passe</label>
     <input type="password" name="newpassword" id="newpassword">
 
-    <input type="submit" name="submit" value="Modifier">
+    <input class="btnsub btnmodif" type="submit" name="submit" value="Modifier">
 </form>
-<a href="../spaceUser">Retour sur le compte</a>
+<div class="btnbacks"><a class="btnback" href="../spaceUser">Retour sur le compte</a></div>
 
 {% endblock %}
 

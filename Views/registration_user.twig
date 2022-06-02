@@ -4,11 +4,11 @@
 
 {% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
 
-{% block header %} {% include "./Templates/header/header.twig" %} {% endblock %}
+{% block header %} {% include "./Templates/header/headerAdmin.twig" %} {% endblock %}
 
 {% block content %}
-    <h1>Inscription adhérent</h1>
-    <form action="" method="POST">
+    <h1 class="title modif-pro register">Inscription adhérent</h1>
+    <form class="modif-form" action="" method="POST">
         <label for="firstname">Prénom</label>
         <input type="text" id="firstname" name="firstname" required>
 
@@ -20,12 +20,13 @@
         
       
         
-        <input type="submit" name="submit" value="Inscription">
+        <input class="btnsub btnmodif" type="submit" name="submit" value="Inscription">
 
     </form>
+    <div class="btnbacks"><a class="btnback" href="./spaceAdmin">Retour sur le compte</a></div>
 {% endblock %}
 
 
 
 
-{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
+{% block footer %} {% include "./Templates/footer/footer-co.twig" %} {% endblock %}
