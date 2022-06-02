@@ -55,7 +55,7 @@ class ModelBook extends Model
     public function select($id)
     {
         $db  = $this->getdb();
-        $req = $db->prepare("SELECT `id_book`,`category`.`name_category`, `condition_book`.`status_condition`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` INNER JOIN `category` ON `category`.`id_category` = `book`.`id_category` INNER JOIN  `condition_book` ON `condition_book`.`id_condition_book` = `book`.`id_condition_book` WHERE `id_book` = :id");
+        $req = $db->prepare("SELECT `id_book`,`category`.`name_category`, `book`.`id_condition_book`, `condition_book`.`status_condition`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` INNER JOIN `category` ON `category`.`id_category` = `book`.`id_category` INNER JOIN  `condition_book` ON `condition_book`.`id_condition_book` = `book`.`id_condition_book` WHERE `id_book` = :id");
 
         $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();
@@ -184,33 +184,6 @@ class ModelBook extends Model
         return $arrayCate;
     }
 
-    // Modification du livre
-
-    public function editBook($id)
-    {
-        if (isset($_GET['submit'])) {
-            $id = $_GET['id_book'];
-            $id_condition_book = $_GET['condition'];
-            $emplacement = $_GET['emplacement'];
-
-            $db = $this->getDb();
-
-            $reqUpdate = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement WHERE id_book = :id');
-
-            $reqUpdate->bindParam(':id', $id, PDO::PARAM_INT);
-            $reqUpdate->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_INT);
-            $reqUpdate->bindParam(':emplacement', $emplacement, PDO::PARAM_STR);
-
-            $reqUpdate->execute();
-            echo 'Données mises à jour';
-
-            $modiB = [];
-            while ($dts = $reqUpdate->fetch(PDO::FETCH_ASSOC)) {
-                $modiB = new Book($dts);
-            }
-            return $modiB;
-        }
-    }
     // Affichage par liste descendante 
     public function listAllDesc()
     {

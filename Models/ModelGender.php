@@ -14,7 +14,20 @@ class ModelGender extends Model
         while($g = $req->fetch(PDO::FETCH_ASSOC)){
             $gender[] = new Gender($g);
         }
-        var_dump($gender);
+
         return $gender;
+    }
+    // Affiche tous les genres
+    public function allGender(){
+        $db = $this->getDb();
+
+        $req = $db->query("SELECT `id_gender`, `name_gender` FROM `gender`");
+
+        $genderAll = [];
+        while($g = $req->fetch(PDO::FETCH_ASSOC)){
+            $genderAll[] = new Gender($g);
+        }
+
+        return $genderAll;
     }
 }

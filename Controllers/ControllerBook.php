@@ -38,7 +38,9 @@ class ControllerBook extends ControllerTwig
             header("Refresh: 0.01; url = ./connectAdmin");
         }
         $twig = ControllerTwig::twigcontrol();
-        echo $twig->render('admin_book_ajout.twig', ['root' => ROOT]);
+        $gend = new ModelGender();
+        $genderAll = $gend->allGender();
+        echo $twig->render('admin_book_ajout.twig', ['ga' => $genderAll ,'root' => ROOT]);
     }
     
     public static function spaceSearch(){
@@ -66,9 +68,14 @@ class ControllerBook extends ControllerTwig
         $datas = new ModelBook();
         $gend = new ModelGender();
         $upB = $datas->select($id);
-        $datas->editBook($id);
         $gender = $gend->readGender($id);
-        echo $twig->render('admin_book_ajout.twig', ['book' => $upB[0], 'category' => $upB[1], 'condition' => $upB[2], 'g' => $gender,'root' => ROOT]);
+        $genderAll = $gend->allGender();
+        foreach($gender as $g){
+            if(($key = array_search($g, $genderAll)) !== false){
+                unset($genderAll[$key]);
+            }
+        }
+        echo $twig->render('admin_book_ajout.twig', ['book' => $upB[0], 'category' => $upB[1], 'condition' => $upB[2], 'g' => $gender, 'ga' => $genderAll,'root' => ROOT]);
     }
     public static function redirectionAfterEdit(){
         $twig = ControllerTwig::twigControl();
