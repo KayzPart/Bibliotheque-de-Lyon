@@ -81,7 +81,9 @@
 
 
 				<button class="closebooking">Annuler</button>
-				<button class="reserv">Réserver</button>
+				<button class="reserv">	
+					<a href="{{root}}/userReserv/{{book.getId_book}}">Réserver</a>
+				</button>
 			</div>
 		</div>
 		<section>
@@ -105,14 +107,6 @@
 					{# Afficher Prété ou disponible #}
 				</div>
 			</div>
-			<p>
-				<a href="#">Ajoutez à votre liste d'envies
-				</a>
-				{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
-			</p>
-			<div>
-				{# Afficher Prété ou disponible #}
-			</div>
 		</section>
 	</div>
 
@@ -123,7 +117,6 @@
 
 	<div
 		class="comment">
-		{# Afficher le numéro de l'user #}
 
 		{% for comment in c %}
 			{% for user in u %}

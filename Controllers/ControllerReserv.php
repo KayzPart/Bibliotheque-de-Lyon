@@ -1,18 +1,32 @@
 <?php
-    class ControllerReserv extends ControllerTwig{
+class ControllerReserv extends ControllerTwig
+{
 
-        public static function bookings($idUser, $idBook, $idCondition){
+    public static function bookings(){
+        session_start();
+        $twig = ControllerTwig::twigControl();
+        $today = date('Y-m-d');
+        $limitReserv = date('Y-m-d', strtotime('+21days'));
+        $idUse = $_SESSION['userId']; 
+        $idBk = $_GET['id_book'];
+        // $idCondition = getId_condition_book();
+        var_dump($idBk);
+
+        if (isset($_SESSION['userId'])) {
+            $us = new ModelUser();
+            $bk = new ModelBook();
+            $rv = new ModelReserv();
+            $user = $us->selectUser($idUse);
+            // $book = $bk->select($id);
             
-            $twig = ControllerTwig::twigControl();
-            $datasReserv = new ModelReserv();
-            $reserv = $datasReserv->bookReserv($idUser, $idBook, $idCondition);
-            echo $twig->render('book.twig', ['user' => $reserv[0], 'book' => $reserv[1], 'condition' => $reserv[2], 'day' => $reserv[3], 'limit' => $reserv[4],'root' => ROOT]);
+            $reserv = $rv->bookReserv($idBk, $idUse, $idCondition, $today, $limitReserv);
+            
+            // $reserv = $rv->bookReserv($data);
+        }
+        if(!isset($_SESSION['userId'])){
+            header("Refresh: 0.01; url = ./connectUser");
         }
 
-        public static function booking($id){
-            $twig = ControllerTwig::twigControl();
-            $reserv = new ModelReserv();
-            [$book, $condition, $user, $booking] = $reserv->bookSelect($id);
-            echo $twig->render('userReserv.twig', ['root' => ROOT ]);
-        }
+        echo $twig->render('userReserv.twig', ['root' => ROOT]);
     }
+}
