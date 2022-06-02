@@ -533,6 +533,18 @@ body {
   text-decoration: underline;
 }
 
+#footermain .socialnkhor > .horaire > p > a {
+  text-decoration: none;
+  color: #E0C097;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#footermain .socialnkhor > .horaire > p > a:hover {
+  color: #acc4ce;
+  text-decoration: underline;
+}
+
 #footermain .socialnkhor > .horaire > #hor {
   margin-bottom: 10px;
 }
@@ -1783,6 +1795,9 @@ body {
     width: 280px;
     height: 55px;
     font-size: 30px;
+  }
+  .register {
+    width: 40vw !important;
   }
   .modif-pro {
     width: 20vw;

@@ -39,10 +39,20 @@ class ControllerAdmin extends ControllerTwig
         if(!isset($_SESSION['adminId'])){
             header("Refresh: 0.01; url = ./connectAdmin");
         }
-        $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
         $twig = ControllerTwig::twigcontrol();
         $datas = new ModelBook();
-        $allBooksAdmn = $datas->listAll($p);
+        $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
+        if(isset($_GET['submit'])){
+            $searchcat = $_GET['searchcat'];
+            if($searchcat == 'id_category'){
+                $search = $_GET['categories'];
+            }else{
+                $search = $_GET['s'];
+            }
+            $allBooksAdmn = $datas->spaceSearch($searchcat, $search, $p);
+        }else{
+            $allBooksAdmn = $datas->listAll($p);
+        }
         echo $twig->render('spaceAdmin.twig', ['root' => ROOT, 'books' => $allBooksAdmn[0], 'nbrPages' => $allBooksAdmn[1]]);
     }
 

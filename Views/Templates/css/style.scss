@@ -354,6 +354,15 @@ body{
             &>span{
                 text-decoration: underline;
             }
+            &>a{
+                text-decoration: none;
+                color: $color;
+                transition: all 0.3s;
+                &:hover{
+                    color: #acc4ce;
+                    text-decoration: underline;
+                }
+            }
         }
         &>#hor{
             margin-bottom: 10px;
@@ -800,6 +809,7 @@ body{
     height: 35px;
     align-self: center;
 }
+
 
 // ||--------SPACE USER-------||
 
@@ -1308,6 +1318,11 @@ body{
         width: 280px;
         height: 55px;
         font-size: 30px;
+    }
+
+    // ||-----register user-----||
+    .register{
+        width: 40vw !important;
     }
 
     // ||-----space user-----||
