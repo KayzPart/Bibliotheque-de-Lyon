@@ -2,31 +2,52 @@
 class ControllerReserv extends ControllerTwig
 {
 
+    // public static function bookings($idBook, $idUse, $idCondition, $today, $limitReserv)
+    // {
+    //     session_start();
+    //     $twig = ControllerTwig::twigControl();
+    //     $idUse = $_SESSION['userId'];
+    //     if (isset($_POST['submit'])) {
+    //         $idBook = $_POST['id_book'];
+    //         $idCondition = $_POST['id_condition_book'];
+    //         $today = date('Y-m-d');
+    //         $limitReserv = date('Y-m-d', strtotime('+21days'));
+    //         $rv = new ModelReserv();
+    //         $rv->bookReserv($idBook, $idUse, $idCondition, $today, $limitReserv);
+    //     }
+    //     if (!isset($_SESSION['userId'])) {
+    //         header("Refresh: 0.01; url = ./connectUser");
+    //     }
+
+    //     echo $twig->render('userReserv.twig', ['root' => ROOT, 'r' => $rv]);
+    // }
+    // public static function reservation(){
+    //     session_start(); 
+    //     $twig = ControllerTwig::twigControl();
+    //     echo $twig->render('book.twig', ['root' => ROOT]);
+    // }
     public static function bookings(){
         session_start();
         $twig = ControllerTwig::twigControl();
-        $today = date('Y-m-d');
-        $limitReserv = date('Y-m-d', strtotime('+21days'));
-        $idUse = $_SESSION['userId']; 
-        $idBk = $_GET['id_book'];
-        // $idCondition = getId_condition_book();
-        var_dump($idBk);
-
-        if (isset($_SESSION['userId'])) {
-            $us = new ModelUser();
-            $bk = new ModelBook();
+        $datas = $_POST;
+        if(isset($_SESSION['userId'])){
             $rv = new ModelReserv();
-            $user = $us->selectUser($idUse);
-            // $book = $bk->select($id);
-            
-            $reserv = $rv->bookReserv($idBk, $idUse, $idCondition, $today, $limitReserv);
-            
-            // $reserv = $rv->bookReserv($data);
+            $rv->bookReserv($datas);
+            echo $twig->render('userReserv.twig', ['root' => ROOT, $_POST['id_book'], $_POST['id_condition_book']]);
         }
         if(!isset($_SESSION['userId'])){
-            header("Refresh: 0.01; url = ./connectUser");
+            echo 'Veuillez vous connecter avant de réserver un livre';
+            header('Refresh: 2; url= ../connectUser');
         }
-
-        echo $twig->render('userReserv.twig', ['root' => ROOT]);
+        
+        
+        
     }
+    // public static function reservShow(){
+    //     session_start(); 
+    //     if(!isset($_SESSION['userId'])){
+    //         echo 'Vous devez vous connecter avant de réserver un livre';
+    //         header('Refresh: 2; url = ./connectUser');
+    //     }
+    // }
 }

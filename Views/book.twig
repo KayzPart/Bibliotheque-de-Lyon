@@ -81,9 +81,18 @@
 
 
 				<button class="closebooking">Annuler</button>
-				<button class="reserv">	
-					<a href="{{root}}/userReserv/{{book.getId_book}}">Réserver</a>
-				</button>
+				<form action="{{root}}/validatebooking" method="POST">
+					<input type="hidden" value="{{book.getId_book}}" name="id_book">
+					<input type="hidden" value="{{condition.getId_condition_book}}" name="id_condition_book">
+					<input type="submit" name="submit" value="Réserver">
+					<pre>
+						{{ dump(book.getId_book, condition.getId_condition_book) }}
+						{{ dump(id_book)}}
+					</pre>
+				</form>
+
+				
+
 			</div>
 		</div>
 		<section>
@@ -115,8 +124,7 @@
 		<div class="triangle"></div>
 	</div>
 
-	<div
-		class="comment">
+	<div class="comment">
 
 		{% for comment in c %}
 			{% for user in u %}

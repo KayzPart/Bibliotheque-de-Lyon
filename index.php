@@ -39,7 +39,8 @@ $router->map('GET', '/spaceUser', 'ControllerUser#space');
 $router->map('GET|POST', '/userModif/[i:id_user]', 'ControllerUser#userSpace', 'usermodif');
 
 // Espace user -> recherche livre -> selection -> Réserver
-$router->map('GET', '/userReserv/[i:id_book]', 'ControllerReserv#bookings' );
+$router->map('POST', '/validatebooking', 'ControllerReserv#bookings');
+
 
 // Espace admin
 $router->map('POST', '/verifAdmin', 'ControllerAdmin#connexionAdmin');
