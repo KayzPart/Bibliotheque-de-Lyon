@@ -15,7 +15,7 @@
             session_start();
             unset($_SESSION['adminId']);
             session_destroy();
-            header('Location: ./connectUser');
+            header('Location: ./connectAdmin');
         }
         public static function deconnectUser(){
             session_start();

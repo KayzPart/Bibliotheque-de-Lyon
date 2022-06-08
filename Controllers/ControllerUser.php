@@ -55,8 +55,13 @@
             if(!isset($_SESSION['userId'])){
                 header("Refresh: 0.01; url = ./connectUser");
             }
+            $id = $_SESSION['userId'];
             $twig = Controllertwig::twigcontrol();
-            echo $twig->render('spaceUser.twig', ['root' => ROOT, 'id_user' => $_SESSION['userId']]);
+            $datas = new ModelUser();
+            $databooks = new ModelBook();
+            $books = $databooks->suggestBook();
+            $user = $datas->selectUser($id);
+            echo $twig->render('spaceUser.twig', ['root' => ROOT, 'id_user' => $_SESSION['userId'], 'user' => $user, 'books' => $books]);
         }
         // Modification du compte user - adhérent
         public static function userSpace($id){
