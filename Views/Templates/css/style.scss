@@ -812,6 +812,34 @@ body{
 
 
 // ||--------SPACE USER-------||
+.accountt, .histo, .suggt{
+    width: 200px;
+    height: 35px;
+}
+.user-historique{
+    height: 400px;
+    background: $bgbtn;
+    margin: 10px;
+}
+.user-account-info{
+    background-color: $bgbtn;
+    color: $color;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    &>.btnaccount{
+        margin: 10px auto;
+        padding: 5px;
+        display: block;
+        width: 150px;
+        text-decoration: none;
+    }
+}
+.suggUser{
+    &>.sugg{
+        margin-bottom: 10px;
+    }
+}
 
 // ||------MODIF USER-------||
 .modif-pro{
@@ -1326,6 +1354,37 @@ body{
     }
 
     // ||-----space user-----||
+    .accountt, .histo, .suggt{
+        width: 400px;
+        height: 65px;
+    }
+    .user{
+        display: flex;
+        justify-content: space-around;
+    }
+    .histo-account{
+        width: 45%;
+    }
+    .user-account-info{
+        font-size: 26px;
+    }
+    .suggUser{
+        width: 45%;
+        &>.sugg{
+            width: 100%;
+            &>.book{
+                &>.linkbook{
+                    &>.imgbook{
+                        width: 280px;
+                        height: 445px;
+                    }
+                }
+                &:nth-child(odd){
+                    margin-top: 100px;
+                }
+            }
+        }
+    }
 
     // ||-----modif user-----||
     .modif-pro{

@@ -8,13 +8,42 @@
 
 {% block header %}
 	{% include "./Templates/header/headerUser.twig" %}
-	{% include "./Templates/header/searchbar.twig" %}
 {% endblock %}
 
 {% block content %}
-
-	
-	<a href="./userModif/{{id_user}}">Modifier</a>
+    <div class="user">
+        <div class="histo-account">
+            <div class="histoUser">
+                <h3 class="title histo">Historique</h3>
+                <div class="user-historique">
+                    {# L'historique de l'utilisateur #}
+                </div>
+                
+            </div>
+            <div class="account">
+                <h3 class="title accountt">Votre compte</h3>
+                <div class="user-account-info">
+                    <p>Nom : {{user.getLastname}}</p>
+                    <p>Prénom : {{user.getFirstname}}</p>
+                    <p>Numéro adhérent : {{user.getNum_member}}</p>
+                    <p>Email : {{user.getEmail}}</p>
+                    <a class="btnsub btnaccount" href="./userModif/{{id_user}}">Modifier</a>
+                </div>
+            </div>
+        </div>
+        <div class="suggUser">
+            <h3 class="title suggt">Suggestion pour vous</h3>
+            <div class="sugg">
+                {% for book in books %}
+                <div class="book">
+                    <a class="linkbook" href="./book/{{book.getId_book}}">
+                        <img class="imgbook" src="./public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block footer %}

@@ -1213,6 +1213,37 @@ body {
       align-self: center;
 }
 
+.accountt, .histo, .suggt {
+  width: 200px;
+  height: 35px;
+}
+
+.user-historique {
+  height: 400px;
+  background: #5C3D2E;
+  margin: 10px;
+}
+
+.user-account-info {
+  background-color: #5C3D2E;
+  color: #E0C097;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.user-account-info > .btnaccount {
+  margin: 10px auto;
+  padding: 5px;
+  display: block;
+  width: 150px;
+  text-decoration: none;
+}
+
+.suggUser > .sugg {
+  margin-bottom: 10px;
+}
+
 .modif-pro {
   width: 200px;
   height: 35px;
@@ -1798,6 +1829,36 @@ body {
   }
   .register {
     width: 40vw !important;
+  }
+  .accountt, .histo, .suggt {
+    width: 400px;
+    height: 65px;
+  }
+  .user {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .histo-account {
+    width: 45%;
+  }
+  .user-account-info {
+    font-size: 26px;
+  }
+  .suggUser {
+    width: 45%;
+  }
+  .suggUser > .sugg {
+    width: 100%;
+  }
+  .suggUser > .sugg > .book > .linkbook > .imgbook {
+    width: 280px;
+    height: 445px;
+  }
+  .suggUser > .sugg > .book:nth-child(odd) {
+    margin-top: 100px;
   }
   .modif-pro {
     width: 20vw;
