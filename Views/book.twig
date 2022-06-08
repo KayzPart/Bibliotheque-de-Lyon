@@ -113,7 +113,17 @@
 
 				</div>
 				<div>
-					{# Afficher Prété ou disponible #}
+					{% for r in reservs %}
+						{% if (r.getId_book == book.getId_book) %}
+							{% if r.getEnd_date_reserv > now|date("Y-m-d") %}
+								<p><strong>Prêté</strong> - retour prévu le : {{r.getEnd_date_reserv}}</p>
+							{% else %}$
+								<p><strong>Disponible</strong></p>
+							{% endif %}
+						{% elseif loop.first %}
+							Disponible
+						{% endif %}
+					{% endfor %}
 				</div>
 			</div>
 		</section>
@@ -144,7 +154,7 @@
 
 	<div>
 		<form action="./addcom" method="GET">
-
+			
 			<label for="titleComment"><input type="text" name="titleComment" id="titleComment" placeholder="Votre titre"></label>
 
 			<label for="contentComment"></label>

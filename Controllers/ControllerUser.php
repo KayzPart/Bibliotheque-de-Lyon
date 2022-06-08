@@ -2,15 +2,16 @@
 
     class ControllerUser extends ControllerTwig{
         // Formulaire de contact
-        // public static function contactForm(){
-        //     $loader = new Twig\Loader\FilesystemLoader('./Views');
-        //     $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
-        //     $twig->addExtension(new \Twig\Extension\DebugExtension());
+        public static function contactForm(){
+            $loader = new Twig\Loader\FilesystemLoader('./Views');
+            $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
+            $twig->addExtension(new \Twig\Extension\DebugExtension());
 
-        //     $manager = new ModelUser();
-        //     // $datas = $manager->sendForm(); 
-        //     echo $twig->render('homepage.twig');
-        // }
+            $manager = new ModelUser();
+            // $datas = $manager->sendForm(); 
+            echo $twig->render('homepage.twig');
+        }
+        // Vérification de la connexion
         public static function connexionUser(){
             session_start(); 
             $email = $_POST['email'];
@@ -43,6 +44,7 @@
                 exit(0);
             }
         }
+        // Redirection Espace User
         public static function space(){
             session_start();
             if(!isset($_SESSION['userId'])){

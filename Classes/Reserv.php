@@ -46,8 +46,8 @@ class Reserv extends Classes{
         $this->_date_reserv = $date_reserv;
     }
 
-    public function setEnd_date_limit($end_date_limit){
-        $this->_end_date_limit = $end_date_limit;
+    public function setEnd_date_reserv($end_date_reserv){
+        $this->_end_date_reserv = $end_date_reserv;
     }
 
 }

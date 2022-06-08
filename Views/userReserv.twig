@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block header %}
-	{% include "./Templates/header/header.twig" %}
+	{% include "./Templates/header/headerUser.twig" %}
 {% endblock %}
 
 
@@ -16,6 +16,23 @@
 
 	<h1>Historique</h1>
 
+	<div class="in-progress">
+		<h2>En cours</h2>
+		{% for b in book %}
+			{{b.getTitle}}
+			{{b.getIsbn}}
+		{% endfor %}
+		{% for y in reservs %}
+			{{y.getEnd_date_reserv|date('d/m/Y')}}
+		{% endfor %}
+	</div>
+
+
+	<div class="rendered">
+		<h2>Rendu</h2>
+	
+
+	</div>
 
 
 {% endblock %}
