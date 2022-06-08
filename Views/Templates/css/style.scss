@@ -408,7 +408,7 @@ body{
         &>label{
             margin-top: 10px;
         }
-        &>button{
+        &>input{
             margin-top: 10px;
             width: 125px;
             height: 25px;
@@ -418,6 +418,9 @@ body{
             color: $color;
             border-width: 3px;
             transition: all 0.3s ease;
+        }
+        &>#msg{
+            width: 500px;
         }
     }
 }

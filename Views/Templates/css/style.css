@@ -604,7 +604,7 @@ body {
   margin-top: 10px;
 }
 
-.contact > form > button {
+.contact > form > input {
   margin-top: 10px;
   width: 125px;
   height: 25px;
@@ -615,6 +615,10 @@ body {
   border-width: 3px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
+}
+
+.contact > form > #msg {
+  width: 500px;
 }
 
 .closec {

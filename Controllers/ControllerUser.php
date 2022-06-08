@@ -6,10 +6,15 @@
             $loader = new Twig\Loader\FilesystemLoader('./Views');
             $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
             $twig->addExtension(new \Twig\Extension\DebugExtension());
-
-            $manager = new ModelUser();
-            // $datas = $manager->sendForm(); 
-            echo $twig->render('homepage.twig');
+            if(isset($_POST['submit'])){
+                $firstname = $_POST['firstname']; 
+                $lastname = $_POST['lastname']; 
+                $email = $_POST['email'];
+                $msg = $_POST['msg'];
+                $manager = new ModelUser();
+                $manager->sendForm($firstname, $lastname, $email, $msg);
+            }
+            header('Location: ./');
         }
         // Vérification de la connexion
         public static function connexionUser(){
@@ -58,6 +63,7 @@
             $user = $datas->selectUser($id);
             echo $twig->render('spaceUser.twig', ['root' => ROOT, 'id_user' => $_SESSION['userId'], 'user' => $user, 'books' => $books]);
         }
+        // Modification du compte user - adhérent
         public static function userSpace($id){
             session_start();
             $twig = Controllertwig::twigcontrol();
