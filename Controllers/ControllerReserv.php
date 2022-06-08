@@ -1,18 +1,45 @@
 <?php
-    class ControllerReserv extends ControllerTwig{
-
-        public static function bookings($idUser, $idBook, $idCondition){
-            
-            $twig = ControllerTwig::twigControl();
-            $datasReserv = new ModelReserv();
-            $reserv = $datasReserv->bookReserv($idUser, $idBook, $idCondition);
-            echo $twig->render('book.twig', ['user' => $reserv[0], 'book' => $reserv[1], 'condition' => $reserv[2], 'day' => $reserv[3], 'limit' => $reserv[4],'root' => ROOT]);
+class ControllerReserv extends ControllerTwig
+{
+    // Insert réservation
+    public static function bookings()
+    {
+        session_start();
+        $twig = ControllerTwig::twigControl();
+        $datas = $_POST;
+        if (isset($_SESSION['userId'])) {
+            $rv = new ModelReserv();
+            $rv->bookReserv($datas);
+            header('Location: ./userReserv');
         }
-
-        public static function booking($id){
-            $twig = ControllerTwig::twigControl();
-            $reserv = new ModelReserv();
-            [$book, $condition, $user, $booking] = $reserv->bookSelect($id);
-            echo $twig->render('userReserv.twig', ['root' => ROOT ]);
+        if (!isset($_SESSION['userId'])) {
+            echo 'Veuillez vous connecter avant de réserver un livre';
+            header('Refresh: 2; url= ../connectUser');
         }
     }
+    // Affichage des réservation en cours sur page userReserv 
+    public static function viewHistory($id)
+    {
+        session_start();
+        $twig = ControllerTwig::twigControl();
+        $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
+        if (isset($_SESSION['userId'])) {
+            $datasReserv = new ModelReserv();
+            $reserv = $datasReserv->selectReserv($id);
+            echo $twig->render('userReserv.twig', ['root' => ROOT, 'reservs' => $reserv[0], 'book' => $reserv[1]]);
+            var_dump($reserv[0]);
+        }
+        if (!isset($_SESSION['userId'])) {
+            header("Refresh: 0.01; url = ./connectUser");
+        }
+    }
+    // Function afficher prêter ou dispo sur book
+    public static function available($id){
+        $twig = ControllerTwig::twigControl();
+        $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
+        $availableReserv = new ModelReserv();
+        $reserv = $availableReserv->selectReserv($id);
+            echo $twig->render('book.twig', ['root' => ROOT, 'reservs' => $reserv[0], 'book' => $reserv[1]]);
+            var_dump($reserv[0]);
+    }
+}

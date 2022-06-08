@@ -1,46 +1,48 @@
 <?php
+
+use Symfony\Component\VarDumper\VarDumper;
+
 class ModelReserv extends Model
 {
-    public function bookSelect($id)
+    // Insert réservation
+    public function bookReserv($datas)
     {
-        $db = $this->getDb();
-        $select = $db->prepare('SELECT `reserv`.`id_reserv`, `reserv`.`id_book`, `reserv`.`id_user`, `reserv`.`id_condition_book`, `date_reserv`, `end_date_reserv` FROM `reserv` INNER JOIN `book` ON `book`.`id_book` = `reserv`.`id_book` INNER JOIN `user` ON `user`.`id_user` = `reserv`.`ìd_user` INNER JOIN `condition_book` ON `condition_book`.`id_condition_book` = `reserv`.`id_condition_book` WHERE `reserv`.`id_book` = :id');
-        $select->bindParam('id', $id, PDO::PARAM_INT);
-        $select->execute();
-        $booking = [];
-        $user = [];
-        $condition = [];
-        $book = [];
-        while ($b = $select->fetch(PDO::FETCH_ASSOC)) {
-            $booking[] = new Reserv($b);
-            $user[] = new User($b);
-            $condition[] = new ConditionBook($b);
-            $book = new Book($b);
+
+        if (isset($_POST['submit'])) {
+            $idUse = $_SESSION['userId'];
+            // $idUse = $_SESSION['userId'];
+            
+            $today = date('Y-m-d');
+            $limitReserv = date('Y-m-d', strtotime('+21days'));
+            $db = $this->getdb();
+
+            $reqReserv = $db->prepare("INSERT INTO `reserv`(`id_book`, `id_user`, `id_condition_book`, `date_reserv`, `end_date_reserv`) VALUES (:idBook, :idUse, :idCondition, :today, :limitReserv)");
+            $reqReserv->bindParam('idBook', $datas['id_book'], PDO::PARAM_INT);
+            $reqReserv->bindParam('idUse', $idUse, PDO::PARAM_INT);
+            $reqReserv->bindParam('idCondition', $datas['id_condition_book'], PDO::PARAM_INT);
+            $reqReserv->bindParam('today', $today, PDO::PARAM_STR);
+            $reqReserv->bindParam('limitReserv', $limitReserv, PDO::PARAM_STR);
+            $reqReserv->execute();
+
+            echo 'Votre réservation à bien été éffectuer';
+            var_dump($datas['id_book'], $idUse, $datas['id_condition_book'], $today, $limitReserv);
         }
-        return [$booking, $user, $condition, $book];
     }
+    // Sélect Réservation 
+    public function selectReserv(){
+        $id = isset($_SESSION['userId']) ? $_SESSION['userId'] : 'test';
+        $db = $this->getDb();
+        $select = $db->prepare('SELECT `id_reserv`, `book`.`id_book`, `book`.`title`, `book`.`isbn`, `end_date_reserv` FROM `reserv` INNER JOIN `book` ON `book`.`id_book` = `reserv`.`id_book` INNER JOIN `user` ON `user`.`id_user` = `reserv`.`id_user` WHERE `reserv`.`id_user` = :id_use');
+        $select->bindParam('id_use', $id, PDO::PARAM_INT);
+        $select->execute(); 
 
+        $reservation = [];  
+        $bookarray = [];
+        while($dataR = $select->fetch(PDO::FETCH_ASSOC)){
+            $reservation[] = new Reserv($dataR); 
+            $bookarray[] = new Book($dataR);
+        }
+        return [$reservation, $bookarray];
 
-
-    public function bookReserv($idUser, $idBook, $idCondition)
-    {
-        $today = date('Y-m-d');
-        $limitReserv = date('Y-m-d', strtotime('+21days'));
-
-        $db = $this->getdb();
-
-        $reqReserv = $db->prepare('INSERT INTO `reserv`(`id_book`, `id_user`, `id_condition_book`, `date_reserv`, `end_date_reserv`) VALUES (:idBook, :idUser, :idCondition, :today, :limitReserv,)');
-        $reqReserv->bindParam('id_book', $idBook, PDO::PARAM_INT);
-        $reqReserv->bindParam('id_user', $idUser, PDO::PARAM_INT);
-        $reqReserv->bindParam('id_condition_book', $idCondition, PDO::PARAM_INT);
-        $reqReserv->bindParam('date_reserv', $today, PDO::PARAM_STR);
-        $reqReserv->bindParam('end_date_reserv', $limitReserv, PDO::PARAM_STR);
-        $reqReserv->execute();
-
-        return 'Réservation effectuer';
-
-        $dataReserv = $reqReserv->fetch(PDO::FETCH_ASSOC);
-        $reserv = new Reserv($dataReserv);
-        return $reserv;
     }
 }

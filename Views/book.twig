@@ -81,7 +81,18 @@
 
 
 				<button class="closebooking">Annuler</button>
-				<button class="reserv">Réserver</button>
+				<form action="{{root}}/validatebooking" method="POST">
+					<input type="hidden" value="{{book.getId_book}}" name="id_book">
+					<input type="hidden" value="{{condition.getId_condition_book}}" name="id_condition_book">
+					<input type="submit" name="submit" value="Réserver">
+					<pre>
+						{{ dump(book.getId_book, condition.getId_condition_book) }}
+						{{ dump(id_book)}}
+					</pre>
+				</form>
+
+				
+
 			</div>
 		</div>
 		<section>
@@ -102,16 +113,18 @@
 
 				</div>
 				<div>
-					{# Afficher Prété ou disponible #}
+					{% for r in reservs %}
+						{% if (r.getId_book == book.getId_book) %}
+							{% if r.getEnd_date_reserv > now|date("Y-m-d") %}
+								<p><strong>Prêté</strong> - retour prévu le : {{r.getEnd_date_reserv}}</p>
+							{% else %}$
+								<p><strong>Disponible</strong></p>
+							{% endif %}
+						{% elseif loop.first %}
+							Disponible
+						{% endif %}
+					{% endfor %}
 				</div>
-			</div>
-			<p>
-				<a href="#">Ajoutez à votre liste d'envies
-				</a>
-				{# Mettre un petit coeur ou on puisse cliquer dessus et que cela ajoute a la liste d'envie #}
-			</p>
-			<div>
-				{# Afficher Prété ou disponible #}
 			</div>
 		</section>
 	</div>
@@ -121,9 +134,7 @@
 		<div class="triangle"></div>
 	</div>
 
-	<div
-		class="comment">
-		{# Afficher le numéro de l'user #}
+	<div class="comment">
 
 		{% for comment in c %}
 			{% for user in u %}
@@ -143,7 +154,7 @@
 
 	<div>
 		<form action="./addcom" method="GET">
-
+			
 			<label for="titleComment"><input type="text" name="titleComment" id="titleComment" placeholder="Votre titre"></label>
 
 			<label for="contentComment"></label>

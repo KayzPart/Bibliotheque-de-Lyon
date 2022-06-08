@@ -12,16 +12,19 @@ class ControllerBook extends ControllerTwig
         echo $twig->render('homepage.twig', ['books' => $allListNews, 'sBook' => $allBooks, 'root' => ROOT]);
     }
     public static function readBook($id){
+        session_start();
         $twig = ControllerTwig::twigControl();
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datas = new ModelBook();
         $cmt = new ModelComment();
         $gend = new ModelGender();
+        $availableReserv = new ModelReserv();
         $book = $datas->select($id);
+        $reserv = $availableReserv->selectReserv($id);
         $comment = $cmt->commentUser($id);
         $gender = $gend->readGender($id);
         // $reserv = $datasReserv->bookReserv();
-        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'g' => $gender, 'root' => ROOT]);
+        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'g' => $gender, 'reservs' => $reserv[0], 'root' => ROOT]);
 
     }
     public static function newBook($datas){
