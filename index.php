@@ -18,7 +18,7 @@ $router->setBasePath(ROOT);
 $router->map('GET', '/', 'ControllerBook#listAllBook', '/');
 
 // Formulaire de contact
-// $router->map('POST', '/spaceUser', 'ControllerUser#contactForm', 'contactForm');
+$router->map('POST', '/', 'ControllerUser#contactForm', 'contactForm');
 
 // Direction formulaire Admin
 $router->map('GET', '/connectAdmin', 'ControllerConnexion#connectAdmin');
