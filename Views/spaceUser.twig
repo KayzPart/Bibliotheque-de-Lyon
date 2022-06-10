@@ -16,7 +16,22 @@
             <div class="histoUser">
                 <h3 class="title histo">Historique</h3>
                 <div class="user-historique">
-                    {# L'historique de l'utilisateur #}
+                    <div class="book-res">
+                        {% for b in bookreserv|slice(0, 6) %}
+                            <div class="bookreserv">
+                                <p>{{b.getTitle}}</p>
+                                <p>{{b.getIsbn}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="book-date">
+                        {% for r in reserv|slice(0, 6) %}
+                            <div class="date">
+                                <p>{{r.getEnd_date_reserv|date('d/m/Y')}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="btnreserv-co"><a href="./userReserv" class="btnreserv">Voir plus</a></div>
                 </div>
                 
             </div>

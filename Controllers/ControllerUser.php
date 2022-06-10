@@ -59,9 +59,11 @@
             $twig = Controllertwig::twigcontrol();
             $datas = new ModelUser();
             $databooks = new ModelBook();
+            $datasReserv = new ModelReserv();
+            $reserv = $datasReserv->selectReserv($id);
             $books = $databooks->suggestBook();
             $user = $datas->selectUser($id);
-            echo $twig->render('spaceUser.twig', ['root' => ROOT, 'id_user' => $_SESSION['userId'], 'user' => $user, 'books' => $books]);
+            echo $twig->render('spaceUser.twig', ['root' => ROOT, 'id_user' => $_SESSION['userId'], 'user' => $user, 'books' => $books, 'reserv' => $reserv[0], 'bookreserv' => $reserv[1]]);
         }
         // Modification du compte user - adhérent
         public static function userSpace($id){
