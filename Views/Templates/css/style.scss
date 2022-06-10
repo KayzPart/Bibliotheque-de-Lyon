@@ -419,9 +419,7 @@ body{
             border-width: 3px;
             transition: all 0.3s ease;
         }
-        &>#msg{
-            width: 500px;
-        }
+        
     }
 }
 .closec{
@@ -1098,6 +1096,9 @@ body{
                     font-size: 26px;
                 }
             }
+        }
+        #msg{
+            width: 500px;
         }
         &>.socialnkhor{
             margin-top: 10px;
