@@ -14,26 +14,31 @@
 
 {% block content %}
 
-	<h1>Historique</h1>
+	<h1 class="title histo">Historique</h1>
 
 	<div class="in-progress">
-		<h2>En cours</h2>
-		{% for b in book %}
-			{{b.getTitle}}
-			{{b.getIsbn}}
-		{% endfor %}
-		{% for y in reservs %}
-			{{y.getEnd_date_reserv|date('d/m/Y')}}
-		{% endfor %}
+		<div class="bgbookmark">
+			<div class="square">Reservation</div>
+			<div class="triangle"></div>
+		</div>
+		<div class="user-historique">
+			<div class="book-res">
+				{% for b in book %}
+					<div class="bookreserv">
+						<p>{{b.getTitle}}</p>
+						<p>{{b.getIsbn}}</p>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="book-date">
+				{% for r in reservs %}
+					<div class="date">
+						<p>{{r.getEnd_date_reserv|date('d/m/Y')}}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
 	</div>
-
-
-	<div class="rendered">
-		<h2>Rendu</h2>
-	
-
-	</div>
-
 
 {% endblock %}
 {% block footer %}

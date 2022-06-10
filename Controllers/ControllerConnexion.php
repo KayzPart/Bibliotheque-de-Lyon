@@ -8,6 +8,9 @@
         }
         public static function connectUser(){
             session_start();
+            if(isset($_SESSION['userId'])){
+                header('Location: '. ROOT .'/spaceUser');
+            }
             $twig = ControllerTwig::twigControl();
             echo $twig->render('connectUser.twig', ['root' => ROOT]);
         }
