@@ -21,11 +21,11 @@ class ControllerBook extends ControllerTwig
         $availableReserv = new ModelReserv();
         $book = $datas->select($id);
         $reserv = $availableReserv->selectReserv($id);
+        // $dispo = $availableReserv->disponibility($id);
         $comment = $cmt->commentUser($id);
         $gender = $gend->readGender($id);
-        // $reserv = $datasReserv->bookReserv();
-        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'g' => $gender, 'reservs' => $reserv[0], 'root' => ROOT]);
-
+        echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'g' => $gender, 'resa' => $reserv[0], 'root' => ROOT]);
+        var_dump($reserv);
     }
     public static function newBook($datas){
         $twig = ControllerTwig::twigControl();

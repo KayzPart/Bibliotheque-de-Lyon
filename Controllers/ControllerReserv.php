@@ -33,13 +33,4 @@ class ControllerReserv extends ControllerTwig
             header("Refresh: 0.01; url = ./connectUser");
         }
     }
-    // Function afficher prêter ou dispo sur book
-    public static function available($id){
-        $twig = ControllerTwig::twigControl();
-        $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
-        $availableReserv = new ModelReserv();
-        $reserv = $availableReserv->selectReserv($id);
-            echo $twig->render('book.twig', ['root' => ROOT, 'reservs' => $reserv[0], 'book' => $reserv[1]]);
-            var_dump($reserv[0]);
-    }
 }
