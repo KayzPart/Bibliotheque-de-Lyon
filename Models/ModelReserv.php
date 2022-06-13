@@ -46,21 +46,21 @@ class ModelReserv extends Model
 
     }
 
-    // public function disponibility($id){
-    //     $db = $this->getDb(); 
-    //     $dispo = $db->prepare('SELECT `id_reserv`, `book`.`id_book`, `book`.`title`, `book`.`isbn`, `end_date_reserv`, `date_reserv`, `condition_book`.`status_condition` FROM `reserv` INNER JOIN `book` ON `book`.`id_book` = `reserv`.`id_book`  INNER JOIN `condition_book` ON `condition_book`.`id_condition_book` = `reserv`.`id_condition_book` WHERE `id_book` = :idB'); 
-    //     $dispo->bindParam('idB', $id, PDO::PARAM_INT);
-    //     $dispo->execute(); 
-        
-        
-    //     $resaDispo = [];
-    //     $arrayB = [];
-    //     $condi = []; 
-    //     while($rd = $dispo->fetch(PDO::FETCH_ASSOC)){
-    //         $resaDispo[] = new Reserv($rd);
-    //         $arrayB[] = new Book($rd);
-    //         $condi[] = new ConditionBook($rd);
-    //     }
-    //     return [$resaDispo, $arrayB, $condi];
-    // }
+    // Réservation - Admin - View
+    public function viewReserv($id){
+        $db = $this->getdb(); 
+        $req = $db->prepare('SELECT `id_reserv`, `book`.`id_book`, `book`.`title`, `book`.`isbn`, `date_reserv`, `end_date_reserv`, `user`.`num_member`, `condition_book`.`status_condition` FROM `reserv` INNER JOIN `book` ON `book`.`id_book` = `reserv`.`id_book` INNER JOIN `user` ON `user`.`id_user` = `reserv`.`id_user` INNER JOIN `condition_book` ON `condition_book`.`id_condition_book` = `reserv`.`id_condition_book` WHERE `id_book` = :id `'); 
+        $req->bindParam('id', $id, PDO::PARAM_INT);
+        $req->execute();
+
+        $viewResa = []; 
+        $book = [];
+        $condi = [];
+        while($vr = $req->fetch(PDO::FETCH_ASSOC)){
+            $viewResa[] = new Reserv($vr);
+            $book[] = new Book($vr);
+            $condi[] = new ConditionBook($vr);
+        }
+        return [$viewResa, $book, $condi];
+    }
 }
