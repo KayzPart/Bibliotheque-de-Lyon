@@ -1,17 +1,29 @@
 <?php
+
+use Symfony\Component\VarDumper\VarDumper;
+
 class ModelBook extends Model
 {
     // Affichage de tous les livres
-    public function listAll()
+    public function listAll($p)
     {
         $db = $this->getDb();
-        $req = $db->query('SELECT `book`.`id_book`, category.`name_category`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` INNER JOIN category ON book.id_category = category.id_category');
+
+        $reqCount = $db->query('SELECT COUNT(`id_book`) FROM `book`');
+        $count = $reqCount->fetchColumn();
+        $nbPages =  ceil($count / 10);
+        $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
+        $limit = $p * 10;
+
+        $req = $db->prepare('SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` ORDER BY `id_book` DESC LIMIT :p, 10');
+        $req->bindParam('p', $limit, PDO::PARAM_INT);
+        $req->execute();
 
         $books = [];
         while ($book = $req->fetch(PDO::FETCH_ASSOC)) {
             $books[] = new Book($book);
         }
-        return $books;
+        return [$books, $nbPages];
     }
 
     // Affichage des dix derniers livres
@@ -28,7 +40,8 @@ class ModelBook extends Model
     }
 
     // Affichage des sugestions de livres (3) 
-    public function suggestBook() {
+    public function suggestBook()
+    {
         $db = $this->getDb();
         $req = $db->query('SELECT `id_book`,`photo` FROM `book` WHERE `id_book` = 5 OR `id_book` = 6 OR `id_book` = 7');
 
@@ -42,12 +55,20 @@ class ModelBook extends Model
     public function select($id)
     {
         $db  = $this->getdb();
-        $req = $db->prepare("SELECT `id_book`,`id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE `id_book` = :id");
+        $req = $db->prepare("SELECT `id_book`,`category`.`name_category`, `book`.`id_condition_book`, `condition_book`.`status_condition`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` INNER JOIN `category` ON `category`.`id_category` = `book`.`id_category` INNER JOIN  `condition_book` ON `condition_book`.`id_condition_book` = `book`.`id_condition_book` WHERE `id_book` = :id");
 
         $req->bindParam(':id', $id['id_book'], PDO::PARAM_INT);
         $req->execute();
 
-        return new Book($req->fetch(PDO::FETCH_ASSOC));
+
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+        $book = new Book($data);
+        $category = new Category($data);
+        $condition = new ConditionBook($data);
+        // var_dump($data);
+        
+
+        return [$book, $category, $condition];
     }
     public function insertBook($datas)
     {
@@ -88,8 +109,6 @@ class ModelBook extends Model
             } else {
                 echo 'Erreur, de téléchargement !';
             }
-            var_dump($_FILES);
-
             $id_category = $_POST['category-type'];
             $id_condition_book = $_POST['condition'];
             $title = $_POST['title'];
@@ -100,9 +119,12 @@ class ModelBook extends Model
             $photo = $ref . '.' . $extension_upload;
             $emplacement = $_POST['emplacement'];
             $lang = $_POST['lang'];
-            
+            $quantity = $_POST['quantity'];
+
+            var_dump($id_category, $id_condition_book, $title, $author, $year_published, $descrip, $isbn, $emplacement, $lang, $quantity);
+
             $db = $this->getDb();
-            $req = $db->prepare("INSERT INTO `book`(`id_category`, `id_condition_book`,`title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`) VALUES (:id_category, :id_condition_book, :title, :author, :year_published, :descrip, :isbn, :photo, :emplacement, :lang)");
+            $req = $db->prepare('INSERT INTO `book`(`id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity`) VALUES (:id_category, :id_condition_book, :title, :author, :year_published, :descrip, :isbn, :photo, :emplacement, :lang, :quantity)');
 
             $req->bindParam('id_category', $id_category, PDO::PARAM_INT);
             $req->bindParam('id_condition_book', $id_condition_book, PDO::PARAM_INT);
@@ -114,33 +136,30 @@ class ModelBook extends Model
             $req->bindParam('photo', $photo, PDO::PARAM_STR);
             $req->bindParam('emplacement', $emplacement, PDO::PARAM_STR);
             $req->bindParam('lang', $lang, PDO::PARAM_STR);
-
+            $req->bindParam('quantity', $quantity, PDO::PARAM_INT);
 
             $req->execute();
 
             $idBook = $db->lastInsertId();
-            $arrayGender = [];
-            if (isset($_POST['gender'])) {
-                $db = $this->getDb();
-                $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, id_gender)');
+
+            if (!empty($_POST['gender'])) {
+
                 foreach ($_POST['gender'] as $value) {
+                    $db = $this->getDb();
+                    $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, :id_gender)');
+
                     $reqGenderBook->bindParam('id_book', $idBook, PDO::PARAM_STR);
                     $reqGenderBook->bindParam('id_gender', $value, PDO::PARAM_STR);
-                    
+                    $reqGenderBook->execute();
                 }
-                $reqGenderBook->execute($arrayGender);
-                var_dump($_POST['gender']);
-                var_dump($arrayGender);
             }
-            
+
             $newBook = [];
-            
+
             while ($b = $req->fetch(PDO::FETCH_ASSOC)) {
                 $newBook[] = new Book($b);
-                $arrayGender[] = new Book($b);
             }
-            return array($newBook, $arrayGender);
-
+            return $newBook;
         }
     }
     public function ViewCondi()
@@ -153,7 +172,8 @@ class ModelBook extends Model
         }
         return $arrayCondi;
     }
-    public function ViewCate() {
+    public function ViewCate()
+    {
         $db = self::getDb();
 
         $req = $db->query("SELECT `id_category`,`name_category` FROM `category`");
@@ -164,46 +184,9 @@ class ModelBook extends Model
         return $arrayCate;
     }
 
-    // public function ViewGender()
-    // {
-    //     $db = $this->getDb();
-
-    //     // $req = $db->query("SELECT `id_gender`, `name_gender` FROM `gender`");
-    //     // $arrayGender = [];
-    //     // while ($row = $req->fetch(PDO::FETCH_ASSOC)) {
-    //     //     $arrayGender[] = new Book($row);
-    //     // }
-
-    //     var_dump($_POST);
-    //     if (!empty($_POST['gender'])) {
-    //         foreach ($_POST['gender'] as $value) {
-    //             $db = $this->getDb();
-    //             $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, id_gender)');
-    //             $reqGenderBook->bindParam('id_book', $idBook, PDO::PARAM_STR);
-    //             $reqGenderBook->bindParam('id_gender', $value, PDO::PARAM_STR);
-    //             $reqGenderBook->execute();
-    //             var_dump($_POST['gender']);
-
-    //         }
-    //     }
-    //     // return $arrayGender;
-    // }
-
-    
-    // Modification du livre
-
-    public function editBook($id_condition_book, $emplacement, $quantity) {
-        $db = $this->getDb();
-
-        $req = $db->prepare('UPDATE `book` SET id_condition_book = :id_condition_book, emplacement = :emplacement, quantity = :quantity WHERE id_book = :id_book');
-
-        $req->bindParam(':id_condition_book', $id_condition_book, PDO::PARAM_STR); 
-        $req->bindParam(':emplacement', $emplacement, PDO::PARAM_STR); 
-        $req->bindParam(':quantity', $quantity, PDO::PARAM_STR);
-        $req->execute();
-    }
     // Affichage par liste descendante 
-    public function listAllDesc() {
+    public function listAllDesc()
+    {
         $db = $this->getDb();
         $req = $db->query('SELECT `id_book`,`title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang` FROM `book` ORDER BY id_book DESC');
 
@@ -212,69 +195,46 @@ class ModelBook extends Model
             $books[] = new Book($book);
         }
         return $books;
-
     }
 
-    public function searchBookTitle() {
+    // Recherche (searchBar)
+    public function spaceSearch($searchcat, $search, $p)
+    {
+        if ($searchcat == 'id_category') {
+            $searchimp = $searchcat . ' = ' . $search;
+        } else {
+            if (!empty(trim($search))) {
+                $words = explode(" ", trim($search));
+            } else {
+                $words = explode(" ", $search);
+            }
 
-        if(isset($_GET['p'] )){
-            $recherche = $_GET['p'];
-            
-        } 
-        $db = $this->getDb();
-        $req = $db->query("SELECT `title`,`photo` FROM `book`  WHERE `title` LIKE '$recherche%'  ");
-        
-        
-        $datas = [];
-        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
-            $datas[] = new Book($data);
-    
-        }
-    }
-    public function searchBookAuthor() {
+            for ($i = 0; $i < count($words); $i++) {
+                $sh[$i] = $searchcat . " LIKE '%" . $words[$i] . "%'";
+            }
 
-        if(isset($_GET['p'] )){
-            $recherche = $_GET['p'];
-            
-        } 
-        $db = $this->getDb();
-        $req = $db->query("SELECT `author`,`photo` FROM `book`  WHERE `author` LIKE '$recherche%'  ");
-        
-        
-        $datas = [];
-        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
-            $datas[] = new Book($data);
-    
+            $searchimp = implode(' OR ', $sh);
         }
+
+        $db = $this->getdb();
+
+        $reqPages = $db->prepare("SELECT COUNT(`id_book`) FROM `book` WHERE $searchimp");
+        $reqPages->execute();
+
+        $count = $reqPages->fetchColumn();
+        $nbPages =  ceil($count / 10);
+
+        $p = isset($_GET['p']) ? $_GET['p'] - 1 : 0;
+        $limit = $p * 10;
+
+        $datas = $db->prepare("SELECT `id_book`, `id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity` FROM `book` WHERE $searchimp ORDER BY `id_book` ASC LIMIT :p, 10");
+        $datas->bindParam('p', $limit, PDO::PARAM_INT);
+        $datas->execute();
+
+        $searchResult = [];
+        while ($resultS = $datas->fetch(PDO::FETCH_ASSOC)) {
+            $searchResult[] = new Book($resultS);
+        }
+        return [$searchResult, $nbPages];
     }
-    public function searchBookDate() {
-        if(isset($_GET['p'] )){
-            $recherche = $_GET['p'];
-            
-        } 
-        $db = $this->getDb();
-        $req = $db->query("SELECT `date`,`photo` FROM `book`  WHERE `date` LIKE '$recherche%'  ");
-        
-        
-        $datas = [];
-        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
-            $datas[] = new Book($data);
-    
-        }
-    }
-    public function searchBookLang() {
-        if(isset($_GET['p'] )){
-            $recherche = $_GET['p'];
-            
-        } 
-        $db = $this->getDb();
-        $req = $db->query("SELECT `lang`,`photo` FROM `book`  WHERE `lang` LIKE '$recherche%'  ");
-        
-        
-        $datas = [];
-        while($data =  $req->fetch(PDO::FETCH_ASSOC)){
-            $datas[] = new Book($data);
-    
-        }
-    }   
 }

@@ -1,0 +1,47 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}
+	{{book.getTitle}}
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
+
+{% block header %}
+	{% include "./Templates/header/headerUser.twig" %}
+{% endblock %}
+
+
+{% block content %}
+
+	<h1 class="title histo">Historique</h1>
+
+	<div class="in-progress">
+		<div class="bgbookmark">
+			<div class="square">Reservation</div>
+			<div class="triangle"></div>
+		</div>
+		<div class="user-historique">
+			<div class="book-res">
+				{% for b in book %}
+					<div class="bookreserv">
+						<p>{{b.getTitle}}</p>
+						<p>{{b.getIsbn}}</p>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="book-date">
+				{% for r in reservs %}
+					<div class="date">
+						<p>{{r.getEnd_date_reserv|date('d/m/Y')}}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block footer %}
+	{% include "./Templates/footer/footer.twig" %}
+	<script src="{{root}}/Views/Templates/js/headerfooter.js"></script>
+{% endblock %}

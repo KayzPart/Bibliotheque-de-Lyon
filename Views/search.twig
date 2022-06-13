@@ -1,0 +1,38 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %} Recherche {% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/header.twig" %} {% include "./Templates/header/searchbar.twig" %} {% endblock %}
+
+{% block content %} 
+    <h1 class="title searcht"> Résultat de votre recherche</h1>
+    <div class="contentsearchpage">
+        <div class="contentsearch">
+            {% for book in books %}
+                <a href="{{root}}/book/{{book.getId_book}}">
+                    <div class="booksear">
+                        <img class="imgbookss" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+                        <div class="bookdescse">
+                            <h2>{{book.getTitle}}</h2>
+                            <p>{{book.getAuthor}}</p>
+                            <p>{{book.getIsbn}}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+        <div class="contentpage">
+            {% for i in range (1, nbrpages) %}
+                <a class="nbrpage" href="">{{i}}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
+
+{% block footer %} {% include "./Templates/footer/footer.twig" %}
+<script src="{{root}}/Views/Templates/js/searchbar.js"></script>
+<script src="{{root}}/Views/Templates/js/pagination.js"></script> {% endblock %}

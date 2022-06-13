@@ -3,7 +3,7 @@ const cate = document.getElementById('categories');
 const searchbar = document.querySelector('.inpsearchbar');
 
 setInterval(() => {
-    if(searchcat.value == 'category'){
+    if(searchcat.value == 'id_category'){
         cate.classList.add('showit');
         searchbar.classList.add('hideit')
     }else{

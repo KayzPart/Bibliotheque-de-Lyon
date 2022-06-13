@@ -1,0 +1,29 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Modification du profil{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
+
+{% block header %} {% include "./Templates/header/headerUser.twig" %} {% endblock %}
+
+{% block content %}
+<h1 class="title modif-pro">Profil</h1>
+
+<form class="modif-form" action="" method="POST">
+    <label for="newemail">Email</label>
+    <input type="email" name="newemail" id="newemail" value="{{u.getEmail}}">
+
+    <label for="oldpassword">Ancien mot de passe</label>
+    <input type="password" name="oldpassword" id="oldpassword">
+
+    <label for="newpassword">Nouveau mot de passe</label>
+    <input type="password" name="newpassword" id="newpassword">
+
+    <input class="btnsub btnmodif" type="submit" name="submit" value="Modifier">
+</form>
+<div class="btnbacks"><a class="btnback" href="../spaceUser">Retour sur le compte</a></div>
+
+{% endblock %}
+
+
+{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}

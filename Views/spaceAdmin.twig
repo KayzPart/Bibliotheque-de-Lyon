@@ -1,0 +1,74 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Espace Admin{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
+
+{% block header %}
+	{% include "./Templates/header/headerAdmin.twig" %}
+	{% include "./Templates/header/searchbarAdmin.twig" %}
+{% endblock %}
+
+{% block content %}
+    <main class="contentAdmin">
+        <div class="add-diff">
+            <button class="btnsubb"><a href="{{root}}/bookF">+ Ajouter un livre</a></button>
+            <div class="diffetat">
+                État du livre : 
+                <div class="circles bad"><div class="circle red"></div><p>Mauvais</p></div>
+                <div class="circles medium"><div class="circle yellow"></div><p>Bon</p></div>
+                <div class="circles good"><div class="circle green"></div><p>Très bon</p></div>    
+            </div>
+
+            
+        </div>
+
+        <div class="contentbook">
+            {% for book in books %}
+                <div class="bookadmin">
+                    <figure class="content-img-bookadm">
+                        <img class="img-bookadm" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+                    </figure>
+                    <div class="resumbook">
+                        <h3>{{book.getTitle}}</h3>
+                        <p>
+                            {{book.getAuthor}}
+                        </p>
+                        <p>
+                            {{book.getIsbn}}    
+                        </p>
+                        <p>
+                            {{book.getYear_published}}    
+                        </p>
+                    </div>
+                    {% if book.getId_condition_book == 1 %}
+                        <div class="circle green"></div>
+                    {% endif %}
+                    {% if book.getId_condition_book == 2 %}
+                        <div class="circle yellow"></div>
+                    {% endif %}
+                    {% if book.getId_condition_book == 3 %}
+                        <div class="circle red"></div>
+                    {% endif %}
+                    <div class="btn-ico">
+                        <a id="update" href="{{root}}/update/{{book.getId_book}}"><div class="btna"><span>Modifier</span><img class="ico-mo" src="{{root}}/Views/Templates/asset/pen-modif.png" alt="modifier"></div></a>
+                        <a id="delete" href="{{root}}/book/{{book.getId_book}}"><div class="btna"><span>Supprimer</span><img src="{{root}}/Views/Templates/asset/trash.png" alt="supprimer" class="ico-trash"></div></a>
+                    </div>
+                    <div class="line"></div>
+                </div>
+            {% endfor %}
+            </div>
+        <div class="contentpage">
+            {% for i in range (1, nbrPages) %}
+                <a class="nbrpage" href="">{{i}}</a>          
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+	{% include "./Templates/footer/footer-co.twig" %}
+    <script src="{{root}}/Views/Templates/js/searchbar.js"></script>
+    <script src="{{root}}/Views/Templates/js/all-pagination.js"></script>
+{% endblock %}

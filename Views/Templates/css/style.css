@@ -65,7 +65,7 @@ body {
           align-items: center;
   background-color: #2D2424;
   height: 55px;
-  width: 100vw;
+  width: 100%;
 }
 
 .logoh {
@@ -195,6 +195,7 @@ body {
   font-weight: bolder;
   color: #E0C097;
   margin: 10px;
+  cursor: pointer;
 }
 
 #searchbar {
@@ -311,6 +312,8 @@ body {
   color: #E0C097;
   background-color: #5C3D2E;
   font-weight: bold;
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
   font-size: 16px;
   margin: 20px auto;
   margin-bottom: 10px;
@@ -501,6 +504,7 @@ body {
   background: #E0C097;
   border: 2px solid #5C3D2E;
   color: #2D2424;
+  font-size: 14px;
 }
 
 #footermain .socialnkhor > .social > .logosocial {
@@ -526,6 +530,18 @@ body {
 }
 
 #footermain .socialnkhor > .horaire > p > span {
+  text-decoration: underline;
+}
+
+#footermain .socialnkhor > .horaire > p > a {
+  text-decoration: none;
+  color: #E0C097;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#footermain .socialnkhor > .horaire > p > a:hover {
+  color: #acc4ce;
   text-decoration: underline;
 }
 
@@ -588,7 +604,7 @@ body {
   margin-top: 10px;
 }
 
-.contact > form > button {
+.contact > form > input {
   margin-top: 10px;
   width: 125px;
   height: 25px;
@@ -615,7 +631,7 @@ body {
   margin: 5px 0px;
 }
 
-.connectp {
+.connectp, .modif-form {
   background: #5C3D2E;
   margin: 10px;
   padding: 10px;
@@ -629,11 +645,12 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  border: 2px solid #2D2424;
   -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
-.connectp > .btnconnect {
+.connectp > .btnconnect, .modif-form > .btnconnect {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -643,12 +660,12 @@ body {
           justify-content: center;
 }
 
-.connectp > .btnconnect > .btnlinkco {
+.connectp > .btnconnect > .btnlinkco, .modif-form > .btnconnect > .btnlinkco {
   display: block;
   border: 2px solid #2D2424;
   width: 110px;
   height: 50px;
-  font-size: 16px;
+  font-size: 14px;
   color: #2D2424;
   background: #E0C097;
   text-align: center;
@@ -659,19 +676,19 @@ body {
   transition: all 0.5s ease;
 }
 
-.connectp > .btnconnect > .btnlinkco:hover, .connectp > .btnconnect > .btnlinkco.active {
+.connectp > .btnconnect > .btnlinkco:hover, .connectp > .btnconnect > .btnlinkco.active, .modif-form > .btnconnect > .btnlinkco:hover, .modif-form > .btnconnect > .btnlinkco.active {
   color: #acc4ce;
   background-color: #2D2424;
 }
 
-.connectp > .titleco {
+.connectp > .titleco, .modif-form > .titleco {
   text-align: center;
-  margin: 30px auto;
+  margin: 30px;
   font-size: 16px;
   color: #E0C097;
 }
 
-.connectp > .formconnect {
+.connectp > .formconnect, .modif-form > .formconnect {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -685,12 +702,12 @@ body {
   width: 100%;
 }
 
-.connectp > .formconnect > .inpconn {
+.connectp > .formconnect > .inpconn, .modif-form > .formconnect > .inpconn {
   width: 80%;
   margin: 20px 0;
 }
 
-.connectp > .formconnect > .btnsub {
+.connectp > .formconnect > .btnsub, .modif-form > .formconnect > .btnsub {
   width: 160px;
   height: 35px;
   font-size: 16px;
@@ -708,6 +725,836 @@ body {
 
 .co {
   display: none;
+}
+
+.contentAdmin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 30px 0;
+}
+
+.add-diff {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btnsubb {
+  padding: 10px;
+  background-color: #5C3D2E;
+  border: 2px solid #2D2424;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.btnsubb > a {
+  color: #E0C097;
+  text-decoration: none;
+}
+
+.btnsubb:hover {
+  background: #2D2424;
+}
+
+.btnsubb:hover > a {
+  color: #acc4ce;
+}
+
+.diffetat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 10px 0;
+}
+
+.diffetat > .circles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
+.circle.red {
+  background: red;
+}
+
+.circle.yellow {
+  background: yellow;
+}
+
+.circle.green {
+  background: green;
+}
+
+.contentbook {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-color: #5C3D2E;
+  margin-bottom: 5px;
+}
+
+.content-img-bookadm {
+  display: none;
+}
+
+.resumbook {
+  width: 50%;
+}
+
+.bookadmin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  text-align: center;
+  position: relative;
+  margin: 5px 0;
+  color: #E0C097;
+}
+
+.bookadmin > .line {
+  position: absolute;
+  left: 10%;
+  bottom: -5px;
+  width: 80%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #E0C097;
+}
+
+.btna {
+  width: 40px;
+  height: 40px;
+  background: #E0C097;
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btna > span {
+  display: none;
+}
+
+.btn-ico {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 30%;
+}
+
+.ico-mo {
+  width: 40px;
+}
+
+.ico-trash {
+  width: 40px;
+}
+
+.nbrpage {
+  color: #5C3D2E;
+}
+
+.newbookt {
+  width: 150px;
+  height: 45px;
+}
+
+.formaddbook {
+  background: #5C3D2E;
+  margin: 10px 0;
+  color: #E0C097;
+  padding: 20px;
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.tay, .dcgi, .cgi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
+.tay > label, .dcgi > label, .cgi > label {
+  margin-bottom: 5px;
+}
+
+.tay > input, .dcgi > input, .cgi > input {
+  width: 80%;
+  margin-bottom: 10px;
+  font-family: 'K2D';
+  text-align: center;
+}
+
+.dcgi > .descadd {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.dcgi > .descadd > textarea {
+  width: 80%;
+  height: 150px;
+  font-family: 'K2D';
+  margin-bottom: 10px;
+}
+
+.cgi {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.cgi > select {
+  margin-bottom: 10px;
+  width: 80%;
+  font-family: 'K2D';
+  text-align: center;
+}
+
+.gender-add {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 10px;
+}
+
+.gender-add > .checkboxcontent > label {
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 150px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.gender-add > .checkboxcontent > label > input[type="checkbox"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: white;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.gender-add > .checkboxcontent > label > input[type="checkbox"]::before {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background: #E0C097;
+  border-radius: 50%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.gender-add > .checkboxcontent > label > input[type="checkbox"]:checked::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.ple {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.ple > label {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.ple > label > span {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.ple > input {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.ple > .upload {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ple > .upload input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  font-size: 30px;
+}
+
+.ple > .upload .btn-upload {
+  background: #fff;
+  border: none;
+  color: #5C3D2E;
+  font-family: 'K2D';
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 10px;
+}
+
+.etat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.etat > .condition {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.etat > label {
+  margin-bottom: 10px;
+}
+
+.etat > label > input[type="radio"] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: white;
+  margin: 0;
+  width: 30px;
+  height: 30px;
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.etat > label > input[type="radio"]::before {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  background: #E0C097;
+  border-radius: 50%;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.etat > label > input[type="radio"]:checked::before {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.quantity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.quantity > label {
+  margin-bottom: 10px;
+}
+
+.quantity > input {
+  margin-bottom: 20px;
+}
+
+.addbook {
+  width: 160px;
+  height: 35px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.accountt, .histo, .suggt {
+  width: 200px;
+  height: 35px;
+}
+
+.user-historique {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 10px;
+  background: #5C3D2E;
+  margin: 10px;
+}
+
+.user-historique > .book-res, .user-historique > .book-date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.user-historique > .book-res > .date, .user-historique > .book-res > .bookreserv, .user-historique > .book-date > .date, .user-historique > .book-date > .bookreserv {
+  height: 30px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+  color: #E0C097;
+}
+
+.user-historique > .book-res > .bookreserv, .user-historique > .book-date > .bookreserv {
+  border-bottom: #E0C097 2px solid;
+  border-radius: 5px;
+}
+
+.user-historique > .btnreserv-co {
+  width: 100%;
+  text-align: center;
+}
+
+.user-historique > .btnreserv-co > .btnreserv {
+  color: #E0C097;
+}
+
+.user-account-info {
+  background-color: #5C3D2E;
+  color: #E0C097;
+  text-align: center;
+  padding: 10px;
+  margin: 10px;
+}
+
+.user-account-info > .btnaccount {
+  margin: 10px auto;
+  padding: 5px;
+  display: block;
+  width: 150px;
+  text-decoration: none;
+}
+
+.suggUser > .sugg {
+  margin-bottom: 10px;
+}
+
+.modif-pro {
+  width: 200px;
+  height: 35px;
+}
+
+.modif-form > label {
+  margin: 5px 0;
+  color: #E0C097;
+}
+
+.modif-form > input {
+  margin: 5px 0;
+  width: 80%;
+  text-align: center;
+}
+
+.modif-form > input[type='email'] {
+  margin-bottom: 30px;
+}
+
+.modif-form > input.btnmodif {
+  width: 50%;
+  height: 35px;
+}
+
+.searcht {
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+}
+
+.contentsearchpage {
+  background: #5C3D2E;
+  margin: 20px 0;
+}
+
+.contentsearchpage > .contentpage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.contentsearchpage > .contentpage > .nbrpage {
+  margin: 10px;
+  color: #E0C097;
+  font-weight: bolder;
+}
+
+.contentsearch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 10px;
+  background: #5C3D2E;
+}
+
+.imgbookss {
+  width: 90px;
+  height: 140px;
+  margin: 10px 0;
+}
+
+.bookdescse {
+  display: none;
+}
+
+.tbook {
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+}
+
+.figurefirstpage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.imgbookse {
+  width: 250px;
+}
+
+.infobook {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #5C3D2E;
+  width: 80%;
+  margin: 20px 0;
+  text-align: center;
+  color: #E0C097;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.infobook > p {
+  margin: 2px;
+}
+
+.descbook {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  margin: 20px 0;
+  margin-left: 20%;
+  background-color: #5C3D2E;
+  color: #E0C097;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.descbook > p {
+  margin: 10px;
+}
+
+.bgbookmark {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  margin: 20px 0;
+  color: #E0C097;
+}
+
+.bgbookmark > .square {
+  width: 240px;
+  height: 40px;
+  line-height: 40px;
+  background: #5C3D2E;
+  -webkit-box-shadow: -5px 4px 4px rgba(0, 0, 0, 0.5);
+          box-shadow: -5px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bgbookmark > .square > a {
+  text-decoration: none;
+  color: #2D2424;
+}
+
+.bgbookmark > .triangle {
+  width: 0px;
+  height: 0px;
+  z-index: -1;
+  border-top: 40px solid #5C3D2E;
+  border-right: 40px solid transparent;
+  -webkit-filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+.bgres {
+  background-color: #5C3D2E;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.btn-wanted {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.btnbooking {
+  width: 100px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.comment {
+  background: #5C3D2E;
+  position: relative;
+  margin: 5px 0;
+  padding: 5px;
+  color: #E0C097;
+}
+
+.comment > p {
+  margin: 10px;
+}
+
+.comment > .lines {
+  position: absolute;
+  left: 10%;
+  bottom: -5px;
+  width: 80%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #E0C097;
+}
+
+.addcom {
+  background: #5C3D2E;
+}
+
+.addcom > .bgbookmark > .square {
+  background: #E0C097;
+  color: #2D2424;
+  z-index: 1000;
+}
+
+.addcom > .bgbookmark > .triangles {
+  width: 0px;
+  height: 0px;
+  z-index: 100;
+  border-top: 40px solid #E0C097;
+  border-right: 40px solid transparent;
+  -webkit-filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+          filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+.addcom > form {
+  margin: 10px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.addcom > form > .btnsub {
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.usereserv {
+  -webkit-transform: translateX(-100vw);
+          transform: translateX(-100vw);
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #2D2424;
+  color: #E0C097;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
 }
 
 @media screen and (min-width: 1000px) {
@@ -815,6 +1662,9 @@ body {
   #footermain > .logocontact > .contacttitle > h3 {
     font-size: 26px;
   }
+  #footermain #msg {
+    width: 500px;
+  }
   #footermain > .socialnkhor {
     margin-top: 10px;
   }
@@ -847,8 +1697,379 @@ body {
     border-width: 3px;
     font-size: 26px;
   }
+  #msg {
+    width: 500px;
+  }
   .mention {
     margin: 40px 0;
+  }
+  .connectp, .modif-form {
+    margin: 100px auto;
+    margin-bottom: 10px;
+    padding: 20px 5px;
+    width: 40%;
+  }
+  .connectp > .btnconnect > .btnlinkco, .modif-form > .btnconnect > .btnlinkco {
+    width: 220px;
+    height: 80px;
+    font-size: 30px;
+    line-height: 80px;
+  }
+  .connectp > .titleco, .modif-form > .titleco {
+    font-size: 30px;
+  }
+  .connectp > .formconnect > .inpconn, .modif-form > .formconnect > .inpconn {
+    height: 30px;
+    font-size: 24px;
+  }
+  .connectp > .formconnect > .btnsub, .modif-form > .formconnect > .btnsub {
+    width: 300px;
+    height: 50px;
+    font-size: 30px;
+    margin-top: 60px;
+  }
+  .btnbacks {
+    margin-bottom: 90px;
+  }
+  .menuadmin > li > a {
+    font-size: 16px;
+    line-height: normal;
+  }
+  .add-diff {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    width: 80%;
+    margin-bottom: 30px;
+  }
+  .btnsubb {
+    width: 250px;
+    height: 65px;
+    font-size: 24px;
+  }
+  .diffetat {
+    width: 50%;
+    font-size: 20px;
+  }
+  .circle {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  .bookadmin > .line {
+    width: 90%;
+    left: 5%;
+  }
+  .contentbook {
+    width: 90%;
+  }
+  .content-img-bookadm {
+    display: block;
+  }
+  .content-img-bookadm .img-bookadm {
+    width: 280px;
+  }
+  .resumbook {
+    font-size: 20px;
+  }
+  .resumbook > p, .resumbook > h3 {
+    margin-bottom: 20px;
+  }
+  .btn-ico {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 370px;
+  }
+  .btn-ico > a {
+    text-decoration: none;
+  }
+  .btna {
+    width: 200px;
+    padding: 0 10px;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  .btna > span {
+    display: block;
+    color: #5C3D2E;
+    font-size: 24px;
+  }
+  .btna:hover {
+    background: #acc4ce;
+  }
+  .newbookt {
+    width: 350px;
+    height: 65px;
+  }
+  .formaddbook {
+    margin: 10px;
+    font-size: 24px;
+  }
+  .tay, .dcgi {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .tay > .descadd, .dcgi > .descadd {
+    text-align: start;
+    margin: 30px 0;
+  }
+  .tay > .descadd > textarea, .dcgi > .descadd > textarea {
+    margin-top: 10px;
+    font-size: 20px;
+    width: 700px;
+    height: 400px;
+  }
+  .tay > input, .dcgi > input {
+    height: 28px;
+    width: 40%;
+    margin-left: 10px;
+    margin-right: 20px;
+    font-size: 20px;
+  }
+  .cgi > input {
+    height: 28px;
+    width: 40%;
+    font-size: 20px;
+  }
+  .cgi > select {
+    height: 28px;
+    font-size: 20px;
+    width: 40%;
+  }
+  .gender-add {
+    margin: 10px;
+  }
+  .gender-add > .checkboxcontent {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .gender-add > .checkboxcontent > label {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .pleetat {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .ple {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 60%;
+  }
+  .ple > input {
+    width: 30%;
+    height: 28px;
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  .ple > label {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    height: 28px;
+  }
+  .ple > label > span {
+    margin-right: 50px;
+  }
+  .ple > .upload {
+    height: 28px;
+    margin-bottom: 10px;
+    width: 40%;
+  }
+  .ple > .upload .btn-upload {
+    width: 60%;
+    height: 28px;
+    font-size: 20px;
+  }
+  .etat {
+    width: 40%;
+  }
+  .etat > .condition {
+    width: 40%;
+  }
+  .quantity {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .quantity > label {
+    margin-bottom: 0;
+    margin-right: 5px;
+  }
+  .quantity > input {
+    height: 28px;
+    margin-bottom: 0;
+  }
+  .addbook {
+    width: 280px;
+    height: 55px;
+    font-size: 30px;
+  }
+  .register {
+    width: 40vw !important;
+  }
+  .accountt, .histo, .suggt {
+    width: 400px;
+    height: 65px;
+  }
+  .user {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .user-historique > .book-date > .date, .user-historique > .book-date > .bookreserv, .user-historique > .book-res > .date, .user-historique > .book-res > .bookreserv {
+    height: 50px;
+    font-size: 24px;
+  }
+  .histo-account {
+    width: 45%;
+  }
+  .user-account-info {
+    font-size: 26px;
+  }
+  .suggUser {
+    width: 50%;
+  }
+  .suggUser > .sugg {
+    width: 100%;
+  }
+  .suggUser > .sugg > .book > .linkbook > .imgbook {
+    width: 100%;
+    height: 345px;
+  }
+  .suggUser > .sugg > .book:nth-child(odd) {
+    margin-top: 100px;
+  }
+  .modif-pro {
+    width: 20vw;
+    height: 60px;
+    line-height: 60px;
+  }
+  .modif-form {
+    margin: 50px auto;
+    font-size: 24px;
+    width: 60%;
+  }
+  .modif-form > input {
+    height: 26px;
+    font-size: 24px;
+    width: 50%;
+  }
+  .modif-form > input.btnmodif {
+    font-size: 36px;
+    height: 50px;
+    width: 30%;
+  }
+  .tbook {
+    width: 470px;
+    height: 120px;
+    color: #5C3D2E;
+    background: #E0C097;
+  }
+  .headbook {
+    background: #5C3D2E;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin: 50px 0;
+    position: relative;
+  }
+  .imgbookse {
+    width: 470px;
+    height: 700px;
+    margin: 10px 20px;
+  }
+  .infobook {
+    margin: 0px;
+    width: 500px;
+    position: absolute;
+    right: 0;
+    bottom: 20%;
+    font-size: 30px;
+  }
+  .descbook {
+    margin: 0px;
+    width: 60%;
+    font-size: 30px;
+    height: 800px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .searcht {
+    width: 680px;
+    height: 100px;
+    font-size: 36px;
+  }
+  .contentsearch > a {
+    text-decoration: none;
+  }
+  .bookdescse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: #E0C097;
+    margin: 10px;
+    font-size: 30px;
+    width: 435px;
+    text-align: center;
+  }
+  .booksear {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background: #2D2424;
+    margin: 10px 0;
+  }
+  .imgbookss {
+    width: 340px;
+    height: 540px;
+    margin: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

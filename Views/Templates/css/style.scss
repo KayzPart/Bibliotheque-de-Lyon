@@ -17,7 +17,7 @@ body{
     align-items: center;
     background-color: $bgb;
     height: 55px;
-    width: 100vw;
+    width: 100%;
 }
 .logoh{
     height: 55px;
@@ -111,6 +111,7 @@ body{
     font-weight: bolder;
     color: $color;
     margin: 10px;
+    cursor: pointer;
 }
 
 //-----SEARCHBAR------
@@ -195,6 +196,7 @@ body{
     color: $color;
     background-color: $bgbtn;
     font-weight: bold;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.50);
     font-size: 16px;
     margin: 20px auto;
     margin-bottom: 10px;
@@ -330,6 +332,7 @@ body{
             background: $color;
             border: 2px solid $bgbtn;
             color: $bgb;
+            font-size: 14px;
         }
         &>.logosocial{
             display: flex;
@@ -350,6 +353,15 @@ body{
             font-weight: bold;
             &>span{
                 text-decoration: underline;
+            }
+            &>a{
+                text-decoration: none;
+                color: $color;
+                transition: all 0.3s;
+                &:hover{
+                    color: #acc4ce;
+                    text-decoration: underline;
+                }
             }
         }
         &>#hor{
@@ -396,7 +408,7 @@ body{
         &>label{
             margin-top: 10px;
         }
-        &>button{
+        &>input{
             margin-top: 10px;
             width: 125px;
             height: 25px;
@@ -423,13 +435,14 @@ body{
 }
 
 // ||------CONNEXION-------||
-.connectp{
+.connectp, .modif-form{
     background: $bgbtn;
     margin: 10px;
     padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 2px solid $bgb;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.50);
     &>.btnconnect{
         width: 100%;
@@ -440,7 +453,7 @@ body{
             border: 2px solid $bgb;
             width: 110px;
             height: 50px;
-            font-size: 16px;
+            font-size: 14px;
             color: $bgb;
             background: #E0C097;
             text-align: center;
@@ -456,7 +469,7 @@ body{
     }
     &>.titleco{
         text-align: center;
-        margin: 30px auto;
+        margin: 30px;
         font-size: 16px;
         color: $color;
     }
@@ -489,6 +502,574 @@ body{
     display: none;
 }
 
+// ||-----SPACE ADMIN------||
+
+.contentAdmin{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+.add-diff{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btnsubb{
+    padding: 10px;
+    background-color: $bgbtn;
+    border: 2px solid $bgb;
+    transition: all .3s ease;
+    &>a{
+        color: $color;
+        text-decoration: none;
+    }
+    &:hover{
+        background: $bgb;
+        &>a{
+            color: #acc4ce;
+        }
+    }
+}
+.diffetat{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+    margin: 10px 0;
+    &>.circles{
+        display: flex;
+        align-items: center;
+    }
+}
+.circle{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    &.red{
+        background: red;
+    }
+    &.yellow{
+        background: yellow;
+    }
+    &.green{
+        background: green;
+    }
+}
+.contentbook{
+    display: flex;
+    flex-direction: column;
+    background-color: $bgbtn;
+    margin-bottom: 5px;
+}
+.content-img-bookadm{
+    display: none;
+}
+.resumbook{
+    width: 50%;
+}
+.bookadmin{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    position: relative;
+    margin: 5px 0;
+    color: $color;
+    &>.line{
+        position: absolute;
+        left: 10%;
+        bottom: -5px;
+        width: 80%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $color;
+        
+    }
+}
+
+.btna{
+    width: 40px;
+    height: 40px;
+    background: $color;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.50);
+    display: flex;
+    align-items: center;
+    &>span{
+        display: none;
+    }
+}
+.btn-ico{
+    display: flex;
+    justify-content: space-around;
+    width: 30%;
+}
+.ico-mo{
+    width: 40px;
+}
+.ico-trash{
+    width: 40px;
+}
+.nbrpage{
+    color: $bgbtn;
+}
+// ||----ADD BOOK----||
+.newbookt{
+    width: 150px;
+    height: 45px;
+}
+.formaddbook{
+    background: $bgbtn;
+    margin: 10px 0;
+    color: $color;
+    padding: 20px;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.tay, .dcgi, .cgi{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    &>label{
+        margin-bottom: 5px;
+    }
+    &>input{
+        width: 80%;
+        margin-bottom: 10px;
+        font-family: 'K2D';
+        text-align: center;
+    }
+}
+.dcgi{
+    &>.descadd{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &>textarea{
+            width: 80%;
+            height: 150px;
+            font-family: 'K2D';
+            margin-bottom: 10px;
+        }
+    }
+}
+.cgi{
+    width: 100%;
+    margin-bottom: 10px;
+    &>select{
+        margin-bottom: 10px;
+        width: 80%;
+        font-family: 'K2D';
+        text-align: center;
+    }
+}
+.gender-add{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    &>.checkboxcontent{
+        &>label{
+        height: 30px;
+        display: flex;
+        align-items: center;
+        width: 150px;
+        justify-content: space-between;
+        margin-bottom: 10px;
+            &>input[type="checkbox"]{
+                appearance: none;
+                background-color: white;
+                margin: 0;
+                width: 30px;
+                height: 30px;
+                box-shadow: 0 2px 2px rgba(0, 0, 0, 0.50);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &::before{
+                    transform: scale(0);
+                    content: "";
+                    width: 20px;
+                    height: 20px;
+                    margin: 5px;
+                    background: $color;
+                    border-radius: 50%;
+                    transition: all 0.2s ease;
+                }
+                &:checked::before{
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+    
+}
+.ple{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+    &>label{
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        &>span{
+            margin-bottom: 10px;
+            text-align: center;
+        }
+    }
+    &>input{
+        width: 80%;
+        margin-bottom: 20px;
+    }
+    &>.upload{
+        display: inline-block;
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        & input[type="file"]{
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            font-size: 30px;
+        }
+        & .btn-upload{
+            background: #fff;
+            border: none;
+            color: $bgbtn;
+            font-family: 'K2D';
+            width: 80%;
+            margin-left: 10%;
+            margin-bottom: 10px;
+        }
+    }
+}
+.etat{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    &>.condition{
+        display: flex;
+        width: 80%;
+        justify-content: space-between;
+    }
+    &>label{
+        margin-bottom: 10px;
+        &>input[type="radio"]{
+            appearance: none;
+            background-color: white;
+            margin: 0;
+            width: 30px;
+            height: 30px;
+            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.50);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &::before{
+                transform: scale(0);
+                content: "";
+                width: 20px;
+                height: 20px;
+                margin: 5px;
+                background: $color;
+                border-radius: 50%;
+                transition: all 0.2s ease;
+            }
+            &:checked::before{
+                transform: scale(1);
+            }
+        }
+    }
+}
+.quantity{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &>label{
+        margin-bottom: 10px;
+    }
+    &>input{
+        margin-bottom: 20px;
+    }
+}
+.addbook{
+    width: 160px;
+    height: 35px;
+    align-self: center;
+}
+
+
+// ||--------SPACE USER-------||
+.accountt, .histo, .suggt{
+    width: 200px;
+    height: 35px;
+}
+.user-historique{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px;
+    background: $bgbtn;
+    margin: 10px;
+    &>.book-res, &>.book-date{
+        display: flex;
+        flex-direction: column;
+        &>.date, &>.bookreserv{
+            height: 30px;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            color: $color;
+        }
+        &>.bookreserv{
+            border-bottom: $color 2px solid;
+            border-radius: 5px;
+        }
+    }
+    &>.btnreserv-co{
+        width: 100%;
+        text-align: center;
+        &>.btnreserv{
+            color: $color;
+        }
+    }
+}
+.user-account-info{
+    background-color: $bgbtn;
+    color: $color;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    &>.btnaccount{
+        margin: 10px auto;
+        padding: 5px;
+        display: block;
+        width: 150px;
+        text-decoration: none;
+    }
+}
+.suggUser{
+    &>.sugg{
+        margin-bottom: 10px;
+    }
+}
+
+// ||------MODIF USER-------||
+.modif-pro{
+    width: 200px;
+    height: 35px;
+}
+.modif-form{
+    &>label{
+        margin: 5px 0;
+        color: $color;
+    }
+    &>input{
+        margin: 5px 0;
+        width: 80%;
+        text-align: center;
+        &[type='email']{
+            margin-bottom: 30px;
+        }
+        &.btnmodif{
+            width: 50%;
+            height: 35px;
+        }
+    }
+}
+
+// ||-------SEARCH-------||
+.searcht{
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+}
+.contentsearchpage{
+    background: $bgbtn;
+    margin: 20px 0;
+    &>.contentpage{
+        display: flex;
+        justify-content: center;
+        &>.nbrpage{
+            margin: 10px;
+            color: $color;
+            font-weight: bolder;
+        }
+    }
+}
+.contentsearch{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 10px;
+    background: $bgbtn;
+}
+.imgbookss{
+    width: 90px;
+    height: 140px;
+    margin: 10px 0;
+}
+.bookdescse{
+    display: none;
+}
+// ||-----BOOK------||
+.tbook{
+    width: 200px;
+    height: 60px;
+    font-size: 20px;
+}
+.figurefirstpage{
+    display: flex;
+    justify-content: center;
+}
+.imgbookse{
+    width: 250px;
+}
+.infobook{
+    display: flex;
+    flex-direction: column;
+    background: $bgbtn;
+    width: 80%;
+    margin: 20px 0;
+    text-align: center;
+    color: $color;
+    padding: 10px 0;
+    font-weight: bold;
+    &>p{
+        margin: 2px;
+    }
+}
+.descbook{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 20px 0;
+    margin-left: 20%;
+    background-color: $bgbtn;
+    color: $color;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    &>p{
+        margin: 10px;
+    }
+}
+.bgbookmark{
+    display: inline-flex;
+    justify-content: start;
+    margin: 20px 0;
+    color: $color;
+    
+    &>.square{
+        width: 240px;
+        height: 40px;
+        line-height: 40px;
+        background: $bgbtn;
+        box-shadow: -5px 4px 4px rgba(0, 0, 0, 0.50);
+        &>a{
+            text-decoration: none;
+            color: $bgb;
+        }
+    }
+    &>.triangle{
+        width: 0px;
+        height: 0px;
+        z-index: -1;
+        border-top: 40px solid $bgbtn;
+        border-right: 40px solid transparent;
+        filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.50));
+    }
+}
+.bgres{
+    background-color: $bgbtn;
+    width: 100%;
+    display: flex;
+
+}
+.btn-wanted{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
+}
+.btnbooking{
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin: 10px 0;
+}
+.comment{
+    background: $bgbtn;
+    position: relative;
+    margin: 5px 0;
+    padding: 5px;
+    color: $color;
+    &>p{
+        margin: 10px;
+    }
+    &>.lines{
+        position: absolute;
+        left: 10%;
+        bottom: -5px;
+        width: 80%;
+        height: 2px;
+        border-radius: 2px;
+        background-color: $color;
+    }
+}
+.addcom{
+    background: $bgbtn;
+    &>.bgbookmark{
+        &>.square{
+            background: $color;
+            color: $bgb;
+            z-index: 1000;
+        }
+        &>.triangles{
+            width: 0px;
+            height: 0px;
+            z-index: 100;
+            border-top: 40px solid $color;
+            border-right: 40px solid transparent;
+            filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.50));
+        }
+    }
+    &>form{
+        margin: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        &>.btnsub{
+            margin: 0 auto;
+            padding: 5px;
+        }
+    }
+}
+.usereserv{
+    transform: translateX(-100vw);
+    transition: all 0.3s ease-in-out;
+    background-color: $bgb;
+    color: $color;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+}
 // ------MEDIA QUERIE-------
 @media screen and (min-width: 1000px) {
     // ||----homepage----||
@@ -589,6 +1170,9 @@ body{
                 }
             }
         }
+        #msg{
+            width: 500px;
+        }
         &>.socialnkhor{
             margin-top: 10px;
             &>.social{
@@ -626,7 +1210,360 @@ body{
         border-width: 3px;
         font-size: 26px;
     }
+
+    #msg{
+        width: 500px;
+    }
     .mention{
         margin: 40px 0;
+    }
+    // ||-----connexion------||
+    .connectp, .modif-form{
+        margin: 100px auto;
+        margin-bottom: 10px;
+        padding: 20px 5px;
+        width: 40%;
+        &>.btnconnect{
+            &>.btnlinkco{
+                width: 220px;
+                height: 80px;
+                font-size: 30px;
+                line-height: 80px;
+            }
+        }
+        &>.titleco{
+            font-size: 30px;
+        }
+        &>.formconnect{
+            &>.inpconn{
+                height: 30px;
+                font-size: 24px;
+            }
+            &>.btnsub{
+                width: 300px;
+                height: 50px;
+                font-size: 30px;
+                margin-top: 60px;
+            }
+        }
+    }
+    .btnbacks{
+        margin-bottom: 90px;
+    }
+
+    // ||------space admin------||
+    .menuadmin{
+        &>li{
+            &>a{
+                font-size: 16px;
+                line-height: normal;
+            }
+        }
+    }
+    .add-diff{
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 80%;
+        margin-bottom: 30px;
+    }
+    .btnsubb{
+        width: 250px;
+        height: 65px;
+        font-size: 24px;
+    }
+    .diffetat{
+        width: 50%;
+        font-size: 20px;
+    }
+    .circle{
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+    }
+    .bookadmin{
+        &>.line{
+            width: 90%;
+            left: 5%;
+        }
+    }
+    .contentbook{
+        width: 90%;
+    }
+    .content-img-bookadm{
+        display: block;
+        & .img-bookadm{
+            width: 280px;
+        }
+    }
+    .resumbook{
+        font-size: 20px;
+        &>p, &>h3{
+            margin-bottom: 20px;
+        }
+    }
+    .btn-ico{
+        flex-direction: column;
+        align-items: center;
+        height: 370px;
+        &>a{
+            text-decoration: none;
+        }
+    }
+    .btna{
+        width: 200px;
+        padding: 0 10px;
+        justify-content: space-between;
+        transition: all 0.3s ease;
+        &>span{
+            display: block;
+            color: $bgbtn;
+            font-size: 24px;
+        }
+        &:hover{
+            background: #acc4ce;
+        }
+    }
+    // ||-----add book------||
+    .newbookt{
+        width: 350px;
+        height: 65px;
+    }
+    .formaddbook{
+        margin: 10px;
+        font-size: 24px;
+    }
+    .tay, .dcgi{
+        flex-direction: row;
+        &>.descadd{
+            text-align: start;
+            margin: 30px 0;
+            &>textarea{
+                margin-top: 10px;
+                font-size: 20px;
+                width: 700px;
+                height: 400px;
+            }
+        }
+        &>input{
+            height: 28px;
+            width: 40%;
+            margin-left: 10px;
+            margin-right: 20px;
+            font-size: 20px;
+        }
+    }
+    .cgi{
+        &>input{
+            height: 28px;
+            width: 40%;
+            font-size: 20px;
+        }
+        &>select{
+            height: 28px;
+            font-size: 20px;
+            width: 40%;
+        }
+    }
+    .gender-add{
+        margin: 10px;
+        &>.checkboxcontent{
+            display: flex;
+            flex-wrap: wrap;
+            &>label{
+                justify-content: center;
+            }
+        }
+    }
+    .pleetat{
+        display: flex;
+        justify-content: center;
+    }
+    .ple{
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 60%;
+        &>input{
+            width: 30%;
+            height: 28px;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        &>label{
+            flex-direction: row;
+            height: 28px;
+            &>span{
+                margin-right: 50px;
+            }
+        }
+        &>.upload {
+            height: 28px;
+            margin-bottom: 10px;
+            width: 40%;
+           & .btn-upload{
+                width: 60%;
+                height: 28px;
+                font-size: 20px;
+            } 
+        }
+    }
+    .etat{
+        width: 40%;
+        &>.condition{
+            width: 40%;
+        }
+    }
+    .quantity{
+        flex-direction: row;
+        &>label{
+            margin-bottom: 0;
+            margin-right: 5px;
+        }
+        &>input{
+            height: 28px;
+            margin-bottom: 0;
+        }
+    }
+    .addbook{
+        width: 280px;
+        height: 55px;
+        font-size: 30px;
+    }
+
+    // ||-----register user-----||
+    .register{
+        width: 40vw !important;
+    }
+
+    // ||-----space user-----||
+    .accountt, .histo, .suggt{
+        width: 400px;
+        height: 65px;
+    }
+    .user{
+        display: flex;
+        justify-content: space-around;
+    }
+    .user-historique{
+        &>.book-date, &>.book-res{
+            &>.date, &>.bookreserv{
+                height: 50px;
+                font-size: 24px;
+            }
+        }
+    }
+    .histo-account{
+        width: 45%;
+    }
+    .user-account-info{
+        font-size: 26px;
+    }
+    .suggUser{
+        width: 50%;
+        &>.sugg{
+            width: 100%;
+            &>.book{
+                &>.linkbook{
+                    &>.imgbook{
+                        width: 100%;
+                        height: 345px;
+                    }
+                }
+                &:nth-child(odd){
+                    margin-top: 100px;
+                }
+            }
+        }
+    }
+
+    // ||-----modif user-----||
+    .modif-pro{
+        width: 20vw;
+        height: 60px;
+        line-height: 60px;
+        
+    }
+    .modif-form{
+        margin: 50px auto;
+        font-size: 24px;
+        width: 60%;
+        &>input{
+            height: 26px;
+            font-size: 24px;
+            width: 50%;
+            &.btnmodif{
+                font-size: 36px;
+                height: 50px;
+                width: 30%;
+
+            }
+        }
+    }
+
+    // ||----book----||
+    .tbook{
+        width: 470px;
+        height: 120px;
+        color: $bgbtn;
+        background: $color;
+    }
+    .headbook{
+        background: $bgbtn;
+        display: flex;
+        flex-direction: row-reverse;
+        flex-wrap: wrap;
+        margin: 50px 0;
+        position: relative;
+    }
+    .imgbookse{
+        width: 470px;
+        height: 700px;
+        margin: 10px 20px;
+    }
+    .infobook{
+        margin: 0px;
+        width: 500px;
+        position: absolute;
+        right: 0;
+        bottom: 20%;
+        font-size: 30px;
+    }
+    .descbook{
+        margin: 0px;
+        width: 60%;
+        font-size: 30px;
+        height: 800px;
+        justify-content: center;
+    }
+    // ||----search----||
+    .searcht{
+        width: 680px;
+        height: 100px;
+        font-size: 36px;
+    }
+    .contentsearch{
+        &>a{
+            text-decoration: none;
+        }
+    }
+    .bookdescse{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        color: $color;
+        margin: 10px;
+        font-size: 30px;
+        width: 435px;
+        text-align: center;
+    }
+    .booksear{    
+        display: flex;
+        background: $bgb;
+        margin: 10px 0;
+    }
+    .imgbookss{
+        width: 340px;
+        height: 540px;
+        margin: 0;
     }
 }

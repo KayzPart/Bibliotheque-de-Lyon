@@ -1,42 +1,178 @@
 {% extends "./Templates/template.twig" %}
 
-{% block title %}Livre sélectionner {% endblock %}
-
-{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">{% endblock %}
-
-{% block header %} {% include "./Templates/header/header.twig" %} {% endblock %}
-
-{% block content %}
-    <div class="book-select">
-
-        <figure>
-            <img src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}" style= "width: 250px">
-        </figure>
-        <h1>{{ book.getTitle }}</h1>
-        <section>
-            <p>
-                <strong>Auteur :</strong> 
-                {{ book.getAuthor }}
-            </p>
-            <p>
-                <strong>ISBN :</strong>
-                {{ book.getIsbn }}
-            </p>
-            <p>
-                <strong>Genre :</strong>
-               <!--  //$book->getName_gender() -->
-            </p>
-            <p>
-                <strong>Catégorie :</strong>
-                {{ book.getCategory }}
-            </p>
-            <p>
-                <strong>Date de sortie :</strong>
-                {{book.getYear_published|date('d/m/y', strtotime)}}
-            </p>
-        </section>
-    </div>
+{% block title %}
+	{{book.getTitle}}
 {% endblock %}
 
-{% block footer %} {% include "./Templates/footer/footer.twig" %} {% endblock %}
- 
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
+
+{% block header %}
+	{% include "./Templates/header/header.twig" %}
+{% endblock %}
+
+{% block content %}
+
+
+	<div class="book-select">
+		<div class="headbook">
+			<h1 class="title tbook">{{ book.getTitle }}</h1>
+
+			<figure class="figurefirstpage">
+				<img class="imgbookse" src="{{root}}/public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+			</figure>
+
+			<section class="infobook">
+				<p>
+					Auteur :
+					{{ book.getAuthor }}
+				</p>
+				<p>
+					ISBN :
+					{{ book.getIsbn }}
+				</p>
+
+				<p>
+					Genre :
+					{% for gender in g %}
+						{{gender.getName_gender}}
+					{% endfor %}
+
+				</p>
+				<p>
+					Catégorie :
+					{{ category.getName_category }}
+				</p>
+				<p>
+					Date de publication :
+					{{book.getYear_published}}
+				</p>
+				<p>
+					État :
+					{{condition.getStatus_condition}}
+				</p>
+			</section>
+		</div>
+
+
+		<section class="descbook">
+			<p>Description :
+			</p>
+			<p>{{book.getDescrip}}</p>
+		</section>
+
+		<div class="usereserv">
+			<div class="confirm-booking">
+				<h5>Vous souhaitez réserver le livre
+					{{book.getTitle}}
+					?</h5>
+				<br><br>
+				<p>
+					Si vous souhaitez continuer, et réserver
+					{{book.getTitle}}, votre réservation prendra effet à ce jour, soit le :
+					{{ "now"|date("m/d/Y") }}.
+					<br><br>
+					Le livre vous est confier pour une durée de trois semaines, vous disposer jusqu'au
+					{{ reserv.book|date_modify("+21 day")|date("m/d/Y") }}
+					pour en profiter.
+					<br><br>
+					La Bibliothèque de Lyon vous remercie pour votre confiance.
+				</p>
+
+
+				<button class="closebooking">Annuler</button>
+				<form action="{{root}}/validatebooking" method="POST">
+					<input type="hidden" value="{{book.getId_book}}" name="id_book">
+					<input type="hidden" value="{{condition.getId_condition_book}}" name="id_condition_book">
+					<input type="submit" name="submit" value="Réserver">
+					<pre>
+						{{ dump(book.getId_book, condition.getId_condition_book) }}
+						{{ dump(id_book)}}
+					</pre>
+				</form>
+
+
+			</div>
+		</div>
+		<section>
+			<div class="bgbookmark">
+				<div class="square">Emplacement du livre
+					<a href="#">?</a>
+					:
+					{{book.getEmplacement}}</div>
+				<div class="triangle"></div>
+			</div>
+			<div class="bgres">
+				<div class="btn-wanted">
+					<div class="btnsub btnbooking">Réserver</div>
+				</div>
+				<div>
+					{% for reserv in resa %}
+						{% if (reserv.getId_book == book.getId_book) %}
+							{% if reserv.getEnd_date_reserv > now|date("Y-m-d") %}
+								<p>
+									<strong>Prêté</strong>
+									- retour prévu le :
+									{{reserv.getEnd_date_reserv}}</p>
+								{% else %}
+								<p>
+									<strong>Disponible</strong>
+								</p>
+							{% endif %}
+						{% elseif book.getQuantity == 0 %}
+							Indisponible
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+	</div>
+
+	<div class="bgbookmark">
+		<div class="square">COMMENTAIRE</div>
+		<div class="triangle"></div>
+	</div>
+
+	<div class="comment">
+
+		{% for comment in c %}
+			<div class="comment">
+				<div class="line"></div>
+				{% for user in u %}
+					{% if comment.getId_user == user.getId_user %}
+						<p>{{user.getNum_member}}</p>
+					{% endif %}
+				{% endfor %}
+				<p>
+					{{comment.getTitle_comment}}
+				</p>
+				<p>
+					{{comment.getContent_comment}}
+				</p>
+				<div class="lines"></div>
+			</div>
+
+		{% endfor %}
+	</div>
+
+	<div class="addcom">
+		<div class="bgbookmark">
+			<div class="square">Ajouter un commentaire</div>
+			<div class="triangles"></div>
+		</div>
+		<form action="./addcom" method="GET">
+
+			<label for="titleComment"><input type="text" name="titleComment" id="titleComment" placeholder="Votre titre"></label>
+
+			<label for="contentComment"></label>
+			<textarea name="contentComment" id="contentComment" cols="30" rows="10" placeholder="Écrivez votre commentaire..."></textarea>
+			<input type="hidden" name="id_book" value="{{book.getId_book}}">
+			<input class="btnsub" type="submit" name="submit" value="Envoyer">
+		</form>
+	</div>
+{% endblock %}
+{% block footer %}
+	{% include "./Templates/footer/footer.twig" %}
+
+	<script src="{{root}}/Views/Templates/js/booking.js"></script>
+{% endblock %}

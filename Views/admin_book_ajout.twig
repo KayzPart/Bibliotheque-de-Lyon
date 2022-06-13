@@ -1,0 +1,107 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Ajout d'un livre
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
+
+{% block header %}
+	{% include "./Templates/header/headerAdmin.twig" %}
+{% endblock %}
+
+{% block content %}
+
+	<div class="title newbookt">Ajout d'un livre</div>
+
+	<form action="./newBook" method="POST" enctype="multipart/form-data" class="formaddbook">
+		<div class="tay">
+			<label for="title">Titre</label>
+			<input id="title" type="text" name="title" value="{{book.getTitle}}">
+
+			<label for="author">Auteur</label>
+			<input id="author" type="text" name="author" value="{{book.getAuthor}}">
+
+			<label for="year_published">Année de publication</label>
+			<input id="year_published" type="date" name="year_published" value="{{ book.getYear_published|date('Y-m-d') }}">
+		</div>
+
+		<div class="dcgi">
+			<div class="descadd">
+				<label for="description">Description</label>
+				<textarea id="description" name="descrip">{{book.getDescrip}}</textarea>
+			</div>
+
+			<div class="cgi">
+				<label for="category-type">Catégorie</label>
+
+				<select id="category-type" name="category-type">
+					<option value="1">Roman</option>
+					<option value="2">Manga</option>
+					<option value="3">BD</option>
+					<option value="4">Magazine</option>
+					<option value="5">Journal</option>
+				</select>
+				<div class="gender-add">
+					<label for="gender">Genre</label>
+					
+					<div class="checkboxcontent">
+						{% for gender in g %}
+							<label><input type="checkbox" name="gender[]" value="{{gender.getId_gender}}" checked>{{gender.getName_gender}}</label>
+						{% endfor %}
+						{% for genderall in ga %}
+							<label><input type="checkbox" name="gender[]" value="{{genderall.getId_gender}}">{{genderall.getName_gender}}</label>		
+						{% endfor %}
+					</div>
+
+				</div>
+
+				<label for="isbn">ISBN</label>
+				<input id="isbn" type="text" name="isbn" value="{{book.getIsbn}}">
+			</div>
+
+		</div>
+
+		<div class="pleetat">
+			<div class="ple">
+				<label for="photo">Image</label>
+				<div class="upload">
+					<button class="btn-upload">Choisir un fichier</button>
+					<input id="photo" type="file" name="photo" accept="image/png, image/jpeg, image/jpg" value="{{book.getPhoto}}">
+				</div>
+
+
+				<label for="lang">Langue</label>
+				<input type="text" name="lang" id="lang" value="{{book.getLang}}">
+
+				<label for="emplacement">
+					<span>Emplacement
+					</span><input type="text" name="emplacement" id="emplacement" value="{{book.getEmplacement}}"></label>
+
+			</div>
+			<div class="etat">
+				<label>État</label>
+				<label class="condition" for="condition1"><input type="radio" name="condition" id="condition1" value="1" {% if book.getId_condition_book == 1 %} checked {% endif %}>Très bon</label>
+
+				<label class="condition" for="condition2"><input type="radio" name="condition" id="condition2" value="2" {% if book.getId_condition_book == 2 %} checked {% endif %}>Bon</label>
+
+				<label class="condition" for="condition3"><input type="radio" name="condition" id="condition3" value="3" {% if book.getId_condition_book == 3 %} checked {% endif %}>Mauvais</label>
+			</div>
+			<div class="quantity">
+				<label for="quantity">quantity</label>
+				<input type="number" name="quantity" id="quantity" value="{{book.getQuantity}}">
+			</div>
+
+		</div>
+
+		<input class="btnsub addbook" type="submit" name="submit" value="Envoyer">
+	</form>
+	{{ dump(book) }}
+	<p class="btnbacks">
+		<a class="btnback" href="{{root}}/spaceAdmin">Retour</a>
+	</p>
+{% endblock %}
+
+{% block footer %}
+	{% include "./Templates/footer/footer-co.twig" %}
+{% endblock %}

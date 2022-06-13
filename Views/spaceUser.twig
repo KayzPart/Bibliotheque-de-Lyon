@@ -1,0 +1,66 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Espace Utilisateur
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
+
+{% block header %}
+	{% include "./Templates/header/headerUser.twig" %}
+{% endblock %}
+
+{% block content %}
+    <div class="user">
+        <div class="histo-account">
+            <div class="histoUser">
+                <h3 class="title histo">Historique</h3>
+                <div class="user-historique">
+                    <div class="book-res">
+                        {% for b in bookreserv|slice(0, 6) %}
+                            <div class="bookreserv">
+                                <p>{{b.getTitle}}</p>
+                                <p>{{b.getIsbn}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="book-date">
+                        {% for r in reserv|slice(0, 6) %}
+                            <div class="date">
+                                <p>{{r.getEnd_date_reserv|date('d/m/Y')}}</p>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="btnreserv-co"><a href="./userReserv" class="btnreserv">Voir plus</a></div>
+                </div>
+                
+            </div>
+            <div class="account">
+                <h3 class="title accountt">Votre compte</h3>
+                <div class="user-account-info">
+                    <p>Nom : {{user.getLastname}}</p>
+                    <p>Prénom : {{user.getFirstname}}</p>
+                    <p>Numéro adhérent : {{user.getNum_member}}</p>
+                    <p>Email : {{user.getEmail}}</p>
+                    <a class="btnsub btnaccount" href="./userModif/{{id_user}}">Modifier</a>
+                </div>
+            </div>
+        </div>
+        <div class="suggUser">
+            <h3 class="title suggt">Suggestion pour vous</h3>
+            <div class="sugg">
+                {% for book in books %}
+                <div class="book">
+                    <a class="linkbook" href="./book/{{book.getId_book}}">
+                        <img class="imgbook" src="./public/couverture/{{book.getPhoto}}" alt="{{book.getTitle}}">
+                    </a>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer %}
+	{% include "./Templates/footer/footer.twig" %}
+{% endblock %}
