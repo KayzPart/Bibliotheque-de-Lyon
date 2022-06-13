@@ -1,0 +1,25 @@
+{% extends "./Templates/template.twig" %}
+
+{% block title %}Réservation
+{% endblock %}
+
+{% block stylesheet %}<link rel="stylesheet" href="{{root}}/Views/Templates/css/style.css">
+{% endblock %}
+
+{% block header %}
+	{% include "./Templates/header/headerAdmin.twig" %}
+{% endblock %}
+
+{% block content %}
+ta mere 
+    {% for b in book %}
+        {{book.getTitle}}
+        <pre>
+            {{ dump(book) }}
+        </pre>
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+	{% include "./Templates/footer/footer-co.twig" %}
+{% endblock %}
