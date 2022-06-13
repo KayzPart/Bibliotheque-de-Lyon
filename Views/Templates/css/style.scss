@@ -172,7 +172,7 @@ body{
         display: none;
     }
 }
-.btnsub{
+.btnsub, .closebooking{
     border-radius: 0px;
     border: 1px solid $color;
     background: $bgb;
@@ -1075,6 +1075,12 @@ body{
     top: 0;
     left: 0;
     z-index: 10000;
+}
+.close-sub{
+    display: flex;
+    width: 50%;
+    margin: 50px auto;
+    justify-content: space-between;
 }
 // ------MEDIA QUERIE-------
 @media screen and (min-width: 1000px) {

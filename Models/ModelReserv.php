@@ -25,7 +25,6 @@ class ModelReserv extends Model
             $reqReserv->execute();
 
             echo 'Votre réservation à bien été éffectuer';
-            var_dump($datas['id_book'], $idUse, $datas['id_condition_book'], $today, $limitReserv);
         }
     }
     // Sélect Réservation 
@@ -63,4 +62,21 @@ class ModelReserv extends Model
         }
         return [$viewResa, $book, $condi];
     }
+    public function viewReservAd(){
+        $db = $this->getdb(); 
+        $req = $db->query('SELECT `id_reserv`, `book`.`id_book`, `book`.`title`, `book`.`isbn`, `date_reserv`, `end_date_reserv`, `user`.`num_member`, `condition_book`.`status_condition` FROM `reserv` INNER JOIN `book` ON `book`.`id_book` = `reserv`.`id_book` INNER JOIN `user` ON `user`.`id_user` = `reserv`.`id_user` INNER JOIN `condition_book` ON `condition_book`.`id_condition_book` = `reserv`.`id_condition_book`'); 
+
+        $viewResa = []; 
+        $book = [];
+        $user = [];
+        $condi = [];
+        while($vr = $req->fetch(PDO::FETCH_ASSOC)){
+            $viewResa[] = new Reserv($vr);
+            $book[] = new Book($vr);
+            $user[] = new User($vr);
+            $condi[] = new ConditionBook($vr);
+        }
+        return [$viewResa, $book, $user, $condi];
+    }
+
 }

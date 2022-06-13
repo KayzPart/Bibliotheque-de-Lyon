@@ -279,7 +279,7 @@ body {
   display: none;
 }
 
-.btnsub {
+.btnsub, .closebooking {
   border-radius: 0px;
   border: 1px solid #E0C097;
   background: #2D2424;
@@ -1570,6 +1570,17 @@ body {
   top: 0;
   left: 0;
   z-index: 10000;
+}
+
+.close-sub {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 50%;
+  margin: 50px auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 @media screen and (min-width: 1000px) {

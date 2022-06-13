@@ -104,7 +104,6 @@
             $user = new ModelUser();
             $datas = $user->userInscription($datas);
             echo $twig->render('registration_user.twig', ['user' => $datas, 'root' => ROOT]);
-            var_dump($datas);
         }
 
         

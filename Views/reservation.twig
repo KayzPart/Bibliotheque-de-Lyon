@@ -11,13 +11,28 @@
 {% endblock %}
 
 {% block content %}
-ta mere 
-    {% for b in book %}
-        {{book.getTitle}}
-        <pre>
-            {{ dump(book) }}
-        </pre>
-    {% endfor %}
+
+<h1 class="title histo">Reservation</h1>
+
+<div class="in-progress">
+    <div class="user-historique">
+        <div class="book-res">
+            {% for b in book %}
+                <div class="bookreserv">
+                    <p>{{b.getTitle}}</p>
+                    <p>{{b.getIsbn}}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="book-date">
+            {% for r in reservs %}
+                <div class="date">
+                    <p>{{r.getEnd_date_reserv|date('d/m/Y')}}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block footer %}
