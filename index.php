@@ -40,6 +40,7 @@ $router->map('GET|POST', '/userModif/[i:id_user]', 'ControllerUser#userSpace', '
 
 // Espace user -> recherche livre -> selection -> Réserver
 $router->map('POST', '/validatebooking', 'ControllerReserv#bookings');
+
 // Affichage sur userReserv de l'history des réservations
 $router->map('GET', '/userReserv', 'ControllerReserv#viewHistory');
 

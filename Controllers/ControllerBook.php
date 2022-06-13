@@ -21,11 +21,9 @@ class ControllerBook extends ControllerTwig
         $availableReserv = new ModelReserv();
         $book = $datas->select($id);
         $reserv = $availableReserv->selectReserv($id);
-        // $dispo = $availableReserv->disponibility($id);
         $comment = $cmt->commentUser($id);
         $gender = $gend->readGender($id);
         echo $twig->render('book.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'c' => $comment[0], 'u' => $comment[1], 'g' => $gender, 'resa' => $reserv[0], 'root' => ROOT]);
-        var_dump($reserv);
     }
     public static function newBook($datas){
         $twig = ControllerTwig::twigControl();
@@ -85,13 +83,13 @@ class ControllerBook extends ControllerTwig
     }
 
     public static function reservation($id){
+        session_start();
         $twig = ControllerTwig::twigControl();
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
-        $viewBook = new ModelBook();
-        $datas = new ModelReserv();
-        $book = $viewBook->select($id);
-        $view = $datas->viewReserv($id);
-        echo $twig->render('reservation.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'resa' => $view[0], 'root' => ROOT]);
-        var_dump($view);
+        $datasReserv = new ModelReserv();
+        if(isset($_POST['submit'])){
+            $datasReserv->updateConfirm($id);
+        }
+        echo $twig->render('reservation.twig', ['root' => ROOT]);
     }
 }
