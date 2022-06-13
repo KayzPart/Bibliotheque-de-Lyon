@@ -14,7 +14,7 @@ class ControllerBook extends ControllerTwig
     public static function readBook($id){
         session_start();
         $twig = ControllerTwig::twigControl();
-        $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
+        
         $datas = new ModelBook();
         $cmt = new ModelComment();
         $gend = new ModelGender();
@@ -59,9 +59,7 @@ class ControllerBook extends ControllerTwig
         $result = $manager->spaceSearch($searchcat, $search, $p);
         echo $twig->render('search.twig', ['root' => ROOT, 'books' => $result[0], 'nbrpages' => $result[1]]);
     }
-        
-
-
+    
     // Modification Book
     public static function editBookForm($id)
     {
@@ -84,5 +82,16 @@ class ControllerBook extends ControllerTwig
         $twig = ControllerTwig::twigControl();
         $datas = new ModelBook();
         echo $twig->render('spaceAdmin.twig',['root' => ROOT]);
+    }
+
+    public static function reservation($id){
+        $twig = ControllerTwig::twigControl();
+        $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
+        $viewBook = new ModelBook();
+        $datas = new ModelReserv();
+        $book = $viewBook->select($id);
+        $view = $datas->viewReserv($id);
+        echo $twig->render('reservation.twig', ['book' => $book[0], 'category' => $book[1], 'condition' => $book[2], 'resa' => $view[0], 'root' => ROOT]);
+        var_dump($view);
     }
 }

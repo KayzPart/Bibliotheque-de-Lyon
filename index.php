@@ -43,10 +43,12 @@ $router->map('POST', '/validatebooking', 'ControllerReserv#bookings');
 // Affichage sur userReserv de l'history des réservations
 $router->map('GET', '/userReserv', 'ControllerReserv#viewHistory');
 
-
 // Espace admin
 $router->map('POST', '/verifAdmin', 'ControllerAdmin#connexionAdmin');
 $router->map('GET', '/spaceAdmin', 'ControllerAdmin#space');
+
+// Redirection réservation - Space Admin 
+$router->map('GET', '/reserv', 'ControllerBook#reservation');
 
 // Inscription nouvel Adhérant
 // Direction formulaire
