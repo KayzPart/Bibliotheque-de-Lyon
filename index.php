@@ -40,7 +40,6 @@ $router->map('GET|POST', '/userModif/[i:id_user]', 'ControllerUser#userSpace', '
 
 // Espace user -> recherche livre -> selection -> Réserver
 $router->map('POST', '/validatebooking', 'ControllerReserv#bookings');
-
 // Affichage sur userReserv de l'history des réservations
 $router->map('GET', '/userReserv', 'ControllerReserv#viewHistory');
 
@@ -62,7 +61,7 @@ $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');
 $router->map('GET', '/book/addcom', 'ControllerComment#comment');
 
 // *** Formulaire ajout livre => Les routes
-$router->map('POST', '/newBook', 'ControllerBook#newBook');
+$router->map('POST', '/bookF', 'ControllerBook#newBook');
 // *** Direction formulaire =>  Afficher category
 $router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
 // *** Direction formulaire => Afficher condition
@@ -72,6 +71,9 @@ $router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
 
 // Update Book
 $router->map('GET', '/update/[i:id_book]', 'ControllerBook#editBookForm', 'updateForm');
+
+// Redirection after Update
+$router->map('POST', '/update/[i:id_book]', 'ControllerBook#redirectionAfterEdit');
 
 
 
