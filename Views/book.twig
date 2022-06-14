@@ -79,14 +79,15 @@
 					La Bibliothèque de Lyon vous remercie pour votre confiance.
 				</p>
 
+				<div class="close-sub">
+					<button class="closebooking">Annuler</button>
+					<form action="{{root}}/validatebooking" method="POST">
+						<input type="hidden" value="{{book.getId_book}}" name="id_book">
+						<input type="hidden" value="{{condition.getId_condition_book}}" name="id_condition_book">
+						<input class="btnsub" type="submit" name="submit" value="Réserver">
+					</form>
+				</div>
 
-				<button class="closebooking">Annuler</button>
-				<form action="{{root}}/validatebooking" method="POST">
-					<input type="hidden" value="{{book.getId_book}}" name="id_book">
-					<input type="hidden" value="{{condition.getId_condition_book}}" name="id_condition_book">
-					<input type="hidden" value"{{resa.getStatus}}">
-					<input type="submit" name="submit" value="Réserver">
-				</form>
 
 
 			</div>

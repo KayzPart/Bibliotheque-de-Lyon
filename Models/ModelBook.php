@@ -65,7 +65,6 @@ class ModelBook extends Model
         $book = new Book($data);
         $category = new Category($data);
         $condition = new ConditionBook($data);
-        // var_dump($data);
 
 
         return [$book, $category, $condition];
@@ -122,7 +121,6 @@ class ModelBook extends Model
             $lang = $_POST['lang'];
             $quantity = $_POST['quantity'];
 
-            var_dump($id_category, $id_condition_book, $title, $author, $year_published, $descrip, $isbn, $emplacement, $lang, $quantity);
 
             $db = $this->getDb();
             $req = $db->prepare('INSERT INTO `book`(`id_category`, `id_condition_book`, `title`, `author`, `year_published`, `descrip`, `isbn`, `photo`, `emplacement`, `lang`, `quantity`) VALUES (:id_category, :id_condition_book, :title, :author, :year_published, :descrip, :isbn, :photo, :emplacement, :lang, :quantity)');

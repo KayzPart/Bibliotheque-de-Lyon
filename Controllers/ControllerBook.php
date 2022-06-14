@@ -108,16 +108,11 @@ class ControllerBook extends ControllerTwig
         header('Location: ./spaceAdmin');
     }
 
-    public static function reservation($id)
-    {
-        session_start();
-        $id = $_GET['id_book'];
+    public static function reservation(){
         $twig = ControllerTwig::twigControl();
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datasReserv = new ModelReserv();
-        if (isset($_POST['submit'])) {
-            $datasReserv->updateConfirm($id);
-        }
-        echo $twig->render('reservation.twig', ['root' => ROOT]);
-    }
-}
+        $reserv = $datasReserv->viewReservAd();
+        echo $twig->render('reservation.twig', ['root' => ROOT, 'reservs' => $reserv[0], 'book' => $reserv[1], 'user' => $reserv[2]]);
+
+  }
