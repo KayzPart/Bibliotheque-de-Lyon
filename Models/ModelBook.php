@@ -65,12 +65,13 @@ class ModelBook extends Model
         $book = new Book($data);
         $category = new Category($data);
         $condition = new ConditionBook($data);
-        
+
 
         return [$book, $category, $condition];
     }
     public function insertBook($datas)
     {
+    
         if (isset($_POST['submit'])) {
 
             if (isset($_FILES['photo']) and $_FILES['photo']['error'] == 0) {
@@ -234,5 +235,96 @@ class ModelBook extends Model
             $searchResult[] = new Book($resultS);
         }
         return [$searchResult, $nbPages];
+    }
+
+    public function updateBook($id, $id_category, $id_condition_book, $title, $author, $year_published, $descrip, $isbn, $photo, $emplacement, $lang, $quantity)
+    {
+        if (isset($_POST['submit'])) {
+
+            if (isset($_FILES['photo']) and $_FILES['photo']['error'] == 0) {
+
+                if (isset($_FILES['photo']['size']) <= 10000000) {
+
+                    $infosfichier = pathinfo($_FILES['photo']['name']);
+
+                    $extension_upload = $infosfichier['extension'];
+
+                    $extensions_autorisees = ['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'];
+
+                    if (in_array($extension_upload, $extensions_autorisees)) {
+
+                        $minuscule = strtolower($_POST['title']);
+
+                        $searchString = " ";
+
+                        $replaceString = "";
+
+                        $finalString = str_replace($searchString, $replaceString, $minuscule);
+
+                        $date = date('dmyhis');
+
+                        $ref = $finalString . '_' . $date . '_couverture';
+
+
+                        move_uploaded_file($_FILES['photo']['tmp_name'], './public/couverture/' . $ref . '.' . $extension_upload);
+                    } else {
+                        echo 'Extensions incorrect';
+                    }
+                } else {
+                    echo 'Image trop grande !';
+                }
+            } else {
+                echo 'Erreur, de téléchargement !';
+            }
+            $id_category = $_POST['category-type'];
+            $id_condition_book = $_POST['condition'];
+            $title = $_POST['title'];
+            $author = $_POST['author'];
+            $year_published = $_POST['year_published'];
+            $descrip = $_POST['descrip'];
+            $isbn = $_POST['isbn'];
+            $photo = $ref . '.' . $extension_upload;
+            $emplacement = $_POST['emplacement'];
+            $lang = $_POST['lang'];
+            $quantity = $_POST['quantity'];
+
+            $db = $this->getdb();
+            $update = $db->prepare('UPDATE `id_category`= :id_category,`id_condition_book`= :id_condition_book,`title`= :title,`author`= :author,`year_published`= :year_published,`descrip`= :descrip,`isbn`= :isbn,`photo`= :photo,`emplacement`= :emplacement,`lang`= :lang,`quantity`= :quantity WHERE `id_book` = :id');
+            $update->bindParam('id', $id, PDO::PARAM_INT);
+            $update->bindParam('id_category', $id_category, PDO::PARAM_INT);
+            $update->bindParam('id_condition_book', $id_condition_book, PDO::PARAM_INT);
+            $update->bindParam('title', $title, PDO::PARAM_STR);
+            $update->bindParam('author', $author, PDO::PARAM_STR);
+            $update->bindParam('year_published', $year_published, PDO::PARAM_STR);
+            $update->bindParam('descrip', $descrip, PDO::PARAM_STR);
+            $update->bindParam('isbn', $isbn, PDO::PARAM_STR);
+            $update->bindParam('photo', $photo, PDO::PARAM_STR);
+            $update->bindParam('emplacement', $emplacement, PDO::PARAM_STR);
+            $update->bindParam('lang', $lang, PDO::PARAM_STR);
+            $update->bindParam('quantity', $quantity, PDO::PARAM_INT);
+
+            $update->execute();
+
+            $idBook = $db->lastInsertId();
+
+            if (!empty($_POST['gender'])) {
+
+                foreach ($_POST['gender'] as $value) {
+                    $db = $this->getDb();
+                    $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, :id_gender)');
+
+                    $reqGenderBook->bindParam('id_book', $idBook, PDO::PARAM_STR);
+                    $reqGenderBook->bindParam('id_gender', $value, PDO::PARAM_STR);
+                    $reqGenderBook->execute();
+                }
+            }
+
+            $newBook = [];
+
+            while ($b = $update->fetch(PDO::FETCH_ASSOC)) {
+                $newBook[] = new Book($b);
+            }
+            return $newBook;
+        }
     }
 }

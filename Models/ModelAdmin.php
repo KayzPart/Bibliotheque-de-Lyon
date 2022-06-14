@@ -12,6 +12,5 @@ class ModelAdmin extends Model
         }else{
             return "Pseudo ou Mot de passe incorrect";
         }
-        
     }
 }
