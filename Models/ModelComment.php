@@ -30,7 +30,6 @@
                 $id = $_SESSION['userId'];
 
                 $db = $this->getDb();
-                var_dump($datas['id_book'],$datas['contentComment'],$datas['titleComment'], $id);
                 $addComment = $db->prepare('INSERT INTO `comment`(`title_comment`, `content_comment`, `id_book`, `id_user`) VALUES (:titleComment, :contentComment, :idBook, :id)');
                 $addComment->bindParam('titleComment', $datas['titleComment'], PDO::PARAM_STR);
                 $addComment->bindParam('contentComment', $datas['contentComment'], PDO::PARAM_STR); 

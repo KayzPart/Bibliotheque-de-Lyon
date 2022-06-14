@@ -14,7 +14,7 @@
 
 	<div class="title newbookt">Ajout d'un livre</div>
 
-	<form action="./newBook" method="POST" enctype="multipart/form-data" class="formaddbook">
+	<form action="" method="POST" enctype="multipart/form-data" class="formaddbook">
 		<div class="tay">
 			<label for="title">Titre</label>
 			<input id="title" type="text" name="title" value="{{book.getTitle}}">
@@ -93,10 +93,9 @@
 			</div>
 
 		</div>
-
+		<input type="hidden" value="{{book.getId_book}}" name="id_book">
 		<input class="btnsub addbook" type="submit" name="submit" value="Envoyer">
 	</form>
-	{{ dump(book) }}
 	<p class="btnbacks">
 		<a class="btnback" href="{{root}}/spaceAdmin">Retour</a>
 	</p>
