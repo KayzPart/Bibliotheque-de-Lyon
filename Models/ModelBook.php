@@ -145,7 +145,7 @@ class ModelBook extends Model
 
                 foreach ($_POST['gender'] as $value) {
                     $db = $this->getDb();
-                    $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, :id_gender)');
+                    $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES(:id_book, :id_gender)');
 
                     $reqGenderBook->bindParam('id_book', $idBook, PDO::PARAM_STR);
                     $reqGenderBook->bindParam('id_gender', $value, PDO::PARAM_STR);
@@ -311,7 +311,7 @@ class ModelBook extends Model
 
                 foreach ($_POST['gender'] as $value) {
                     $db = $this->getDb();
-                    $reqGenderBook = $db->prepare('INSERT INTO `book_gender` (`id_book`, `id_gender`) VALUES (:id_book, :id_gender)');
+                    $reqGenderBook = $db->prepare('UPDATE `book_gender` SET `id_gender`= :id_gender, `id_book`= :id_book');
 
                     $reqGenderBook->bindParam('id_book', $idBook, PDO::PARAM_STR);
                     $reqGenderBook->bindParam('id_gender', $value, PDO::PARAM_STR);

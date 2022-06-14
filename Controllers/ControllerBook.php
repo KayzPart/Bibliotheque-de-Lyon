@@ -116,3 +116,4 @@ class ControllerBook extends ControllerTwig
         echo $twig->render('reservation.twig', ['root' => ROOT, 'reservs' => $reserv[0], 'book' => $reserv[1], 'user' => $reserv[2]]);
 
   }
+}
