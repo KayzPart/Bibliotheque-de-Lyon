@@ -18,14 +18,14 @@ class ControllerReserv extends ControllerTwig
         }
     }
     // Affichage des réservation en cours sur page userReserv 
-    public static function viewHistory($id)
+    public static function viewHistory()
     {
         session_start();
         $twig = ControllerTwig::twigControl();
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         if (isset($_SESSION['userId'])) {
             $datasReserv = new ModelReserv();
-            $reserv = $datasReserv->selectReserv($id);
+            $reserv = $datasReserv->selectReserv();
             echo $twig->render('userReserv.twig', ['root' => ROOT, 'reservs' => $reserv[0], 'book' => $reserv[1]]);
         }
         if (!isset($_SESSION['userId'])) {

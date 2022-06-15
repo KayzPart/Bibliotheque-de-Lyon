@@ -28,7 +28,7 @@ class ModelReserv extends Model
     }
 
     // Sélect Réservation 
-    public function selectReserv($id)
+    public function selectReserv()
     {
         $id = isset($_SESSION['userId']) ? $_SESSION['userId'] : 'test';
         $db = $this->getDb();
