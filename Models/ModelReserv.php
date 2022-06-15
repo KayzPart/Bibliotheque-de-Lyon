@@ -40,11 +40,12 @@ class ModelReserv extends Model
         return new Reserv($data);
     }
     // Sélect Réservation 
-    public function selectReserv($id)
+    public function selectReserv()
     {
         $id = isset($_SESSION['userId']) ? $_SESSION['userId'] : 'test';
         $db = $this->getDb();
-        $select = $db->prepare('SELECT `id_reserv`, `book`.`id_book`, `book`.`title`, `book`.`isbn`, `end_date_reserv`, `status` FROM `reserv` INNER JOIN `book` ON `book`.`id_book` = `reserv`.`id_book` INNER JOIN `user` ON `user`.`id_user` = `reserv`.`id_user` WHERE `reserv`.`id_user` = :id_use');
+
+        $select = $db->prepare('SELECT `id_reserv`, `book`.`id_book`, `book`.`title`, `book`.`isbn`, `end_date_reserv` FROM `reserv` INNER JOIN `book` ON `book`.`id_book` = `reserv`.`id_book` INNER JOIN `user` ON `user`.`id_user` = `reserv`.`id_user` WHERE `reserv`.`id_user` = :id_use');
         $select->bindParam('id_use', $id, PDO::PARAM_INT);
         $select->execute();
 
