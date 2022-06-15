@@ -112,8 +112,8 @@ class ControllerBook extends ControllerTwig
         $twig = ControllerTwig::twigControl();
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
         $datasReserv = new ModelReserv();
-        $reserv = $datasReserv->viewReservAd();
-        echo $twig->render('reservation.twig', ['root' => ROOT, 'reservs' => $reserv[0], 'book' => $reserv[1], 'user' => $reserv[2]]);
+        [$reservUser, $book] = $datasReserv->viewReservAd();
+        echo $twig->render('reservation.twig', ['root' => ROOT, 'reservUser' => $reservUser, 'book' => $book]);
 
   }
 }

@@ -26,19 +26,24 @@
             {% endfor %}
         </div>
         <div class="book-date">
-            {% for r in reservs %}
+            {% for ru in reservUser %}
                 <div class="date">
-                    <p>{{r.getEnd_date_reserv|date('d/m/Y')}}</p>
+                    <p class="user-Resa">{{ru[1].getNum_member}}</p>
+                    <p>{{ru[0].getEnd_date_reserv|date('d/m/Y')}}</p>
+                    <form action="{{root}}/updateBooking" method="POST">
+                        <input type="hidden" value"{{view.getStatus}}"c name"newStatus">
+                        <input type="submit" name="submit" value="Confirmer la réservation">
+                    </form>
                 </div>
+
             {% endfor %}
         </div>
     </div>
 </div>
+{% for u in user %}
+    {{u.getNum_member}}
+{% endfor %}
 
-    <form action="{{root}}/updateBooking" method="POST">
-        <input type="hidden" value"{{view.getStatus}}"c name"newStatus">
-        <input type="submit" name="submit" value="Confirmer la réservation">
-    </form>
 
 {% endblock %}
 
