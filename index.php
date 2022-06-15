@@ -67,13 +67,13 @@ $router->map('GET', '/bookF', 'ControllerBook#Show', 'afficher' );
 // *** Direction formulaire => Afficher condition
 $router->map('GET', '/bookF', 'ControllerBook#ShowCondi', 'afficherCondi' );
 // *** Direction formulaire => Afficher genre
-$router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );
-
+$router->map('GET', '/bookF', 'ControllerBook#ShowGender', 'afficherGender' );  
+   
 // Update Book
 $router->map('GET', '/update/[i:id_book]', 'ControllerBook#editBookForm', 'updateForm');
 
 // Redirection after Update
-$router->map('POST', '/update/[i:id_book]', 'ControllerBook#redirectionAfterEdit');
+$router->map('POST', '/update', 'ControllerBook#redirectionAfterEdit');
 
 
 

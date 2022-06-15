@@ -102,10 +102,10 @@ class ControllerBook extends ControllerTwig
             $quantity = $_POST['quantity'];
             $datas = new ModelBook();
             $datas->updateBook($id, $id_category, $id_condition_book, $title, $author, $year_published, $descrip, $isbn, $photo, $emplacement, $lang, $quantity);
-
+            header('Location: ./spaceAdmin');
         }
         
-        header('Location: ./spaceAdmin');
+        
     }
 
     public static function reservation(){
