@@ -30,12 +30,15 @@
                 <div class="date">
                     <p class="user-Resa">{{ru[1].getNum_member}}</p>
                     <p>{{ru[0].getEnd_date_reserv|date('d/m/Y')}}</p>
-                    <form action="{{root}}/updateBooking" method="POST">
-                        <input type="hidden" value"{{view.getStatus}}"c name"newStatus">
-                        <input type="submit" name="submit" value="Confirmer la réservation">
+                    <form action="" method="POST">
+                        <input type="hidden" value="{{ru[0].getId_reserv}}" name="id_reserv">
+                        <input type="hidden" value="{{ru[0].getId_book}}" name="id_book">
+                        <input type="hidden" value="{{ru[0].getId_condition_book}}" name="id_condition_book">
+                        <input type="hidden" value="{{ru[0].getId_user}}" name="id_user">
+                        <input type="hidden" value="{{"now"|date("d/m/Y")}}" name="date_return">
+                        <input type="submit" id="confirm" name="submit" value="Confirmer le retour">
                     </form>
                 </div>
-
             {% endfor %}
         </div>
     </div>
@@ -44,7 +47,18 @@
     {{u.getNum_member}}
 {% endfor %}
 
-
+<h1 class="title histo">Retour</h1>
+<div class="in-progress">
+    <div class="user-retour">
+        <ul id="list-retour">
+            {% for b in books %}
+                <div class="bookretour">
+                    <p>{{b.getTitle}}</p>
+                </div>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}
 
 {% block footer %}

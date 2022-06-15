@@ -6,7 +6,6 @@ class Reserv extends Classes{
     private $_id_condition_book;
     private $_date_reserv;
     private $_end_date_reserv;
-    private $_status;
 
     public function getId_reserv(){
         return $this->_id_reserv;
@@ -25,9 +24,6 @@ class Reserv extends Classes{
     }
     public function getEnd_date_reserv(){
         return $this->_end_date_reserv;
-    }
-    public function getStatus(){
-        return $this->_status;
     }
 
     public function setId_reserv($id_reserv){
@@ -52,9 +48,6 @@ class Reserv extends Classes{
 
     public function setEnd_date_reserv($end_date_reserv){
         $this->_end_date_reserv = $end_date_reserv;
-    }
-    public function setStatus($status){
-        $this->_status = $status;
     }
 
 }

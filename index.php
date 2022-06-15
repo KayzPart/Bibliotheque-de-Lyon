@@ -48,11 +48,12 @@ $router->map('POST', '/verifAdmin', 'ControllerAdmin#connexionAdmin');
 $router->map('GET', '/spaceAdmin', 'ControllerAdmin#space');
 
 // Redirection réservation - Space Admin 
-$router->map('GET', '/reserv', 'ControllerBook#reservation');
+$router->map('GET|POST', '/reserv', 'ControllerBook#reservation');
 
 // Inscription nouvel Adhérant
 // Direction formulaire
 $router->map('GET|POST', '/registrationUser', 'ControllerUser#spaceInscripUse', 'formNewUse');
+
 
 // Redirection vers le book selectionner
 $router->map('GET', '/book/[i:id_book]', 'ControllerBook#readBook', 'book');

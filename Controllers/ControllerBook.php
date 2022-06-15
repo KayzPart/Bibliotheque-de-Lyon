@@ -87,7 +87,7 @@ class ControllerBook extends ControllerTwig
         $loader = new Twig\Loader\FilesystemLoader('./Views');
         $twig = new Twig\Environment($loader, ['cache' => false, 'debug' => true]);
         $twig->addExtension(new \Twig\Extension\DebugExtension());
-        if(isset($_POST['submit'])){
+        if (isset($_POST['submit'])) {
             $id = $_POST['id_book'];
             $id_category = $_POST['category-type'];
             $id_condition_book = $_POST['condition'];
@@ -102,18 +102,40 @@ class ControllerBook extends ControllerTwig
             $quantity = $_POST['quantity'];
             $datas = new ModelBook();
             $datas->updateBook($id, $id_category, $id_condition_book, $title, $author, $year_published, $descrip, $isbn, $photo, $emplacement, $lang, $quantity);
-
         }
-        
+
         header('Location: ./spaceAdmin');
     }
 
-    public static function reservation(){
+    public static function reservation()
+    {
         $twig = ControllerTwig::twigControl();
         $twig->getExtension(\Twig\Extension\CoreExtension::class)->setDateFormat('d/m/Y', '%d days');
+        $datas = $_POST;
         $datasReserv = new ModelReserv();
         [$reservUser, $book] = $datasReserv->viewReservAd();
-        echo $twig->render('reservation.twig', ['root' => ROOT, 'reservUser' => $reservUser, 'book' => $book]);
+        
+        if (isset($_POST['submit'])) {
+            $deleteAndReturn = new ModelReserv();
+            $deleteAndReturn->deleteReserv($datas);
+            $deleteAndReturn->returnBooking($datas);
+            var_dump($datas);
+            
+        }
+        [$return, $books] = $datasReserv->viewReturn();
+        echo $twig->render('reservation.twig', ['root' => ROOT, 'reservUser' => $reservUser, 'book' => $book, 'returnUser' => $return, 'books' => $books]);
+        // var_dump($reservUser);
+    }
 
-  }
+    // public static function returnBookings($datas)
+    // {
+    //     $twig = ControllerTwig::twigControl();
+        
+    //     if (isset($_POST['submit'])) {
+    //         $datasReserv = new ModelReserv();
+    //         $datasReserv->returnBooking($datas);
+           
+    //     }
+    //     header('Location: ./returnB');
+    // }
 }

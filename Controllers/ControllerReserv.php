@@ -32,4 +32,18 @@ class ControllerReserv extends ControllerTwig
             header("Refresh: 0.01; url = ./connectUser");
         }
     }
+
+    // Delete reserv + insert retour
+    // public static function deleteAndReturn(){
+    //     $twig = ControllerTwig::twigControl();
+    //     $datas = $_POST;
+    //     if(isset($_POST['submit'])){
+    //         $deleteAndReturn = new ModelReserv();
+    //         $deleteAndReturn->deleteReserv($datas);
+    //         $deleteAndReturn->returnBooking($datas);
+    //     }
+    //     echo $twig->render('reservation.twig', ['root' => ROOT]);
+    // }
+
+    
 }
