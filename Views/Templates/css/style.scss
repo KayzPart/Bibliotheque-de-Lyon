@@ -833,12 +833,10 @@ body{
         display: flex;
         flex-direction: column;
         &>.date, &>.bookreserv{
-            height: 30px;
+            height: 50px;
             padding-bottom: 5px;
             margin-bottom: 20px;
             color: $color;
-        }
-        &>.bookreserv{
             border-bottom: $color 2px solid;
             border-radius: 5px;
         }
@@ -1462,7 +1460,7 @@ body{
     .user-historique{
         &>.book-date, &>.book-res{
             &>.date, &>.bookreserv{
-                height: 50px;
+                height: 73px;
                 font-size: 24px;
             }
         }
