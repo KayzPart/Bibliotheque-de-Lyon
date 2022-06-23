@@ -19,6 +19,7 @@ return array(
     'ControllerComment' => $baseDir . '/Controllers/ControllerComment.php',
     'ControllerConnexion' => $baseDir . '/Controllers/ControllerConnexion.php',
     'ControllerReserv' => $baseDir . '/Controllers/ControllerReserv.php',
+    'ControllerTache' => $baseDir . '/Controllers/ControllerTache.php',
     'ControllerTwig' => $baseDir . '/Controllers/ControllerTwig.php',
     'ControllerUser' => $baseDir . '/Controllers/ControllerUser.php',
     'Favorite' => $baseDir . '/Classes/Favorite.php',
